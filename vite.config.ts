@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base /SYSTEMA-HETS/'
+    base.,1 /SYSTEMA-HETS/'
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
