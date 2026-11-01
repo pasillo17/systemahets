@@ -33,14 +33,14 @@ jobs:
         with:
           node-version: 20
 
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Instalar dependencias
         run: npm install --legacy-peer-deps
 
-      - name: Compilar aplicación (modo producción)
+      - name: Compilar aplicación (Vite build)
         run: npm run build
-
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v5
 
       - name: Subir artefacto de compilación
         uses: actions/upload-pages-artifact@v3
