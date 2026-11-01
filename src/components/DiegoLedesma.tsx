@@ -95,6 +95,11 @@ export function DiegoLedesma() {
                       loading="lazy"
                       width={480}
                       height={640}
+                      onError={(e) => {
+                        if (SITE_CONFIG.assets.diegoPortraitFallbackUrl) {
+                          (e.target as HTMLImageElement).src = SITE_CONFIG.assets.diegoPortraitFallbackUrl;
+                        }
+                      }}
                     />
                     {/* Gradiente sutil inferior */}
                     <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#080807] via-[#080807]/40 to-transparent pointer-events-none" />

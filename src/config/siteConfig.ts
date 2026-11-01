@@ -10,7 +10,7 @@
 // Importaciones de imágenes para garantizar empaquetado correcto en Vite
 import logoSystema from "../assets/images/logo_systema_hets.png";
 import heroDojo from "../assets/images/hero_systema_dojo_1793283800364.jpg";
-import portraitDiego from "../assets/images/diego_ledesma_portrait_1793467053684.jpg";
+import portraitDiego from "../assets/images/diego_ledesma.jpg";
 import knifeTraining from "../assets/images/gallery_knife_training_1793283802821.jpg";
 import breathWork from "../assets/images/gallery_breath_work_1793283802095.jpg";
 import outdoorSeminar from "../assets/images/gallery_outdoor_seminar_1793283802865.jpg";
@@ -63,6 +63,7 @@ export const SITE_CONFIG = {
     logoFallbackUrl: "https://github.com/pasillo17/galeriaPasillo/blob/main/Dise%C3%B1o%20sin%20t%C3%ADtulo%20(3).png?raw=true",
     heroImage: heroDojo,
     diegoPortrait: portraitDiego,
+    diegoPortraitFallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/refs/heads/main/Gemini_Generated_Image_wl7f8cwl7f8cwl7f%20(1).jfif",
     knifeTraining,
     breathWork,
     outdoorSeminar,
