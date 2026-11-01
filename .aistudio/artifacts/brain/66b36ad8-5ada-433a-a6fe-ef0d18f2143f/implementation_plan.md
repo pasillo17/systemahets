@@ -1,26 +1,56 @@
-# Incorporación de Acento 'Cobre Fundido / Ámbar Fuego Cálido' a la Paleta de Systema HETS
+# Plan de Implementación: Automatización de Despliegue en GitHub Pages
 
-Plan implementado con éxito para enriquecer la paleta cromática existente (negro obsidiana, carbón y bronce envejecido) con un matiz cálido y vibrante de **cobre fundido / ámbar fuego** (`#C05621` / `#D97706` / `#F59E0B`), enfocado estratégicamente en insignias de turnos, estados de días abiertos y etiquetas clave.
+Configuración completa y automatizada del proyecto para despliegue en GitHub Pages en el subdirectorio `/SYSTEMA-HETS/`, garantizando funcionamiento sin errores 404 y compatibilidad transparente con el entorno de desarrollo local.
 
----
-
-### Estado de Implementación: Completado con Éxito
-
-- **Color integrado:** Cobre fundido / Ámbar fuego cálido (`--color-copper: #C05621`, `--color-amber-fire: #F59E0B`, `--color-copper-light: #E07A5F`).
-- **Áreas de aplicación activas:**
-  1. **Cronograma Semanal (Sede La Plata):** 
-     - Badge **"Abierto"** con fondo cobre translúcido, borde definitorio y texto ámbar fuego con resplandor sutil (`shadow-[0_0_12px_rgba(217,119,6,0.25)]`).
-     - Rótulos de turnos (**"Tarde / Noche"**, **"Mediodía"**, **"Doble Turno"**) con acento en cobre cálido (`#E07A5F`).
-  2. **Insignia de Conversión:**
-     - Etiqueta destacada **"Primera Clase de Prueba"** con destello ámbar fuego (`#F59E0B`) y borde cobre fundido.
-  3. **Categorías de Entrenamientos:**
-     - Badges de cada tarjeta y encabezado de visor modal (**"Movimiento"**, **"Suelo"**, **"Respiración"**, **"Defensa"**, **"Outdoor"**) con tono ámbar fuego y borde cobre.
-  4. **Perfil y Trayectoria de Diego Ledesma:**
-     - Badge de cargo oficial (**"Director Técnico & Fundador HETS"**) y nodos luminosos de la línea temporal con pulso de cobre y ámbar fuego.
+## 1. Decisiones del Usuario y Alcance
+- **Método de despliegue**: GitHub Actions automatizado con cada push a la rama principal (`main`).
+- **Base de Vite**: Dinámica: `/SYSTEMA-HETS/` en compilación para producción (`npm run build`) y `/` en entorno de desarrollo local (`npm run dev`).
+- **Manejo de rutas y 404**: Mecanismo SPA con `public/404.html` y script de reconstrucción de URL en `index.html` para subdirectorio de 1 nivel.
 
 ---
 
-### Distribución Cromática Resultante (60-30-10)
-- **60% Base Penumbra Marcial:** Fondo negro obsidiana y carbón (`#080807` / `#12110F`).
-- **30% Estructura y Textos:** Bronce envejecido noble, filigranas y tipografía crema pergamino (`#A58A60` / `#C2A87E` / `#F1EBDD`).
-- **10% Foco Operativo y Acción:** Acentos de cobre fundido y ámbar fuego cálido (`#C05621` / `#F59E0B`) guiando la mirada hacia horarios, turnos e inscripciones.
+## 2. Cambios Propuestos
+
+### Archivo 1: `vite.config.ts`
+- Modificar la función `defineConfig` para recibir `{ mode }`.
+- Configurar `base`:
+  ```ts
+  base: process.env.BASE_URL || (mode === 'production' ? '/SYSTEMA-HETS/' : '/'),
+  ```
+- Mantener los alias `@` a la raíz y las configuraciones de servidor existentes.
+
+### Archivo 2: `.github/workflows/deploy.yml`
+- Crear el flujo de trabajo de GitHub Actions oficial de GitHub Pages:
+  - **Disparador**: `push` a la rama `main` (o `master`) y despacho manual (`workflow_dispatch`).
+  - **Permisos requeridos**: `contents: read`, `pages: write`, `id-token: write`.
+  - **Pasos**:
+    1. `actions/checkout@v4`
+    2. `actions/setup-node@v4` con Node 20 y caché de npm.
+    3. Instalación de dependencias: `npm ci` (o `npm install`).
+    4. Compilación del proyecto: `npm run build`.
+    5. Configuración de Pages: `actions/configure-pages@v5`.
+    6. Subida de artefactos desde la carpeta `dist`: `actions/upload-pages-artifact@v3` con `path: './dist'`.
+    7. Despliegue en GitHub Pages: `actions/deploy-pages@v4`.
+
+### Archivo 3: Verificación de activos y enlaces
+- Asegurar que todas las rutas a imágenes en `index.html` y componentes utilicen rutas que resuelvan correctamente tanto en local como con la base de Vite en producción.
+- `public/404.html` ya implementa `pathSegmentsToKeep = 1;` para resolver rutas hijas bajo `/SYSTEMA-HETS/`.
+
+---
+
+## 3. Plan de Verificación
+
+### Compilación y Linter
+- Ejecutar `compile_applet` para validar que `npm run build` genera los archivos en `dist` con los prefijos `/SYSTEMA-HETS/` en los assets de producción.
+- Ejecutar `lint_applet` para verificar que no haya errores de TypeScript ni sintaxis en `vite.config.ts`.
+
+### Prueba de Servidor Dev
+- Reiniciar el servidor de desarrollo y verificar que la URL raíz responda correctamente en desarrollo local sin obligar al subdirectorio.
+
+---
+
+## 4. Pasos posteriores para el usuario en GitHub
+Una vez subidos los cambios a tu repositorio:
+1. En GitHub, ir a **Settings** > **Pages**.
+2. En **Build and deployment** > **Source**, seleccionar **GitHub Actions** (en lugar de "Deploy from a branch").
+3. Al hacer push a la rama `main`, la pestaña **Actions** ejecutará el despliegue de forma totalmente automática.
