@@ -1,56 +1,49 @@
-# Plan de Implementación: Automatización de Despliegue en GitHub Pages
+# Plan de Solución: Corrección de Pantalla en Blanco en GitHub Pages
 
-Configuración completa y automatizada del proyecto para despliegue en GitHub Pages en el subdirectorio `/SYSTEMA-HETS/`, garantizando funcionamiento sin errores 404 y compatibilidad transparente con el entorno de desarrollo local.
-
-## 1. Decisiones del Usuario y Alcance
-- **Método de despliegue**: GitHub Actions automatizado con cada push a la rama principal (`main`).
-- **Base de Vite**: Dinámica: `/SYSTEMA-HETS/` en compilación para producción (`npm run build`) y `/` en entorno de desarrollo local (`npm run dev`).
-- **Manejo de rutas y 404**: Mecanismo SPA con `public/404.html` y script de reconstrucción de URL en `index.html` para subdirectorio de 1 nivel.
+## 1. Diagnóstico de la Causa Raíz
+Has identificado las dos razones exactas por las que la pantalla se muestra en blanco:
+1. **Sensibilidad a mayúsculas/minúsculas**: Tu repositorio se llama `systema-hets` (minúsculas), mientras que la base anterior apuntaba a `/SYSTEMA-HETS/` (mayúsculas). En los servidores de GitHub Pages, esto produce un error 404 al intentar cargar los archivos JavaScript y CSS compilados.
+2. **"Deploy from a branch" sirviendo archivos fuente sin compilar**: Al tener seleccionada la opción *"Deploy from a branch"* apuntando a la rama `main` en la raíz `/`, GitHub Pages está sirviendo directamente los archivos originales del proyecto (`index.html` con `<script src="/src/main.tsx">`) en lugar del código compilado en la carpeta `dist`. Los navegadores no pueden ejecutar TypeScript (`.tsx`) directamente, lo que detiene la ejecución y deja la página completamente blanca.
 
 ---
 
-## 2. Cambios Propuestos
+## 2. Solución Integral Propuesta
 
-### Archivo 1: `vite.config.ts`
-- Modificar la función `defineConfig` para recibir `{ mode }`.
-- Configurar `base`:
+### Cambio 1: Base con Rutas Relativas Universales (`vite.config.ts`)
+- Cambiar la propiedad `base` en `vite.config.ts` a rutas relativas `'./'`:
   ```ts
-  base: process.env.BASE_URL || (mode === 'production' ? '/SYSTEMA-HETS/' : '/'),
+  base: './',
   ```
-- Mantener los alias `@` a la raíz y las configuraciones de servidor existentes.
+- **Ventaja**: Hace que el código compilado cargue sus recursos como `./assets/index-xxx.js` y `./assets/index-xxx.css`. Funciona **en cualquier nombre de repositorio**, ya sea `systema-hets`, `SYSTEMA-HETS`, dominio personalizado o subdirectorio, eliminando para siempre los errores 404 por discrepancia de nombres.
 
-### Archivo 2: `.github/workflows/deploy.yml`
-- Crear el flujo de trabajo de GitHub Actions oficial de GitHub Pages:
-  - **Disparador**: `push` a la rama `main` (o `master`) y despacho manual (`workflow_dispatch`).
-  - **Permisos requeridos**: `contents: read`, `pages: write`, `id-token: write`.
-  - **Pasos**:
-    1. `actions/checkout@v4`
-    2. `actions/setup-node@v4` con Node 20 y caché de npm.
-    3. Instalación de dependencias: `npm ci` (o `npm install`).
-    4. Compilación del proyecto: `npm run build`.
-    5. Configuración de Pages: `actions/configure-pages@v5`.
-    6. Subida de artefactos desde la carpeta `dist`: `actions/upload-pages-artifact@v3` con `path: './dist'`.
-    7. Despliegue en GitHub Pages: `actions/deploy-pages@v4`.
+### Cambio 2: Soporte para Despliegue con `gh-pages` (para "Deploy from a branch")
+- Instalar la herramienta estándar `gh-pages` como dependencia de desarrollo:
+  - Script en `package.json`:
+    - `"predeploy": "npm run build"`
+    - `"deploy": "gh-pages -d dist"`
+- Así, si prefieres mantener *"Deploy from a branch"*, solo ejecutas `npm run deploy` y publicará automáticamente la carpeta compilada `dist` en una rama separada llamada `gh-pages`.
 
-### Archivo 3: Verificación de activos y enlaces
-- Asegurar que todas las rutas a imágenes en `index.html` y componentes utilicen rutas que resuelvan correctamente tanto en local como con la base de Vite en producción.
-- `public/404.html` ya implementa `pathSegmentsToKeep = 1;` para resolver rutas hijas bajo `/SYSTEMA-HETS/`.
+### Cambio 3: Actualización del flujo de GitHub Actions (`.github/workflows/deploy.yml`)
+- Mantener y ajustar el workflow automatizado para que funcione tanto si usas GitHub Actions como si usas la rama `gh-pages`.
+
+### Cambio 4: Ajuste de `public/404.html`
+- Adaptar el script de redirección a minúsculas (`systema-hets`) y hacerlo tolerante a mayúsculas o minúsculas.
 
 ---
 
 ## 3. Plan de Verificación
 
-### Compilación y Linter
-- Ejecutar `compile_applet` para validar que `npm run build` genera los archivos en `dist` con los prefijos `/SYSTEMA-HETS/` en los assets de producción.
-- Ejecutar `lint_applet` para verificar que no haya errores de TypeScript ni sintaxis en `vite.config.ts`.
-
-### Prueba de Servidor Dev
-- Reiniciar el servidor de desarrollo y verificar que la URL raíz responda correctamente en desarrollo local sin obligar al subdirectorio.
+1. **Compilación local**:
+   - Ejecutar `compile_applet` (`npm run build`).
+   - Verificar en `dist/index.html` que los enlaces a assets sean relativos: `./assets/index-...js` y `./assets/index-...css`.
+2. **Linter y tipos**:
+   - Ejecutar `lint_applet` para asegurar 0 errores de TypeScript.
+3. **Prueba en servidor**:
+   - Verificar que la aplicación siga funcionando impecablemente tanto en local como con la nueva base.
 
 ---
 
-## 4. Pasos posteriores para el usuario en GitHub
-Una vez subidos los cambios a tu repositorio:
-1. En GitHub, ir a **Settings** > **Pages**.
-2. En **Build and deployment** > **Source**, seleccionar **GitHub Actions** (en lugar de "Deploy from a branch").
-3. Al hacer push a la rama `main`, la pestaña **Actions** ejecutará el despliegue de forma totalmente automática.
+## 4. Instrucciones Finales para el Usuario en GitHub
+Se detallarán las 2 opciones sencillas para activar tu sitio en GitHub Pages:
+- **Opción recomendada (automática)**: En GitHub > Settings > Pages > Source: cambiar a **GitHub Actions**.
+- **Opción por rama (manual)**: Ejecutar `npm run deploy` y en GitHub > Settings > Pages seleccionar la rama **`gh-pages`** (en lugar de `main`).

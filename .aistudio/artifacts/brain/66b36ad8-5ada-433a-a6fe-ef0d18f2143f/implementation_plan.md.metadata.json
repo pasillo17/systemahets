@@ -1,6 +1,6 @@
 {
-  "summary":  "Plan de implementación para la configuración automatizada de GitHub Pages con GitHub Actions, base dinámica en Vite y soporte anti-404 para subdirectorio /SYSTEMA-HETS/.",
-  "updatedAt":  "2026-11-01T02:30:57.455449765Z",
+  "summary":  "Plan de solución para la pantalla en blanco en GitHub Pages: corrección de base a rutas relativas './' (universal para 'systema-hets'), soporte dual para despliegue por rama (gh-pages) o GitHub Actions, y guía de configuración en GitHub Settings.",
+  "updatedAt":  "2026-11-01T03:02:58.394633158Z",
   "requestFeedback":  true,
   "userFacing":  true
 }
