@@ -1,21 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Star, ExternalLink } from "lucide-react";
-import { useMapsLibrary } from "@vis.gl/react-google-maps";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
+import { useGooglePlaceData } from "../hooks/useGooglePlaceData";
 import { ScrollReveal } from "./ScrollReveal";
 import { SpotlightCard } from "./SpotlightCard";
-
-interface LiveGoogleReview {
-  id: string;
-  authorName: string;
-  authorUri: string;
-  authorPhotoUri: string;
-  rating: number;
-  relativeTime: string;
-  text: string;
-  googleMapsUri?: string;
-}
 
 function GoogleGIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -88,121 +77,8 @@ export function Testimonios() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
   const { lang, t } = useLanguage();
-  const placesLib = useMapsLibrary("places");
-
-  const [reviews, setReviews] = useState<LiveGoogleReview[]>([]);
-  const [placeRating, setPlaceRating] = useState<number | null>(null);
-  const [userRatingCount, setUserRatingCount] = useState<number | null>(null);
-  const [placeName, setPlaceName] = useState<string>(
-    SITE_CONFIG.sedePrincipal.nombre
-  );
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function fetchLiveGoogleReviews() {
-      if (!placesLib) return;
-      setIsLoading(true);
-
-      try {
-        // See https://developers.google.com/maps/documentation/javascript/place-search?utm_campaign=gmp_mcp_codeassist_v1_aistudio
-        const request: google.maps.places.SearchByTextRequest = {
-          textQuery: SITE_CONFIG.sedePrincipal.placeSearchQuery,
-          fields: [
-            "id",
-            "displayName",
-            "formattedAddress",
-            "rating",
-            "userRatingCount",
-            "reviews",
-            "googleMapsURI",
-          ],
-          locationBias: {
-            lat: SITE_CONFIG.sedePrincipal.coordenadas.lat,
-            lng: SITE_CONFIG.sedePrincipal.coordenadas.lng,
-          },
-          language: lang === "en" ? "en" : "es",
-          region: "ar",
-          maxResultCount: 1,
-          internalUsageAttributionIds: ["gmp_mcp_codeassist_v1_aistudio"],
-        };
-
-        const response = await placesLib.Place.searchByText(request);
-        const place = response?.places?.[0];
-
-        if (!place) {
-          if (isMounted) setIsLoading(false);
-          return;
-        }
-
-        // If reviews were not populated on initial searchByText, fetch them explicitly via fetchFields
-        if (!place.reviews || place.reviews.length === 0) {
-          await place.fetchFields({
-            fields: [
-              "displayName",
-              "rating",
-              "userRatingCount",
-              "reviews",
-              "googleMapsURI",
-            ],
-          });
-        }
-
-        if (!isMounted) return;
-
-        if (place.displayName) {
-          setPlaceName(place.displayName);
-        }
-        if (typeof place.rating === "number") {
-          setPlaceRating(place.rating);
-        }
-        if (typeof place.userRatingCount === "number") {
-          setUserRatingCount(place.userRatingCount);
-        }
-
-        if (Array.isArray(place.reviews) && place.reviews.length > 0) {
-          const mapped: LiveGoogleReview[] = place.reviews.map((rev, idx) => ({
-            id: `google-review-${idx}-${rev.publishTime ? rev.publishTime.getTime() : idx}`,
-            authorName: rev.authorAttribution?.displayName || "Google User",
-            authorUri:
-              rev.authorAttribution?.uri ||
-              SITE_CONFIG.sedePrincipal.googleShareUrl,
-            authorPhotoUri: rev.authorAttribution?.photoURI || "",
-            rating: typeof rev.rating === "number" ? rev.rating : 5,
-            relativeTime: rev.relativePublishTimeDescription || "",
-            text: rev.text || rev.originalText || "",
-            googleMapsUri:
-              rev.googleMapsURI ||
-              place.googleMapsURI ||
-              SITE_CONFIG.sedePrincipal.googleShareUrl,
-          }));
-          setReviews(mapped);
-        }
-      } catch (err) {
-        const msg = String(err);
-        if (
-          msg.includes("OVER_QUERY_LIMIT") ||
-          msg.includes("RESOURCE_EXHAUSTED") ||
-          msg.includes("QuotaExceededError") ||
-          msg.includes("429")
-        ) {
-          window.dispatchEvent(new CustomEvent("gmp-quota-exceeded"));
-        }
-        console.error("Error fetching Google Maps Place reviews:", err);
-      } finally {
-        if (isMounted) {
-          setIsLoading(false);
-        }
-      }
-    }
-
-    void fetchLiveGoogleReviews();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [placesLib, lang]);
+  const { placeName, placeRating, userRatingCount, reviews, isLoading } =
+    useGooglePlaceData(lang);
 
   const scrollToTestimonial = (index: number) => {
     if (!scrollRef.current) return;

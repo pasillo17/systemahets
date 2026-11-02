@@ -1,19 +1,79 @@
-import { useState, useEffect } from "react";
-import { ArrowRight, X } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { useLanguage } from "../context/LanguageContext";
+import { useGooglePlaceData } from "../hooks/useGooglePlaceData";
 import { ScrollReveal } from "./ScrollReveal";
 import { SpotlightCard } from "./SpotlightCard";
 
 /**
  * SECCIÓN EL SYSTEMA:
- * Diseño editorial limpio en 2 áreas (Fotografía + Texto principal),
+ * Diseño editorial limpio en 2 áreas (Fotografía real + Texto principal),
  * sin los 3 ítems repetidos que duplicaban los pilares del inicio.
  */
 export function ElSistema() {
   const [modalOpen, setModalOpen] = useState(false);
-  const { t } = useLanguage();
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const { lang, t } = useLanguage();
+  const { photos: googlePhotos } = useGooglePlaceData(lang);
+
+  // Galería de fotos reales para la tarjeta "Práctica en nuestra sede de La Plata"
+  const realPracticePhotos = useMemo(() => {
+    const basePhotos = [
+      {
+        id: "real-parejas-laplata",
+        url: SITE_CONFIG.assets.practicaSedeLaPlata,
+        fallbackUrl: SITE_CONFIG.assets.practicaSedeLaPlataFallbackUrl,
+        alt: "Práctica real en parejas de respiración, postura y salida de agarres — Systema HETS La Plata",
+        authorName: undefined as string | undefined,
+        authorUri: undefined as string | undefined,
+      },
+      {
+        id: "real-cuchillo-laplata",
+        url: SITE_CONFIG.assets.defensaCuchilloLaPlata,
+        fallbackUrl: SITE_CONFIG.assets.defensaCuchilloFallbackUrl,
+        alt: "Trabajo en parejas de control, postura y gestión del movimiento — Systema HETS La Plata",
+        authorName: undefined as string | undefined,
+        authorUri: undefined as string | undefined,
+      },
+      {
+        id: "real-airelibre-laplata",
+        url: SITE_CONFIG.assets.entrenamientoAireLibre,
+        fallbackUrl:
+          "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Entrenamiento%20marcial%20al%20aire%20libre.png",
+        alt: "Práctica guiada por Diego Ledesma — Systema HETS La Plata",
+        authorName: undefined as string | undefined,
+        authorUri: undefined as string | undefined,
+      },
+    ];
+
+    const fromGoogle = googlePhotos.map((gp) => ({
+      id: gp.id,
+      url: gp.url,
+      fallbackUrl: SITE_CONFIG.assets.practicaSedeLaPlata,
+      alt: "Fotografía real de Systema Hets Diego Ledesma en Google Maps — La Plata",
+      authorName: gp.authorName,
+      authorUri: gp.authorUri,
+    }));
+
+    return [...basePhotos, ...fromGoogle];
+  }, [googlePhotos]);
+
+  const currentPhoto =
+    realPracticePhotos[photoIndex % realPracticePhotos.length] ||
+    realPracticePhotos[0];
+
+  const handlePrevPhoto = () => {
+    setPhotoIndex(
+      (prev) =>
+        (prev - 1 + realPracticePhotos.length) % realPracticePhotos.length
+    );
+  };
+
+  const handleNextPhoto = () => {
+    setPhotoIndex((prev) => (prev + 1) % realPracticePhotos.length);
+  };
 
   useEffect(() => {
     if (modalOpen) {
@@ -57,9 +117,9 @@ export function ElSistema() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Composición en 2 Áreas: Fotografía de Práctica + Texto Principal */}
+        {/* Composición en 2 Áreas: Fotografía Real de Práctica + Texto Principal */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
-          {/* Área 1: Fotografía de Práctica en tarjeta Tierra Sombra (#1B140F) con elevación 3D y borde terracota/dorado */}
+          {/* Área 1: Fotografía Real de Práctica en tarjeta Tierra Sombra (#1B140F) con elevación 3D y borde terracota/dorado */}
           <ScrollReveal
             direction="up"
             delay={80}
@@ -67,15 +127,54 @@ export function ElSistema() {
             className="lg:col-span-6 order-2 lg:order-1"
           >
             <SpotlightCard className="group">
-              <div className="overflow-hidden">
+              <div className="relative overflow-hidden">
                 <ImageWithFallback
-                  src={SITE_CONFIG.assets.heroImage}
-                  alt="Práctica de Systema en nuestra sede de La Plata"
+                  key={currentPhoto.id}
+                  src={currentPhoto.url}
+                  fallbackUrl={currentPhoto.fallbackUrl}
+                  alt={currentPhoto.alt}
                   aspectRatioClass="aspect-[16/10] sm:aspect-[16/11]"
-                  className="w-full h-full object-cover filter brightness-95 contrast-105 transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-center filter brightness-95 contrast-105 transition-transform duration-700 group-hover:scale-105"
                   fallbackTitle={t("systema.cardImgTitle")}
                   fallbackSubtitle={t("systema.cardImgDesc")}
                 />
+
+                {realPracticePhotos.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handlePrevPhoto}
+                      className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#110D0A]/75 hover:bg-[#110D0A]/95 border border-[#D97736]/40 text-[#F5EFE6] flex items-center justify-center transition-all cursor-pointer z-10 shadow-[0_0_12px_rgba(0,0,0,0.5)]"
+                      aria-label="Foto real anterior"
+                    >
+                      <ChevronLeft className="w-4 h-4 text-[#D97736]" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleNextPhoto}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#110D0A]/75 hover:bg-[#110D0A]/95 border border-[#D97736]/40 text-[#F5EFE6] flex items-center justify-center transition-all cursor-pointer z-10 shadow-[0_0_12px_rgba(0,0,0,0.5)]"
+                      aria-label="Foto real siguiente"
+                    >
+                      <ChevronRight className="w-4 h-4 text-[#D97736]" />
+                    </button>
+
+                    <div className="absolute bottom-2.5 right-3 flex items-center gap-1.5 px-2 py-1 rounded-xs bg-[#110D0A]/75 backdrop-blur-xs border border-[#D97736]/30 z-10">
+                      {realPracticePhotos.map((p, idx) => (
+                        <button
+                          key={p.id}
+                          type="button"
+                          onClick={() => setPhotoIndex(idx)}
+                          className={`h-1.5 rounded-xs transition-all cursor-pointer ${
+                            photoIndex % realPracticePhotos.length === idx
+                              ? "w-4 bg-[#D97736]"
+                              : "w-1.5 bg-[#F5EFE6]/45 hover:bg-[#D4AF37]"
+                          }`}
+                          aria-label={`Ver foto real ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
               <div className="p-3.5 sm:p-4 bg-[#1B140F] border-t border-[#D97736]/30">
                 <span className="text-xs font-heading uppercase tracking-wide text-[#F5EFE6] group-hover:text-[#D4AF37] transition-colors block font-bold">

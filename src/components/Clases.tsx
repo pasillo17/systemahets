@@ -307,14 +307,18 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
               <div className="lg:col-span-5 relative rounded-sm overflow-hidden border border-[#D97736]/30 bg-[#1B140F] flex flex-col justify-between group">
                 <div className="relative h-36 sm:h-40 lg:h-full min-h-[140px] overflow-hidden">
                   <img
-                    src={SITE_CONFIG.assets.heroImage}
+                    src={SITE_CONFIG.assets.practicaSedeLaPlata}
                     alt={
                       lang === "en"
-                        ? "Systema HETS training space at Calle 22 N° 1027, La Plata"
-                        : "Espacio de práctica en nuestra sede de Calle 22 Nº 1027, La Plata"
+                        ? "Systema HETS training in La Plata"
+                        : "Práctica real de Systema HETS en La Plata"
                     }
                     className="w-full h-full object-cover filter brightness-[0.88] contrast-[1.05] transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src =
+                        SITE_CONFIG.assets.practicaSedeLaPlataFallbackUrl;
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#110D0A] via-[#110D0A]/35 to-transparent" />
                   <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between gap-2">

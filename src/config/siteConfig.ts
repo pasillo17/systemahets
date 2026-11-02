@@ -12,6 +12,9 @@ import logoSystema from "../assets/images/logo_systema_hets.png";
 import heroDojo from "../assets/images/hero_systema_dojo_1793283800364.jpg";
 import portraitDiego from "../assets/images/diego_ledesma.jpg";
 import escuelasAfiliadasImg from "../assets/images/emblemas_escuelas.png";
+import practicaParejasLaPlata from "../assets/images/practica_parejas_laplata.png";
+import defensaCuchilloLaPlata from "../assets/images/defensa_cuchillo_laplata.png";
+import entrenamientoAireLibreLaPlata from "../assets/images/entrenamiento_aire_libre_laplata.png";
 
 export const SITE_CONFIG = {
   // Datos Generales e Identidad
@@ -61,10 +64,14 @@ export const SITE_CONFIG = {
     escuelasAfiliadas: escuelasAfiliadasImg,
     escuelasAfiliadasFallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Emblemas%20de%20guerreros%20medievales.png",
     heroImage: heroDojo,
+    practicaSedeLaPlata: practicaParejasLaPlata,
+    practicaSedeLaPlataFallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png",
+    defensaCuchilloLaPlata: defensaCuchilloLaPlata,
+    defensaCuchilloFallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Demostraci%C3%B3n%20de%20defensa%20con%20cuchillo%20al%20aire%20libre.png",
     diegoPortrait: portraitDiego,
     diegoPortraitFallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/refs/heads/main/Gemini_Generated_Image_wl7f8cwl7f8cwl7f%20(1).jfif",
-    entrenamientoAireLibre: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Entrenamiento%20marcial%20al%20aire%20libre.png?raw=true",
-    demostracionParque: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png?raw=true",
+    entrenamientoAireLibre: entrenamientoAireLibreLaPlata,
+    demostracionParque: practicaParejasLaPlata,
   },
 
   // Franja de Prueba Social (Datos de autoridad real)
@@ -312,7 +319,7 @@ export const SITE_CONFIG = {
     youtubeChannelUrl: "https://www.youtube.com/@systemahetsartemarcialruso",
   },
 
-  // Entrenamientos: 2 fotografías oficiales de práctica
+  // Entrenamientos: 2 fotografías oficiales reales de práctica en La Plata
   entrenamientos: [
     {
       id: "ent-1",
@@ -322,7 +329,7 @@ export const SITE_CONFIG = {
       descripcionEn: "Outdoor training sessions focusing on balance, natural footwork, and partner drills across different environments.",
       categoria: "Aire libre",
       categoriaEn: "Outdoors",
-      imagen: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Entrenamiento%20marcial%20al%20aire%20libre.png?raw=true",
+      imagen: entrenamientoAireLibreLaPlata,
       fallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Entrenamiento%20marcial%20al%20aire%20libre.png",
     },
     {
@@ -333,8 +340,8 @@ export const SITE_CONFIG = {
       descripcionEn: "Dynamic partner exercises developing perception, adaptation, and conscious movement applied to real situations.",
       categoria: "En el parque",
       categoriaEn: "Park Session",
-      imagen: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png?raw=true",
-      fallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png",
+      imagen: defensaCuchilloLaPlata,
+      fallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Demostraci%C3%B3n%20de%20defensa%20con%20cuchillo%20al%20aire%20libre.png",
     },
   ],
 };
