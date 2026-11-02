@@ -1,18 +1,20 @@
 import { useState, useEffect, TouchEvent } from "react";
-import { Camera, Maximize2, X, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { Maximize2, X, ChevronLeft, ChevronRight, Youtube, ExternalLink } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
 
 /**
- * Sección ENTRENAMIENTOS sobre Arena Cálida (#EFE7DA) y tarjetas en Hueso Pergamino (#F8F3EB)
- * con acentos en Terracota Pampeana (#B85332), Ocre Arcilla (#9C7340), Carbón de Quebracho (#231C18) y Tierra Media (#57483F).
+ * Sección ENTRENAMIENTOS:
+ * Diseño limpio sin etiquetas superiores (eyebrow tags), sin numeración robótica (01/02)
+ * y con pies de foto abiertos sobre el fondo.
  */
 export function Entrenamientos() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
+  const [videoSrc, setVideoSrc] = useState(SITE_CONFIG.videoEntrenamiento.mp4Url);
   const { lang, t } = useLanguage();
 
   const items = SITE_CONFIG.entrenamientos.map((item) => {
@@ -85,46 +87,87 @@ export function Entrenamientos() {
   return (
     <section
       id="entrenamientos"
-      className="py-10 sm:py-16 lg:py-20 bg-flow-entrenamientos text-[#F4EDE2] relative overflow-hidden select-none"
+      className="py-12 sm:py-18 lg:py-20 bg-flow-entrenamientos text-[#F4EDE2] relative overflow-hidden select-none"
     >
-      {/* Luz ambiental sutil en Terracota Pampeana (#B85332) */}
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[250px] bg-[#B85332]/12 blur-3xl pointer-events-none"
-      />
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Cabecera Editorial Concisa */}
+        {/* Cabecera Editorial Directa (sin eyebrow tag arriba del H2) */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-6 sm:mb-10 border-b border-[#C49A64]/35 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-            <div>
-              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#DF7E5B] font-mono mb-2 font-bold">
-                <Camera className="w-4 h-4 text-[#C49A64]" />
-                <span>{t("ent.kicker") || "Galería de Práctica"}</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading">
-                {t("ent.title") || "Entrenamientos"}
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-[#C4B5A3] font-sans leading-relaxed max-w-md sm:text-right font-medium">
-              {lang === "en"
-                ? "Real practice, organic adaptation, and conscious movement in open space."
-                : "Práctica real, adaptabilidad orgánica y movimiento consciente en espacio abierto."}
+          <div className="mb-7 sm:mb-10 border-b border-[#C49A64]/30 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading">
+              {t("ent.title")}
+            </h2>
+            <p className="text-xs sm:text-sm text-[#C4B5A3] font-sans leading-relaxed max-w-md sm:text-right">
+              {t("ent.quote")}
             </p>
           </div>
         </ScrollReveal>
 
-        {/* 1. MÓVIL: FORMATO CARRUSEL INTERACTIVO CON SWIPE Y BOTONES */}
+        {/* BLOQUE MULTIMEDIA: VIDEO CORTO EN BUCLE (SIN SONIDO) + DESCRIPCIÓN ABIERTA */}
+        <ScrollReveal direction="up" delay={50} distance={22} className="mb-10 sm:mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+            {/* Video en bucle silencioso */}
+            <div className="lg:col-span-7 relative aspect-video rounded-sm overflow-hidden border border-[#C49A64]/45 bg-[#171210]">
+              <video
+                key={videoSrc}
+                src={videoSrc}
+                poster={SITE_CONFIG.videoEntrenamiento.posterUrl}
+                autoPlay
+                loop
+                muted
+                playsInline
+                onError={() => {
+                  if (videoSrc !== SITE_CONFIG.videoEntrenamiento.fallbackMp4Url) {
+                    setVideoSrc(SITE_CONFIG.videoEntrenamiento.fallbackMp4Url);
+                  }
+                }}
+                className="w-full h-full object-cover filter brightness-[0.94] contrast-[1.05]"
+              />
+            </div>
+
+            {/* Texto editorial suelto al lado del video (sin recuadro cerrado ni eyebrow tag) */}
+            <div className="lg:col-span-5 space-y-4">
+              <h3 className="text-lg sm:text-2xl font-heading font-bold uppercase tracking-wide text-[#F4EDE2] leading-snug">
+                {lang === "en"
+                  ? "Fluid Movement and Practical Defense"
+                  : "Soltura corporal y defensa aplicable"}
+              </h3>
+              <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
+                {lang === "en"
+                  ? "In class we work on breathing, balance, and natural movement so you learn to get out of grabs, absorb impacts safely, and respond calmly. Watch full classes and seminar clips on our YouTube channel."
+                  : "En cada clase trabajamos la respiración, el apoyo del cuerpo y el movimiento continuo para aprender a salir de agarres, caer sin lastimarte y responder con tranquilidad. Podés ver clases completas y seminarios en nuestro canal de YouTube."}
+              </p>
+
+              <div className="pt-1">
+                <a
+                  href={SITE_CONFIG.videoEntrenamiento.youtubeChannelUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-shimmer-lightning inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] min-h-[46px] shadow-md whitespace-normal text-center leading-tight"
+                >
+                  <Youtube className="w-4 h-4 shrink-0" />
+                  <span>
+                    {lang === "en"
+                      ? "Watch classes on YouTube"
+                      : "Ver videos en YouTube"}
+                  </span>
+                  <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* 1. MÓVIL: CARRUSEL LIMPIO SIN NUMERACIÓN ROBÓTICA */}
         <div className="block md:hidden">
           <ScrollReveal direction="up" delay={80} distance={24}>
             <div
-              className="relative rounded-sm overflow-hidden bg-[#261E1A] border border-[#C49A64]/45 shadow-xl touch-pan-y"
+              className="relative touch-pan-y"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               <div
-                className="relative aspect-[4/3] w-full overflow-hidden bg-[#1F1916] cursor-pointer"
+                className="relative aspect-[4/3] w-full rounded-sm overflow-hidden border border-[#C49A64]/40 bg-[#1F1916] cursor-pointer"
                 onClick={() => setActiveLightboxIndex(activeSlide)}
               >
                 <img
@@ -140,26 +183,13 @@ export function Entrenamientos() {
                   }}
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1F1916]/90 via-transparent to-transparent pointer-events-none" />
-
-                <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#1F1916]/85 text-[#C86442] border border-[#C49A64]/50 backdrop-blur-xs">
+                <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#1F1916]/85 text-[#C86442] border border-[#C49A64]/45">
                   <Maximize2 className="w-3.5 h-3.5 text-[#C86442]" />
-                </div>
-
-                <div className="absolute top-3 left-3">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#F4EDE2] bg-[#1F1916]/90 px-2.5 py-1 border border-[#C49A64]/55 rounded-xs font-semibold backdrop-blur-xs shadow-md">
-                    {items[activeSlide].categoria}
-                  </span>
-                </div>
-
-                <div className="absolute bottom-3 right-3">
-                  <span className="text-[10px] font-mono text-[#F4EDE2] bg-[#1F1916]/85 px-2 py-0.5 rounded-xs border border-[#C49A64]/50 tabular-nums">
-                    0{activeSlide + 1} / 0{totalSlides}
-                  </span>
                 </div>
               </div>
 
-              <div className="p-4 bg-[#261E1A] border-t border-[#C49A64]/35 space-y-1.5">
+              {/* Pie de foto abierto sobre el fondo */}
+              <div className="pt-3 space-y-1">
                 <h3 className="text-base font-heading font-bold uppercase tracking-wide text-[#F4EDE2]">
                   {items[activeSlide].titulo}
                 </h3>
@@ -174,7 +204,7 @@ export function Entrenamientos() {
                   e.stopPropagation();
                   prevSlide();
                 }}
-                className="absolute left-2 top-[35%] -translate-y-1/2 w-9 h-9 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all shadow-lg backdrop-blur-xs"
+                className="absolute left-2 top-[34%] -translate-y-1/2 w-9 h-9 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/55 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all"
                 aria-label="Foto anterior"
               >
                 <ChevronLeft className="w-5 h-5 text-[#C86442]" />
@@ -186,52 +216,45 @@ export function Entrenamientos() {
                   e.stopPropagation();
                   nextSlide();
                 }}
-                className="absolute right-2 top-[35%] -translate-y-1/2 w-9 h-9 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all shadow-lg backdrop-blur-xs"
+                className="absolute right-2 top-[34%] -translate-y-1/2 w-9 h-9 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/55 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all"
                 aria-label="Foto siguiente"
               >
                 <ChevronRight className="w-5 h-5 text-[#C86442]" />
               </button>
             </div>
 
-            <div className="flex items-center justify-between mt-3 px-1">
-              <span className="text-[10px] font-mono text-[#DF7E5B] uppercase tracking-wider flex items-center gap-1.5 font-bold">
-                <Sparkles className="w-3 h-3 text-[#C49A64]" />
-                {lang === "en" ? "Swipe to browse" : "Deslizá para pasar foto"}
-              </span>
-
-              <div className="flex items-center gap-2">
-                {items.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setActiveSlide(idx)}
-                    className={`h-2 transition-all duration-300 rounded-xs cursor-pointer ${
-                      activeSlide === idx
-                        ? "w-6 bg-[#C86442]"
-                        : "w-2 bg-[#C4B5A3]/30 hover:bg-[#C49A64]"
-                    }`}
-                    aria-label={`Ir a foto ${idx + 1}`}
-                  />
-                ))}
-              </div>
+            <div className="flex items-center justify-center gap-2 mt-4">
+              {items.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveSlide(idx)}
+                  className={`h-2 transition-all duration-300 rounded-xs cursor-pointer ${
+                    activeSlide === idx
+                      ? "w-6 bg-[#C86442]"
+                      : "w-2 bg-[#C4B5A3]/30 hover:bg-[#C49A64]"
+                  }`}
+                  aria-label={`Ir a foto ${idx + 1}`}
+                />
+              ))}
             </div>
           </ScrollReveal>
         </div>
 
-        {/* 2. TABLET Y DESKTOP: GRILLA DE 2 COLUMNAS EDITORIAL CON LIGHTBOX */}
-        <div className="hidden md:grid md:grid-cols-2 gap-6 lg:gap-8">
+        {/* 2. TABLET Y DESKTOP: 2 FOTOGRAFÍAS CON PIES EDITORIALES ABIERTOS (SIN CAJAS CERRADAS NI NÚMEROS 01/02) */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8 lg:gap-10 pt-2 border-t border-[#C49A64]/20">
           {items.map((item, idx) => (
             <ScrollReveal
               key={item.id}
               direction="up"
-              delay={idx * 140}
-              distance={28}
+              delay={idx * 120}
+              distance={24}
             >
               <div
                 onClick={() => setActiveLightboxIndex(idx)}
-                className="group relative rounded-sm overflow-hidden bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] transition-all duration-500 cursor-pointer card-specular-edge hover:shadow-[0_12px_32px_rgba(184,83,50,0.22)] flex flex-col justify-between h-full"
+                className="group cursor-pointer space-y-3"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#1F1916]">
+                <div className="relative aspect-[16/10] rounded-sm overflow-hidden border border-[#C49A64]/40 group-hover:border-[#C86442] bg-[#1F1916] transition-colors">
                   <img
                     src={item.imagen}
                     alt={item.titulo}
@@ -244,37 +267,19 @@ export function Entrenamientos() {
                     }}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1F1916]/85 via-transparent to-transparent pointer-events-none" />
-
-                  <div className="absolute top-3 left-3">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#F4EDE2] bg-[#1F1916]/90 px-2.5 py-1 border border-[#C49A64]/55 rounded-xs font-semibold backdrop-blur-xs shadow-md">
-                      0{idx + 1} · {item.categoria}
-                    </span>
-                  </div>
-
-                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#1F1916]/85 text-[#C86442] border border-[#C49A64]/45 shadow-md backdrop-blur-xs group-hover:border-[#DF7E5B] transition-colors">
-                    <Maximize2 className="w-3.5 h-3.5 text-[#C86442] group-hover:text-[#DF7E5B] group-hover:scale-110 transition-transform" />
+                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#1F1916]/85 text-[#C86442] border border-[#C49A64]/45 group-hover:border-[#DF7E5B] transition-colors">
+                    <Maximize2 className="w-3.5 h-3.5 text-[#C86442] group-hover:text-[#DF7E5B]" />
                   </div>
                 </div>
 
-                <div className="p-5 bg-[#261E1A] border-t border-[#C49A64]/35 flex flex-col justify-between flex-1">
-                  <div>
-                    <h3 className="text-lg font-heading font-bold uppercase tracking-wide text-[#F4EDE2] group-hover:text-[#DF7E5B] transition-colors">
-                      {item.titulo}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#C4B5A3] mt-2 leading-relaxed">
-                      {item.descripcion}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 mt-4 border-t border-[#C49A64]/30 flex items-center justify-between text-[11px] font-mono text-[#DF7E5B] font-bold">
-                    <span className="group-hover:text-[#C49A64] transition-colors">
-                      {lang === "en" ? "Expand photograph" : "Ampliar fotografía"}
-                    </span>
-                    <span className="group-hover:translate-x-1 transition-transform">
-                      →
-                    </span>
-                  </div>
+                {/* Pie editorial suelto sobre el fondo (sin tarjeta contenedora) */}
+                <div className="space-y-1">
+                  <h3 className="text-base lg:text-lg font-heading font-bold uppercase tracking-wide text-[#F4EDE2] group-hover:text-[#DF7E5B] transition-colors">
+                    {item.titulo}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed">
+                    {item.descripcion}
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
@@ -294,14 +299,9 @@ export function Entrenamientos() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="px-4 py-3 bg-[#1F1916] border-b border-[#C4B5A3]/25 flex items-center justify-between gap-2">
-                <div className="flex flex-wrap items-center gap-1.5 pr-2">
-                  <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#C86442] font-semibold leading-snug">
-                    Systema HETS · {currentLightboxItem.categoria}
-                  </span>
-                  <span className="text-[#C4B5A3] text-[11px]">
-                    ({(activeLightboxIndex || 0) + 1} / {totalSlides})
-                  </span>
-                </div>
+                <span className="text-xs font-heading uppercase tracking-wide text-[#F4EDE2] font-bold">
+                  {currentLightboxItem.titulo}
+                </span>
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
@@ -326,7 +326,7 @@ export function Entrenamientos() {
                       prev !== null ? (prev - 1 + totalSlides) % totalSlides : 0
                     )
                   }
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center hover:bg-[#B85332] hover:text-[#F4EDE2] transition-all cursor-pointer"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center hover:bg-[#B85332] transition-all cursor-pointer"
                   aria-label="Foto anterior"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -339,25 +339,17 @@ export function Entrenamientos() {
                       prev !== null ? (prev + 1) % totalSlides : 0
                     )
                   }
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center hover:bg-[#B85332] hover:text-[#F4EDE2] transition-all cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center hover:bg-[#B85332] transition-all cursor-pointer"
                   aria-label="Foto siguiente"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="p-4 bg-[#1F1916] border-t border-[#C4B5A3]/25 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div>
-                  <h4 className="text-sm sm:text-base font-heading font-bold uppercase text-[#F4EDE2]">
-                    {currentLightboxItem.titulo}
-                  </h4>
-                  <p className="text-xs text-[#C4B5A3] mt-0.5">
-                    {currentLightboxItem.descripcion}
-                  </p>
-                </div>
-                <span className="text-[10px] font-mono text-[#C49A64] shrink-0">
-                  Systema HETS · Arte Marcial Ruso
-                </span>
+              <div className="p-4 bg-[#1F1916] border-t border-[#C4B5A3]/25">
+                <p className="text-xs sm:text-sm text-[#C4B5A3]">
+                  {currentLightboxItem.descripcion}
+                </p>
               </div>
             </div>
           </div>

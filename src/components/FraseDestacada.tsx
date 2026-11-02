@@ -18,11 +18,11 @@ export function FraseDestacada() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="up" distance={20}>
-          <div className="py-7 px-5 sm:py-10 sm:px-10 rounded-sm bg-[#1F1916]/92 border border-[#C49A64]/45 shadow-2xl space-y-4 sm:space-y-6">
+          <div className="py-4 sm:py-6 space-y-4 sm:space-y-6">
             <div className="w-16 sm:w-20 h-[2px] bg-gradient-to-r from-transparent via-[#C86442] to-transparent mx-auto" />
 
             <blockquote
-              className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-serif italic text-[#F4EDE2] font-normal tracking-wide leading-relaxed"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif italic text-[#F4EDE2] font-normal tracking-wide leading-relaxed"
               style={{ textWrap: "balance" }}
             >
               “{t("quote.text")}”

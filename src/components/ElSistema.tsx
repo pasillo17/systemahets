@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, X, Wind, Activity, Compass, Shield } from "lucide-react";
+import { ArrowRight, X, Wind, Activity, Compass } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { useLanguage } from "../context/LanguageContext";
-import { SpotlightCard } from "./SpotlightCard";
 import { ScrollReveal } from "./ScrollReveal";
 
 /**
- * SECCIÓN EL SYSTEMA SOBRE ARENA CÁLIDA (#EFE7DA):
- * Incluye la composición de 3 columnas luminosa y el bloque protagonista
- * "¿Por qué se llama Systema HETS?" en Adobe Tierra Profundo (#261E1A) con Terracota (#C86442) y Ocre Arcilla (#C49A64).
+ * SECCIÓN EL SYSTEMA:
+ * Diseño editorial limpio, sin etiquetas superiores (eyebrow tags), sin numeración robótica
+ * y sin exceso de cajas cerradas.
  */
 export function ElSistema() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,36 +47,11 @@ export function ElSistema() {
   return (
     <section
       id="systema"
-      className="py-10 sm:py-20 bg-flow-systema text-[#F4EDE2] relative overflow-hidden"
+      className="py-12 sm:py-20 bg-flow-systema text-[#F4EDE2] relative overflow-hidden"
     >
-      {/* Luz ambiental sutil en Terracota Pampeana (#B85332) y Ocre Arcilla (#C49A64) */}
-      <div
-        aria-hidden="true"
-        className="absolute top-1/3 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-[#B85332]/12 rounded-full blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-1/4 -right-32 w-72 sm:w-96 h-72 sm:h-96 bg-[#C49A64]/12 rounded-full blur-3xl pointer-events-none"
-      />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Kicker editorial con divisor de sección en Ocre Arcilla */}
-        <ScrollReveal direction="up" distance={20}>
-          <div className="mb-5 sm:mb-12 flex items-center justify-between border-b border-[#C49A64]/35 pb-3 sm:pb-4">
-            <div className="flex items-center gap-3">
-              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#DF7E5B] font-bold">
-                {t("systema.kicker")}
-              </span>
-              <span className="hidden sm:inline-block w-8 h-[2px] bg-[#C86442]" />
-            </div>
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C49A64] font-bold">
-              SYSTEMA HETS
-            </span>
-          </div>
-        </ScrollReveal>
-
         {/* Composición Asimétrica en 3 Áreas */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Área 1: Fotografía de Práctica */}
           <ScrollReveal
             direction="up"
@@ -85,55 +59,45 @@ export function ElSistema() {
             distance={24}
             className="lg:col-span-5 order-2 lg:order-1"
           >
-            <div className="relative rounded-sm overflow-hidden border border-[#C49A64]/65 bg-[#261E1A] earth-block-transition-glow group hover:border-[#C86442] transition-all duration-500">
+            <div className="relative rounded-sm overflow-hidden border border-[#C49A64]/45 bg-[#261E1A] group">
               <ImageWithFallback
                 src={SITE_CONFIG.assets.heroImage}
-                alt="Práctica de biomecánica y movimiento consciente en dojo"
-                aspectRatioClass="aspect-[16/9] sm:aspect-[16/11]"
+                alt="Práctica de Systema en el dojo de La Plata"
+                aspectRatioClass="aspect-[16/10] sm:aspect-[16/11]"
                 className="w-full h-full object-cover filter brightness-95 contrast-105 transition-transform duration-700 group-hover:scale-105"
                 fallbackTitle={t("systema.cardImgTitle")}
                 fallbackSubtitle={t("systema.cardImgDesc")}
               />
-              <div className="p-3 sm:p-3.5 bg-[#1F1916] border-t border-[#C49A64]/35 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3">
-                <div className="min-w-0">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#DF7E5B] block font-semibold leading-snug">
-                    {t("systema.cardImgTitle")}
-                  </span>
-                  <p className="text-[11px] sm:text-xs text-[#C4B5A3] mt-0.5 leading-snug">
-                    {t("systema.cardImgDesc")}
-                  </p>
-                </div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C49A64] shrink-0">
-                  HETS · LA PLATA
+              <div className="p-3 sm:p-4 bg-[#1F1916] border-t border-[#C49A64]/30">
+                <span className="text-xs font-heading uppercase tracking-wide text-[#F4EDE2] block font-bold">
+                  {t("systema.cardImgTitle")}
                 </span>
+                <p className="text-xs text-[#C4B5A3] mt-0.5">
+                  {t("systema.cardImgDesc")}
+                </p>
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Área 2: Título y Definición Central — SIEMPRE SYSTEMA CON 'Y' */}
+          {/* Área 2: Título H2 directo y párrafos editoriales limpios (sin comillas ni eyebrow tags) */}
           <ScrollReveal
             direction="up"
             delay={140}
             distance={24}
-            className="lg:col-span-4 space-y-3 sm:space-y-4 order-1 lg:order-2"
+            className="lg:col-span-4 space-y-3.5 sm:space-y-4 order-1 lg:order-2"
           >
-            <div>
-              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#DF7E5B] block mb-1 font-bold">
-                {t("systema.badge")}
-              </span>
-              <h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading"
-                style={{ textWrap: "balance" }}
-              >
-                {t("systema.title")}
-              </h2>
-            </div>
+            <h2
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading"
+              style={{ textWrap: "balance" }}
+            >
+              {t("systema.title")}
+            </h2>
 
-            <p className="text-sm sm:text-lg text-[#F4EDE2] leading-relaxed font-medium">
+            <p className="text-sm sm:text-base text-[#F4EDE2] leading-relaxed font-normal">
               {t("systema.definition")}
             </p>
 
-            <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-normal">
               {t("systema.p2")}
             </p>
 
@@ -149,128 +113,77 @@ export function ElSistema() {
             </div>
           </ScrollReveal>
 
-          {/* Área 3: Tres Conceptos Breves sobre tarjetas en Adobe Oscuro Cálido (#261E1A) */}
+          {/* Área 3: Tres Conceptos Breves sueltos sin números robóticos */}
           <ScrollReveal
             direction="up"
             delay={200}
             distance={24}
-            className="lg:col-span-3 lg:border-l lg:border-[#C49A64]/30 lg:pl-6 order-3"
+            className="lg:col-span-3 lg:border-l lg:border-[#C49A64]/25 lg:pl-7 order-3"
           >
-            <div className="flex lg:flex-col gap-2.5 sm:gap-3 overflow-x-auto lg:overflow-visible pb-1 lg:pb-0 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
-              {/* Concepto 1: ADAPTACIÓN */}
-              <SpotlightCard
-                spotlightColor="rgba(200, 100, 66, 0.16)"
-                borderColor="rgba(200, 100, 66, 0.65)"
-                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] transition-all card-specular-edge group"
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#DF7E5B] font-bold">
-                    <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C49A64] group-hover:scale-110 transition-transform" />
-                    <span>{t("systema.adaptacion")}</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#C49A64] font-bold tabular-nums">
-                    01
-                  </span>
+            <div className="divide-y divide-[#C49A64]/20">
+              <div className="py-3.5 first:pt-0 last:pb-0">
+                <div className="flex items-center gap-2 text-sm font-heading uppercase tracking-wide text-[#F4EDE2] font-bold mb-1">
+                  <Compass className="w-4 h-4 text-[#DF7E5B] shrink-0" />
+                  <span>{t("systema.adaptacion")}</span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
                   {t("systema.adaptacionDesc")}
                 </p>
-              </SpotlightCard>
+              </div>
 
-              {/* Concepto 2: EFICIENCIA */}
-              <SpotlightCard
-                spotlightColor="rgba(196, 154, 100, 0.16)"
-                borderColor="rgba(200, 100, 66, 0.65)"
-                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] transition-all card-specular-edge group"
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C49A64] font-bold">
-                    <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#DF7E5B] group-hover:scale-110 transition-transform" />
-                    <span>{t("systema.eficiencia")}</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#DF7E5B] font-bold tabular-nums">
-                    02
-                  </span>
+              <div className="py-3.5 first:pt-0 last:pb-0">
+                <div className="flex items-center gap-2 text-sm font-heading uppercase tracking-wide text-[#F4EDE2] font-bold mb-1">
+                  <Activity className="w-4 h-4 text-[#C49A64] shrink-0" />
+                  <span>{t("systema.eficiencia")}</span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
                   {t("systema.eficienciaDesc")}
                 </p>
-              </SpotlightCard>
+              </div>
 
-              {/* Concepto 3: CONCIENCIA */}
-              <SpotlightCard
-                spotlightColor="rgba(200, 100, 66, 0.16)"
-                borderColor="rgba(200, 100, 66, 0.65)"
-                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] transition-all card-specular-edge group"
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#DF7E5B] font-bold">
-                    <Wind className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C49A64] group-hover:scale-110 transition-transform" />
-                    <span>{t("systema.conciencia")}</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#C49A64] font-bold tabular-nums">
-                    03
-                  </span>
+              <div className="py-3.5 first:pt-0 last:pb-0">
+                <div className="flex items-center gap-2 text-sm font-heading uppercase tracking-wide text-[#F4EDE2] font-bold mb-1">
+                  <Wind className="w-4 h-4 text-[#DF7E5B] shrink-0" />
+                  <span>{t("systema.conciencia")}</span>
                 </div>
                 <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
                   {t("systema.concienciaDesc")}
                 </p>
-              </SpotlightCard>
+              </div>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* Bloque Destacado de Identidad: ¿Por qué se llama Systema HETS? (Homenaje a los Guerreros Het / Querandíes) */}
-        <ScrollReveal direction="up" delay={240} distance={22} className="mt-6 sm:mt-10 relative">
-          {/* Halo de transición terrenal detrás del bloque marrón para conectarlo con el fondo claro */}
-          <div
-            aria-hidden="true"
-            className="absolute -inset-3 sm:-inset-5 bg-gradient-to-r from-[#8C725E]/25 via-[#B85332]/20 to-[#8C725E]/25 rounded-md blur-xl pointer-events-none"
-          />
-          <SpotlightCard
-            spotlightColor="rgba(200, 100, 66, 0.18)"
-            borderColor="rgba(200, 100, 66, 0.65)"
-            className="relative rounded-sm bg-gradient-to-r from-[#261E1A] via-[#2E241F] to-[#261E1A] border border-[#C49A64]/65 p-4 sm:p-6 lg:p-7 earth-block-transition-glow card-specular-edge"
-          >
-            {/* Filete superior en Terracota Pampeana y Ocre Arcilla */}
-            <div className="w-full h-[3px] mb-3.5 sm:mb-4 rounded-full bg-gradient-to-r from-[#B85332] via-[#C49A64] to-[#B85332]" />
-
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3.5 sm:gap-6">
-              <div className="space-y-1.5 sm:space-y-2 max-w-3xl">
-                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-[10px] font-mono uppercase tracking-[0.2em]">
-                  <span className="inline-flex items-center gap-1.5 text-[#DF7E5B] font-bold">
-                    <Shield className="w-3.5 h-3.5 text-[#C49A64]" />
-                    {t("systema.hetsKicker")}
-                  </span>
-                  <span className="text-[#C49A64] hidden sm:inline" aria-hidden="true">·</span>
-                  <span className="text-[#C49A64] hidden sm:inline">
-                    {t("systema.hetsTag")}
-                  </span>
-                </div>
-
-                <h3 className="text-base sm:text-xl lg:text-2xl font-bold uppercase tracking-wide text-[#F4EDE2] font-heading">
-                  {t("systema.hetsTitle")}
-                </h3>
-
-                <p className="text-xs sm:text-base text-[#F4EDE2]/95 leading-relaxed font-normal">
-                  {t("systema.hetsDesc")}
-                </p>
-              </div>
-
-              <div className="hidden md:flex flex-col items-end justify-center shrink-0 border-l border-[#C49A64]/30 pl-6">
-                <span className="text-2xl lg:text-3xl font-black tracking-widest text-[#C86442] font-heading">
-                  HETS
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C49A64] mt-0.5">
-                  {t("systema.hetsTag")}
-                </span>
-              </div>
+        {/* Bloque Editorial Abierto (sin caja cerrada): ¿Por qué se llama Systema HETS? */}
+        <ScrollReveal
+          direction="up"
+          delay={240}
+          distance={22}
+          className="mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-[#C49A64]/25"
+        >
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-8">
+            <div className="space-y-1.5 max-w-3xl">
+              <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide text-[#F4EDE2] font-heading">
+                {t("systema.hetsTitle")}
+              </h3>
+              <p className="text-xs sm:text-base text-[#C4B5A3] leading-relaxed font-normal">
+                {t("systema.hetsDesc")}
+              </p>
             </div>
-          </SpotlightCard>
+
+            <div className="hidden md:flex flex-col items-end justify-center shrink-0 border-l border-[#C49A64]/25 pl-6">
+              <span className="text-2xl font-black tracking-widest text-[#C86442] font-heading">
+                HETS
+              </span>
+              <span className="text-xs text-[#C49A64] mt-0.5">
+                {t("systema.hetsTag")}
+              </span>
+            </div>
+          </div>
         </ScrollReveal>
       </div>
 
-      {/* Modal Editorial: Los 4 Pilares Invariables (Ventana a pantalla completa en celular con scroll cómodo) */}
+      {/* Modal: Los 4 pilares que entrenamos en cada clase */}
       {modalOpen && (
         <div
           className="fixed inset-0 z-[120] bg-[#171210]/95 backdrop-blur-md flex items-center justify-center p-0 sm:p-6 animate-in fade-in duration-200"
@@ -285,14 +198,9 @@ export function ElSistema() {
           >
             {/* Cabecera fija */}
             <div className="shrink-0 p-4 sm:p-6 pt-[calc(1rem+env(safe-area-inset-top,0px))] sm:pt-6 bg-[#1F1916] border-b border-[#C49A64]/35 flex items-center justify-between gap-3">
-              <div>
-                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#C86442] block">
-                  {t("systema.modalKicker")}
-                </span>
-                <h3 className="text-base sm:text-xl font-bold uppercase tracking-wide text-[#F4EDE2] font-heading leading-tight mt-0.5">
-                  {t("systema.modalTitle")}
-                </h3>
-              </div>
+              <h3 className="text-base sm:text-xl font-bold uppercase tracking-wide text-[#F4EDE2] font-heading leading-tight">
+                {t("systema.modalTitle")}
+              </h3>
               <button
                 type="button"
                 onClick={() => setModalOpen(false)}
@@ -309,35 +217,17 @@ export function ElSistema() {
                 {t("systema.modalIntro")}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                {pilares.map((p, idx) => (
-                  <div
-                    key={p.titulo}
-                    className="p-3.5 bg-[#1F1916] border border-[#C49A64]/40 rounded-sm"
-                  >
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-xs font-mono font-bold text-[#C86442]">
-                        0{idx + 1}
-                      </span>
-                      <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#F4EDE2] font-heading">
-                        {p.titulo}
-                      </h4>
-                    </div>
+              <div className="divide-y divide-[#C49A64]/25 pt-1">
+                {pilares.map((p) => (
+                  <div key={p.titulo} className="py-3.5 first:pt-1 last:pb-1">
+                    <h4 className="text-sm sm:text-base font-bold uppercase tracking-wide text-[#DF7E5B] font-heading mb-1">
+                      {p.titulo}
+                    </h4>
                     <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed">
                       {p.descripcion}
                     </p>
                   </div>
                 ))}
-              </div>
-
-              {/* Nota de Identidad dentro del modal también */}
-              <div className="p-3.5 sm:p-4 bg-[#1F1916] border border-[#C86442]/50 rounded-sm space-y-1">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C86442] block font-bold">
-                  {t("systema.hetsTitle")}
-                </span>
-                <p className="text-xs sm:text-sm text-[#F4EDE2]/90 leading-relaxed">
-                  {t("systema.hetsDesc")}
-                </p>
               </div>
             </div>
 

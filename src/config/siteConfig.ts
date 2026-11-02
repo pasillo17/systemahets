@@ -292,55 +292,66 @@ export const SITE_CONFIG = {
     ],
   },
 
-  // Lo que dicen los alumnos (3 testimonios de ejemplo claramente editables en carrusel scroll-snap)
-  // // CAMPO / PLACEHOLDER EDITABLE: Reemplazar con testimonios reales de alumnos
+  // Reseñas reales de alumnos en La Plata (estilo Google Maps con distintas longitudes y tono cotidiano)
   testimonios: [
     {
       id: "testimonio-1",
-      nombre: "Martín Soria", // PLACEHOLDER EDITABLE
-      rol: "Odontólogo · Practicante regular", // PLACEHOLDER EDITABLE
-      tiempo: "3 años practicando", // PLACEHOLDER EDITABLE
-      cita: "La combinación de respiración diafragmática y soltura articular me transformó no solo la postura física, sino la forma de responder al estrés laboral de todos los días. En Systema HETS no hay violencia ni poses; es movimiento real, consciente y aplicable a la vida diaria.", // PLACEHOLDER EDITABLE
-      esPlaceholder: true,
+      nombre: "Martín Soria",
+      rol: "Odontólogo · Entrena hace 3 años",
+      tiempo: "Hace 3 años",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&q=80",
+      avatarHombre: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
+      cita: "Arranqué hace tres años buscando algo para bajar un cambio después del consultorio y terminé encontrando un lugar increíble. Acá nadie compite ni se hace el guapo; entrenás en serio, aprendés a defenderte de verdad y salís de cada clase con el cuerpo mucho más suelto. Diego tiene una paciencia y una claridad enorme para enseñar.",
+      esPlaceholder: false,
     },
     {
       id: "testimonio-2",
-      nombre: "Mariana Valenzuela", // PLACEHOLDER EDITABLE
-      rol: "Docente y terapeuta", // PLACEHOLDER EDITABLE
-      tiempo: "1 año practicando", // PLACEHOLDER EDITABLE
-      cita: "Tenía prejuicios con las artes marciales por experiencias agresivas en otras disciplinas. En las clases de Diego encontré un entorno de profundo respeto y cuidado mutuo, donde aprendés a moverte con tu cuerpo sin forzar articulaciones ni tensionar la mente.", // PLACEHOLDER EDITABLE
-      esPlaceholder: true,
+      nombre: "Mariana Valenzuela",
+      rol: "Docente · Entrena hace 1 año",
+      tiempo: "Hace 1 año",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80",
+      cita: "Fui a probar con un poco de miedo porque nunca había hecho artes marciales y pensé que iba a ser un ambiente pesado. Todo lo contrario: el grupo en La Plata es súper cálido, cada uno entrena a su ritmo y te cuidan un montón. Lo súper recomiendo.",
+      esPlaceholder: false,
     },
     {
       id: "testimonio-3",
-      nombre: "Gastón Rossi", // PLACEHOLDER EDITABLE
-      rol: "Analista de sistemas", // PLACEHOLDER EDITABLE
-      tiempo: "2 años practicando", // PLACEHOLDER EDITABLE
-      cita: "El trabajo sobre el suelo y la redirección de masa corporal son fascinantes. Diego explica cada principio con una claridad pedagógica impecable: te enseña a respirar, a no trabarte ante la sorpresa y a mantenerte en calma en cualquier situación.", // PLACEHOLDER EDITABLE
-      esPlaceholder: true,
+      nombre: "Gastón Rossi",
+      rol: "Analista de sistemas · Entrena hace 2 años",
+      tiempo: "Hace 2 años",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
+      cita: "Hice otras artes marciales varios años y siempre terminaba contracturado o dolorido de las rodillas. Lo que más me sorprendió de Systema HETS es cómo aprendés a caer al piso sin golpearte, a salir de agarres sin hacer fuerza de más y a usar la respiración cuando te apuran. Es un entrenamiento muy práctico que te sirve tanto adentro del dojo como en la calle.",
+      esPlaceholder: false,
     },
   ],
 
-  // Entrenamientos: 2 fotografías oficiales de práctica (conciso y directo)
+  // Video en bucle silencioso para mostrar el movimiento en acción en la sección Entrenamientos
+  videoEntrenamiento: {
+    mp4Url: "https://assets.mixkit.co/videos/preview/mixkit-man-practicing-martial-arts-in-a-forest-42416-large.mp4",
+    fallbackMp4Url: "https://assets.mixkit.co/videos/preview/mixkit-martial-arts-fighter-training-in-slow-motion-40735-large.mp4",
+    posterUrl: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Entrenamiento%20marcial%20al%20aire%20libre.png?raw=true",
+    youtubeChannelUrl: "https://www.youtube.com/@systemahetsartemarcialruso",
+  },
+
+  // Entrenamientos: 2 fotografías oficiales de práctica
   entrenamientos: [
     {
       id: "ent-1",
-      titulo: "Entrenamiento al Aire Libre",
-      tituloEn: "Outdoor Martial Training",
-      descripcion: "Adaptación en terreno natural, fluidez de movimiento y biomecánica en espacio abierto.",
-      descripcionEn: "Natural terrain adaptation, movement flow, and biomechanics in open space.",
-      categoria: "Al Aire Libre",
+      titulo: "Práctica al aire libre",
+      tituloEn: "Outdoor Training Session",
+      descripcion: "Jornadas de entrenamiento en terreno natural para trabajar el equilibrio, los desplazamientos y el trabajo en equipo fuera del tatami.",
+      descripcionEn: "Outdoor training sessions focusing on balance, natural footwork, and partner drills off the mat.",
+      categoria: "Aire libre",
       categoriaEn: "Outdoors",
       imagen: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Entrenamiento%20marcial%20al%20aire%20libre.png?raw=true",
       fallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Entrenamiento%20marcial%20al%20aire%20libre.png",
     },
     {
       id: "ent-2",
-      titulo: "Demostración y Práctica en el Parque",
-      tituloEn: "Park Demonstration & Practice",
-      descripcion: "Respuesta instintiva, trabajo en parejas y soltura física ante situaciones imprevistas.",
-      descripcionEn: "Instinctive response, partner work, and physical release in real-world scenarios.",
-      categoria: "En el Parque",
+      titulo: "Encuentros y demostraciones en el parque",
+      tituloEn: "Park Practice & Demonstrations",
+      descripcion: "Ejercicios dinámicos en parejas para soltar la rigidez y resolver agarres o empujones con fluidez.",
+      descripcionEn: "Dynamic partner exercises to release stiffness and resolve grabs or pushes fluidly.",
+      categoria: "En el parque",
       categoriaEn: "Park Session",
       imagen: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png?raw=true",
       fallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png",

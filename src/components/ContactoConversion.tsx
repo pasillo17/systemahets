@@ -33,13 +33,6 @@ export function ContactoConversion() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center relative z-10">
               {/* Texto y Llamado a la Acción de Reserva de Clase */}
               <div className="lg:col-span-8 space-y-3.5 sm:space-y-5">
-                <div className="flex items-center gap-3">
-                  <span className="w-6 sm:w-8 h-[2px] bg-[#C86442]" />
-                  <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#C86442] font-bold">
-                    {t("contact.trialBadge")}
-                  </span>
-                </div>
-
                 <h2
                   className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading leading-tight"
                   style={{ textWrap: "balance" }}
@@ -51,7 +44,7 @@ export function ContactoConversion() {
                   {t("contact.desc")}
                 </p>
 
-                {/* Botón Principal de Reserva por WhatsApp en Terracota Pampeana (#B85332) */}
+                {/* Botón Principal de Reserva por WhatsApp */}
                 <div className="pt-1 sm:pt-2">
                   <a
                     href={getClasePruebaWhatsAppUrl()}
@@ -65,13 +58,13 @@ export function ContactoConversion() {
                   </a>
                 </div>
 
-                <p className="text-[11px] sm:text-xs font-mono text-[#C4B5A3] leading-relaxed">
+                <p className="text-xs text-[#C4B5A3] leading-relaxed">
                   {t("contact.subtext")}
                 </p>
 
                 {/* Redes Oficiales y Vías de Comunicación */}
                 <div className="pt-4 sm:pt-5 border-t border-[#C4B5A3]/25 space-y-2.5 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center gap-2 sm:gap-4 text-xs text-[#C4B5A3]">
-                  <span className="font-mono text-[#C49A64] uppercase tracking-wider text-[10px] sm:text-[11px] block sm:inline font-semibold">
+                  <span className="text-[#C49A64] text-xs block sm:inline font-medium">
                     {t("contact.officialChannels")}
                   </span>
 
@@ -80,7 +73,7 @@ export function ContactoConversion() {
                       href={SITE_CONFIG.redes.whatsappCanal}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2.5 px-3 rounded-xs border border-[#C86442]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[42px] leading-tight"
+                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2 px-3 rounded-xs border border-[#C49A64]/35 hover:border-[#C86442] bg-[#1C1613]/80"
                     >
                       <MessageSquare className="w-3.5 h-3.5 text-[#C86442] shrink-0" />
                       <span>{t("contact.waChannel")}</span>
@@ -90,7 +83,7 @@ export function ContactoConversion() {
                       href={SITE_CONFIG.redes.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2.5 px-3 rounded-xs border border-[#C49A64]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[42px] leading-tight"
+                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2 px-3 rounded-xs border border-[#C49A64]/35 hover:border-[#C86442] bg-[#1C1613]/80"
                     >
                       <Instagram className="w-3.5 h-3.5 text-[#C49A64] shrink-0" />
                       <span>{t("contact.instagram")}</span>
@@ -100,7 +93,7 @@ export function ContactoConversion() {
                       href={SITE_CONFIG.redes.youtube}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2.5 px-3 rounded-xs border border-[#C86442]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[42px] leading-tight"
+                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2 px-3 rounded-xs border border-[#C49A64]/35 hover:border-[#C86442] bg-[#1C1613]/80"
                     >
                       <Youtube className="w-3.5 h-3.5 text-[#C86442] shrink-0" />
                       <span>{t("contact.youtube")}</span>
@@ -110,7 +103,7 @@ export function ContactoConversion() {
                       href={SITE_CONFIG.redes.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2.5 px-3 rounded-xs border border-[#C49A64]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[42px] leading-tight"
+                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2 px-3 rounded-xs border border-[#C49A64]/35 hover:border-[#C86442] bg-[#1C1613]/80"
                     >
                       <Facebook className="w-3.5 h-3.5 text-[#C49A64] shrink-0" />
                       <span>{t("contact.facebook")}</span>
@@ -119,35 +112,19 @@ export function ContactoConversion() {
                 </div>
               </div>
 
-              {/* Logotipo en columna derecha (Visible en desktop lg+) */}
-              <div className="hidden lg:flex lg:col-span-4 items-center justify-end">
-                <div className="relative p-6 rounded-sm bg-[#1C1613] border border-[#C49A64]/50 text-center w-full max-w-[260px] shadow-2xl card-specular-edge group hover:border-[#C86442] transition-all duration-500">
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 m-auto w-32 h-32 bg-gradient-to-tr from-[#B85332]/20 to-[#C49A64]/20 rounded-full blur-xl pointer-events-none group-hover:scale-110 transition-all duration-500"
-                  />
-
-                  <img
-                    src={SITE_CONFIG.assets.logo}
-                    alt="Logotipo Systema HETS Diego Ledesma"
-                    className="relative z-10 w-36 h-auto object-contain mx-auto filter drop-shadow-[0_8px_20px_rgba(0,0,0,0.85)] group-hover:scale-105 transition-transform duration-500"
-                    width={144}
-                    height={144}
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src =
-                        SITE_CONFIG.assets.logoFallbackUrl;
-                    }}
-                  />
-
-                  <div className="relative z-10 mt-4 pt-3 border-t border-[#C4B5A3]/25">
-                    <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#C86442] block font-bold">
-                      Systema HETS
-                    </span>
-                    <span className="text-[10px] text-[#C49A64]">
-                      {t("contact.logoSub")}
-                    </span>
-                  </div>
-                </div>
+              {/* Logotipo suelto sin caja recargada en columna derecha (Visible en desktop lg+) */}
+              <div className="hidden lg:flex lg:col-span-4 items-center justify-center">
+                <img
+                  src={SITE_CONFIG.assets.logo}
+                  alt="Logotipo Systema HETS Diego Ledesma"
+                  className="w-44 h-auto object-contain filter drop-shadow-[0_10px_24px_rgba(0,0,0,0.85)]"
+                  width={176}
+                  height={176}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      SITE_CONFIG.assets.logoFallbackUrl;
+                  }}
+                />
               </div>
             </div>
           </div>

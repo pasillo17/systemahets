@@ -17,6 +17,8 @@ import { Clases } from "./components/Clases";
 import { Testimonios } from "./components/Testimonios";
 import { ContactoConversion } from "./components/ContactoConversion";
 import { FraseDestacada } from "./components/FraseDestacada";
+import { PreguntasFrecuentes } from "./components/PreguntasFrecuentes";
+import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
 import { Novedades } from "./components/Novedades";
 import { Footer } from "./components/Footer";
 import { AmbientParticles } from "./components/AmbientParticles";
@@ -75,8 +77,6 @@ function MainApp() {
       window.history.replaceState(null, "", href === "#inicio" ? "#" : href);
       if (href === "#inicio") {
         if (window.scrollY < 120) {
-          // Si el usuario ya está arriba en el hero y pulsa "Inicio" para explorar la página,
-          // lo desplazamos suavemente hacia la primera sección de contenido (El Systema / Linaje)
           const target = document.getElementById("systema") || document.getElementById("linaje");
           if (target) {
             target.scrollIntoView({ behavior: "smooth" });
@@ -127,45 +127,51 @@ function MainApp() {
           <Novedades onBackHome={() => handleNavigateHomeSection("#inicio")} />
         </main>
       ) : (
-        /* Flujo Narrativo de la Página Inicial (sin el apartado de Novedades) */
+        /* Flujo Narrativo de la Página Inicial */
         <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
-          {/* 1. Hero (Tierra Sombra Profunda + Terracota Pampeana & Ocre Arcilla) */}
+          {/* 1. Hero (CTA Principal: Reservar clase de prueba + Subtítulo claro sobre La Plata) */}
           <Hero onExploreSystem={scrollToSystem} onExploreClasses={scrollToClasses} />
 
-          {/* 2. Franja de Linaje Oficial (Adobe Profundo + Ocre y Terracota) */}
+          {/* 2. Franja de Linaje Oficial */}
           <FranjaLinaje />
 
-          {/* 3. Franja de Principios (Arena Piedra #E5DAC9 — Respiro Terrenal Luminoso) */}
+          {/* 3. Franja de Principios (Abierta sin cajas repetitivas) */}
           <FranjaPrincipios />
 
-          {/* 4. El Systema & ¿Por qué se llama Systema HETS? (Arena Cálida #EFE7DA + Bloque Querandí en Adobe Tierra) */}
+          {/* 4. El Systema & ¿Por qué se llama Systema HETS? */}
           <ElSistema />
 
-          {/* 5. Diego Ledesma & Trayectoria Formativa (Arena Piedra #E5DAC9 + Tarjeta Adobe Profundo) */}
+          {/* 5. Diego Ledesma & Trayectoria Formativa */}
           <DiegoLedesma />
 
-          {/* 6. Entrenamientos (Arena Cálida #EFE7DA — Galería Orgánica) */}
+          {/* 6. Entrenamientos (Video en bucle sin sonido + Galería) */}
           <Entrenamientos />
 
-          {/* 7. Sedes y Clases: Tablero de Horarios Oficiales (Arena Piedra #E5DAC9 + Pizarra en Tierra Sombra) */}
+          {/* 7. Sedes y Clases: Grilla Semanal Única y Compacta */}
           <Clases />
 
-          {/* 8. Lo que dicen los alumnos (Arena Cálida #EFE7DA) */}
+          {/* 8. Lo que dicen los alumnos (Con retratos reales) */}
           <Testimonios />
 
-          {/* 9. Frase Destacada (Tierra Sombra #231C18 — Pausa Reflexiva) */}
+          {/* 9. Frase Destacada (Abierta sin borde de caja) */}
           <FraseDestacada />
 
-          {/* 10. Contacto Directo y Reserva de Clase de Prueba (Tierra Sombra #1F1916 + Terracota) */}
+          {/* 10. Acordeón de Preguntas Frecuentes (FAQ) antes del cierre */}
+          <PreguntasFrecuentes />
+
+          {/* 11. Contacto Directo y Reserva de Clase de Prueba */}
           <ContactoConversion />
         </main>
       )}
 
-      {/* 11. Footer institucional (Tierra Sombra #1A1412) */}
+      {/* 12. Footer institucional */}
       <Footer
         onOpenNovedades={handleOpenNovedades}
         onNavigateHomeSection={handleNavigateHomeSection}
       />
+
+      {/* Botón Flotante Fijo de WhatsApp en esquina inferior derecha */}
+      <FloatingWhatsApp />
     </div>
   );
 }

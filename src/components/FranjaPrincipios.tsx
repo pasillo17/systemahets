@@ -3,9 +3,8 @@ import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
 
 /**
- * Franja de Principios sobre Arena Piedra (#E5DAC9) para dar respiro visual
- * y calidez pampeana, con tarjetas en Hueso Pergamino (#F8F3EB),
- * acentos en Terracota Pampeana (#B85332) y Ocre Arcilla (#9C7340), y textos en Carbón de Quebracho (#231C18).
+ * 4 Pilares sueltos sobre el fondo con buen espaciado,
+ * separados únicamente por líneas divisorias sutiles, sin recuadros ni numeración robótica.
  */
 export function FranjaPrincipios() {
   const { t } = useLanguage();
@@ -38,19 +37,10 @@ export function FranjaPrincipios() {
   ];
 
   return (
-    <section className="relative z-20 bg-flow-principios text-[#F4EDE2] pt-2 pb-8 sm:pt-4 sm:pb-14 overflow-hidden">
-      {/* Resplandor ambiental sutil en Terracota y Ocre sobre Tierra Sombra */}
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-72 h-28 bg-[#B85332]/12 blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-72 h-28 bg-[#C49A64]/12 blur-3xl pointer-events-none"
-      />
-
-      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+    <section className="relative z-20 bg-flow-principios text-[#F4EDE2] py-8 sm:py-14 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Pilares sueltos sobre el fondo, separados solo por una línea divisoria sutil */}
+        <div className="border-y border-[#C49A64]/20 py-6 sm:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-7 gap-x-6 sm:gap-8 divide-y sm:divide-y-0 lg:divide-x divide-[#C49A64]/20">
           {principios.map((item, idx) => {
             const Icon = item.icono;
             const isTerracotta = item.variant === "terracotta";
@@ -59,46 +49,22 @@ export function FranjaPrincipios() {
                 key={item.titulo}
                 direction="up"
                 delay={idx * 70}
-                distance={20}
+                distance={18}
               >
-                <div className="p-3.5 sm:p-6 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] rounded-sm transition-all duration-300 card-specular-edge group h-full relative overflow-hidden">
-                  {/* Filete superior en Terracota Pampeana y Ocre Arcilla */}
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-[3px] ${
-                      isTerracotta
-                        ? "bg-gradient-to-r from-[#B85332] via-[#C86442] to-transparent"
-                        : "bg-gradient-to-r from-[#9C7340] via-[#C49A64] to-transparent"
+                <div className="pt-5 first:pt-0 sm:pt-0 lg:px-6 first:lg:pl-0 last:lg:pr-0 flex flex-col items-start group">
+                  <Icon
+                    className={`w-5 h-5 sm:w-6 sm:h-6 stroke-[1.75] mb-2.5 transition-transform duration-300 group-hover:scale-105 ${
+                      isTerracotta ? "text-[#DF7E5B]" : "text-[#C49A64]"
                     }`}
                   />
 
-                  <div className="flex flex-col sm:items-center sm:text-center">
-                    <div className="flex items-center justify-between sm:justify-center w-full gap-2 sm:flex-col sm:gap-0 mb-2 sm:mb-3">
-                      <div
-                        className={`w-8 h-8 sm:w-12 sm:h-12 rounded-sm flex items-center justify-center shrink-0 transition-all duration-300 sm:mb-2.5 ${
-                          isTerracotta
-                            ? "bg-[#1A1412] border border-[#C86442]/70 text-[#DF7E5B] group-hover:bg-[#B85332] group-hover:text-[#F4EDE2] shadow-sm"
-                            : "bg-[#1A1412] border border-[#C49A64]/65 text-[#C49A64] group-hover:bg-[#9C7340] group-hover:text-[#F4EDE2] shadow-sm"
-                        }`}
-                      >
-                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.75]" />
-                      </div>
-                      <span
-                        className={`sm:hidden text-[10px] font-mono font-bold tabular-nums ${
-                          isTerracotta ? "text-[#DF7E5B]" : "text-[#C49A64]"
-                        }`}
-                      >
-                        0{idx + 1}
-                      </span>
-                    </div>
+                  <h3 className="text-sm sm:text-base font-heading uppercase tracking-wide text-[#F4EDE2] font-bold mb-1.5 leading-snug">
+                    {item.titulo}
+                  </h3>
 
-                    <h3 className="text-xs sm:text-sm font-heading uppercase tracking-wider text-[#F4EDE2] font-bold group-hover:text-[#DF7E5B] transition-colors leading-tight mb-1 sm:mb-1.5">
-                      {item.titulo}
-                    </h3>
-
-                    <p className="text-[11px] sm:text-xs text-[#C4B5A3] leading-snug sm:leading-relaxed font-sans sm:max-w-[210px]">
-                      {item.descripcion}
-                    </p>
-                  </div>
+                  <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
+                    {item.descripcion}
+                  </p>
                 </div>
               </ScrollReveal>
             );
