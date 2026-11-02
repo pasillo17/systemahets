@@ -425,7 +425,7 @@ export function Testimonios() {
                               {item.authorName}
                             </a>
                             <span className="text-xs text-[#B8A99A] font-sans block">
-                              {item.relativeTime || t("test.studentBadge")}
+                              {t("test.studentBadge")}
                             </span>
                           </div>
                         </div>
