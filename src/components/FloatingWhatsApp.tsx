@@ -1,33 +1,41 @@
-import { MessageSquare } from "lucide-react";
 import { getClasePruebaWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 
 /**
- * BOTÓN FLOTANTE DISCRETO DE WHATSAPP:
- * Fijo en la esquina inferior derecha, sobrio y orgánico con la estética del sitio.
+ * BOTÓN FLOTANTE CIRCULAR COMPACTO DE WHATSAPP (48px × 48px):
+ * Ubicado en la esquina inferior derecha sin tapar textos, precios ni controles del FAQ.
  */
 export function FloatingWhatsApp() {
   const { lang } = useLanguage();
   const isEn = lang === "en";
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[90] pb-safe">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 pb-safe">
       <a
         href={getClasePruebaWhatsAppUrl()}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={
           isEn
-            ? "Book trial class on WhatsApp"
+            ? "Contact via WhatsApp"
             : "Consultar o reservar clase por WhatsApp"
         }
-        className="flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-sm bg-[#261E1A]/95 hover:bg-[#B85332] text-[#F4EDE2] border border-[#C49A64]/55 hover:border-[#DF7E5B] shadow-lg backdrop-blur-sm transition-all duration-300 active:scale-95"
+        title={
+          isEn
+            ? "Contact via WhatsApp"
+            : "Consultar por WhatsApp"
+        }
+        className="w-12 h-12 rounded-full bg-[#261E1A]/95 hover:bg-[#B85332] text-[#F4EDE2] border border-[#C49A64]/60 hover:border-[#DF7E5B] shadow-lg backdrop-blur-sm flex items-center justify-center transition-all duration-200 active:scale-95"
       >
-        <MessageSquare className="w-4 h-4 text-[#DF7E5B] fill-current shrink-0" />
-        <span className="text-xs font-heading font-bold uppercase tracking-wider whitespace-nowrap">
-          WhatsApp
-        </span>
+        <svg
+          viewBox="0 0 24 24"
+          className="w-5 h-5 fill-current text-[#DF7E5B] group-hover:text-[#F4EDE2] transition-colors"
+          aria-hidden="true"
+        >
+          <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.359 5.016L2 22l5.156-1.359c1.484.813 3.156 1.25 4.875 1.25 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.828 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.172.109-1.906-.125-.453-.141-1.031-.328-1.766-.641-3.094-1.328-5.109-4.453-5.266-4.656-.156-.203-1.266-1.688-1.266-3.219s.797-2.281 1.078-2.594c.281-.313.609-.391.813-.391.203 0 .406.016.578.016.188 0 .438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.141.328-.297.5-.156.172-.313.391-.453.516-.156.141-.313.313-.141.609.172.297.766 1.266 1.641 2.047 1.125 1.016 2.078 1.328 2.375 1.484.297.156.469.125.641-.078.172-.203.75-.875.953-1.172.203-.297.406-.25.688-.156.281.094 1.781.844 2.094 1 .313.156.516.234.594.359.078.125.078.734-.172 1.438z" />
+        </svg>
       </a>
     </div>
   );
 }
+

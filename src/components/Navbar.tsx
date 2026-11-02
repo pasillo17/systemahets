@@ -332,7 +332,7 @@ export function Navbar({
 
           {/* Lista de enlaces con zonas táctiles grandes y acceso a cada sección */}
           <nav className="flex flex-col my-auto py-4 divide-y divide-[#C4B5A3]/20">
-            {mobileNavLinks.map((link, idx) => (
+            {mobileNavLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -344,9 +344,6 @@ export function Navbar({
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-[#C86442] font-bold tabular-nums">
-                    0{idx + 1}
-                  </span>
                   <span>{link.label}</span>
                   {link.isNovedades && (
                     <span className="px-2 py-0.5 text-[10px] font-mono bg-[#B85332] text-[#F4EDE2] rounded-xs tracking-widest">

@@ -14,7 +14,6 @@ export function Entrenamientos() {
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
-  const [videoSrc, setVideoSrc] = useState(SITE_CONFIG.videoEntrenamiento.mp4Url);
   const { lang, t } = useLanguage();
 
   const items = SITE_CONFIG.entrenamientos.map((item) => {
@@ -90,7 +89,7 @@ export function Entrenamientos() {
       className="py-12 sm:py-18 lg:py-20 bg-flow-entrenamientos text-[#F4EDE2] relative overflow-hidden select-none"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Cabecera Editorial Directa (sin eyebrow tag arriba del H2) */}
+        {/* Cabecera Editorial Directa */}
         <ScrollReveal direction="up" distance={20}>
           <div className="mb-7 sm:mb-10 border-b border-[#C49A64]/30 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading">
@@ -102,64 +101,9 @@ export function Entrenamientos() {
           </div>
         </ScrollReveal>
 
-        {/* BLOQUE MULTIMEDIA: VIDEO CORTO EN BUCLE (SIN SONIDO) + DESCRIPCIÓN ABIERTA */}
-        <ScrollReveal direction="up" delay={50} distance={22} className="mb-10 sm:mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
-            {/* Video en bucle silencioso */}
-            <div className="lg:col-span-7 relative aspect-video rounded-sm overflow-hidden border border-[#C49A64]/45 bg-[#171210]">
-              <video
-                key={videoSrc}
-                src={videoSrc}
-                poster={SITE_CONFIG.videoEntrenamiento.posterUrl}
-                autoPlay
-                loop
-                muted
-                playsInline
-                onError={() => {
-                  if (videoSrc !== SITE_CONFIG.videoEntrenamiento.fallbackMp4Url) {
-                    setVideoSrc(SITE_CONFIG.videoEntrenamiento.fallbackMp4Url);
-                  }
-                }}
-                className="w-full h-full object-cover filter brightness-[0.94] contrast-[1.05]"
-              />
-            </div>
-
-            {/* Texto editorial suelto al lado del video (sin recuadro cerrado ni eyebrow tag) */}
-            <div className="lg:col-span-5 space-y-4">
-              <h3 className="text-lg sm:text-2xl font-heading font-bold uppercase tracking-wide text-[#F4EDE2] leading-snug">
-                {lang === "en"
-                  ? "Fluid Movement and Practical Defense"
-                  : "Soltura corporal y defensa aplicable"}
-              </h3>
-              <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
-                {lang === "en"
-                  ? "In class we work on breathing, balance, and natural movement so you learn to get out of grabs, absorb impacts safely, and respond calmly. Watch full classes and seminar clips on our YouTube channel."
-                  : "En cada clase trabajamos la respiración, el apoyo del cuerpo y el movimiento continuo para aprender a salir de agarres, caer sin lastimarte y responder con tranquilidad. Podés ver clases completas y seminarios en nuestro canal de YouTube."}
-              </p>
-
-              <div className="pt-1">
-                <a
-                  href={SITE_CONFIG.videoEntrenamiento.youtubeChannelUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-shimmer-lightning inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] min-h-[46px] shadow-md whitespace-normal text-center leading-tight"
-                >
-                  <Youtube className="w-4 h-4 shrink-0" />
-                  <span>
-                    {lang === "en"
-                      ? "Watch classes on YouTube"
-                      : "Ver videos en YouTube"}
-                  </span>
-                  <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* 1. MÓVIL: CARRUSEL LIMPIO SIN NUMERACIÓN ROBÓTICA */}
+        {/* 1. MÓVIL: CARRUSEL DE FOTOS */}
         <div className="block md:hidden">
-          <ScrollReveal direction="up" delay={80} distance={24}>
+          <ScrollReveal direction="up" delay={50} distance={24}>
             <div
               className="relative touch-pan-y"
               onTouchStart={handleTouchStart}
@@ -241,13 +185,13 @@ export function Entrenamientos() {
           </ScrollReveal>
         </div>
 
-        {/* 2. TABLET Y DESKTOP: 2 FOTOGRAFÍAS CON PIES EDITORIALES ABIERTOS (SIN CAJAS CERRADAS NI NÚMEROS 01/02) */}
-        <div className="hidden md:grid md:grid-cols-2 gap-8 lg:gap-10 pt-2 border-t border-[#C49A64]/20">
+        {/* 2. TABLET Y DESKTOP: 2 FOTOGRAFÍAS CON PIES EDITORIALES ABIERTOS */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8 lg:gap-10">
           {items.map((item, idx) => (
             <ScrollReveal
               key={item.id}
               direction="up"
-              delay={idx * 120}
+              delay={idx * 100}
               distance={24}
             >
               <div
@@ -272,7 +216,7 @@ export function Entrenamientos() {
                   </div>
                 </div>
 
-                {/* Pie editorial suelto sobre el fondo (sin tarjeta contenedora) */}
+                {/* Pie editorial suelto sobre el fondo */}
                 <div className="space-y-1">
                   <h3 className="text-base lg:text-lg font-heading font-bold uppercase tracking-wide text-[#F4EDE2] group-hover:text-[#DF7E5B] transition-colors">
                     {item.titulo}
@@ -285,6 +229,41 @@ export function Entrenamientos() {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* 3. ACCESO AL CANAL DE YOUTUBE (debajo del carrusel/galería de fotos) */}
+        <ScrollReveal direction="up" delay={120} distance={20} className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[#C49A64]/20">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1 max-w-2xl">
+              <h3 className="text-base sm:text-lg font-heading font-bold uppercase tracking-wide text-[#F4EDE2]">
+                {lang === "en"
+                  ? "Fluid Movement, Self-Protection and Human Development"
+                  : "Soltura corporal, autoprotección y desarrollo humano"}
+              </h3>
+              <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
+                {lang === "en"
+                  ? "In class we work on breathing, balance, and natural movement so you learn to get out of grabs, absorb impacts safely, and respond calmly. Watch full classes and seminar clips on our YouTube channel."
+                  : "En cada clase trabajamos la respiración, el apoyo del cuerpo y el movimiento continuo para aprender a salir de agarres, caer sin lastimarte y responder con tranquilidad. Podés ver clases completas y seminarios en nuestro canal de YouTube."}
+              </p>
+            </div>
+
+            <div className="shrink-0">
+              <a
+                href={SITE_CONFIG.videoEntrenamiento.youtubeChannelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] min-h-[46px] shadow-md whitespace-nowrap text-center leading-tight"
+              >
+                <Youtube className="w-4 h-4 shrink-0" />
+                <span>
+                  {lang === "en"
+                    ? "Watch classes on YouTube"
+                    : "Ver videos en YouTube"}
+                </span>
+                <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+              </a>
+            </div>
+          </div>
+        </ScrollReveal>
 
         {/* 3. MODAL LIGHTBOX AMPLIADO */}
         {currentLightboxItem && (

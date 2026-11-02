@@ -7,20 +7,35 @@ import {
   MessageSquare,
   CheckCircle2,
   ArrowUpRight,
+  ArrowRight,
+  Trees,
 } from "lucide-react";
 import { SITE_CONFIG, getWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
 
+interface ClasesProps {
+  onOpenNovedades?: () => void;
+}
+
 /**
  * SECCIÓN SEDES Y CLASES:
  * Una sola vista limpia, directa y fácil de escanear de lunes a viernes,
  * sin etiquetas superiores (eyebrow tags), sin comillas/cursiva y con las 3 modalidades
- * sueltas sobre el fondo sin encerrar en rectángulos.
+ * sueltas sobre el fondo sin encerrar en rectángulos + banner destacado del Camp 2026.
  */
-export function Clases() {
+export function Clases({ onOpenNovedades }: ClasesProps) {
   const sede = SITE_CONFIG.sedePrincipal;
   const { lang, t } = useLanguage();
+
+  const handleOpenCamp = () => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    if (onOpenNovedades) {
+      onOpenNovedades();
+    } else {
+      window.location.hash = "#novedades";
+    }
+  };
 
   const todayIndex = new Date().getDay();
   const diasActivos = sede.horariosSemana.filter((d) => d.abierto);
@@ -296,6 +311,47 @@ export function Clases() {
                 </div>
               );
             })}
+          </div>
+        </ScrollReveal>
+
+        {/* BANNER DESTACADO: PRÓXIMO EVENTO ESPECIAL SYSTEMA HETS CAMP 2026 */}
+        <ScrollReveal direction="up" delay={120} distance={22} className="mt-10 sm:mt-14">
+          <div className="relative rounded-sm bg-[#261E1A] border border-[#C49A64]/55 p-5 sm:p-7 lg:p-8 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#B85332] via-[#C49A64] to-[#B85332]" />
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+              <div className="flex items-start gap-3.5 sm:gap-4">
+                <div className="w-10 h-10 rounded-xs bg-[#1F1916] text-[#DF7E5B] border border-[#C86442]/50 flex items-center justify-center shrink-0 mt-0.5">
+                  <Trees className="w-5 h-5" />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-base sm:text-xl font-heading font-bold uppercase tracking-wide text-[#F4EDE2] leading-snug">
+                    {lang === "en"
+                      ? "Upcoming Special Event: Systema Hets Camp 2026 · Estancia Santa Rita, Punta Indio (November)"
+                      : "Próximo Evento Especial: Systema Hets Camp 2026 · Estancia Santa Rita, Punta Indio (Noviembre)"}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed">
+                    {lang === "en"
+                      ? "Intensive gathering in contact with nature guided by Prof. Diego Martín Ledesma. Limited spots with prior reservation."
+                      : "Encuentro intensivo en contacto con la naturaleza guiado por el Prof. Diego Martín Ledesma. Cupos limitados con reserva previa."}
+                  </p>
+                </div>
+              </div>
+
+              <div className="shrink-0">
+                <button
+                  type="button"
+                  onClick={handleOpenCamp}
+                  className="btn-shimmer-lightning w-full lg:w-auto min-h-[48px] px-5 sm:px-6 py-3 rounded-sm text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] inline-flex items-center justify-center gap-2 shadow-md cursor-pointer active:scale-[0.98] whitespace-nowrap"
+                >
+                  <span>
+                    {lang === "en"
+                      ? "View details & registration"
+                      : "Ver detalles e inscripción"}
+                  </span>
+                  <ArrowRight className="w-4 h-4 shrink-0" />
+                </button>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
       </div>

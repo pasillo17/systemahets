@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, MessageSquare, ChevronDown } from "lucide-react";
+import { ArrowDown, MessageSquare, ChevronDown, MapPin } from "lucide-react";
 import { SITE_CONFIG, getClasePruebaWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -68,24 +68,36 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
           />
         </div>
 
-        {/* TÍTULO PRINCIPAL DIRECTO (sin eyebrow tag artificial arriba) */}
-        <h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading leading-tight max-w-xs sm:max-w-2xl lg:max-w-3xl pt-1"
-          style={{ textWrap: "balance" }}
-        >
-          {t("hero.titulo")}
-        </h1>
+        {/* TÍTULO PRINCIPAL (H1): CONÓCETE Y PROGRESA + LEMA EN RUSO Y FONÉTICA */}
+        <div className="space-y-1.5 sm:space-y-2 pt-1">
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading leading-none"
+            style={{ textWrap: "balance" }}
+          >
+            {t("hero.titulo")}
+          </h1>
 
-        {/* SUBTÍTULO CLARO CON MENCIÓN EXPLÍCITA DE CLASES EN LA PLATA */}
+          {/* Lema en Ruso y fonética justo debajo del H1 */}
+          <p className="text-xs sm:text-sm md:text-base text-[#C49A64] tracking-wide font-serif">
+            <span className="font-semibold text-[#DF7E5B] tracking-wider">
+              {t("hero.lemaRuso")}
+            </span>{" "}
+            <span className="italic font-sans font-normal text-[#C4B5A3]/90">
+              {t("hero.lemaFonetica")}
+            </span>
+          </p>
+        </div>
+
+        {/* SUBTÍTULO (Pilares de marca): Arte Marcial Ruso · Desarrollo Humano · Autoprotección */}
         <p
-          className="text-sm sm:text-base lg:text-lg text-[#E5DAC9] leading-relaxed max-w-[340px] sm:max-w-2xl mx-auto px-1 font-normal"
+          className="text-sm sm:text-base lg:text-lg text-[#E5DAC9] font-medium tracking-wide leading-relaxed max-w-[340px] sm:max-w-2xl mx-auto px-1"
           style={{ textWrap: "balance" }}
         >
           {t("hero.bajada")}
         </p>
 
         {/* BOTONES DE ACCIÓN: Principal = Reservar clase de prueba | Secundario = Ver horarios y sede */}
-        <div className="w-full pt-2 sm:pt-3 lg:pt-4 max-w-xs sm:max-w-lg lg:max-w-xl mx-auto">
+        <div className="w-full pt-2 sm:pt-3 lg:pt-4 max-w-xs sm:max-w-lg lg:max-w-xl mx-auto space-y-3 sm:space-y-3.5">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-4 w-full">
             {/* CTA Principal Sólido: Reservar clase de prueba */}
             <a
@@ -107,6 +119,12 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
               <span className="leading-tight text-center">{t("hero.btnClases")}</span>
               <ArrowDown className="w-4 h-4 text-[#C49A64] group-hover:text-[#DF7E5B] shrink-0 transition-transform group-hover:translate-y-0.5" />
             </button>
+          </div>
+
+          {/* Línea discreta con ícono de ubicación debajo de los botones */}
+          <div className="flex items-center justify-center gap-1.5 text-xs font-sans text-[#C4B5A3]/90">
+            <MapPin className="w-3.5 h-3.5 text-[#C49A64] shrink-0" />
+            <span>{t("hero.location")}</span>
           </div>
         </div>
 

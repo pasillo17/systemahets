@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, X, CheckCircle2 } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
@@ -185,24 +185,6 @@ export function DiegoLedesma() {
                 <span>{t("diego.btnHistory")}</span>
                 <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
               </button>
-            </div>
-
-            {/* Credenciales abiertas sin eyebrow tag ni numeración "01 — 03" */}
-            <div className="pt-4 sm:pt-5 border-t border-[#C49A64]/25">
-              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-xs text-[#F4EDE2]">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#DF7E5B] shrink-0 mt-0.5" />
-                  <span>{t("diego.role1")}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#DF7E5B] shrink-0 mt-0.5" />
-                  <span>{t("diego.role2")}</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#DF7E5B] shrink-0 mt-0.5" />
-                  <span>{t("diego.role3")}</span>
-                </li>
-              </ul>
             </div>
           </ScrollReveal>
 

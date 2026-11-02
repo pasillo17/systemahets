@@ -20,10 +20,10 @@ export const SITE_CONFIG = {
   disciplina: "Arte Marcial Ruso",
   ciudad: "La Plata · Buenos Aires, Argentina",
   
-  // Hero Editorial (Textos breves y contundentes)
+  // Hero Editorial (Lema oficial de la escuela)
   heroKicker: "Arte marcial ruso · La Plata / Buenos Aires",
-  heroTitulo: "Mucho más que defensa personal",
-  heroBajada: "Movimiento consciente, autoprotección y desarrollo integral.",
+  heroTitulo: "CONÓCETE Y PROGRESA",
+  heroBajada: "Arte Marcial Ruso · Desarrollo Humano · Autoprotección",
   
   // Frase institucional de cierre
   fraseDestacada: "El verdadero combate es con uno mismo.",

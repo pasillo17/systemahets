@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Calendar,
   MapPin,
@@ -17,7 +18,6 @@ import {
 import { SITE_CONFIG, getWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
-import { SpotlightCard } from "./SpotlightCard";
 
 interface NovedadesProps {
   onBackHome: () => void;
@@ -25,17 +25,25 @@ interface NovedadesProps {
 
 /**
  * APARTADO EXCLUSIVO DE NOVEDADES (Fuera de la página inicial):
- * Presenta el evento oficial SYSTEMA HETS CAMP 2026 — Seminario Intensivo de 1 Día
- * en Estancia Santa Rita, Punta Indio (21 al 23 de noviembre), con transiciones
- * terrenales continuas y contraste tipográfico máximo en zonas claras y oscuras.
+ * Presenta el evento oficial SYSTEMA HETS CAMP 2026 — Encuentro Intensivo en la Naturaleza · Noviembre 2026
+ * en Estancia Santa Rita, Punta Indio, con estilo editorial limpio sin exceso de bordes.
  */
 export function Novedades({ onBackHome }: NovedadesProps) {
   const { lang } = useLanguage();
   const isEn = lang === "en";
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
+  const handleReturnHome = () => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    onBackHome();
+  };
+
   const whatsappCampUrl = getWhatsAppUrl(
     SITE_CONFIG.mensajesWhatsApp.camp2026 ||
-      "Hola Diego, quiero consultar y reservar mi lugar para el SYSTEMA HETS CAMP 2026 (Seminario Intensivo de 1 Día en Estancia Santa Rita, Punta Indio)."
+      "Hola Diego, quiero consultar y reservar mi lugar para el SYSTEMA HETS CAMP 2026 en Estancia Santa Rita, Punta Indio."
   );
 
   const ejesEntrenamiento = [
@@ -95,8 +103,8 @@ export function Novedades({ onBackHome }: NovedadesProps) {
 
   return (
     <div className="w-full overflow-x-hidden">
-      {/* 1. CABECERA EN TIERRA SOMBRA PROFUNDA CON TRANSICIÓN ORGÁNICA HACIA HUESO / ARENA */}
-      <section className="relative pt-24 sm:pt-32 pb-14 sm:pb-24 bg-flow-brown-to-light overflow-hidden">
+      {/* 1. CABECERA EN TIERRA SOMBRA PROFUNDA */}
+      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-18 bg-flow-brown-to-light overflow-hidden">
         <div
           aria-hidden="true"
           className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[460px] h-72 sm:h-[460px] bg-[#B85332]/16 rounded-full blur-[90px] pointer-events-none"
@@ -107,64 +115,46 @@ export function Novedades({ onBackHome }: NovedadesProps) {
         />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Barra superior de retorno al inicio + Kicker de Novedades */}
+          {/* Barra superior de retorno al inicio */}
           <ScrollReveal direction="up" distance={16}>
             <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 sm:mb-8 border-b border-[#C49A64]/35">
               <button
                 type="button"
-                onClick={onBackHome}
+                onClick={handleReturnHome}
                 className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#F4EDE2] hover:text-[#DF7E5B] bg-[#1F1916]/90 border border-[#C49A64]/50 hover:border-[#C86442] px-3.5 py-2 rounded-sm transition-colors cursor-pointer min-h-[42px]"
               >
                 <ArrowLeft className="w-3.5 h-3.5 text-[#C86442]" />
                 <span>
-                  {isEn ? "Back to Home Page" : "Volver a la Página Inicial"}
+                  {isEn ? "Back to Home Page" : "Volver a la página inicial"}
                 </span>
               </button>
-
-              <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.22em] text-[#C49A64] font-semibold">
-                <span>{isEn ? "NEWS & SPECIAL EVENTS" : "APARTADO DE NOVEDADES"}</span>
-                <span aria-hidden="true">·</span>
-                <span className="text-[#DF7E5B]">2026</span>
-              </div>
             </div>
           </ScrollReveal>
 
-          {/* Tarjeta Protagonista del Evento en Tierra Sombra (#1F1916) para garantizar 100% contraste sobre la transición */}
+          {/* Presentación Principal del Evento */}
           <ScrollReveal direction="up" delay={60} distance={22}>
-            <div className="relative rounded-sm bg-gradient-to-b from-[#261E1A] via-[#211A16] to-[#1C1613] border-2 border-[#C49A64]/65 p-5 sm:p-9 lg:p-11 earth-block-transition-glow card-specular-edge overflow-hidden">
+            <div className="relative rounded-sm bg-gradient-to-b from-[#261E1A] via-[#211A16] to-[#1C1613] border border-[#C49A64]/55 p-5 sm:p-9 lg:p-11 overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#B85332] via-[#C49A64] to-[#B85332]" />
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-                {/* Columna Izquierda: Título, Subtítulo y Descripción Oficial */}
+                {/* Columna Izquierda: Título, Subtítulo Unificado y Descripción */}
                 <div className="lg:col-span-7 space-y-4 sm:space-y-5">
-                  <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#DF7E5B] font-bold">
-                    <span>Systema HETS Argentina</span>
-                    <span className="text-[#C49A64]" aria-hidden="true">
-                      ·
-                    </span>
-                    <span className="text-[#E6C391]">
-                      {isEn
-                        ? "Estancia Santa Rita, Punta Indio"
-                        : "Estancia Santa Rita, Punta Indio"}
-                    </span>
-                  </div>
-
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading leading-none">
                       SYSTEMA HETS CAMP 2026
                     </h1>
-                    <p className="text-lg sm:text-2xl font-heading uppercase tracking-wide text-[#DF7E5B] font-bold">
+                    <p className="text-base sm:text-xl font-heading uppercase tracking-wide text-[#DF7E5B] font-bold">
                       {isEn
-                        ? "1-Day Intensive Seminar"
-                        : "Seminario Intensivo de 1 Día"}
+                        ? "INTENSIVE NATURE GATHERING · NOVEMBER 2026"
+                        : "ENCUENTRO INTENSIVO EN LA NATURALEZA · NOVIEMBRE 2026"}
                     </p>
                   </div>
 
                   <div className="space-y-3 text-sm sm:text-base text-[#F4EDE2] leading-relaxed font-sans pt-1">
                     <p>
                       {isEn
-                        ? "We invite you to participate in an intensive Systema training day at Estancia Santa Rita, Punta Indio, during the Camp from November 21 to 23."
-                        : "Te invitamos a participar de una jornada de entrenamiento intensivo de Systema en Estancia Santa Rita, Punta Indio, durante el Camp del 21 al 23 de noviembre."}
+                        ? "We invite you to participate in our intensive Systema training gathering at Estancia Santa Rita, Punta Indio, from November 21 to 23."
+                        : "Te invitamos a participar de nuestro encuentro de entrenamiento intensivo de Systema en Estancia Santa Rita, Punta Indio, del 21 al 23 de noviembre."}
                     </p>
                     <p className="text-[#E5DAC9]">
                       {isEn
@@ -179,8 +169,8 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                       <Calendar className="w-3.5 h-3.5 text-[#DF7E5B]" />
                       <span>
                         {isEn
-                          ? "Camp: November 21 to 23"
-                          : "Camp del 21 al 23 de noviembre"}
+                          ? "November 21 to 23, 2026"
+                          : "21 al 23 de noviembre de 2026"}
                       </span>
                     </span>
                     <span className="text-[#C4B5A3]/50" aria-hidden="true">
@@ -193,9 +183,9 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                   </div>
                 </div>
 
-                {/* Columna Derecha: Imagen / Marco Editorial del Encuentro en la Naturaleza */}
+                {/* Columna Derecha: Imagen Editorial del Encuentro en la Naturaleza */}
                 <div className="lg:col-span-5">
-                  <div className="relative rounded-sm overflow-hidden border border-[#C49A64]/60 bg-[#171210] shadow-2xl">
+                  <div className="relative rounded-sm overflow-hidden border border-[#C49A64]/50 bg-[#171210] shadow-xl">
                     <div className="aspect-[16/11] relative overflow-hidden">
                       <img
                         src={SITE_CONFIG.assets.entrenamientoAireLibre}
@@ -244,45 +234,33 @@ export function Novedades({ onBackHome }: NovedadesProps) {
         </div>
       </section>
 
-      {/* 2. SECCIÓN EN TIERRA SOMBRA (#1F1916) Y ADOBE OSCURO CÁLIDO (#261E1A) CON CONTRASTE ALTO (#F4EDE2 / #C4B5A3) */}
-      <section className="py-10 sm:py-18 bg-flow-systema text-[#F4EDE2] relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-          {/* Ejes de la Experiencia en la Naturaleza */}
+      {/* 2. SECCIÓN EDITORIAL ABIERTA: EJES, QUÉ INCLUYE Y VALORES */}
+      <section className="py-10 sm:py-16 bg-flow-systema text-[#F4EDE2] relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14">
+          {/* Ejes de la Experiencia en la Naturaleza (abiertos sin recuadros cerrados) */}
           <ScrollReveal direction="up" distance={20}>
-            <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#C49A64]/35 pb-3">
-                <div>
-                  <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#DF7E5B] font-bold block">
-                    {isEn ? "TRAINING PILLARS" : "EJES DE LA JORNADA"}
-                  </span>
-                  <h2 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-tight text-[#F4EDE2] mt-0.5">
-                    {isEn
-                      ? "Practice in Contact with Nature"
-                      : "Entrenamiento en Contacto con la Naturaleza"}
-                  </h2>
-                </div>
+            <div className="space-y-5">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#C49A64]/30 pb-3">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-tight text-[#F4EDE2]">
+                  {isEn
+                    ? "Practice in Contact with Nature"
+                    : "Entrenamiento en Contacto con la Naturaleza"}
+                </h2>
                 <span className="text-xs font-mono text-[#C49A64] font-bold">
                   Estancia Santa Rita · Punta Indio
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
-                {ejesEntrenamiento.map((eje, idx) => {
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 pt-1">
+                {ejesEntrenamiento.map((eje) => {
                   const Icon = eje.icono;
                   return (
                     <div
                       key={eje.label}
-                      className="p-3.5 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] rounded-sm card-specular-edge flex flex-col justify-between gap-2 transition-colors"
+                      className="flex flex-col gap-2 pb-3 border-b border-[#C49A64]/20"
                     >
-                      <div className="flex items-center justify-between">
-                        <div className="w-8 h-8 rounded-xs bg-[#1A1412] text-[#DF7E5B] border border-[#C86442]/60 flex items-center justify-center">
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-[#C49A64] tabular-nums">
-                          0{idx + 1}
-                        </span>
-                      </div>
-                      <span className="text-xs font-heading font-bold uppercase tracking-wide text-[#F4EDE2] leading-snug">
+                      <Icon className="w-5 h-5 text-[#DF7E5B] stroke-[1.75]" />
+                      <span className="text-xs sm:text-sm font-heading font-bold uppercase tracking-wide text-[#F4EDE2] leading-snug">
                         {eje.label}
                       </span>
                     </div>
@@ -292,150 +270,119 @@ export function Novedades({ onBackHome }: NovedadesProps) {
             </div>
           </ScrollReveal>
 
-          {/* Grilla Principal de Información: Qué incluye + Valores y Reservas */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
-            {/* Columna Izquierda (7 cols): Qué incluye la inscripción y condiciones */}
+          {/* Grilla Principal de Información: Qué incluye (abierto sin bordes de tarjeta) + Valores y Reservas */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pt-2 border-t border-[#C49A64]/25">
+            {/* Columna Izquierda (7 cols): Qué incluye la inscripción y condiciones (estilo editorial limpio sin recuadros) */}
             <ScrollReveal
               direction="up"
               delay={80}
               distance={22}
-              className="lg:col-span-7 flex flex-col justify-between"
+              className="lg:col-span-7 space-y-6"
             >
-              <SpotlightCard
-                spotlightColor="rgba(200, 100, 66, 0.14)"
-                borderColor="rgba(200, 100, 66, 0.65)"
-                className="p-5 sm:p-8 bg-[#261E1A] border border-[#C49A64]/45 rounded-sm card-specular-edge h-full flex flex-col justify-between space-y-6 relative overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#B85332] via-[#C49A64] to-transparent" />
+              <div className="border-b border-[#C49A64]/30 pb-3">
+                <h3 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-wide text-[#F4EDE2]">
+                  {isEn
+                    ? "Registration Includes:"
+                    : "La inscripción incluye:"}
+                </h3>
+              </div>
 
-                <div className="space-y-5">
-                  <div className="border-b border-[#C49A64]/30 pb-3.5">
-                    <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#DF7E5B] font-bold block">
-                      {isEn ? "REGISTRATION DETAILS" : "DETALLE DEL SEMINARIO"}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-wide text-[#F4EDE2] mt-1">
-                      {isEn
-                        ? "La inscripción incluye:"
-                        : "La inscripción incluye:"}
-                    </h3>
-                  </div>
+              {/* Lista de 3 ítems incluidos SIN RECUADROS (separados únicamente por líneas divisorias sutiles) */}
+              <ul className="divide-y divide-[#C49A64]/20">
+                {incluyeItems.map((item) => {
+                  const Icon = item.icono;
+                  return (
+                    <li
+                      key={item.texto}
+                      className="py-4 first:pt-0 flex items-start gap-3.5"
+                    >
+                      <Icon className="w-5 h-5 text-[#DF7E5B] shrink-0 mt-0.5 stroke-[1.75]" />
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-[#DF7E5B] shrink-0" />
+                          <span className="text-sm sm:text-base font-bold text-[#F4EDE2]">
+                            {item.texto}
+                          </span>
+                        </div>
+                        <p className="text-xs sm:text-sm text-[#C4B5A3] mt-1 leading-relaxed">
+                          {item.detalle}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
 
-                  {/* Lista de 3 ítems incluidos */}
-                  <ul className="space-y-3.5">
-                    {incluyeItems.map((item) => {
-                      const Icon = item.icono;
-                      return (
-                        <li
-                          key={item.texto}
-                          className="p-3.5 sm:p-4 rounded-sm bg-[#1F1916] border border-[#C49A64]/35 flex items-start gap-3.5"
-                        >
-                          <div className="w-9 h-9 rounded-xs bg-[#261E1A] text-[#DF7E5B] border border-[#C86442]/60 flex items-center justify-center shrink-0 mt-0.5">
-                            <Icon className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-[#DF7E5B] shrink-0" />
-                              <span className="text-sm sm:text-base font-bold text-[#F4EDE2]">
-                                {item.texto}
-                              </span>
-                            </div>
-                            <p className="text-xs sm:text-sm text-[#C4B5A3] mt-1 leading-relaxed">
-                              {item.detalle}
-                            </p>
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
+              {/* Condiciones importantes en formato editorial abierto sin recuadros */}
+              <div className="pt-4 border-t border-[#C49A64]/25 divide-y divide-[#C49A64]/15">
+                <div className="py-3 first:pt-0 flex items-center gap-3">
+                  <AlertCircle className="w-4 h-4 text-[#DF7E5B] shrink-0" />
+                  <p className="text-xs sm:text-sm font-medium text-[#F4EDE2]">
+                    {isEn
+                      ? "Does not include lodging or transportation."
+                      : "No incluye hospedaje ni transporte."}
+                  </p>
                 </div>
 
-                {/* Avisos importantes: No incluye hospedaje ni transporte + Cupos y Fecha */}
-                <div className="space-y-3 pt-4 border-t border-[#C49A64]/30">
-                  <div className="p-3.5 rounded-sm bg-[#1F1916] border-l-4 border-[#C86442] flex items-center gap-3">
-                    <AlertCircle className="w-5 h-5 text-[#DF7E5B] shrink-0" />
-                    <p className="text-xs sm:text-sm font-bold text-[#F4EDE2]">
-                      {isEn
-                        ? "Does not include lodging or transportation."
-                        : "No incluye hospedaje ni transporte."}
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-sm bg-[#1F1916] border-l-4 border-[#C49A64] flex items-center gap-3">
-                    <Clock className="w-5 h-5 text-[#C49A64] shrink-0" />
-                    <p className="text-xs sm:text-sm font-bold text-[#F4EDE2]">
-                      {isEn
-                        ? "Limited spots. Specific date of the 1-day seminar to be confirmed."
-                        : "Cupos limitados. Fecha específica de la jornada a confirmar."}
-                    </p>
-                  </div>
+                <div className="py-3 last:pb-0 flex items-center gap-3">
+                  <Clock className="w-4 h-4 text-[#C49A64] shrink-0" />
+                  <p className="text-xs sm:text-sm font-medium text-[#F4EDE2]">
+                    {isEn
+                      ? "Limited spots with prior reservation."
+                      : "Cupos limitados con reserva previa."}
+                  </p>
                 </div>
-              </SpotlightCard>
+              </div>
             </ScrollReveal>
 
-            {/* Columna Derecha (5 cols): Valores Promocionales, Firma y Reserva por WhatsApp */}
+            {/* Columna Derecha (5 cols): Valores y Reserva de Cupo (Unificada con el valor vigente actualizado) */}
             <ScrollReveal
               direction="up"
               delay={140}
               distance={22}
               className="lg:col-span-5 relative"
             >
-              <div
-                aria-hidden="true"
-                className="absolute -inset-3 bg-gradient-to-b from-[#8C725E]/28 via-[#B85332]/20 to-[#8C725E]/28 rounded-md blur-xl pointer-events-none"
-              />
-              <div className="relative h-full p-5 sm:p-8 bg-[#231C18] text-[#F4EDE2] border-2 border-[#C49A64]/65 rounded-sm earth-block-transition-glow card-specular-edge flex flex-col justify-between space-y-6">
+              <div className="relative p-5 sm:p-8 bg-[#231C18] text-[#F4EDE2] border border-[#C49A64]/55 rounded-sm flex flex-col justify-between space-y-6">
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#B85332] via-[#C49A64] to-[#B85332]" />
 
                 <div className="space-y-5">
                   <div className="border-b border-[#C4B5A3]/25 pb-3.5">
-                    <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#DF7E5B] font-bold block">
-                      {isEn ? "INVESTMENT & VALUES" : "ARANCELES E INSCRIPCIÓN"}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-wide text-[#F4EDE2] mt-1">
+                    <h3 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-wide text-[#F4EDE2]">
                       {isEn
                         ? "Values & Direct Booking"
                         : "Valores y Reserva de Cupo"}
                     </h3>
                   </div>
 
-                  {/* Tarjeta Valor Promocional */}
-                  <div className="p-4 sm:p-5 rounded-sm bg-[#2E241F] border-2 border-[#C86442] shadow-lg space-y-1.5">
+                  {/* Tarjeta Unificada de Valor de Inscripción Vigente (Noviembre 2026) */}
+                  <div className="p-4 sm:p-5 rounded-sm bg-[#2E241F] border border-[#C86442] space-y-1.5">
                     <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider">
                       <span className="text-[#DF7E5B] font-bold">
-                        {isEn ? "PROMOTIONAL VALUE" : "VALOR PROMOCIONAL"}
+                        {isEn ? "CURRENT REGISTRATION VALUE" : "VALOR DE INSCRIPCIÓN VIGENTE"}
                       </span>
                       <span className="text-[#E6C391] font-semibold">
-                        {isEn ? "Until October 31" : "Hasta el 31 de octubre"}
+                        {isEn ? "November 2026" : "Noviembre 2026"}
                       </span>
                     </div>
                     <div className="text-3xl sm:text-4xl font-mono font-extrabold text-[#F4EDE2] tabular-nums tracking-tight">
-                      $90.000
-                    </div>
-                    <p className="text-xs text-[#E5DAC9] font-medium">
-                      Valor promocional: $90.000 hasta el 31 de octubre.
-                    </p>
-                  </div>
-
-                  {/* Tarjeta Valor desde el 1 de noviembre */}
-                  <div className="p-4 rounded-sm bg-[#1A1412] border border-[#C49A64]/50 space-y-1">
-                    <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider">
-                      <span className="text-[#E6C391] font-bold">
-                        {isEn ? "FROM NOVEMBER 1" : "DESDE EL 1 DE NOVIEMBRE"}
-                      </span>
-                      <span className="text-[#C4B5A3]">
-                        {isEn ? "No exceptions" : "Sin excepciones"}
-                      </span>
-                    </div>
-                    <div className="text-2xl sm:text-3xl font-mono font-bold text-[#F4EDE2] tabular-nums tracking-tight">
                       $120.000
                     </div>
-                    <p className="text-xs text-[#C4B5A3]">
-                      Desde el 1 de noviembre: $120.000 sin excepciones.
-                    </p>
                   </div>
 
-                  {/* Firma Institucional */}
-                  <div className="p-4 rounded-sm bg-[#1A1412]/90 border border-[#C4B5A3]/25 space-y-1">
+                  {/* Referencia discreta de preventa finalizada (solo etiqueta y monto, sin párrafos repetitivos) */}
+                  <div className="px-4 py-3 rounded-sm bg-[#1A1412]/70 border border-[#C49A64]/25 flex items-center justify-between opacity-75">
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-[#C4B5A3]">
+                      <span>
+                        {isEn ? "EARLY BIRD (UNTIL OCT 31)" : "PREVENTA HASTA EL 31 DE OCTUBRE"}
+                      </span>
+                    </div>
+                    <div className="text-sm font-mono font-bold text-[#C4B5A3] line-through tabular-nums">
+                      $90.000
+                    </div>
+                  </div>
+
+                  {/* Firma Institucional sin recuadro cerrado */}
+                  <div className="pt-2 border-t border-[#C4B5A3]/20 space-y-0.5">
                     <span className="text-sm sm:text-base font-heading font-bold uppercase tracking-wider text-[#F4EDE2] block">
                       Prof. Diego Martín Ledesma
                     </span>
@@ -476,29 +423,27 @@ export function Novedades({ onBackHome }: NovedadesProps) {
         </div>
       </section>
 
-      {/* 3. PUENTE DE CIERRE DE BLANCO HUESO / ARENA A MARRÓN TIERRA SOMBRA */}
-      <section className="pt-16 pb-12 sm:pt-24 sm:pb-16 bg-flow-light-to-brown text-center">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <div className="py-6 px-5 sm:py-8 sm:px-8 rounded-sm bg-[#1F1916]/92 border border-[#C49A64]/45 shadow-xl space-y-4">
-            <p className="text-sm sm:text-base font-serif italic text-[#F4EDE2]">
-              “Una experiencia de respiración, movimiento natural, relajación,
-              trabajo corporal y principios de combatividad, en contacto con la
-              naturaleza.”
-            </p>
-            <div className="pt-1">
-              <button
-                type="button"
-                onClick={onBackHome}
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-[#F4EDE2] bg-[#261E1A] hover:bg-[#B85332] border border-[#C49A64]/55 rounded-sm transition-colors cursor-pointer min-h-[44px]"
-              >
-                <ArrowLeft className="w-3.5 h-3.5 text-[#DF7E5B]" />
-                <span>
-                  {isEn
-                    ? "Return to Systema HETS Home"
-                    : "Volver al Inicio de Systema HETS"}
-                </span>
-              </button>
-            </div>
+      {/* 3. PUENTE DE CIERRE */}
+      <section className="pt-12 pb-12 sm:pt-18 sm:pb-16 bg-flow-light-to-brown text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 space-y-4">
+          <p className="text-sm sm:text-base font-sans text-[#F4EDE2] leading-relaxed">
+            Una experiencia de respiración, movimiento natural, relajación,
+            trabajo corporal y principios de combatividad, en contacto con la
+            naturaleza.
+          </p>
+          <div className="pt-1">
+            <button
+              type="button"
+              onClick={handleReturnHome}
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-[#F4EDE2] bg-[#261E1A] hover:bg-[#B85332] border border-[#C49A64]/55 rounded-sm transition-colors cursor-pointer min-h-[44px]"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-[#DF7E5B]" />
+              <span>
+                {isEn
+                  ? "Return to Systema HETS Home"
+                  : "Volver a la página inicial"}
+              </span>
+            </button>
           </div>
         </div>
       </section>

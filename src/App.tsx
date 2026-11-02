@@ -36,7 +36,7 @@ function MainApp() {
     const handleHashChange = () => {
       if (window.location.hash.includes("novedades")) {
         setCurrentView("novedades");
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: "instant" });
       }
     };
     window.addEventListener("hashchange", handleHashChange);
@@ -44,6 +44,7 @@ function MainApp() {
   }, []);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
     if (currentView === "novedades") {
       document.title =
         "Systema HETS Camp 2026 – Seminario Intensivo | Systema HETS Argentina";
@@ -56,23 +57,23 @@ function MainApp() {
   const handleOpenNovedades = () => {
     setCurrentView("novedades");
     window.history.replaceState(null, "", "#novedades");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const handleNavigateHomeSection = (href: string) => {
     if (currentView !== "home") {
       setCurrentView("home");
       window.history.replaceState(null, "", href === "#inicio" ? "#" : href);
-      setTimeout(() => {
-        if (href === "#inicio") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        } else {
+      if (href === "#inicio") {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      } else {
+        setTimeout(() => {
           const target = document.querySelector(href);
           if (target) {
             target.scrollIntoView({ behavior: "smooth" });
           }
-        }
-      }, 60);
+        }, 60);
+      }
     } else {
       window.history.replaceState(null, "", href === "#inicio" ? "#" : href);
       if (href === "#inicio") {
@@ -147,8 +148,8 @@ function MainApp() {
           {/* 6. Entrenamientos (Video en bucle sin sonido + Galería) */}
           <Entrenamientos />
 
-          {/* 7. Sedes y Clases: Grilla Semanal Única y Compacta */}
-          <Clases />
+          {/* 7. Sedes y Clases: Grilla Semanal Única y Compacta + Banner Camp 2026 */}
+          <Clases onOpenNovedades={handleOpenNovedades} />
 
           {/* 8. Lo que dicen los alumnos (Con retratos reales) */}
           <Testimonios />
