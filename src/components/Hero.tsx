@@ -42,7 +42,10 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
       />
 
       {/* Contenedor central */}
-      <div className="relative z-10 w-full max-w-sm sm:max-w-xl lg:max-w-4xl xl:max-w-5xl mx-auto flex flex-col items-center text-center my-auto space-y-3 sm:space-y-4 lg:space-y-5">
+      <div
+        className="relative z-10 w-full max-w-md sm:max-w-xl lg:max-w-4xl xl:max-w-5xl mx-auto flex flex-col items-center text-center my-auto space-y-3 sm:space-y-4 lg:space-y-5"
+        style={{ textWrap: "balance" }}
+      >
         
         {/* LOGO PROTAGONISTA */}
         <div className="relative flex flex-col items-center justify-center w-full my-0.5 sm:my-1">
@@ -69,20 +72,23 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
         </div>
 
         {/* TÍTULO PRINCIPAL (H1): CONÓCETE Y PROGRESA + LEMA EN RUSO Y FONÉTICA */}
-        <div className="space-y-1.5 sm:space-y-2 pt-1">
+        <div className="w-full space-y-1.5 sm:space-y-2 pt-1" style={{ textWrap: "balance" }}>
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading leading-none"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading leading-none text-balance"
             style={{ textWrap: "balance" }}
           >
             {t("hero.titulo")}
           </h1>
 
-          {/* Lema en Ruso y fonética justo debajo del H1 */}
-          <p className="text-xs sm:text-sm md:text-base text-[#C49A64] tracking-wide font-serif">
-            <span className="font-semibold text-[#DF7E5B] tracking-wider">
+          {/* Lema en Ruso y fonética en dos líneas limpias y centradas debajo del H1 */}
+          <p
+            className="flex flex-col items-center justify-center gap-0.5 sm:gap-1 text-[#C49A64] text-center text-balance"
+            style={{ textWrap: "balance" }}
+          >
+            <span className="block font-serif font-semibold text-[#DF7E5B] text-[11px] xs:text-xs sm:text-sm md:text-base tracking-wide sm:tracking-wider whitespace-nowrap">
               {t("hero.lemaRuso")}
-            </span>{" "}
-            <span className="italic font-sans font-normal text-[#C4B5A3]/90">
+            </span>
+            <span className="block italic font-sans font-normal text-[#C4B5A3]/90 text-[11px] xs:text-xs sm:text-sm md:text-base tracking-normal sm:tracking-wide whitespace-nowrap">
               {t("hero.lemaFonetica")}
             </span>
           </p>
@@ -90,10 +96,19 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
 
         {/* SUBTÍTULO (Pilares de marca): Arte Marcial Ruso · Desarrollo Humano · Autoprotección */}
         <p
-          className="text-sm sm:text-base lg:text-lg text-[#E5DAC9] font-medium tracking-wide leading-relaxed max-w-[340px] sm:max-w-2xl mx-auto px-1"
+          className="w-full text-[11.5px] xs:text-xs sm:text-base lg:text-lg text-[#E5DAC9] font-medium tracking-normal sm:tracking-wide leading-relaxed max-w-md sm:max-w-2xl mx-auto px-1 text-center text-balance"
           style={{ textWrap: "balance" }}
         >
-          {t("hero.bajada")}
+          {t("hero.bajada")
+            .split(" · ")
+            .map((concept, index, array) => (
+              <span key={concept}>
+                <span className="whitespace-nowrap">{concept}</span>
+                {index < array.length - 1 && (
+                  <span aria-hidden="true">{" · "}</span>
+                )}
+              </span>
+            ))}
         </p>
 
         {/* BOTONES DE ACCIÓN: Principal = Reservar clase de prueba | Secundario = Ver horarios y sede */}
@@ -107,7 +122,12 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
               className="btn-shimmer-lightning w-full sm:flex-1 min-h-[50px] sm:min-h-[52px] px-4 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#B85332]/35 active:scale-[0.98] transform hover:-translate-y-0.5 cursor-pointer group"
             >
               <MessageSquare className="w-4 h-4 fill-current shrink-0" />
-              <span className="font-extrabold leading-tight text-center">{t("hero.btnTrial")}</span>
+              <span
+                className="font-extrabold leading-tight text-center text-balance"
+                style={{ textWrap: "balance" }}
+              >
+                {t("hero.btnTrial")}
+              </span>
             </a>
 
             {/* CTA Secundario: Ver horarios y sede */}
@@ -116,15 +136,25 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
               onClick={handleScrollToClasses}
               className="w-full sm:flex-1 min-h-[48px] sm:min-h-[52px] px-4 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#F4EDE2] hover:bg-[#2E241F] border border-[#C49A64]/65 hover:border-[#DF7E5B] rounded-sm transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer bg-[#261E1A]/90 backdrop-blur-sm group"
             >
-              <span className="leading-tight text-center">{t("hero.btnClases")}</span>
+              <span
+                className="leading-tight text-center text-balance"
+                style={{ textWrap: "balance" }}
+              >
+                {t("hero.btnClases")}
+              </span>
               <ArrowDown className="w-4 h-4 text-[#C49A64] group-hover:text-[#DF7E5B] shrink-0 transition-transform group-hover:translate-y-0.5" />
             </button>
           </div>
 
           {/* Línea discreta con ícono de ubicación debajo de los botones */}
-          <div className="flex items-center justify-center gap-1.5 text-xs font-sans text-[#C4B5A3]/90">
+          <div
+            className="flex items-center justify-center gap-1.5 text-xs font-sans text-[#C4B5A3]/90 text-center text-balance"
+            style={{ textWrap: "balance" }}
+          >
             <MapPin className="w-3.5 h-3.5 text-[#C49A64] shrink-0" />
-            <span>{t("hero.location")}</span>
+            <span className="whitespace-nowrap" style={{ textWrap: "balance" }}>
+              {t("hero.location")}
+            </span>
           </div>
         </div>
 

@@ -245,8 +245,8 @@ export function Entrenamientos() {
               </h3>
               <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
                 {lang === "en"
-                  ? "In class we work on breathing, balance, and natural movement so you learn to get out of grabs, absorb impacts safely, and respond calmly. Watch full classes and seminar clips on our YouTube channel."
-                  : "En cada clase trabajamos la respiración, el apoyo del cuerpo y el movimiento continuo para aprender a salir de agarres, caer sin lastimarte y responder con tranquilidad. Podés ver clases completas y seminarios en nuestro canal de YouTube."}
+                  ? "In class we work on breathing, balance, and conscious movement applied to real situations so you learn to get out of grabs, manage impacts and reduce the risk of injury, and respond calmly. Watch full classes and seminar clips on our YouTube channel."
+                  : "En cada clase trabajamos la respiración, el apoyo del cuerpo y el movimiento consciente aplicado a situaciones reales para aprender a salir de agarres, gestionar impactos y reducir el riesgo de lesiones, y responder con tranquilidad. Podés ver clases completas y seminarios en nuestro canal de YouTube."}
               </p>
             </div>
 

@@ -27,7 +27,7 @@ export function Testimonios() {
             rol: "Dentist · Training for 3 years",
             tiempo: "3 years ago",
             avatar: avatarImg,
-            cita: "I started three years ago looking to unwind after long hours at my clinic and found an incredible place. Nobody here is trying to show off or compete; you train seriously, learn practical self-defense, and leave every class feeling much looser. Diego has huge patience and clarity when teaching.",
+            cita: "I started three years ago looking to unwind after long hours at my clinic and found an incredible place. Nobody here is trying to show off or compete; you train seriously, learn genuine self-protection, and leave every class feeling much looser. Diego has huge patience and clarity when teaching.",
           };
         case "testimonio-2":
           return {
@@ -45,7 +45,7 @@ export function Testimonios() {
             rol: "Systems Analyst · Training for 2 years",
             tiempo: "2 years ago",
             avatar: avatarImg,
-            cita: "I practiced other martial arts for several years and always ended up with a stiff back or sore knees. What surprised me most about Systema HETS is how you learn to fall to the ground safely, get out of grabs without muscling through, and use your breathing when things speed up. Very practical both on and off the mat.",
+            cita: "I practiced other martial arts for several years and always ended up with a stiff back or sore knees. What surprised me most about Systema HETS is how you learn to manage impacts and reduce the risk of injury when going to the ground, escape grabs through the intelligent use of energy, and use your breathing under pressure. Very practical both in training and in everyday life.",
           };
         default:
           return { ...item, avatar: avatarImg };

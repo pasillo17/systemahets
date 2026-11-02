@@ -22,12 +22,12 @@ export function PreguntasFrecuentes() {
         {
           pregunta: "Do I need prior fitness conditioning or martial arts experience?",
           respuesta:
-            "Not at all. Training adapts to your current condition from day one. Because we work with breathing and natural movement rather than brute strength, anyone can join safely at their own pace.",
+            "Not at all. Training adapts to your current condition from day one. Because we work with breathing, perception, bodily intelligence, and the intelligent use of energy, anyone can join safely at their own pace.",
         },
         {
           pregunta: "What ages can train?",
           respuesta:
-            "Classes are open to youths and adults with no upper age limit. Since there are no aggressive collisions or acrobatic demands, people in their 20s, 40s, and 60s train together in a supportive environment.",
+            "Classes are open to youths and adults with no upper age limit. At our location, people in their 20s, 40s, and 60s train together in a supportive, respectful environment.",
         },
         {
           pregunta: "How do I book a trial class?",
@@ -44,12 +44,12 @@ export function PreguntasFrecuentes() {
         {
           pregunta: "¿Hace falta tener estado físico previo o experiencia en artes marciales?",
           respuesta:
-            "Para nada. Cada uno entrena a su propio ritmo desde el primer día. Como no dependemos de la fuerza bruta ni de acrobacias, podés sumarte tranquilamente aunque hace mucho no hagas actividad física.",
+            "Para nada. Cada uno entrena a su propio ritmo desde el primer día. Como trabajamos a partir de la percepción, la inteligencia corporal y el aprovechamiento inteligente de la energía, podés sumarte tranquilamente aunque hace mucho no hagas actividad física.",
         },
         {
           pregunta: "¿Hay límite de edad para empezar a entrenar?",
           respuesta:
-            "Las clases están abiertas a jóvenes y adultos sin límite de edad. En el dojo entrenan personas de 20, 40 o más de 60 años cuidándose mutuamente en cada ejercicio.",
+            "Las clases están abiertas a jóvenes y adultos sin límite de edad. En nuestra sede entrenan personas de 20, 40 o más de 60 años cuidándose mutuamente en cada ejercicio.",
         },
         {
           pregunta: "¿Cómo coordino una clase de prueba y cuáles son los valores?",

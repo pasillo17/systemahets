@@ -1,6 +1,6 @@
 {
-  "summary":  "Plan de ajustes móviles y limpieza de redundancias: botón flotante de WhatsApp de 44x44px en mobile con ocultamiento automático al abrir modales y padding-bottom de 80px en el footer; layout en una sola columna en móvil para Diego Ledesma con párrafo biográfico unificado sin botón/modal repetitivo; sincronización instantánea del carrusel en Entrenamientos sin lightbox en móvil; y eliminación de los 3 ítems repetidos en El Systema.",
-  "updatedAt":  "2026-11-02T15:16:10.538603391Z",
-  "requestFeedback":  true,
-  "userFacing":  true
+  "summary": "Plan de ajustes tipográficos, control de saltos de línea (white-space: nowrap) y balance visual (text-wrap: balance) en la sección Hero para dispositivos móviles y de escritorio.",
+  "updatedAt": "2026-11-02T17:22:46.318603655Z",
+  "requestFeedback": true,
+  "userFacing": true
 }

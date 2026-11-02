@@ -62,7 +62,7 @@ export function ElSistema() {
             <div className="relative rounded-sm overflow-hidden border border-[#C49A64]/45 bg-[#261E1A] group">
               <ImageWithFallback
                 src={SITE_CONFIG.assets.heroImage}
-                alt="Práctica de Systema en el dojo de La Plata"
+                alt="Práctica de Systema en nuestra sede de La Plata"
                 aspectRatioClass="aspect-[16/10] sm:aspect-[16/11]"
                 className="w-full h-full object-cover filter brightness-95 contrast-105 transition-transform duration-700 group-hover:scale-105"
                 fallbackTitle={t("systema.cardImgTitle")}
