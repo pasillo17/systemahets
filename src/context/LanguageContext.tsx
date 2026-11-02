@@ -131,10 +131,18 @@ const translations: Record<Language, Record<string, string>> = {
     "clases.fieldHours": "Horarios",
     "clases.fieldLevel": "Requisitos",
 
-    // Testimonios
+    // Testimonios (Reseñas reales de Google Maps)
     "test.title": "Lo que cuentan nuestros alumnos",
-    "test.subtitle": "Experiencias reales de quienes entrenan todas las semanas en nuestra sede de La Plata.",
-    "test.studentBadge": "Alumno en La Plata",
+    "test.subtitle": "Reseñas verificadas en tiempo real desde nuestro perfil oficial de Google Maps en La Plata.",
+    "test.studentBadge": "Reseña en Google",
+    "test.googleVerified": "Perfil verificado en Google Maps",
+    "test.reviewsCount": "opiniones en Google",
+    "test.viewAllGoogle": "Ver todas las opiniones en Google",
+    "test.readMore": "Leer más",
+    "test.readLess": "Leer menos",
+    "test.loading": "Cargando reseñas verificadas de Google Maps...",
+    "test.viewAuthorProfile": "Ver perfil en Google Maps",
+    "test.noTextReview": "Calificación de 5 estrellas en Google Maps.",
 
     // Contacto y Conversión (al final)
     "contact.title": "¿Querés venir a probar una clase?",
@@ -281,10 +289,18 @@ const translations: Record<Language, Record<string, string>> = {
     "clases.fieldHours": "Hours",
     "clases.fieldLevel": "Prerequisites",
 
-    // Testimonios
+    // Testimonios (Real Google Maps Reviews)
     "test.title": "What our students say",
-    "test.subtitle": "Real experiences from students who train every week at our La Plata location.",
-    "test.studentBadge": "La Plata Student",
+    "test.subtitle": "Verified real-time reviews from our official Google Maps profile in La Plata.",
+    "test.studentBadge": "Google Review",
+    "test.googleVerified": "Verified on Google Maps",
+    "test.reviewsCount": "Google reviews",
+    "test.viewAllGoogle": "See all reviews on Google",
+    "test.readMore": "Read more",
+    "test.readLess": "Show less",
+    "test.loading": "Loading verified Google Maps reviews...",
+    "test.viewAuthorProfile": "View profile on Google Maps",
+    "test.noTextReview": "5-star rating on Google Maps.",
 
     // Contacto y Conversión
     "contact.title": "Want to try a class?",

@@ -129,8 +129,10 @@ export const SITE_CONFIG = {
     diasResumenEn: "Monday to Friday (morning, midday and evening)",
     nivel: "Todos los niveles — No se requiere experiencia previa",
     cupos: "Grupos reducidos orientados a la autoprotección y la autonomía",
-    // Link directo a Google Maps provisto por el usuario
+    // Link directo a Google Maps y link corto de perfil de Google provistos por el usuario
     mapsUrl: "https://maps.app.goo.gl/sKyYkVaPniX4X4WcA",
+    googleShareUrl: "https://share.google/RdbxdgpRzLBhTj0Nu",
+    placeSearchQuery: "Systema Hets Diego Ledesma, Calle 22 1027, La Plata",
     coordenadas: {
       lat: -34.9306726,
       lng: -57.9629337,
@@ -292,37 +294,15 @@ export const SITE_CONFIG = {
     ],
   },
 
-  // Reseñas reales de alumnos en La Plata (estilo Google Maps con distintas longitudes y tono cotidiano)
-  testimonios: [
-    {
-      id: "testimonio-1",
-      nombre: "Martín Soria",
-      rol: "Odontólogo · Entrena hace 3 años",
-      tiempo: "Hace 3 años",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&q=80",
-      avatarHombre: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
-      cita: "Arranqué hace tres años buscando algo para bajar un cambio después del consultorio y terminé encontrando un lugar increíble. Acá nadie compite ni se hace el guapo; entrenás en serio, aprendés a protegerte de verdad y salís de cada clase con el cuerpo mucho más suelto. Diego tiene una paciencia y una claridad enorme para enseñar.",
-      esPlaceholder: false,
-    },
-    {
-      id: "testimonio-2",
-      nombre: "Mariana Valenzuela",
-      rol: "Docente · Entrena hace 1 año",
-      tiempo: "Hace 1 año",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80",
-      cita: "Fui a probar con un poco de miedo porque nunca había hecho artes marciales y pensé que iba a ser un ambiente pesado. Todo lo contrario: el grupo en La Plata es súper cálido, cada uno entrena a su ritmo y te cuidan un montón. Lo súper recomiendo.",
-      esPlaceholder: false,
-    },
-    {
-      id: "testimonio-3",
-      nombre: "Gastón Rossi",
-      rol: "Analista de sistemas · Entrena hace 2 años",
-      tiempo: "Hace 2 años",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80",
-      cita: "Hice otras artes marciales varios años y siempre terminaba contracturado o dolorido de las rodillas. Lo que más me sorprendió de Systema HETS es cómo aprendés a gestionar impactos y reducir el riesgo de lesiones al ir al piso, a salir de agarres mediante el aprovechamiento inteligente de la energía y a usar la respiración cuando te apuran. Es un entrenamiento muy práctico que te sirve tanto en el entrenamiento como en la vida diaria.",
-      esPlaceholder: false,
-    },
-  ],
+  // Las reseñas se obtienen en vivo desde Google Places API (New) para "Systema Hets Diego Ledesma"
+  testimonios: [] as Array<{
+    id: string;
+    nombre: string;
+    rol: string;
+    tiempo: string;
+    avatar?: string;
+    cita: string;
+  }>,
 
   // Video en bucle silencioso para mostrar el movimiento en acción en la sección Entrenamientos
   videoEntrenamiento: {

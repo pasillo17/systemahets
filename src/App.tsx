@@ -5,7 +5,8 @@
 
 import { useState, useEffect } from "react";
 import { HashRouter } from "react-router-dom";
-import { LanguageProvider } from "./context/LanguageContext";
+import { APIProvider } from "@vis.gl/react-google-maps";
+import { LanguageProvider, useLanguage } from "./context/LanguageContext";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { FranjaLinaje } from "./components/FranjaLinaje";
@@ -24,6 +25,8 @@ import { Footer } from "./components/Footer";
 import { AmbientParticles } from "./components/AmbientParticles";
 import { PagePreloader } from "./components/PagePreloader";
 
+const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
+
 function SectionDivider() {
   return (
     <div
@@ -36,12 +39,20 @@ function SectionDivider() {
 }
 
 function MainApp() {
+  const { lang } = useLanguage();
+  const [quotaExceeded, setQuotaExceeded] = useState(false);
   const [currentView, setCurrentView] = useState<"home" | "novedades">(() => {
     if (typeof window !== "undefined" && window.location.hash.includes("novedades")) {
       return "novedades";
     }
     return "home";
   });
+
+  useEffect(() => {
+    const handleQuotaExceeded = () => setQuotaExceeded(true);
+    window.addEventListener("gmp-quota-exceeded", handleQuotaExceeded);
+    return () => window.removeEventListener("gmp-quota-exceeded", handleQuotaExceeded);
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -120,89 +131,113 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#110D0A] text-[#F5EFE6] flex flex-col font-sans selection:bg-[#D97736] selection:text-[#110D0A] overflow-x-hidden relative">
-      {/* Velo de entrada suave / Preloader de respiración consciente en Tierra, Naranja y Dorado */}
-      <PagePreloader />
+    <APIProvider
+      apiKey={GOOGLE_MAPS_API_KEY}
+      language={lang}
+      region="AR"
+      internalUsageAttributionIds={["gmp_mcp_codeassist_v1_aistudio"]}
+    >
+      <div className="min-h-screen bg-[#110D0A] text-[#F5EFE6] flex flex-col font-sans selection:bg-[#D97736] selection:text-[#110D0A] overflow-x-hidden relative">
+        {quotaExceeded && (
+          <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2.5 text-xs md:text-sm text-center sticky top-0 z-50 shadow-sm">
+            <span>
+              Google Maps Platform quota reached. If you are the app owner, visit{" "}
+              <a
+                href="https://developers.google.com/maps/ai/ai-studio?utm_campaign=gmp_mcp_codeassist_v1_aistudio#quota_exceeded_errors"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold text-amber-950 hover:text-amber-800"
+              >
+                maps developer site
+              </a>{" "}
+              for instructions to update your account.
+            </span>
+          </div>
+        )}
 
-      {/* Capa de partículas sutiles en Naranja Terracota (#D97736) y Dorado (#C5A059) */}
-      <AmbientParticles />
+        {/* Velo de entrada suave / Preloader de respiración consciente en Tierra, Naranja y Dorado */}
+        <PagePreloader />
 
-      {/* Header fijo y compacto en Tierra Profunda (#110D0A), Naranja Terracota (#D97736) y Dorado (#C5A059) */}
-      <Navbar
-        currentView={currentView}
-        onOpenNovedades={handleOpenNovedades}
-        onNavigateHomeSection={handleNavigateHomeSection}
-      />
+        {/* Capa de partículas sutiles en Naranja Terracota (#D97736) y Dorado (#C5A059) */}
+        <AmbientParticles />
 
-      {currentView === "novedades" ? (
-        <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
-          <Novedades onBackHome={() => handleNavigateHomeSection("#inicio")} />
-        </main>
-      ) : (
-        /* Flujo Narrativo de la Página Inicial con alternancia #121316 / #1C1E24 y divisores dorados luminosos */
-        <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
-          {/* 1. Hero (Fondo #121316) */}
-          <Hero onExploreSystem={scrollToSystem} onExploreClasses={scrollToClasses} />
+        {/* Header fijo y compacto en Tierra Profunda (#110D0A), Naranja Terracota (#D97736) y Dorado (#C5A059) */}
+        <Navbar
+          currentView={currentView}
+          onOpenNovedades={handleOpenNovedades}
+          onNavigateHomeSection={handleNavigateHomeSection}
+        />
 
-          <SectionDivider />
+        {currentView === "novedades" ? (
+          <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
+            <Novedades onBackHome={() => handleNavigateHomeSection("#inicio")} />
+          </main>
+        ) : (
+          /* Flujo Narrativo de la Página Inicial con alternancia #110D0A / #1B140F y divisores discretos */
+          <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
+            {/* 1. Hero (Fondo #110D0A) */}
+            <Hero onExploreSystem={scrollToSystem} onExploreClasses={scrollToClasses} />
 
-          {/* 2 & 3. Bloque Institucional: Linaje Oficial + 3 Pilares (Fondo #1C1E24) */}
-          <FranjaLinaje />
-          <FranjaPrincipios />
+            <SectionDivider />
 
-          <SectionDivider />
+            {/* 2 & 3. Bloque Institucional: Linaje Oficial + 3 Pilares (Fondo #1B140F) */}
+            <FranjaLinaje />
+            <FranjaPrincipios />
 
-          {/* 4. El Systema & ¿Por qué se llama Systema HETS? (Fondo #121316) */}
-          <ElSistema />
+            <SectionDivider />
 
-          <SectionDivider />
+            {/* 4. El Systema & ¿Por qué se llama Systema HETS? (Fondo #110D0A) */}
+            <ElSistema />
 
-          {/* 5. Diego Ledesma & Trayectoria Formativa (Fondo #1C1E24) */}
-          <DiegoLedesma />
+            <SectionDivider />
 
-          <SectionDivider />
+            {/* 5. Diego Ledesma & Trayectoria Formativa (Fondo #1B140F) */}
+            <DiegoLedesma />
 
-          {/* 6. Entrenamientos en acción (Fondo #121316) */}
-          <Entrenamientos />
+            <SectionDivider />
 
-          <SectionDivider />
+            {/* 6. Entrenamientos en acción (Fondo #110D0A) */}
+            <Entrenamientos />
 
-          {/* 7. Sedes y Clases: Grilla Semanal Única + Banner Camp 2026 (Fondo #1C1E24) */}
-          <Clases onOpenNovedades={handleOpenNovedades} />
+            <SectionDivider />
 
-          <SectionDivider />
+            {/* 7. Sedes y Clases: Grilla Semanal Única + Banner Camp 2026 (Fondo #1B140F) */}
+            <Clases onOpenNovedades={handleOpenNovedades} />
 
-          {/* 8. Lo que cuentan nuestros alumnos (Fondo #121316) */}
-          <Testimonios />
+            <SectionDivider />
 
-          <SectionDivider />
+            {/* 8. Reseñas reales de Google Maps (Fondo #110D0A) */}
+            <Testimonios />
 
-          {/* 9. Frase Destacada (Fondo #1C1E24) */}
-          <FraseDestacada />
+            <SectionDivider />
 
-          <SectionDivider />
+            {/* 9. Frase Destacada (Fondo #1B140F) */}
+            <FraseDestacada />
 
-          {/* 10. Acordeón de Preguntas Frecuentes (Fondo #121316) */}
-          <PreguntasFrecuentes />
+            <SectionDivider />
 
-          <SectionDivider />
+            {/* 10. Acordeón de Preguntas Frecuentes (Fondo #110D0A) */}
+            <PreguntasFrecuentes />
 
-          {/* 11. Contacto Directo y Reserva de Clase de Prueba (Fondo #1C1E24) */}
-          <ContactoConversion />
+            <SectionDivider />
 
-          <SectionDivider />
-        </main>
-      )}
+            {/* 11. Contacto Directo y Reserva de Clase de Prueba (Fondo #1B140F) */}
+            <ContactoConversion />
 
-      {/* 12. Footer institucional (Fondo #121316) */}
-      <Footer
-        onOpenNovedades={handleOpenNovedades}
-        onNavigateHomeSection={handleNavigateHomeSection}
-      />
+            <SectionDivider />
+          </main>
+        )}
 
-      {/* Botón Flotante Fijo de WhatsApp en esquina inferior derecha */}
-      <FloatingWhatsApp />
-    </div>
+        {/* 12. Footer institucional (Fondo #110D0A) */}
+        <Footer
+          onOpenNovedades={handleOpenNovedades}
+          onNavigateHomeSection={handleNavigateHomeSection}
+        />
+
+        {/* Botón Flotante Fijo de WhatsApp en esquina inferior derecha */}
+        <FloatingWhatsApp />
+      </div>
+    </APIProvider>
   );
 }
 
@@ -215,4 +250,5 @@ export default function App() {
     </HashRouter>
   );
 }
+
 
