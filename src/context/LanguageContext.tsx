@@ -92,8 +92,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Diego Ledesma
     "diego.name": "Diego Martín Ledesma",
-    "diego.quote": "Llevo 40 años practicando y enseñando artes marciales con una idea simple: que el entrenamiento te sirva para conocerte mejor, cuidar tu salud y desenvolverte con seguridad todos los días.",
-    "diego.p1": "Es Profesor en Educación Física por la Universidad Nacional de La Plata (UNLP) con posgrado en Educación Emocional, Maestro VIII Dan de Taekwon-Do ITF y Director de Systema HETS en La Plata. Formado como Instructor Internacional de Systema en Argentina, Rusia (con Mikhail Ryabko) y Canadá (con Vladimir Vasiliev), integra cuatro décadas de docencia universitaria y experiencia marcial articulando arte marcial, educación corporal y desarrollo humano a través del movimiento consciente aplicado a situaciones reales.",
+    "diego.quote": "Entiendo la práctica marcial como un camino de autoconocimiento y cuidado mutuo: no entrenamos para alimentar el ego ni para imponernos sobre otro, sino para habitar nuestro cuerpo con calma, claridad y libertad.",
+    "diego.p1": "Mi visión de la enseñanza parte de acompañar a cada persona a descubrir sus propias capacidades sin moldes rígidos ni exigencias artificiales. A través de la respiración, la percepción y el movimiento consciente aplicado a situaciones reales, buscamos que cada clase sea un espacio humano donde soltar tensiones, fortalecer la salud y construir una serenidad auténtica que se traslade a la vida cotidiana.",
     "diego.timelineHeader": "Trayectoria Formativa",
     "diego.timelineLoc": "La Plata · Buenos Aires",
 
@@ -240,8 +240,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Diego Ledesma
     "diego.name": "Diego Martín Ledesma",
-    "diego.quote": "I have spent 40 years practicing and teaching martial arts with one simple goal: that training helps you know yourself better, care for your health, and walk through daily life with confidence.",
-    "diego.p1": "Physical Education Professor graduated from the National University of La Plata (UNLP) with a postgraduate degree in Emotional Education, Master VIII Dan in ITF Taekwon-Do, and Director of Systema HETS in La Plata. Trained as an International Systema Instructor in Argentina, Russia (with Mikhail Ryabko), and Canada (with Vladimir Vasiliev), he combines four decades of university teaching and martial practice integrating martial art, bodily education, and human development through conscious movement applied to real situations.",
+    "diego.quote": "I understand martial practice as a path of self-knowledge and mutual care: we don't train to feed the ego or dominate others, but to inhabit our own body with calm, clarity, and freedom.",
+    "diego.p1": "My teaching philosophy focuses on guiding each person to discover their own capabilities without rigid molds or artificial demands. Through breathing, perception, and conscious movement applied to real situations, every class becomes a human, respectful space to release tension, nurture health, and cultivate genuine composure for everyday life.",
     "diego.timelineHeader": "Formative Journey",
     "diego.timelineLoc": "La Plata · Buenos Aires",
 

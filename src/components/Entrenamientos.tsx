@@ -86,22 +86,22 @@ export function Entrenamientos() {
   return (
     <section
       id="entrenamientos"
-      className="py-12 sm:py-18 lg:py-20 bg-flow-entrenamientos text-[#F4EDE2] relative overflow-hidden select-none"
+      className="py-12 sm:py-18 lg:py-20 bg-[#121316] text-[#F4F4F6] relative overflow-hidden select-none"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Cabecera Editorial Directa */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-7 sm:mb-10 border-b border-[#C49A64]/30 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading">
+          <div className="mb-7 sm:mb-10 border-b border-[#C5A059]/25 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading">
               {t("ent.title")}
             </h2>
-            <p className="text-xs sm:text-sm text-[#C4B5A3] font-sans leading-relaxed max-w-md sm:text-right">
+            <p className="text-xs sm:text-sm text-[#A0A5B1] font-sans leading-relaxed max-w-md sm:text-right">
               {t("ent.quote")}
             </p>
           </div>
         </ScrollReveal>
 
-        {/* 1. MÓVIL: CARRUSEL SINCRONIZADO (sin botón de ampliar / lightbox en móvil) */}
+        {/* 1. MÓVIL: CARRUSEL SINCRONIZADO CON SWIPE LIMPIO Y CONTROLES CENTRADOS VERTICALMENTE */}
         <div className="block md:hidden">
           <ScrollReveal direction="up" delay={50} distance={24}>
             <div
@@ -119,11 +119,11 @@ export function Entrenamientos() {
                     className={isCurrent ? "block" : "hidden"}
                     aria-hidden={!isCurrent}
                   >
-                    <div className="relative aspect-[4/3] w-full rounded-sm overflow-hidden border border-[#C49A64]/40 bg-[#1F1916]">
+                    <div className="relative aspect-[4/3] w-full rounded-sm overflow-hidden border border-[#C5A059]/25 bg-[#1C1E24]">
                       <img
                         src={slideItem.imagen}
                         alt={slideItem.titulo}
-                        className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
+                        className="w-full h-full object-cover filter brightness-[0.96] contrast-[1.04]"
                         loading="eager"
                         onError={(e) => {
                           if (slideItem.fallbackUrl) {
@@ -131,44 +131,45 @@ export function Entrenamientos() {
                           }
                         }}
                       />
+
+                      {/* Controles centrados exactamente a la mitad vertical de la foto (top-1/2 -translate-y-1/2) con fondo sutil traslúcido */}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          prevSlide();
+                        }}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#121316]/60 hover:bg-[#121316]/85 backdrop-blur-xs border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10"
+                        aria-label="Foto anterior"
+                      >
+                        <ChevronLeft className="w-4 h-4 text-[#F4F4F6]" />
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          nextSlide();
+                        }}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#121316]/60 hover:bg-[#121316]/85 backdrop-blur-xs border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10"
+                        aria-label="Foto siguiente"
+                      >
+                        <ChevronRight className="w-4 h-4 text-[#F4F4F6]" />
+                      </button>
                     </div>
 
                     {/* Pie de foto sincronizado en el mismo bloque que la imagen activa */}
                     <div className="pt-3.5 space-y-1">
-                      <h3 className="text-base font-heading font-bold uppercase tracking-wide text-[#F4EDE2]">
+                      <h3 className="text-base font-heading font-bold uppercase tracking-wide text-[#F4F4F6]">
                         {slideItem.titulo}
                       </h3>
-                      <p className="text-xs text-[#C4B5A3] leading-relaxed">
+                      <p className="text-xs text-[#A0A5B1] leading-relaxed">
                         {slideItem.descripcion}
                       </p>
                     </div>
                   </div>
                 );
               })}
-
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  prevSlide();
-                }}
-                className="absolute left-2 top-[34%] -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/90 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10"
-                aria-label="Foto anterior"
-              >
-                <ChevronLeft className="w-5 h-5 text-[#C86442]" />
-              </button>
-
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  nextSlide();
-                }}
-                className="absolute right-2 top-[34%] -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/90 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10"
-                aria-label="Foto siguiente"
-              >
-                <ChevronRight className="w-5 h-5 text-[#C86442]" />
-              </button>
             </div>
 
             <div className="flex items-center justify-center gap-2 mt-4">
@@ -179,8 +180,8 @@ export function Entrenamientos() {
                   onClick={() => setActiveSlide(idx)}
                   className={`h-2 transition-all duration-200 rounded-xs cursor-pointer ${
                     activeSlide === idx
-                      ? "w-6 bg-[#C86442]"
-                      : "w-2 bg-[#C4B5A3]/30 hover:bg-[#C49A64]"
+                      ? "w-6 bg-[#C5A059]"
+                      : "w-2 bg-[#A0A5B1]/30 hover:bg-[#C5A059]"
                   }`}
                   aria-label={`Ir a ${slideItem.titulo}`}
                 />
@@ -202,7 +203,7 @@ export function Entrenamientos() {
                 onClick={() => setActiveLightboxIndex(idx)}
                 className="group cursor-pointer space-y-3"
               >
-                <div className="relative aspect-[16/10] rounded-sm overflow-hidden border border-[#C49A64]/40 group-hover:border-[#C86442] bg-[#1F1916] transition-colors">
+                <div className="relative aspect-[16/10] rounded-sm overflow-hidden border border-[#C5A059]/25 group-hover:border-[#D4AF37] bg-[#1C1E24] transition-colors">
                   <img
                     src={item.imagen}
                     alt={item.titulo}
@@ -215,17 +216,17 @@ export function Entrenamientos() {
                     }}
                   />
 
-                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#1F1916]/85 text-[#C86442] border border-[#C49A64]/45 group-hover:border-[#DF7E5B] transition-colors">
-                    <Maximize2 className="w-3.5 h-3.5 text-[#C86442] group-hover:text-[#DF7E5B]" />
+                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#121316]/85 text-[#C5A059] border border-[#C5A059]/25 group-hover:border-[#D4AF37] transition-colors">
+                    <Maximize2 className="w-3.5 h-3.5 text-[#C5A059] group-hover:text-[#D4AF37]" />
                   </div>
                 </div>
 
                 {/* Pie editorial suelto sobre el fondo */}
                 <div className="space-y-1">
-                  <h3 className="text-base lg:text-lg font-heading font-bold uppercase tracking-wide text-[#F4EDE2] group-hover:text-[#DF7E5B] transition-colors">
+                  <h3 className="text-base lg:text-lg font-heading font-bold uppercase tracking-wide text-[#F4F4F6] group-hover:text-[#C5A059] transition-colors">
                     {item.titulo}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#A0A5B1] leading-relaxed">
                     {item.descripcion}
                   </p>
                 </div>
@@ -235,15 +236,15 @@ export function Entrenamientos() {
         </div>
 
         {/* 3. ACCESO AL CANAL DE YOUTUBE (debajo del carrusel/galería de fotos) */}
-        <ScrollReveal direction="up" delay={120} distance={20} className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[#C49A64]/20">
+        <ScrollReveal direction="up" delay={120} distance={20} className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[#C5A059]/25">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1 max-w-2xl">
-              <h3 className="text-base sm:text-lg font-heading font-bold uppercase tracking-wide text-[#F4EDE2]">
+              <h3 className="text-base sm:text-lg font-heading font-bold uppercase tracking-wide text-[#F4F4F6]">
                 {lang === "en"
                   ? "Fluid Movement, Self-Protection and Human Development"
                   : "Soltura corporal, autoprotección y desarrollo humano"}
               </h3>
-              <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-[#A0A5B1] leading-relaxed font-sans">
                 {lang === "en"
                   ? "In class we work on breathing, balance, and conscious movement applied to real situations so you learn to get out of grabs, manage impacts and reduce the risk of injury, and respond calmly. Watch full classes and seminar clips on our YouTube channel."
                   : "En cada clase trabajamos la respiración, el apoyo del cuerpo y el movimiento consciente aplicado a situaciones reales para aprender a salir de agarres, gestionar impactos y reducir el riesgo de lesiones, y responder con tranquilidad. Podés ver clases completas y seminarios en nuestro canal de YouTube."}
@@ -255,10 +256,10 @@ export function Entrenamientos() {
                 href={SITE_CONFIG.videoEntrenamiento.youtubeChannelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] min-h-[46px] shadow-md whitespace-nowrap text-center leading-tight"
+                className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm text-xs font-bold uppercase tracking-wider text-[#121316] bg-[#C5A059] hover:bg-[#D4AF37] min-h-[46px] shadow-md whitespace-nowrap text-center leading-tight"
               >
                 <Youtube className="w-4 h-4 shrink-0" />
-                <span>
+                <span className="font-bold">
                   {lang === "en"
                     ? "Watch classes on YouTube"
                     : "Ver videos en YouTube"}
@@ -269,33 +270,33 @@ export function Entrenamientos() {
           </div>
         </ScrollReveal>
 
-        {/* 3. MODAL LIGHTBOX AMPLIADO */}
+        {/* 4. MODAL LIGHTBOX AMPLIADO */}
         {currentLightboxItem && (
           <div
-            className="fixed inset-0 z-[120] bg-[#171210]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
+            className="fixed inset-0 z-[120] bg-[#121316]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
             onClick={() => setActiveLightboxIndex(null)}
             role="dialog"
             aria-modal="true"
           >
             <div
-              className="relative max-w-4xl w-full bg-[#261E1A] border border-[#C49A64]/55 rounded-sm overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
+              className="relative max-w-4xl w-full bg-[#1C1E24] border border-[#C5A059]/25 rounded-sm overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="px-4 py-3 bg-[#1F1916] border-b border-[#C4B5A3]/25 flex items-center justify-between gap-2">
-                <span className="text-xs font-heading uppercase tracking-wide text-[#F4EDE2] font-bold">
+              <div className="px-4 py-3 bg-[#121316] border-b border-[#C5A059]/25 flex items-center justify-between gap-2">
+                <span className="text-xs font-heading uppercase tracking-wide text-[#F4F4F6] font-bold">
                   {currentLightboxItem.titulo}
                 </span>
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
-                  className="w-10 h-10 flex items-center justify-center text-[#C4B5A3] hover:text-[#F4EDE2] rounded-sm border border-[#C49A64]/45 bg-[#2A211C] cursor-pointer shrink-0"
+                  className="w-10 h-10 flex items-center justify-center text-[#A0A5B1] hover:text-[#F4F4F6] rounded-sm border border-[#C5A059]/25 bg-[#1C1E24] cursor-pointer shrink-0"
                   aria-label="Cerrar visor"
                 >
-                  <X className="w-5 h-5 text-[#C86442]" />
+                  <X className="w-5 h-5 text-[#C5A059]" />
                 </button>
               </div>
 
-              <div className="relative bg-[#171210] flex items-center justify-center p-2 sm:p-4 min-h-[300px] max-h-[65vh]">
+              <div className="relative bg-[#121316] flex items-center justify-center p-2 sm:p-4 min-h-[300px] max-h-[65vh]">
                 <img
                   src={currentLightboxItem.imagen}
                   alt={currentLightboxItem.titulo}
@@ -309,7 +310,7 @@ export function Entrenamientos() {
                       prev !== null ? (prev - 1 + totalSlides) % totalSlides : 0
                     )
                   }
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center hover:bg-[#B85332] transition-all cursor-pointer"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1C1E24]/85 border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center hover:bg-[#C5A059] hover:text-[#121316] transition-all cursor-pointer"
                   aria-label="Foto anterior"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -322,15 +323,15 @@ export function Entrenamientos() {
                       prev !== null ? (prev + 1) % totalSlides : 0
                     )
                   }
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center hover:bg-[#B85332] transition-all cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1C1E24]/85 border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center hover:bg-[#C5A059] hover:text-[#121316] transition-all cursor-pointer"
                   aria-label="Foto siguiente"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="p-4 bg-[#1F1916] border-t border-[#C4B5A3]/25">
-                <p className="text-xs sm:text-sm text-[#C4B5A3]">
+              <div className="p-4 bg-[#1C1E24] border-t border-[#C5A059]/25">
+                <p className="text-xs sm:text-sm text-[#A0A5B1]">
                   {currentLightboxItem.descripcion}
                 </p>
               </div>

@@ -6,8 +6,8 @@ import { ScrollReveal } from "./ScrollReveal";
 
 /**
  * SECCIÓN TESTIMONIOS:
- * Reseñas auténticas de alumnos reales en Argentina estilo Google Maps,
- * con distintas longitudes, sin tecnicismos repetidos, sin numeración 01/03 ni eyebrow tags.
+ * Reseñas auténticas de alumnos reales en Argentina con tarjetas en Gris Grafito (#1C1E24)
+ * y acentos en Dorado Antiguo (#C5A059).
  */
 export function Testimonios() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -83,7 +83,8 @@ export function Testimonios() {
 
     const handleScroll = () => {
       const scrollPosition = container.scrollLeft;
-      const cardWidth = container.offsetWidth * 0.85;
+      const cardWidth = container.offsetWidth;
+      if (cardWidth <= 0) return;
       const newIndex = Math.round(scrollPosition / cardWidth);
       if (newIndex >= 0 && newIndex < testimonios.length) {
         setActiveIndex(newIndex);
@@ -97,26 +98,26 @@ export function Testimonios() {
   return (
     <section
       id="testimonios"
-      className="pt-12 pb-16 sm:pt-20 sm:pb-24 bg-flow-testimonios text-[#F4EDE2] relative overflow-hidden"
+      className="pt-12 pb-16 sm:pt-20 sm:pb-24 bg-[#121316] text-[#F4F4F6] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Cabecera limpia sin eyebrow tag */}
+        {/* Cabecera limpia */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-7 sm:mb-12 border-b border-[#C49A64]/30 pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-7 sm:mb-12 border-b border-[#C5A059]/25 pb-4">
             <div className="max-w-2xl">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading">
                 {t("test.title")}
               </h2>
-              <p className="text-xs sm:text-base text-[#C4B5A3] leading-relaxed mt-1.5 font-normal">
+              <p className="text-xs sm:text-base text-[#A0A5B1] leading-relaxed mt-1.5 font-normal">
                 {t("test.subtitle")}
               </p>
             </div>
 
-            <div className="hidden sm:flex items-center gap-2">
+            <div className="hidden sm:flex md:hidden items-center gap-2">
               <button
                 type="button"
                 onClick={handlePrev}
-                className="w-11 h-11 rounded-sm bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] text-[#F4EDE2] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 hover:border-[#D4AF37] text-[#F4F4F6] flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Reseña anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -124,7 +125,7 @@ export function Testimonios() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="w-11 h-11 rounded-sm bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] text-[#F4EDE2] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 hover:border-[#D4AF37] text-[#F4F4F6] flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Reseña siguiente"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -133,11 +134,11 @@ export function Testimonios() {
           </div>
         </ScrollReveal>
 
-        {/* Reseñas estilo Google Maps con autor, estrellas sutiles y texto natural sin comillas ni cursiva */}
+        {/* Reseñas en tarjetas Gris Grafito (#1C1E24) con deslizamiento táctil limpio (100% de ancho en móvil) */}
         <ScrollReveal direction="up" delay={80} distance={24}>
           <div
             ref={scrollRef}
-            className="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0 items-start"
+            className="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible pb-2 md:pb-0 snap-x snap-mandatory scrollbar-none items-stretch"
             style={{
               scrollSnapType: "x mandatory",
               WebkitOverflowScrolling: "touch",
@@ -146,60 +147,83 @@ export function Testimonios() {
             {testimonios.map((item) => (
               <div
                 key={item.id}
-                className="snap-center shrink-0 w-[86%] sm:w-[360px] md:w-auto p-5 sm:p-6 bg-[#261E1A] border border-[#C49A64]/35 rounded-sm flex flex-col justify-between space-y-4"
+                className="snap-center shrink-0 w-full md:w-auto p-5 sm:p-6 bg-[#1C1E24] border border-[#C5A059]/25 rounded-sm flex flex-col justify-between space-y-4"
               >
-                {/* Autor y valoración arriba como en una reseña real */}
-                <div className="flex items-center gap-3">
-                  {item.avatar && (
-                    <img
-                      src={item.avatar}
-                      alt={item.nombre}
-                      className="w-11 h-11 rounded-full object-cover border border-[#C49A64]/60 shrink-0"
-                      loading="lazy"
-                      width={44}
-                      height={44}
-                    />
-                  )}
-                  <div className="min-w-0">
-                    <span className="font-heading text-sm font-bold uppercase tracking-wide text-[#F4EDE2] block">
-                      {item.nombre}
-                    </span>
-                    <span className="text-xs text-[#C4B5A3] font-sans block">
-                      {item.rol}
-                    </span>
+                <div className="space-y-4">
+                  {/* Autor y valoración arriba como en una reseña real */}
+                  <div className="flex items-center gap-3">
+                    {item.avatar && (
+                      <img
+                        src={item.avatar}
+                        alt={item.nombre}
+                        className="w-11 h-11 rounded-full object-cover border border-[#C5A059]/40 shrink-0"
+                        loading="lazy"
+                        width={44}
+                        height={44}
+                      />
+                    )}
+                    <div className="min-w-0">
+                      <span className="font-heading text-sm font-bold uppercase tracking-wide text-[#F4F4F6] block">
+                        {item.nombre}
+                      </span>
+                      <span className="text-xs text-[#A0A5B1] font-sans block">
+                        {item.rol}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Estrellas de reseña */}
-                <div className="flex items-center gap-1 text-[#C49A64]" aria-label="5 estrellas">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current text-[#DF7E5B]" />
-                  ))}
-                </div>
+                  {/* Estrellas de reseña en Dorado Antiguo (#C5A059) */}
+                  <div className="flex items-center gap-1 text-[#C5A059]" aria-label="5 estrellas">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-current text-[#C5A059]" />
+                    ))}
+                  </div>
 
-                {/* Texto natural sin comillas ni cursiva */}
-                <p className="text-xs sm:text-sm text-[#F4EDE2]/95 leading-relaxed font-sans font-normal">
-                  {item.cita}
-                </p>
+                  {/* Texto natural */}
+                  <p className="text-xs sm:text-sm text-[#A0A5B1] leading-relaxed font-sans font-normal">
+                    {item.cita}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </ScrollReveal>
 
-        <div className="flex items-center justify-center gap-2 pt-2 md:hidden">
-          {testimonios.map((_, dotIdx) => (
-            <button
-              key={dotIdx}
-              type="button"
-              onClick={() => scrollToTestimonial(dotIdx)}
-              className={`h-2 rounded-xs transition-all cursor-pointer ${
-                activeIndex === dotIdx
-                  ? "bg-[#C86442] w-6"
-                  : "bg-[#C4B5A3]/30 w-2"
-              }`}
-              aria-label={`Reseña ${dotIdx + 1}`}
-            />
-          ))}
+        {/* Controles e indicadores en móvil centrados debajo de la tarjeta */}
+        <div className="flex items-center justify-center gap-4 pt-4 md:hidden">
+          <button
+            type="button"
+            onClick={handlePrev}
+            className="w-8 h-8 rounded-full bg-[#1C1E24] border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+            aria-label="Reseña anterior"
+          >
+            <ChevronLeft className="w-4 h-4 text-[#C5A059]" />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {testimonios.map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                type="button"
+                onClick={() => scrollToTestimonial(dotIdx)}
+                className={`h-2 rounded-xs transition-all cursor-pointer ${
+                  activeIndex === dotIdx
+                    ? "bg-[#C5A059] w-6"
+                    : "bg-[#A0A5B1]/30 w-2"
+                }`}
+                aria-label={`Reseña ${dotIdx + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={handleNext}
+            className="w-8 h-8 rounded-full bg-[#1C1E24] border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+            aria-label="Reseña siguiente"
+          >
+            <ChevronRight className="w-4 h-4 text-[#C5A059]" />
+          </button>
         </div>
       </div>
     </section>

@@ -109,14 +109,14 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1F1916] text-[#F4EDE2] flex flex-col font-sans selection:bg-[#B85332] selection:text-[#F4EDE2] overflow-x-hidden relative">
-      {/* Velo de entrada suave / Preloader de respiración consciente en Tierra Sombra y Terracota */}
+    <div className="min-h-screen bg-[#121316] text-[#F4F4F6] flex flex-col font-sans selection:bg-[#C5A059] selection:text-[#121316] overflow-x-hidden relative">
+      {/* Velo de entrada suave / Preloader de respiración consciente en Gris Carbón y Dorado Antiguo */}
       <PagePreloader />
 
-      {/* Capa de partículas minerales en Ocre Arcilla (#C49A64) y Terracota Pampeana (#C86442) */}
+      {/* Capa de partículas sutiles en Dorado Antiguo (#C5A059) */}
       <AmbientParticles />
 
-      {/* Header fijo y compacto en Tierra Sombra (#1F1916), Ocre Arcilla y Terracota */}
+      {/* Header fijo y compacto en Gris Carbón (#121316) y Dorado Antiguo (#C5A059) */}
       <Navbar
         currentView={currentView}
         onOpenNovedades={handleOpenNovedades}

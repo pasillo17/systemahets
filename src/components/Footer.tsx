@@ -42,7 +42,7 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
   };
 
   return (
-    <footer className="bg-[#1A1412] text-[#C4B5A3] text-xs pt-4 sm:pt-8 pb-20">
+    <footer className="bg-[#121316] text-[#A0A5B1] text-xs pt-4 sm:pt-8 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7 sm:space-y-10">
         <div className="divider-earth-fade" />
         {/* Fila Principal de 3 Bloques */}
@@ -66,29 +66,29 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                 }}
               />
               <div className="flex flex-col">
-                <span className="font-heading text-sm font-bold tracking-wider text-[#F4EDE2] group-hover:text-[#C86442] transition-colors">
+                <span className="font-heading text-sm font-bold tracking-wider text-[#F4F4F6] group-hover:text-[#D4AF37] transition-colors">
                   SYSTEMA HETS
                 </span>
-                <span className="text-[10px] font-mono tracking-widest text-[#C49A64]">
+                <span className="text-[10px] font-mono tracking-widest text-[#C5A059]">
                   DIEGO LEDESMA
                 </span>
               </div>
             </a>
 
-            <p className="text-xs text-[#C4B5A3] leading-relaxed max-w-sm">
+            <p className="text-xs text-[#A0A5B1] leading-relaxed max-w-sm">
               {t("footer.desc")}
             </p>
 
             {/* Ubicación */}
-            <div className="flex items-center gap-2 text-xs text-[#F4EDE2]">
-              <MapPin className="w-4 h-4 text-[#C86442] shrink-0" />
+            <div className="flex items-center gap-2 text-xs text-[#F4F4F6]">
+              <MapPin className="w-4 h-4 text-[#C5A059] shrink-0" />
               <span>{contacto.ubicacion}</span>
             </div>
           </div>
 
           {/* Bloque 2: Navegación Rápida */}
-          <div className="md:col-span-3 space-y-2.5 sm:space-y-3 border-t md:border-t-0 border-[#C4B5A3]/25 pt-4 md:pt-0">
-            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#C86442] font-semibold block">
+          <div className="md:col-span-3 space-y-2.5 sm:space-y-3 border-t md:border-t-0 border-[#C5A059]/25 pt-4 md:pt-0">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#C5A059] font-semibold block">
               {t("footer.sections")}
             </span>
             <ul className="grid grid-cols-2 md:block gap-x-4 gap-y-1.5 md:space-y-2 text-xs font-mono">
@@ -97,7 +97,7 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                   <a
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="hover:text-[#DF7E5B] transition-colors py-1 inline-block min-h-[28px]"
+                    className="hover:text-[#D4AF37] transition-colors py-1 inline-block min-h-[28px]"
                   >
                     {link.label}
                   </a>
@@ -107,8 +107,8 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
           </div>
 
           {/* Bloque 3: Canales de Contacto Directo */}
-          <div className="md:col-span-4 space-y-2.5 sm:space-y-3 border-t md:border-t-0 border-[#C4B5A3]/25 pt-4 md:pt-0">
-            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#C86442] font-semibold block">
+          <div className="md:col-span-4 space-y-2.5 sm:space-y-3 border-t md:border-t-0 border-[#C5A059]/25 pt-4 md:pt-0">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#C5A059] font-semibold block">
               {t("footer.channels")}
             </span>
 
@@ -118,9 +118,9 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors py-1 min-h-[32px]"
+                className="flex items-center gap-2 text-[#F4F4F6] hover:text-[#D4AF37] transition-colors py-1 min-h-[32px]"
               >
-                <div className="w-7 h-7 rounded-sm bg-[#2A211C] border border-[#C86442]/50 flex items-center justify-center text-[#C86442] shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
                   <MessageSquare className="w-3.5 h-3.5" />
                 </div>
                 <span className="truncate">{contacto.whatsappVisible}</span>
@@ -131,9 +131,9 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                 href={redes.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors py-1 min-h-[32px]"
+                className="flex items-center gap-2 text-[#F4F4F6] hover:text-[#D4AF37] transition-colors py-1 min-h-[32px]"
               >
-                <div className="w-7 h-7 rounded-sm bg-[#2A211C] border border-[#C49A64]/45 flex items-center justify-center text-[#C49A64] shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
                   <Instagram className="w-3.5 h-3.5" />
                 </div>
                 <span className="truncate">@systemahets</span>
@@ -144,9 +144,9 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                 href={redes.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors py-1 min-h-[32px]"
+                className="flex items-center gap-2 text-[#F4F4F6] hover:text-[#D4AF37] transition-colors py-1 min-h-[32px]"
               >
-                <div className="w-7 h-7 rounded-sm bg-[#2A211C] border border-[#C86442]/50 flex items-center justify-center text-[#C86442] shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
                   <Youtube className="w-3.5 h-3.5" />
                 </div>
                 <span className="truncate">{t("footer.youtubeChannel")}</span>
@@ -155,9 +155,9 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
               {/* Mail */}
               <a
                 href={`mailto:${contacto.email}`}
-                className="flex items-center gap-2 text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors py-1 min-h-[32px] xs:col-span-2 md:col-span-1"
+                className="flex items-center gap-2 text-[#F4F4F6] hover:text-[#D4AF37] transition-colors py-1 min-h-[32px] xs:col-span-2 md:col-span-1"
               >
-                <div className="w-7 h-7 rounded-sm bg-[#2A211C] border border-[#C49A64]/45 flex items-center justify-center text-[#C49A64] shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
                 <span className="truncate">{contacto.email}</span>
@@ -167,9 +167,9 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
         </div>
 
         {/* Fila Inferior: Copyright */}
-        <div className="pt-5 sm:pt-6 border-t border-[#C4B5A3]/25 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 text-center sm:text-left text-[10px] sm:text-[11px] font-mono text-[#C4B5A3]">
+        <div className="pt-5 sm:pt-6 border-t border-[#C5A059]/25 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 text-center sm:text-left text-[10px] sm:text-[11px] font-mono text-[#A0A5B1]">
           <div>{t("footer.copyright")}</div>
-          <div className="text-[#C49A64]">{t("footer.author")}</div>
+          <div className="text-[#C5A059]">{t("footer.author")}</div>
         </div>
       </div>
     </footer>

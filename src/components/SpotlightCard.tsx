@@ -10,13 +10,13 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * SpotlightCard: Tarjeta interactiva con resplandor seguidor de cursor
- * y borde perimetral reactivo en Terracota Pampeana (#B85332) y Ocre Arcilla (#C49A64).
+ * y borde perimetral reactivo en Dorado Antiguo (#C5A059).
  */
 export function SpotlightCard({
   children,
   className = "",
-  spotlightColor = "rgba(184, 83, 50, 0.14)",
-  borderColor = "rgba(184, 83, 50, 0.55)",
+  spotlightColor = "rgba(197, 160, 89, 0.14)",
+  borderColor = "rgba(197, 160, 89, 0.45)",
   interactive = true,
   ...props
 }: SpotlightCardProps) {
@@ -61,10 +61,10 @@ export function SpotlightCard({
         />
       )}
 
-      {/* Sutil resplandor perimetral estático en Ocre Arcilla */}
+      {/* Sutil resplandor perimetral estático en Dorado Antiguo */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#C49A64]/10 blur-2xl z-0"
+        className="pointer-events-none absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#C5A059]/10 blur-2xl z-0"
       />
 
       {/* Halo de borde al hacer hover */}

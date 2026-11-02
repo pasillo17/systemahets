@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
 /**
- * AmbientParticles & Pampean Earth Atmosphere:
- * Genera una atmósfera sutil en Ocre Arcilla (#C49A64) y Terracota Pampeana (#C86442).
+ * AmbientParticles:
+ * Genera una atmósfera sutil en Dorado Antiguo (#C5A059) y Dorado más claro (#D4AF37).
  * Respeta fielmente prefers-reduced-motion.
  */
 export function AmbientParticles() {
@@ -29,17 +29,17 @@ export function AmbientParticles() {
     };
     window.addEventListener("resize", handleResize);
 
-    const particleCount = Math.min(24, Math.floor(window.innerWidth / 45));
+    const particleCount = Math.min(22, Math.floor(window.innerWidth / 48));
     const particles = Array.from({ length: particleCount }).map((_, i) => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 1.5 + 0.6,
-      speedY: -(Math.random() * 0.2 + 0.05),
-      speedX: (Math.random() - 0.5) * 0.1,
-      opacity: Math.random() * 0.38 + 0.12,
+      size: Math.random() * 1.4 + 0.5,
+      speedY: -(Math.random() * 0.18 + 0.04),
+      speedX: (Math.random() - 0.5) * 0.08,
+      opacity: Math.random() * 0.32 + 0.1,
       pulseSpeed: Math.random() * 0.012 + 0.006,
       pulseOffset: Math.random() * Math.PI * 2,
-      isTerracotta: i % 3 === 0,
+      isBrightGold: i % 3 === 0,
     }));
 
     let time = 0;
@@ -64,11 +64,11 @@ export function AmbientParticles() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.isTerracotta
-          ? `rgba(200, 100, 66, ${currentOpacity})`
-          : `rgba(196, 154, 100, ${currentOpacity})`;
+        ctx.fillStyle = p.isBrightGold
+          ? `rgba(212, 175, 55, ${currentOpacity})`
+          : `rgba(197, 160, 89, ${currentOpacity})`;
         ctx.shadowBlur = 4;
-        ctx.shadowColor = "rgba(184, 83, 50, 0.35)";
+        ctx.shadowColor = "rgba(197, 160, 89, 0.3)";
         ctx.fill();
         ctx.shadowBlur = 0;
       });
@@ -86,23 +86,20 @@ export function AmbientParticles() {
 
   return (
     <>
-      {/* Capa de atmósfera suave en Terracota Pampeana (#B85332) y Ocre Arcilla (#C49A64) */}
+      {/* Capa de atmósfera suave en Dorado Antiguo (#C5A059) */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       >
-        {/* Orbe superior izquierdo en Terracota */}
-        <div className="absolute -top-[15%] -left-[10%] w-[650px] h-[650px] rounded-full bg-[#B85332]/7 blur-[130px] animate-glow-pulse" />
+        <div className="absolute -top-[15%] -left-[10%] w-[650px] h-[650px] rounded-full bg-[#C5A059]/5 blur-[130px] animate-glow-pulse" />
 
-        {/* Orbe central en Ocre Arcilla */}
         <div
-          className="absolute top-[45%] -right-[15%] w-[700px] h-[700px] rounded-full bg-[#C49A64]/8 blur-[150px] animate-glow-pulse"
+          className="absolute top-[45%] -right-[15%] w-[700px] h-[700px] rounded-full bg-[#D4AF37]/6 blur-[150px] animate-glow-pulse"
           style={{ animationDelay: "-3s" }}
         />
 
-        {/* Orbe inferior cálido */}
         <div
-          className="absolute -bottom-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#B85332]/7 blur-[140px] animate-glow-pulse"
+          className="absolute -bottom-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#C5A059]/5 blur-[140px] animate-glow-pulse"
           style={{ animationDelay: "-5s" }}
         />
       </div>
@@ -110,7 +107,7 @@ export function AmbientParticles() {
       {/* Partículas en canvas */}
       <canvas
         ref={canvasRef}
-        className="pointer-events-none fixed inset-0 z-10 opacity-60"
+        className="pointer-events-none fixed inset-0 z-10 opacity-55"
         aria-hidden="true"
       />
     </>
