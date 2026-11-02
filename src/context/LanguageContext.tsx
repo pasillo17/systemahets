@@ -93,19 +93,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Diego Ledesma
     "diego.name": "Diego Martín Ledesma",
     "diego.quote": "Llevo 40 años practicando y enseñando artes marciales con una idea simple: que el entrenamiento te sirva para conocerte mejor, cuidar tu salud y desenvolverte con seguridad todos los días.",
-    "diego.p1": "Es Profesor en Educación Física recibido en la Universidad Nacional de La Plata (UNLP), cuenta con posgrado en Educación Emocional, es Maestro VIII Dan de Taekwon-Do ITF e Instructor Internacional de Systema formado en Argentina, Rusia (con Mikhail Ryabko) y Canadá (con Vladimir Vasiliev).",
-    "diego.p2": "Al frente de Systema HETS en La Plata, combina cuatro décadas de docencia universitaria y experiencia marcial para ofrecer un espacio de aprendizaje serio, cercano y libre de violencia innecesaria. También se desempeña como Secretario General y Director del Comité de Inclusión de ITF Integrity.",
-    "diego.role1": "Prof. en Educación Física (UNLP) y Posgrado en Educación Emocional",
-    "diego.role2": "Instructor Internacional de Systema formado en Rusia y Canadá",
-    "diego.role3": "Maestro VIII Dan ITF · Secretario General en ITF Integrity",
-    "diego.btnHistory": "Leer biografía completa",
+    "diego.p1": "Es Profesor en Educación Física por la Universidad Nacional de La Plata (UNLP) con posgrado en Educación Emocional, Maestro VIII Dan de Taekwon-Do ITF y Director de Systema HETS en La Plata. Formado como Instructor Internacional de Systema en Argentina, Rusia (con Mikhail Ryabko) y Canadá (con Vladimir Vasiliev), integra cuatro décadas de docencia universitaria y experiencia marcial en un espacio de aprendizaje serio, cercano y libre de violencia innecesaria.",
     "diego.timelineHeader": "Trayectoria Formativa",
     "diego.timelineLoc": "La Plata · Buenos Aires",
-    "diego.modalTitle": "Diego Martín Ledesma",
-    "diego.modalP1": "Diego Martín Ledesma lleva 40 años dedicados a la enseñanza marcial y la educación física. Egresado como Profesor en Educación Física por la Universidad Nacional de La Plata (UNLP) y especializado en Educación Emocional, alcanzó el grado de Maestro VIII Dan de Taekwon-Do ITF y la certificación como Instructor Internacional de Systema.",
-    "diego.modalP2": "Viajó y se formó directamente en Rusia —en la escuela de Mikhail y Daniil Ryabko en Moscú— y en Canadá —en el centro internacional de Vladimir Vasiliev en Toronto—, trayendo a La Plata una enseñanza fiel a las raíces del arte marcial ruso pero adaptada a las personas reales de hoy.",
-    "diego.modalP3": "Como director de Systema HETS y referente de inclusión en ITF Integrity, su objetivo es que cualquier persona —tenga o no experiencia previa— pueda desarrollar su autoprotección, soltar las tensiones físicas y ganar confianza en su propio cuerpo.",
-    "diego.modalClose": "Cerrar",
 
     // Entrenamientos
     "ent.title": "Entrenamientos en acción",
@@ -251,19 +241,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Diego Ledesma
     "diego.name": "Diego Martín Ledesma",
     "diego.quote": "I have spent 40 years practicing and teaching martial arts with one simple goal: that training helps you know yourself better, care for your health, and walk through daily life with confidence.",
-    "diego.p1": "Physical Education Professor graduated from the National University of La Plata (UNLP), with a postgraduate degree in Emotional Education, Master VIII Dan in ITF Taekwon-Do, and International Systema Instructor trained in Argentina, Russia (with Mikhail Ryabko), and Canada (with Vladimir Vasiliev).",
-    "diego.p2": "Leading Systema HETS in La Plata, he combines four decades of university teaching and martial experience to offer a grounded, welcoming training space free of ego or unnecessary aggression. He also serves as Secretary General and Inclusion Director at ITF Integrity.",
-    "diego.role1": "Physical Education Prof. (UNLP) & Emotional Education Postgrad",
-    "diego.role2": "International Systema Instructor trained in Russia & Canada",
-    "diego.role3": "Master VIII Dan ITF · Secretary General at ITF Integrity",
-    "diego.btnHistory": "Read full biography",
+    "diego.p1": "Physical Education Professor graduated from the National University of La Plata (UNLP) with a postgraduate degree in Emotional Education, Master VIII Dan in ITF Taekwon-Do, and Director of Systema HETS in La Plata. Trained as an International Systema Instructor in Argentina, Russia (with Mikhail Ryabko), and Canada (with Vladimir Vasiliev), he combines four decades of university teaching and martial practice in a welcoming, grounded environment.",
     "diego.timelineHeader": "Formative Journey",
     "diego.timelineLoc": "La Plata · Buenos Aires",
-    "diego.modalTitle": "Diego Martín Ledesma",
-    "diego.modalP1": "Diego Martín Ledesma has dedicated 40 years to martial arts instruction and physical education. A graduate of the National University of La Plata (UNLP) specialized in Emotional Education, he holds the rank of Master VIII Dan in ITF Taekwon-Do and certification as an International Systema Instructor.",
-    "diego.modalP2": "He traveled and trained directly in Russia—at Mikhail and Daniil Ryabko's school in Moscow—and in Canada—at Vladimir Vasiliev's headquarters in Toronto—, bringing authentic Russian martial arts instruction to La Plata.",
-    "diego.modalP3": "As director of Systema HETS, his goal is for anyone—regardless of age or prior experience—to learn practical self-protection, release physical tension, and build genuine confidence.",
-    "diego.modalClose": "Close",
 
     // Entrenamientos
     "ent.title": "Training in action",

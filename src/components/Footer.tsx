@@ -42,7 +42,7 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
   };
 
   return (
-    <footer className="bg-[#1A1412] text-[#C4B5A3] text-xs pt-4 sm:pt-8 pb-8 sm:pb-12 pb-safe">
+    <footer className="bg-[#1A1412] text-[#C4B5A3] text-xs pt-4 sm:pt-8 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7 sm:space-y-10">
         <div className="divider-earth-fade" />
         {/* Fila Principal de 3 Bloques */}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, X, Wind, Activity, Compass } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { useLanguage } from "../context/LanguageContext";
@@ -7,8 +7,8 @@ import { ScrollReveal } from "./ScrollReveal";
 
 /**
  * SECCIÓN EL SYSTEMA:
- * Diseño editorial limpio, sin etiquetas superiores (eyebrow tags), sin numeración robótica
- * y sin exceso de cajas cerradas.
+ * Diseño editorial limpio en 2 áreas (Fotografía + Texto principal),
+ * sin los 3 ítems repetidos que duplicaban los pilares del inicio.
  */
 export function ElSistema() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -50,14 +50,14 @@ export function ElSistema() {
       className="py-12 sm:py-20 bg-flow-systema text-[#F4EDE2] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Composición Asimétrica en 3 Áreas */}
+        {/* Composición en 2 Áreas: Fotografía de Práctica + Texto Principal */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Área 1: Fotografía de Práctica */}
           <ScrollReveal
             direction="up"
             delay={80}
             distance={24}
-            className="lg:col-span-5 order-2 lg:order-1"
+            className="lg:col-span-6 order-2 lg:order-1"
           >
             <div className="relative rounded-sm overflow-hidden border border-[#C49A64]/45 bg-[#261E1A] group">
               <ImageWithFallback
@@ -79,12 +79,12 @@ export function ElSistema() {
             </div>
           </ScrollReveal>
 
-          {/* Área 2: Título H2 directo y párrafos editoriales limpios (sin comillas ni eyebrow tags) */}
+          {/* Área 2: Título H2 directo y párrafos editoriales limpios */}
           <ScrollReveal
             direction="up"
             delay={140}
             distance={24}
-            className="lg:col-span-4 space-y-3.5 sm:space-y-4 order-1 lg:order-2"
+            className="lg:col-span-6 space-y-4 sm:space-y-5 order-1 lg:order-2"
           >
             <h2
               className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading"
@@ -110,46 +110,6 @@ export function ElSistema() {
                 <span>{t("systema.btnMore")}</span>
                 <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
               </button>
-            </div>
-          </ScrollReveal>
-
-          {/* Área 3: Tres Conceptos Breves sueltos sin números robóticos */}
-          <ScrollReveal
-            direction="up"
-            delay={200}
-            distance={24}
-            className="lg:col-span-3 lg:border-l lg:border-[#C49A64]/25 lg:pl-7 order-3"
-          >
-            <div className="divide-y divide-[#C49A64]/20">
-              <div className="py-3.5 first:pt-0 last:pb-0">
-                <div className="flex items-center gap-2 text-sm font-heading uppercase tracking-wide text-[#F4EDE2] font-bold mb-1">
-                  <Compass className="w-4 h-4 text-[#DF7E5B] shrink-0" />
-                  <span>{t("systema.adaptacion")}</span>
-                </div>
-                <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
-                  {t("systema.adaptacionDesc")}
-                </p>
-              </div>
-
-              <div className="py-3.5 first:pt-0 last:pb-0">
-                <div className="flex items-center gap-2 text-sm font-heading uppercase tracking-wide text-[#F4EDE2] font-bold mb-1">
-                  <Activity className="w-4 h-4 text-[#C49A64] shrink-0" />
-                  <span>{t("systema.eficiencia")}</span>
-                </div>
-                <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
-                  {t("systema.eficienciaDesc")}
-                </p>
-              </div>
-
-              <div className="py-3.5 first:pt-0 last:pb-0">
-                <div className="flex items-center gap-2 text-sm font-heading uppercase tracking-wide text-[#F4EDE2] font-bold mb-1">
-                  <Wind className="w-4 h-4 text-[#DF7E5B] shrink-0" />
-                  <span>{t("systema.conciencia")}</span>
-                </div>
-                <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
-                  {t("systema.concienciaDesc")}
-                </p>
-              </div>
             </div>
           </ScrollReveal>
         </div>

@@ -1,6 +1,6 @@
 {
-  "summary": "Plan para incorporar el lema oficial en ruso y español en el Hero (\"CONÓCETE Y PROGRESA\" + \"ПОЗНАЙ СЕБЯ И РАЗВИВАЙСЯ (Poznái sebyá i razviváysya)\" + \"Arte Marcial Ruso · Desarrollo Humano · Autoprotección\"), unificar los pilares iniciales en 3 bloques editoriales sin recuadros (Autoprotección, Movimiento Consciente, Salud y Desarrollo Humano) y reemplazar toda mención a \"defensa personal\" o \"defensa aplicable\" por \"autoprotección\" y \"desarrollo humano\".",
-  "updatedAt": "2026-11-02T14:56:43.745320891Z",
-  "requestFeedback": true,
-  "userFacing": true
+  "summary":  "Plan de ajustes móviles y limpieza de redundancias: botón flotante de WhatsApp de 44x44px en mobile con ocultamiento automático al abrir modales y padding-bottom de 80px en el footer; layout en una sola columna en móvil para Diego Ledesma con párrafo biográfico unificado sin botón/modal repetitivo; sincronización instantánea del carrusel en Entrenamientos sin lightbox en móvil; y eliminación de los 3 ítems repetidos en El Systema.",
+  "updatedAt":  "2026-11-02T15:16:10.538603391Z",
+  "requestFeedback":  true,
+  "userFacing":  true
 }

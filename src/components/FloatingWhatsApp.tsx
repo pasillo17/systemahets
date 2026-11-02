@@ -1,16 +1,43 @@
+import { useState, useEffect } from "react";
 import { getClasePruebaWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 
 /**
- * BOTÓN FLOTANTE CIRCULAR COMPACTO DE WHATSAPP (48px × 48px):
- * Ubicado en la esquina inferior derecha sin tapar textos, precios ni controles del FAQ.
+ * BOTÓN FLOTANTE CIRCULAR COMPACTO DE WHATSAPP:
+ * 44px × 44px en móvil (48px × 48px en desktop), ubicado en bottom: 16px; right: 16px;
+ * Se oculta automáticamente cuando cualquier modal o menú a pantalla completa está abierto.
  */
 export function FloatingWhatsApp() {
   const { lang } = useLanguage();
   const isEn = lang === "en";
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const checkModalState = () => {
+      const hasDialog = document.querySelector('[role="dialog"]') !== null;
+      const bodyLocked = document.body.style.overflow === "hidden";
+      setIsModalOpen(hasDialog || bodyLocked);
+    };
+
+    checkModalState();
+
+    const observer = new MutationObserver(checkModalState);
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["style", "class"],
+      childList: true,
+      subtree: true,
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  if (isModalOpen) {
+    return null;
+  }
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 pb-safe">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-30">
       <a
         href={getClasePruebaWhatsAppUrl()}
         target="_blank"
@@ -25,7 +52,7 @@ export function FloatingWhatsApp() {
             ? "Contact via WhatsApp"
             : "Consultar por WhatsApp"
         }
-        className="w-12 h-12 rounded-full bg-[#261E1A]/95 hover:bg-[#B85332] text-[#F4EDE2] border border-[#C49A64]/60 hover:border-[#DF7E5B] shadow-lg backdrop-blur-sm flex items-center justify-center transition-all duration-200 active:scale-95"
+        className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#261E1A]/95 hover:bg-[#B85332] text-[#F4EDE2] border border-[#C49A64]/60 hover:border-[#DF7E5B] shadow-lg backdrop-blur-sm flex items-center justify-center transition-all duration-200 active:scale-95 group"
       >
         <svg
           viewBox="0 0 24 24"

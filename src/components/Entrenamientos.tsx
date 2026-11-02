@@ -101,7 +101,7 @@ export function Entrenamientos() {
           </div>
         </ScrollReveal>
 
-        {/* 1. MÓVIL: CARRUSEL DE FOTOS */}
+        {/* 1. MÓVIL: CARRUSEL SINCRONIZADO (sin botón de ampliar / lightbox en móvil) */}
         <div className="block md:hidden">
           <ScrollReveal direction="up" delay={50} distance={24}>
             <div
@@ -110,37 +110,41 @@ export function Entrenamientos() {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
-              <div
-                className="relative aspect-[4/3] w-full rounded-sm overflow-hidden border border-[#C49A64]/40 bg-[#1F1916] cursor-pointer"
-                onClick={() => setActiveLightboxIndex(activeSlide)}
-              >
-                <img
-                  src={items[activeSlide].imagen}
-                  alt={items[activeSlide].titulo}
-                  className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05] transition-all duration-300"
-                  loading="eager"
-                  onError={(e) => {
-                    const fallback = items[activeSlide].fallbackUrl;
-                    if (fallback) {
-                      (e.target as HTMLImageElement).src = fallback;
-                    }
-                  }}
-                />
+              {/* Diapositivas precargadas para que foto, título y descripción cambien exactamente al mismo instante */}
+              {items.map((slideItem, idx) => {
+                const isCurrent = idx === activeSlide;
+                return (
+                  <div
+                    key={slideItem.id}
+                    className={isCurrent ? "block" : "hidden"}
+                    aria-hidden={!isCurrent}
+                  >
+                    <div className="relative aspect-[4/3] w-full rounded-sm overflow-hidden border border-[#C49A64]/40 bg-[#1F1916]">
+                      <img
+                        src={slideItem.imagen}
+                        alt={slideItem.titulo}
+                        className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
+                        loading="eager"
+                        onError={(e) => {
+                          if (slideItem.fallbackUrl) {
+                            (e.target as HTMLImageElement).src = slideItem.fallbackUrl;
+                          }
+                        }}
+                      />
+                    </div>
 
-                <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#1F1916]/85 text-[#C86442] border border-[#C49A64]/45">
-                  <Maximize2 className="w-3.5 h-3.5 text-[#C86442]" />
-                </div>
-              </div>
-
-              {/* Pie de foto abierto sobre el fondo */}
-              <div className="pt-3 space-y-1">
-                <h3 className="text-base font-heading font-bold uppercase tracking-wide text-[#F4EDE2]">
-                  {items[activeSlide].titulo}
-                </h3>
-                <p className="text-xs text-[#C4B5A3] leading-relaxed">
-                  {items[activeSlide].descripcion}
-                </p>
-              </div>
+                    {/* Pie de foto sincronizado en el mismo bloque que la imagen activa */}
+                    <div className="pt-3.5 space-y-1">
+                      <h3 className="text-base font-heading font-bold uppercase tracking-wide text-[#F4EDE2]">
+                        {slideItem.titulo}
+                      </h3>
+                      <p className="text-xs text-[#C4B5A3] leading-relaxed">
+                        {slideItem.descripcion}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
 
               <button
                 type="button"
@@ -148,7 +152,7 @@ export function Entrenamientos() {
                   e.stopPropagation();
                   prevSlide();
                 }}
-                className="absolute left-2 top-[34%] -translate-y-1/2 w-9 h-9 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/55 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all"
+                className="absolute left-2 top-[34%] -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/90 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10"
                 aria-label="Foto anterior"
               >
                 <ChevronLeft className="w-5 h-5 text-[#C86442]" />
@@ -160,7 +164,7 @@ export function Entrenamientos() {
                   e.stopPropagation();
                   nextSlide();
                 }}
-                className="absolute right-2 top-[34%] -translate-y-1/2 w-9 h-9 rounded-sm bg-[#1F1916]/85 border border-[#C49A64]/55 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all"
+                className="absolute right-2 top-[34%] -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1F1916]/90 border border-[#C49A64]/60 text-[#F4EDE2] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10"
                 aria-label="Foto siguiente"
               >
                 <ChevronRight className="w-5 h-5 text-[#C86442]" />
@@ -168,17 +172,17 @@ export function Entrenamientos() {
             </div>
 
             <div className="flex items-center justify-center gap-2 mt-4">
-              {items.map((_, idx) => (
+              {items.map((slideItem, idx) => (
                 <button
-                  key={idx}
+                  key={slideItem.id}
                   type="button"
                   onClick={() => setActiveSlide(idx)}
-                  className={`h-2 transition-all duration-300 rounded-xs cursor-pointer ${
+                  className={`h-2 transition-all duration-200 rounded-xs cursor-pointer ${
                     activeSlide === idx
                       ? "w-6 bg-[#C86442]"
                       : "w-2 bg-[#C4B5A3]/30 hover:bg-[#C49A64]"
                   }`}
-                  aria-label={`Ir a foto ${idx + 1}`}
+                  aria-label={`Ir a ${slideItem.titulo}`}
                 />
               ))}
             </div>
