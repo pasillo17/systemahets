@@ -46,9 +46,15 @@ export function SpotlightCard({
       onMouseMove={interactive ? handleMouseMove : undefined}
       onMouseEnter={interactive ? handleMouseEnter : undefined}
       onMouseLeave={interactive ? handleMouseLeave : undefined}
-      className={`relative rounded-sm overflow-hidden transition-all duration-300 ${className}`}
+      className={`relative rounded-sm overflow-hidden card-premium-gold ${className}`}
       {...props}
     >
+      {/* Filete especular superior en Dorado Antiguo */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/45 to-transparent z-10"
+      />
+
       {/* Resplandor interior interactivo guiado por cursor */}
       {interactive && (
         <div
@@ -56,7 +62,7 @@ export function SpotlightCard({
           className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-500"
           style={{
             opacity: isHovered ? 1 : 0,
-            background: `radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${spotlightColor}, transparent 70%)`,
+            background: `radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${spotlightColor}, transparent 70%)`,
           }}
         />
       )}
@@ -74,7 +80,7 @@ export function SpotlightCard({
           className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
           style={{
             opacity: isHovered ? 1 : 0,
-            background: `radial-gradient(300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${borderColor}, transparent 60%)`,
+            background: `radial-gradient(280px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${borderColor}, transparent 65%)`,
             mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             maskComposite: "exclude",

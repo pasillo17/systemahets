@@ -1,86 +1,62 @@
-# Ajustes Tipográficos y Balance Visual del Hero (Mobile & Desktop)
+# Separación Visual entre Secciones: Alternancia de Fondos y Divisores Dorados Luminosos — Systema HETS
 
-Optimización de la jerarquía tipográfica, control de saltos de línea (`white-space: nowrap`) y proporción visual (`text-wrap: balance`) en la portada principal de Systema HETS para garantizar que ningún lema ni pilar conceptual se corte a la mitad o deje palabras huérfanas en pantallas móviles.
-
-### User Review & Critical Decisions
-
-> [!IMPORTANT]
-> Todos los requerimientos tipográficos fueron especificados con precisión en la solicitud: separación en dos renglones independientes para el lema en ruso y su fonética, blindaje de cada concepto de la bajada con `white-space: nowrap` y aplicación transversal de `text-wrap: balance` en todos los textos centrados del Hero.
-
-- **Disposición del Lema Oficial**: Separación vertical en dos líneas centradas e independientes (`ПОЗНАЙ СЕБЯ И РАЗВИВАЙСЯ` arriba y `(Poznái sebyá i razviváysya)` debajo), cada una con `white-space: nowrap` y escala tipográfica adaptada para móviles.
-- **Blindaje de Pilares de Marca**: Cada concepto (`Arte Marcial Ruso`, `Desarrollo Humano`, `Autoprotección`) se envuelve en su propio `<span className="whitespace-nowrap">` con ajuste de `font-size` y ancho máximo en mobile para que entren en una sola línea o, en pantallas muy angostas, salten únicamente en el separador `·` sin partir jamás palabras compuestas.
+> **User Review & Critical Decisions**
+> - **Estrategia de Separación Seleccionada:** Se aplicará **alternancia de tonos de fondo entre Gris Carbón (`#121316`) y Gris Grafito (`#1C1E24`) combinada con divisores dorados luminosos** de ancho completo en cada cambio de sección.
+> - **Contraste de Tarjetas Internas:** En las secciones cuyo fondo pase a ser Gris Grafito (`#1C1E24`), las tarjetas e ítems internos utilizarán Gris Carbón (`#121316`) con borde dorado y bisel especular, manteniendo siempre el contraste de capas y la profundidad 3D.
+> - **Fidelidad de Paleta:** Se conservan estrictamente los colores oficiales (`#121316`, `#1C1E24`, `#C5A059`, `#D4AF37`, `#F4F4F6`, `#A0A5B1` y `rgba(197, 160, 89, 0.25)`).
 
 ---
 
-### 1. Overview & Core Concept
+## 1. Overview & Core Concept
 
-- **What It Does**: Perfecciona la presentación tipográfica de la sección Hero para que el lema oficial en ruso, su transliteración fonética y los tres pilares de la escuela mantengan una lectura limpia, simétrica y sin cortes accidentales en cualquier ancho de pantalla móvil o desktop.
-- **Target Audience / Persona**: Visitantes y futuros practicantes que acceden principalmente desde teléfonos móviles y perciben la identidad y seriedad de la escuela en el primer impacto visual.
-- **Key Value**: Elimina palabras huérfanas y saltos de línea forzados a mitad de frase, reforzando una estética editorial prolija y equilibrada.
+Actualmente todas las secciones de la página comparten el mismo fondo continuo (`#121316`), haciendo que el recorrido vertical se perciba como un único bloque sin pausas claras. Para que cada sección tenga identidad propia y el usuario distinga de inmediato dónde termina un bloque y dónde comienza el siguiente, implementaremos un **ritmo cromático alternado (`#121316` ⇄ `#1C1E24`)** acompañado por **divisores arquitectónicos en Dorado Antiguo (`#C5A059`)** con halo luminoso central y sombras de transición.
 
 ---
 
-### 2. User Experience & Visual Design
+## 2. User Experience & Visual Design
 
-- **Key User Flows**:
-  1. **Lectura del Título y Lema Ruso**: Debajo del H1 (`CONÓCETE Y PROGRESA`), el usuario visualiza en un primer renglón íntegro el lema en cirílico `ПОЗНАЙ СЕБЯ И РАЗВИВАЙСЯ` y, en el renglón inmediatamente inferior, la fonética completa `(Poznái sebyá i razviváysya)` sin partirse en dos líneas.
-  2. **Lectura de Categorías / Pilares**: En la línea `Arte Marcial Ruso · Desarrollo Humano · Autoprotección`, los tres conceptos se mantienen unidos internamente. En móviles estándar entran en un único renglón fluido; en pantallas ultra-compactas, si se produce un salto de línea, ocurre exclusivamente en el punto medio (`·`), preservando `"Desarrollo Humano"` y `"Arte Marcial Ruso"` intactos.
-  3. **Armonía General del Hero**: Todos los encabezados, subtítulos y la línea de ubicación (`Sede Central · La Plata, Buenos Aires`) aplican `text-wrap: balance` para mantener bloques centrados visualmente proporcionados.
-- **Visual Identity & Theme**:
-  - *Aesthetic Direction*: Editorial marcial sobria, orgánica y estructurada.
-  - *Color Palette & Mood*: Se conserva la paleta cálida sobre fondo oscuro (`#F4EDE2` para el título principal, `#DF7E5B` para el lema en cirílico, `#C4B5A3` para la fonética y ubicación, y `#E5DAC9` para los pilares).
-  - *Typography & Hierarchy*:
-    - **H1 (`CONÓCETE Y PROGRESA`)**: `font-heading` en mayúsculas con `text-wrap: balance`.
-    - **Lema en Ruso**: Primer renglón en `font-serif font-semibold tracking-wider whitespace-nowrap` con tamaño `text-[11px] xs:text-xs sm:text-sm md:text-base`.
-    - **Fonética**: Segundo renglón en `font-sans italic whitespace-nowrap` con tamaño `text-[11px] xs:text-xs sm:text-sm md:text-base`.
-    - **Subtítulo de Categorías**: `text-[12px] xs:text-[13px] sm:text-base lg:text-lg` sin la restricción estrecha de `max-w-[340px]` en mobile, permitiendo que los tres bloques `whitespace-nowrap` aprovechen el ancho disponible con `text-wrap: balance`.
-- **Interactive Feedback & Motion**: Se mantienen intactas las transiciones suaves de carga del escudo y los estados interactivos de los botones de acción (`Reservar clase de prueba` y `Ver horarios y sede`).
+### Secuencia de Alternancia Cromática por Sección
+1. **Hero (`#inicio`):** Fondo **Gris Carbón (`#121316`)** con viñeta profunda + borde inferior dorado luminoso.
+2. **Linaje Oficial y 3 Pilares (`FranjaLinaje` + `FranjaPrincipios`):** Fondo **Gris Grafito (`#1C1E24`)** para enmarcar el respaldo internacional y los principios como un bloque institucional distinguido.
+3. **El Systema (`#systema`):** Fondo **Gris Carbón (`#121316`)** con tarjetas en `#1C1E24`.
+4. **Sobre Diego Martín Ledesma (`#diego-ledesma`):** Fondo **Gris Grafito (`#1C1E24`)** con retrato y detalles sobre superficie `#121316` y borde dorado.
+5. **Entrenamientos en Acción (`#entrenamientos`):** Fondo **Gris Carbón (`#121316`)** con galería en `#1C1E24`.
+6. **Sedes y Horarios (`#sedes-y-clases`):** Fondo **Gris Grafito (`#1C1E24`)** con tablero de horarios y banner del Camp 2026 contrastados sobre `#121316`.
+7. **Testimonios (`#testimonios`):** Fondo **Gris Carbón (`#121316`)** con tarjetas de reseñas en `#1C1E24`.
+8. **Frase Destacada (`FraseDestacada`):** Banda editorial en **Gris Grafito (`#1C1E24`)** con doble filete dorado superior e inferior.
+9. **Preguntas Frecuentes (`#preguntas-frecuentes`):** Fondo **Gris Carbón (`#121316`)** con acordeón en `#1C1E24`.
+10. **Contacto y Reserva (`#contacto`):** Fondo **Gris Grafito (`#1C1E24`)** con tarjeta principal contrastada en `#121316`.
+11. **Pie de Página (`Footer`):** Cierre institucional en **Gris Carbón (`#121316`)**.
 
----
-
-### 3. Key Product Decisions & Trade-Offs
-
-- **Decision 1: Estructura en dos líneas con `whitespace-nowrap` para Ruso y Fonética**
-  - *Chosen Approach*: Renderizar el lema en ruso y su fonética como dos elementos de bloque/flex independientes en columna (`flex flex-col items-center gap-0.5`), aplicando `whitespace-nowrap` a cada uno y ajustando el tamaño en mobile (`text-[11px] xs:text-xs sm:text-sm md:text-base`).
-  - *Why*: Garantiza matemáticamente que ninguna de las dos expresiones se divida en múltiples renglones sin importar el navegador móvil.
-  - *Alternatives Considered*: Mantener ambos en un mismo `<p>` separado por espacio, lo cual provocaba que la fonética comenzara al final del primer renglón y se partiera a la mitad en el segundo.
-- **Decision 2: Segmentación dinámica por `·` con `whitespace-nowrap` en Pilares**
-  - *Chosen Approach*: Dividir la cadena del subtítulo por el separador `" · "` y envolver cada concepto en un `<span className="whitespace-nowrap">` acompañado de su separador tipográfico, ampliando el contenedor en mobile (`w-full max-w-md sm:max-w-2xl`) y ajustando la fuente móvil.
-  - *Why*: Permite que tanto en español (`Arte Marcial Ruso · Desarrollo Humano · Autoprotección`) como en inglés (`Russian Martial Art · Human Development · Self-Protection`) cada concepto funcione como una unidad indivisible.
+### Divisores Dorados Luminosos entre Bloques
+- **Línea de Corte con Halo Central:** Cada frontera entre secciones contará con un divisor horizontal que combina una línea en degradado dorado (`transparent → #C5A059 → #D4AF37 → #C5A059 → transparent`), una sombra interior suave en el borde superior de cada sección (`inset 0 12px 24px -12px rgba(0, 0, 0, 0.65)`) y un rombo/emblema central sutil en Dorado Antiguo (`#C5A059`) con resplandor (`0 0 12px rgba(197, 160, 89, 0.55)`).
+- **Espaciado Vertical Generoso:** Se ajustará el `padding` vertical de las secciones para dar aire limpio antes y después de cada divisor.
 
 ---
 
-### 4. Technical Architecture & Data Strategy *(Technical Reference)*
+## 3. Key Product Decisions & Trade-Offs
 
-- **Architecture & Component Diagram**:
+1. **Inversión Inteligente de Superficies (`#121316` ⇄ `#1C1E24`):**
+   - *Decisión:* Cuando una sección tiene fondo `#1C1E24`, sus tarjetas internas pasan a `#121316` (y viceversa).
+   - *Por qué:* Evita que una tarjeta `#1C1E24` se pierda sobre un fondo `#1C1E24`, manteniendo intacto el contraste y el efecto de elevación 3D en toda la web.
+2. **Divisores Ornamentales Sobrios:**
+   - *Decisión:* Usar un filete dorado de `1px` con centro luminoso y un pequeño marcador geométrico (rombo de `6px`) en lugar de barras gruesas.
+   - *Por qué:* Marca una separación nítida y visible a primera vista sin recargar la estética marcial y elegante.
+
+---
+
+## 4. Technical Architecture & Data Strategy
 
 ```
-┌───────────────────────────────────────────────────────────────────┐
-│                         Sección Hero                              │
-│                 (Contenedor Central Balanceado)                   │
-├───────────────────────────────────────────────────────────────────┤
-│  [Escudo Oficial Systema HETS]                                    │
-│                                                                   │
-│  ┌─────────────────────────────────────────────────────────────┐  │
-│  │ H1: CONÓCETE Y PROGRESA (text-wrap: balance)                │  │
-│  ├─────────────────────────────────────────────────────────────┤  │
-│  │ Renglón 1: ПОЗНАЙ СЕБЯ И РАЗВИВАЙСЯ (whitespace-nowrap)     │  │
-│  │ Renglón 2: (Poznái sebyá i razviváysya) (whitespace-nowrap) │  │
-│  └─────────────────────────────────────────────────────────────┘  │
-│                                                                   │
-│  ┌─────────────────────────────────────────────────────────────┐  │
-│  │ Subtítulo de Categorías (text-wrap: balance)                │  │
-│  │ [span.nowrap: Arte Marcial Ruso] ·                          │  │
-│  │ [span.nowrap: Desarrollo Humano] ·                          │  │
-│  │ [span.nowrap: Autoprotección]                               │  │
-│  └─────────────────────────────────────────────────────────────┘  │
-│                                                                   │
-│  [Botones CTA: Clase de Prueba / Horarios y Sede]                 │
-│  [Ubicación: Sede Central · La Plata, Buenos Aires (balance)]     │
-└───────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────┐
+│                RITMO DE SECCIONES Y DIVISORES LUMINOSOS                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│  Sección Impar: Fondo #121316 (Gris Carbón) + Tarjetas #1C1E24          │
+├───────────────── ◆ ─── Divisor Dorado Luminoso ─── ◆ ───────────────────┤
+│  Sección Par:   Fondo #1C1E24 (Gris Grafito) + Tarjetas #121316         │
+├───────────────── ◆ ─── Divisor Dorado Luminoso ─── ◆ ───────────────────┤
+│  Sección Impar: Fondo #121316 (Gris Carbón) + Tarjetas #1C1E24          │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
-- **Data Model & State**:
-  - Consume las claves de traducción existentes (`hero.titulo`, `hero.lemaRuso`, `hero.lemaFonetica`, `hero.bajada`, `hero.location`) desde el contexto de idioma (`ES` / `EN`).
-- **Interactive Component & State Mapping**:
-  - Transforma dinámicamente `t("hero.bajada").split(" · ")` en nodos `<span className="whitespace-nowrap">` intercalados con el punto medio `·`, manteniendo compatibilidad reactiva al alternar el selector de idioma entre español e inglés.
+- **Estilos Globales de Separación:** Se definirán clases dedicadas para las secciones alternadas y el divisor luminoso con nodo central dorado, asegurando nitidez tanto en pantallas móviles como en monitores de escritorio.

@@ -5,9 +5,9 @@
   --font-condensed: "Oswald", sans-serif;
   --font-sans: "Plus Jakarta Sans", sans-serif;
 
-  /* Nueva Paleta de Colores: Gris Oscuro y Dorado Sobrio */
-  --color-bg-primary: #121316;
-  --color-bg-secondary: #1C1E24;
+  /* Nueva Paleta de Colores: Negro Obsidiana (#07080A), Negro Ónix (#0D0E12) y Dorado Sobrio */
+  --color-bg-primary: #07080A;
+  --color-bg-secondary: #0D0E12;
   --color-accent-gold: #C5A059;
   --color-accent-gold-hover: #D4AF37;
   --color-border-gold: rgba(197, 160, 89, 0.25);
@@ -15,10 +15,10 @@
   --color-text-secondary: #A0A5B1;
 
   /* Alias semánticos sincronizados con la nueva paleta */
-  --color-earth-deep: #121316;
-  --color-earth-umber: #1C1E24;
-  --color-earth-surface: #1C1E24;
-  --color-earth-card: #1C1E24;
+  --color-earth-deep: #07080A;
+  --color-earth-umber: #0D0E12;
+  --color-earth-surface: #0D0E12;
+  --color-earth-card: #0D0E12;
   --color-earth-border: rgba(197, 160, 89, 0.25);
 
   --color-bone-warm: #F4F4F6;
@@ -33,11 +33,11 @@
 }
 
 :root {
-  --bg-primary: #121316;
-  --bg-secondary: #1C1E24;
+  --bg-primary: #07080A;
+  --bg-secondary: #0D0E12;
   --accent-primary: #C5A059;
   --accent-hover: #D4AF37;
-  --btn-primary-text: #121316;
+  --btn-primary-text: #07080A;
   --border-gold-subtle: rgba(197, 160, 89, 0.25);
   --text-primary: #F4F4F6;
   --text-secondary: #A0A5B1;
@@ -50,7 +50,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #121316;
+  background-color: #07080A;
   color: #F4F4F6;
   overflow-x: hidden;
   width: 100%;
@@ -80,13 +80,13 @@ h1, h2, h3, .font-heading {
   box-shadow: 0 0 18px rgba(197, 160, 89, 0.18);
 }
 
-/* Custom scrollbar en Gris Carbón (#121316) y Dorado Antiguo (#C5A059) */
+/* Custom scrollbar en Negro Obsidiana (#07080A) y Dorado Antiguo (#C5A059) */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #121316;
+  background: #07080A;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(197, 160, 89, 0.4);
@@ -172,41 +172,157 @@ h1, h2, h3, .font-heading {
   -webkit-text-fill-color: transparent;
 }
 
-/* Botón CTA Primario en Dorado Antiguo (#C5A059), Hover en Dorado más claro (#D4AF37) y texto en Gris Carbón (#121316) con font-weight: 700 */
+/* Botón CTA Primario en Dorado Antiguo (#C5A059), Hover en Dorado más claro (#D4AF37) y texto oscuro (#07080A) con font-weight: 700 + Barrido de luz y Glow sutil */
 .btn-shimmer-lightning {
   position: relative;
+  overflow: hidden;
   background-color: #C5A059;
-  color: #121316 !important;
+  color: #07080A !important;
   font-weight: 700 !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.32),
+    0 6px 22px -4px rgba(197, 160, 89, 0.35),
+    0 0 14px rgba(197, 160, 89, 0.16);
+  transition:
+    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-shimmer-lightning::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.38),
+    transparent
+  );
+  transform: skewX(-22deg);
+  transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
 
 .btn-shimmer-lightning:hover {
   background-color: #D4AF37;
-  color: #121316 !important;
-  box-shadow: 0 0 22px rgba(197, 160, 89, 0.32);
+  color: #07080A !important;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    0 10px 28px -4px rgba(212, 175, 55, 0.46),
+    0 0 22px rgba(197, 160, 89, 0.32);
 }
 
-/* Vignette en Gris Carbón (#121316) */
+.btn-shimmer-lightning:hover::after {
+  left: 150%;
+}
+
+.btn-shimmer-lightning:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Botón Secundario con borde dorado sutil y halo en hover */
+.btn-secondary-gold {
+  position: relative;
+  border: 1px solid rgba(197, 160, 89, 0.28);
+  box-shadow:
+    inset 0 1px 0 0 rgba(244, 244, 246, 0.06),
+    0 6px 18px -4px rgba(0, 0, 0, 0.65);
+  transition:
+    border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
+}
+
+.btn-secondary-gold:hover {
+  border-color: #D4AF37;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.22),
+    0 10px 26px -4px rgba(0, 0, 0, 0.8),
+    0 0 18px rgba(197, 160, 89, 0.22);
+}
+
+/* Tarjeta con elevación 3D sutil y resplandor dorado elegante en bordes */
+.card-premium-gold {
+  background-color: #0D0E12;
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.18),
+    0 14px 34px -8px rgba(0, 0, 0, 0.8),
+    0 0 20px -6px rgba(197, 160, 89, 0.08);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-premium-gold:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.52);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.35),
+    0 22px 46px -10px rgba(0, 0, 0, 0.9),
+    0 0 26px -4px rgba(197, 160, 89, 0.22);
+}
+
+/* Superficie contenedora en Negro Ónix (#0D0E12) con bisel superior dorado y halo profundo */
+.card-static-gold {
+  background-color: #0D0E12;
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.2),
+    0 18px 44px -10px rgba(0, 0, 0, 0.85),
+    0 0 28px -8px rgba(197, 160, 89, 0.12);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card-static-gold:hover {
+  border-color: rgba(197, 160, 89, 0.42);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.28),
+    0 22px 50px -10px rgba(0, 0, 0, 0.9),
+    0 0 32px -6px rgba(197, 160, 89, 0.18);
+}
+
+.glow-text-subtle {
+  text-shadow: 0 2px 24px rgba(197, 160, 89, 0.18);
+}
+
+.icon-gold-glow {
+  filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.32));
+}
+
+/* Vignette en Negro Obsidiana (#07080A) */
 .martial-vignette {
   background: radial-gradient(
     ellipse at center,
     transparent 55%,
-    rgba(18, 19, 22, 0.6) 82%,
-    rgba(18, 19, 22, 0.9) 100%
+    rgba(7, 8, 10, 0.65) 82%,
+    rgba(7, 8, 10, 0.92) 100%
   );
 }
 
 .card-specular-edge {
-  box-shadow: inset 0 1px 0 0 rgba(244, 244, 246, 0.08), 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.22),
+    0 16px 40px -8px rgba(0, 0, 0, 0.82),
+    0 0 28px -6px rgba(197, 160, 89, 0.14);
 }
 
 .card-steel-elevation {
-  box-shadow: inset 0 1px 0 0 rgba(197, 160, 89, 0.2), 0 12px 28px -4px rgba(0, 0, 0, 0.45);
+  box-shadow: inset 0 1px 0 0 rgba(197, 160, 89, 0.2), 0 12px 28px -4px rgba(0, 0, 0, 0.65);
 }
 
 .card-light-steel-elevation {
-  box-shadow: inset 0 1px 0 0 rgba(197, 160, 89, 0.2), 0 12px 28px -4px rgba(0, 0, 0, 0.55);
+  box-shadow: inset 0 1px 0 0 rgba(197, 160, 89, 0.2), 0 12px 28px -4px rgba(0, 0, 0, 0.72);
 }
 
 /* Active tactile press for touchscreens */
@@ -231,8 +347,79 @@ h1, h2, h3, .font-heading {
 }
 
 /* ============================================================================
-   CONTINUIDAD CROMÁTICA EN GRIS CARBÓN (#121316) Y GRIS GRAFITO (#1C1E24)
+   ALTERNANCIA DE SECCIONES (#07080A Y #0D0E12) Y DIVISORES DISCRETOS
    ============================================================================ */
+
+.section-surface-primary {
+  background-color: #07080A;
+  position: relative;
+}
+
+.section-surface-secondary {
+  background-color: #0D0E12;
+  position: relative;
+  box-shadow:
+    inset 0 18px 32px -18px rgba(0, 0, 0, 0.85),
+    inset 0 -18px 32px -18px rgba(0, 0, 0, 0.85);
+}
+
+/* Tarjeta en Negro Obsidiana (#07080A) para secciones con fondo Negro Ónix (#0D0E12) */
+.card-on-secondary-gold {
+  background-color: #07080A;
+  border: 1px solid rgba(197, 160, 89, 0.26);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.2),
+    0 16px 40px -8px rgba(0, 0, 0, 0.88),
+    0 0 24px -6px rgba(197, 160, 89, 0.1);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-on-secondary-gold:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.52);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.35),
+    0 24px 50px -10px rgba(0, 0, 0, 0.94),
+    0 0 28px -4px rgba(197, 160, 89, 0.22);
+}
+
+/* Superficie contenedora estática en Negro Obsidiana (#07080A) para secciones #0D0E12 */
+.card-static-on-secondary-gold {
+  background-color: #07080A;
+  border: 1px solid rgba(197, 160, 89, 0.26);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.2),
+    0 20px 48px -10px rgba(0, 0, 0, 0.88),
+    0 0 30px -8px rgba(197, 160, 89, 0.12);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card-static-on-secondary-gold:hover {
+  border-color: rgba(212, 175, 55, 0.42);
+  box-shadow:
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.28),
+    0 24px 54px -10px rgba(0, 0, 0, 0.92),
+    0 0 34px -6px rgba(197, 160, 89, 0.18);
+}
+
+/* Divisor de sección discreto de 1px con desvanecimiento suave en Dorado Antiguo */
+.section-divider-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(197, 160, 89, 0.1) 20%,
+    rgba(197, 160, 89, 0.28) 50%,
+    rgba(197, 160, 89, 0.1) 80%,
+    transparent 100%
+  );
+}
 
 .bg-flow-hero,
 .bg-flow-brown-to-light,
@@ -244,24 +431,24 @@ h1, h2, h3, .font-heading {
 .bg-flow-testimonios,
 .bg-flow-light-to-brown,
 .bg-flow-contacto {
-  background-color: #121316;
+  background-color: #07080A;
 }
 
 /* Sombra envolvente sobria para bloques destacados */
 .earth-block-transition-glow {
   box-shadow:
-    0 24px 60px -12px rgba(0, 0, 0, 0.72),
+    0 24px 60px -12px rgba(0, 0, 0, 0.85),
     0 0 0 1px rgba(197, 160, 89, 0.25),
     0 0 42px rgba(197, 160, 89, 0.1);
 }
 
-/* Divisor editorial difuminado en Dorado suave (rgba(197, 160, 89, 0.25)) */
+/* Divisor editorial difuminado en Dorado suave */
 .divider-earth-fade {
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(197, 160, 89, 0.35) 50%,
+    rgba(197, 160, 89, 0.3) 50%,
     transparent 100%
   );
 }

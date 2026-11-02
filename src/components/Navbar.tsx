@@ -145,8 +145,8 @@ export function Navbar({
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-[#121316]/95 backdrop-blur-md border-b border-[#C5A059]/25 shadow-[0_10px_30px_rgba(0,0,0,0.7)] py-2 sm:py-2.5"
-            : "bg-[#121316]/90 sm:bg-[#121316]/85 backdrop-blur-sm border-b border-[#C5A059]/25 py-2 sm:py-3"
+            ? "bg-[#07080A]/95 backdrop-blur-md border-b border-[#C5A059]/25 shadow-[0_10px_30px_rgba(0,0,0,0.85)] py-2 sm:py-2.5"
+            : "bg-[#07080A]/90 sm:bg-[#07080A]/85 backdrop-blur-sm border-b border-[#C5A059]/25 py-2 sm:py-3"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 sm:gap-4">
@@ -228,7 +228,7 @@ export function Navbar({
             <button
               type="button"
               onClick={toggleLang}
-              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-sm border border-[#C5A059]/25 bg-[#1C1E24] text-xs font-mono tracking-wider hover:border-[#C5A059] transition-all cursor-pointer min-h-[44px] shadow-sm select-none active:scale-95"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-sm border border-[#C5A059]/25 bg-[#0D0E12] text-xs font-mono tracking-wider hover:border-[#C5A059] transition-all cursor-pointer min-h-[44px] shadow-sm select-none active:scale-95"
               aria-label={lang === "es" ? "Cambiar idioma a Inglés (Switch to English)" : "Switch language to Spanish (Cambiar a Español)"}
               title={lang === "es" ? "Switch to English" : "Cambiar a Español"}
             >
@@ -242,14 +242,14 @@ export function Navbar({
               </span>
             </button>
 
-            {/* Botón CTA Primario WhatsApp en desktop en Dorado Antiguo (#C5A059) con texto oscuro (#121316) y font-bold */}
+            {/* Botón CTA Primario WhatsApp en desktop en Dorado Antiguo (#C5A059) con texto oscuro (#07080A) y font-bold */}
             <a
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:inline-flex items-center gap-2 px-4 py-2 text-[11px] font-mono font-bold tracking-wider uppercase text-[#121316] bg-[#C5A059] hover:bg-[#D4AF37] rounded-xs transition-all duration-300 shadow-[0_0_15px_rgba(197,160,89,0.25)] min-h-[38px] group whitespace-nowrap shrink-0"
+              className="btn-shimmer-lightning hidden lg:inline-flex items-center gap-2 px-4 py-2 text-[11px] font-mono font-bold tracking-wider uppercase text-[#07080A] bg-[#C5A059] hover:bg-[#D4AF37] rounded-xs min-h-[38px] group whitespace-nowrap shrink-0"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-[#121316] transition-colors" />
+              <MessageSquare className="w-3.5 h-3.5 text-[#07080A] transition-transform duration-300 group-hover:scale-110" />
               <span className="font-bold">{t("nav.consultar")}</span>
             </a>
 
@@ -257,7 +257,7 @@ export function Navbar({
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="lg:hidden w-12 h-12 flex items-center justify-center text-[#F4F4F6] hover:text-[#D4AF37] rounded-sm border border-[#C5A059]/25 bg-[#1C1E24] active:bg-[#1C1E24]/80 focus:outline-none cursor-pointer touch-manipulation select-none shrink-0 relative z-20"
+              className="lg:hidden w-12 h-12 flex items-center justify-center text-[#F4F4F6] hover:text-[#D4AF37] rounded-sm border border-[#C5A059]/25 bg-[#0D0E12] active:bg-[#0D0E12]/80 focus:outline-none cursor-pointer touch-manipulation select-none shrink-0 relative z-20"
               aria-label={mobileMenuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
               aria-expanded={mobileMenuOpen}
             >
@@ -286,7 +286,7 @@ export function Navbar({
       {/* MENÚ HAMBURGUESA A PANTALLA COMPLETA EN MOBILE */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-[120] bg-[#121316] flex flex-col justify-between p-5 pt-[calc(1rem+env(safe-area-inset-top,0px))] pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] overflow-y-auto animate-in fade-in duration-200"
+          className="fixed inset-0 z-[120] bg-[#07080A] flex flex-col justify-between p-5 pt-[calc(1rem+env(safe-area-inset-top,0px))] pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] overflow-y-auto animate-in fade-in duration-200"
           role="dialog"
           aria-modal="true"
           aria-label="Menú principal de navegación"
@@ -311,7 +311,7 @@ export function Navbar({
               <button
                 type="button"
                 onClick={toggleLang}
-                className="px-3 py-2 rounded-sm border border-[#C5A059]/25 bg-[#1C1E24] text-xs font-mono tracking-wider flex items-center gap-1.5 cursor-pointer min-h-[44px]"
+                className="px-3 py-2 rounded-sm border border-[#C5A059]/25 bg-[#0D0E12] text-xs font-mono tracking-wider flex items-center gap-1.5 cursor-pointer min-h-[44px]"
               >
                 <Globe className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span className={lang === "es" ? "text-[#F4F4F6] font-bold" : "text-[#A0A5B1]"}>ES</span>
@@ -322,7 +322,7 @@ export function Navbar({
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-12 h-12 flex items-center justify-center rounded-sm text-[#A0A5B1] hover:text-[#F4F4F6] border border-[#C5A059]/25 bg-[#1C1E24] cursor-pointer"
+                className="w-12 h-12 flex items-center justify-center rounded-sm text-[#A0A5B1] hover:text-[#F4F4F6] border border-[#C5A059]/25 bg-[#0D0E12] cursor-pointer"
                 aria-label="Cerrar menú"
               >
                 <X className="w-6 h-6 text-[#C5A059]" />
@@ -346,7 +346,7 @@ export function Navbar({
                 <div className="flex items-center gap-3">
                   <span>{link.label}</span>
                   {link.isNovedades && (
-                    <span className="px-2 py-0.5 text-[10px] font-mono font-bold bg-[#C5A059] text-[#121316] rounded-xs tracking-widest">
+                    <span className="px-2 py-0.5 text-[10px] font-mono font-bold bg-[#C5A059] text-[#07080A] rounded-xs tracking-widest">
                       CAMP 2026
                     </span>
                   )}
@@ -362,7 +362,7 @@ export function Navbar({
               href={getWhatsAppUrl(SITE_CONFIG.mensajesWhatsApp.clasePrueba)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shimmer-lightning w-full min-h-[52px] flex items-center justify-center gap-2.5 px-4 py-3.5 text-xs font-bold tracking-wider uppercase text-[#121316] bg-[#C5A059] hover:bg-[#D4AF37] rounded-sm transition-transform active:scale-[0.98] shadow-lg shadow-[#C5A059]/20 text-center leading-snug"
+              className="btn-shimmer-lightning w-full min-h-[52px] flex items-center justify-center gap-2.5 px-4 py-3.5 text-xs font-bold tracking-wider uppercase text-[#07080A] bg-[#C5A059] hover:bg-[#D4AF37] rounded-sm transition-transform active:scale-[0.98] shadow-lg shadow-[#C5A059]/20 text-center leading-snug"
             >
               <MessageSquare className="w-4 h-4 fill-current shrink-0" />
               <span className="font-bold">{t("nav.consultar")}</span>

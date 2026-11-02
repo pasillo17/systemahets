@@ -67,20 +67,20 @@ export function ScrollReveal({
     };
   }, [threshold, once]);
 
-  // Cálculo de la transformación inicial según dirección
+  // Cálculo de la transformación inicial según dirección con micro-escala editorial
   const getInitialTransform = () => {
     switch (direction) {
       case "up":
-        return `translate3d(0, ${distance}px, 0)`;
+        return `translate3d(0, ${distance}px, 0) scale(0.985)`;
       case "down":
-        return `translate3d(0, -${distance}px, 0)`;
+        return `translate3d(0, -${distance}px, 0) scale(0.985)`;
       case "left":
-        return `translate3d(${distance}px, 0, 0)`;
+        return `translate3d(${distance}px, 0, 0) scale(0.985)`;
       case "right":
-        return `translate3d(-${distance}px, 0, 0)`;
+        return `translate3d(-${distance}px, 0, 0) scale(0.985)`;
       case "none":
       default:
-        return "translate3d(0, 0, 0)";
+        return "translate3d(0, 0, 0) scale(0.99)";
     }
   };
 
@@ -90,7 +90,7 @@ export function ScrollReveal({
     transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
     transitionDelay: `${delay}ms`,
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translate3d(0, 0, 0)" : getInitialTransform(),
+    transform: isVisible ? "translate3d(0, 0, 0) scale(1)" : getInitialTransform(),
     willChange: isVisible ? "auto" : "opacity, transform",
   };
 

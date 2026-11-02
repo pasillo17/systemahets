@@ -24,6 +24,17 @@ import { Footer } from "./components/Footer";
 import { AmbientParticles } from "./components/AmbientParticles";
 import { PagePreloader } from "./components/PagePreloader";
 
+function SectionDivider() {
+  return (
+    <div
+      aria-hidden="true"
+      className="relative w-full z-30 select-none pointer-events-none"
+    >
+      <div className="section-divider-line" />
+    </div>
+  );
+}
+
 function MainApp() {
   const [currentView, setCurrentView] = useState<"home" | "novedades">(() => {
     if (typeof window !== "undefined" && window.location.hash.includes("novedades")) {
@@ -109,7 +120,7 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#121316] text-[#F4F4F6] flex flex-col font-sans selection:bg-[#C5A059] selection:text-[#121316] overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#07080A] text-[#F4F4F6] flex flex-col font-sans selection:bg-[#C5A059] selection:text-[#07080A] overflow-x-hidden relative">
       {/* Velo de entrada suave / Preloader de respiración consciente en Gris Carbón y Dorado Antiguo */}
       <PagePreloader />
 
@@ -128,44 +139,62 @@ function MainApp() {
           <Novedades onBackHome={() => handleNavigateHomeSection("#inicio")} />
         </main>
       ) : (
-        /* Flujo Narrativo de la Página Inicial */
+        /* Flujo Narrativo de la Página Inicial con alternancia #121316 / #1C1E24 y divisores dorados luminosos */
         <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
-          {/* 1. Hero (CTA Principal: Reservar clase de prueba + Subtítulo claro sobre La Plata) */}
+          {/* 1. Hero (Fondo #121316) */}
           <Hero onExploreSystem={scrollToSystem} onExploreClasses={scrollToClasses} />
 
-          {/* 2. Franja de Linaje Oficial */}
-          <FranjaLinaje />
+          <SectionDivider />
 
-          {/* 3. Franja de Principios (Abierta sin cajas repetitivas) */}
+          {/* 2 & 3. Bloque Institucional: Linaje Oficial + 3 Pilares (Fondo #1C1E24) */}
+          <FranjaLinaje />
           <FranjaPrincipios />
 
-          {/* 4. El Systema & ¿Por qué se llama Systema HETS? */}
+          <SectionDivider />
+
+          {/* 4. El Systema & ¿Por qué se llama Systema HETS? (Fondo #121316) */}
           <ElSistema />
 
-          {/* 5. Diego Ledesma & Trayectoria Formativa */}
+          <SectionDivider />
+
+          {/* 5. Diego Ledesma & Trayectoria Formativa (Fondo #1C1E24) */}
           <DiegoLedesma />
 
-          {/* 6. Entrenamientos (Video en bucle sin sonido + Galería) */}
+          <SectionDivider />
+
+          {/* 6. Entrenamientos en acción (Fondo #121316) */}
           <Entrenamientos />
 
-          {/* 7. Sedes y Clases: Grilla Semanal Única y Compacta + Banner Camp 2026 */}
+          <SectionDivider />
+
+          {/* 7. Sedes y Clases: Grilla Semanal Única + Banner Camp 2026 (Fondo #1C1E24) */}
           <Clases onOpenNovedades={handleOpenNovedades} />
 
-          {/* 8. Lo que dicen los alumnos (Con retratos reales) */}
+          <SectionDivider />
+
+          {/* 8. Lo que cuentan nuestros alumnos (Fondo #121316) */}
           <Testimonios />
 
-          {/* 9. Frase Destacada (Abierta sin borde de caja) */}
+          <SectionDivider />
+
+          {/* 9. Frase Destacada (Fondo #1C1E24) */}
           <FraseDestacada />
 
-          {/* 10. Acordeón de Preguntas Frecuentes (FAQ) antes del cierre */}
+          <SectionDivider />
+
+          {/* 10. Acordeón de Preguntas Frecuentes (Fondo #121316) */}
           <PreguntasFrecuentes />
 
-          {/* 11. Contacto Directo y Reserva de Clase de Prueba */}
+          <SectionDivider />
+
+          {/* 11. Contacto Directo y Reserva de Clase de Prueba (Fondo #1C1E24) */}
           <ContactoConversion />
+
+          <SectionDivider />
         </main>
       )}
 
-      {/* 12. Footer institucional */}
+      {/* 12. Footer institucional (Fondo #121316) */}
       <Footer
         onOpenNovedades={handleOpenNovedades}
         onNavigateHomeSection={handleNavigateHomeSection}

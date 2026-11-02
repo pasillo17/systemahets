@@ -42,9 +42,8 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
   };
 
   return (
-    <footer className="bg-[#121316] text-[#A0A5B1] text-xs pt-4 sm:pt-8 pb-20">
+    <footer className="bg-[#07080A] text-[#A0A5B1] text-xs pt-10 sm:pt-14 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7 sm:space-y-10">
-        <div className="divider-earth-fade" />
         {/* Fila Principal de 3 Bloques */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Bloque 1: Logo y Ubicación */}
@@ -120,7 +119,7 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#F4F4F6] hover:text-[#D4AF37] transition-colors py-1 min-h-[32px]"
               >
-                <div className="w-7 h-7 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#0D0E12] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
                   <MessageSquare className="w-3.5 h-3.5" />
                 </div>
                 <span className="truncate">{contacto.whatsappVisible}</span>
@@ -133,7 +132,7 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#F4F4F6] hover:text-[#D4AF37] transition-colors py-1 min-h-[32px]"
               >
-                <div className="w-7 h-7 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#0D0E12] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
                   <Instagram className="w-3.5 h-3.5" />
                 </div>
                 <span className="truncate">@systemahets</span>
@@ -146,7 +145,7 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#F4F4F6] hover:text-[#D4AF37] transition-colors py-1 min-h-[32px]"
               >
-                <div className="w-7 h-7 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#0D0E12] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
                   <Youtube className="w-3.5 h-3.5" />
                 </div>
                 <span className="truncate">{t("footer.youtubeChannel")}</span>
@@ -157,7 +156,7 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
                 href={`mailto:${contacto.email}`}
                 className="flex items-center gap-2 text-[#F4F4F6] hover:text-[#D4AF37] transition-colors py-1 min-h-[32px] xs:col-span-2 md:col-span-1"
               >
-                <div className="w-7 h-7 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#0D0E12] border border-[#C5A059]/25 flex items-center justify-center text-[#C5A059] shrink-0">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
                 <span className="truncate">{contacto.email}</span>

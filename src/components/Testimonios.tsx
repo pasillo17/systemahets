@@ -3,11 +3,12 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
+import { SpotlightCard } from "./SpotlightCard";
 
 /**
  * SECCIÓN TESTIMONIOS:
- * Reseñas auténticas de alumnos reales en Argentina con tarjetas en Gris Grafito (#1C1E24)
- * y acentos en Dorado Antiguo (#C5A059).
+ * Reseñas auténticas de alumnos reales en Argentina con tarjetas en Gris Grafito (#1C1E24),
+ * elevación 3D sutil y acentos en Dorado Antiguo (#C5A059).
  */
 export function Testimonios() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -98,14 +99,14 @@ export function Testimonios() {
   return (
     <section
       id="testimonios"
-      className="pt-12 pb-16 sm:pt-20 sm:pb-24 bg-[#121316] text-[#F4F4F6] relative overflow-hidden"
+      className="pt-12 pb-16 sm:pt-20 sm:pb-24 bg-[#07080A] text-[#F4F4F6] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Cabecera limpia */}
         <ScrollReveal direction="up" distance={20}>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-7 sm:mb-12 border-b border-[#C5A059]/25 pb-4">
             <div className="max-w-2xl">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading glow-text-subtle">
                 {t("test.title")}
               </h2>
               <p className="text-xs sm:text-base text-[#A0A5B1] leading-relaxed mt-1.5 font-normal">
@@ -117,24 +118,24 @@ export function Testimonios() {
               <button
                 type="button"
                 onClick={handlePrev}
-                className="w-10 h-10 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 hover:border-[#D4AF37] text-[#F4F4F6] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-sm bg-[#0D0E12] border border-[#C5A059]/25 hover:border-[#D4AF37] text-[#F4F4F6] flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Reseña anterior"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-5 h-5 text-[#C5A059]" />
               </button>
               <button
                 type="button"
                 onClick={handleNext}
-                className="w-10 h-10 rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 hover:border-[#D4AF37] text-[#F4F4F6] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-sm bg-[#0D0E12] border border-[#C5A059]/25 hover:border-[#D4AF37] text-[#F4F4F6] flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Reseña siguiente"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-5 h-5 text-[#C5A059]" />
               </button>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Reseñas en tarjetas Gris Grafito (#1C1E24) con deslizamiento táctil limpio (100% de ancho en móvil) */}
+        {/* Reseñas en tarjetas Gris Grafito (#1C1E24) con elevación 3D sutil y deslizamiento táctil limpio */}
         <ScrollReveal direction="up" delay={80} distance={24}>
           <div
             ref={scrollRef}
@@ -145,9 +146,9 @@ export function Testimonios() {
             }}
           >
             {testimonios.map((item) => (
-              <div
+              <SpotlightCard
                 key={item.id}
-                className="snap-center shrink-0 w-full md:w-auto p-5 sm:p-6 bg-[#1C1E24] border border-[#C5A059]/25 rounded-sm flex flex-col justify-between space-y-4"
+                className="snap-center shrink-0 w-full md:w-auto p-5 sm:p-6 group"
               >
                 <div className="space-y-4">
                   {/* Autor y valoración arriba como en una reseña real */}
@@ -156,14 +157,14 @@ export function Testimonios() {
                       <img
                         src={item.avatar}
                         alt={item.nombre}
-                        className="w-11 h-11 rounded-full object-cover border border-[#C5A059]/40 shrink-0"
+                        className="w-11 h-11 rounded-full object-cover border border-[#C5A059]/45 group-hover:border-[#D4AF37] transition-colors shrink-0 shadow-[0_0_14px_rgba(197,160,89,0.2)]"
                         loading="lazy"
                         width={44}
                         height={44}
                       />
                     )}
                     <div className="min-w-0">
-                      <span className="font-heading text-sm font-bold uppercase tracking-wide text-[#F4F4F6] block">
+                      <span className="font-heading text-sm font-bold uppercase tracking-wide text-[#F4F4F6] group-hover:text-[#D4AF37] transition-colors block">
                         {item.nombre}
                       </span>
                       <span className="text-xs text-[#A0A5B1] font-sans block">
@@ -175,16 +176,16 @@ export function Testimonios() {
                   {/* Estrellas de reseña en Dorado Antiguo (#C5A059) */}
                   <div className="flex items-center gap-1 text-[#C5A059]" aria-label="5 estrellas">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-current text-[#C5A059]" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-current text-[#C5A059] drop-shadow-[0_0_6px_rgba(197,160,89,0.3)]" />
                     ))}
                   </div>
 
                   {/* Texto natural */}
-                  <p className="text-xs sm:text-sm text-[#A0A5B1] leading-relaxed font-sans font-normal">
+                  <p className="text-xs sm:text-sm text-[#A0A5B1] group-hover:text-[#F4F4F6]/90 transition-colors leading-relaxed font-sans font-normal">
                     {item.cita}
                   </p>
                 </div>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
         </ScrollReveal>
@@ -194,7 +195,7 @@ export function Testimonios() {
           <button
             type="button"
             onClick={handlePrev}
-            className="w-8 h-8 rounded-full bg-[#1C1E24] border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+            className="w-8 h-8 rounded-full bg-[#0D0E12] border border-[#C5A059]/30 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer shadow-[0_0_12px_rgba(197,160,89,0.16)]"
             aria-label="Reseña anterior"
           >
             <ChevronLeft className="w-4 h-4 text-[#C5A059]" />
@@ -206,9 +207,9 @@ export function Testimonios() {
                 key={dotIdx}
                 type="button"
                 onClick={() => scrollToTestimonial(dotIdx)}
-                className={`h-2 rounded-xs transition-all cursor-pointer ${
+                className={`h-2 rounded-xs transition-all duration-300 cursor-pointer ${
                   activeIndex === dotIdx
-                    ? "bg-[#C5A059] w-6"
+                    ? "bg-[#C5A059] w-6 shadow-[0_0_10px_rgba(197,160,89,0.45)]"
                     : "bg-[#A0A5B1]/30 w-2"
                 }`}
                 aria-label={`Reseña ${dotIdx + 1}`}
@@ -219,7 +220,7 @@ export function Testimonios() {
           <button
             type="button"
             onClick={handleNext}
-            className="w-8 h-8 rounded-full bg-[#1C1E24] border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer"
+            className="w-8 h-8 rounded-full bg-[#0D0E12] border border-[#C5A059]/30 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer shadow-[0_0_12px_rgba(197,160,89,0.16)]"
             aria-label="Reseña siguiente"
           >
             <ChevronRight className="w-4 h-4 text-[#C5A059]" />

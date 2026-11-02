@@ -9,7 +9,7 @@ export function FraseDestacada() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative py-12 sm:py-20 bg-[#121316] overflow-hidden text-center">
+    <section className="relative py-14 sm:py-22 section-surface-secondary overflow-hidden text-center">
       {/* Resplandor ambiental centrado en Dorado Antiguo */}
       <div
         aria-hidden="true"

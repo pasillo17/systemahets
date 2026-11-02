@@ -102,9 +102,9 @@ export function Novedades({ onBackHome }: NovedadesProps) {
   ];
 
   return (
-    <div className="w-full overflow-x-hidden bg-[#121316] text-[#F4F4F6]">
-      {/* 1. CABECERA EN GRIS CARBÓN (#121316) */}
-      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-18 bg-[#121316] overflow-hidden">
+    <div className="w-full overflow-x-hidden bg-[#07080A] text-[#F4F4F6]">
+      {/* 1. CABECERA EN NEGRO OBSIDIANA (#07080A) */}
+      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-18 bg-[#07080A] overflow-hidden">
         <div
           aria-hidden="true"
           className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[460px] h-72 sm:h-[460px] bg-[#C5A059]/12 rounded-full blur-[90px] pointer-events-none"
@@ -121,7 +121,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
               <button
                 type="button"
                 onClick={handleReturnHome}
-                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#F4F4F6] hover:text-[#D4AF37] bg-[#1C1E24] border border-[#C5A059]/25 hover:border-[#C5A059] px-3.5 py-2 rounded-sm transition-colors cursor-pointer min-h-[42px]"
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#F4F4F6] hover:text-[#D4AF37] bg-[#0D0E12] border border-[#C5A059]/25 hover:border-[#C5A059] px-3.5 py-2 rounded-sm transition-colors cursor-pointer min-h-[42px]"
               >
                 <ArrowLeft className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>
@@ -133,14 +133,14 @@ export function Novedades({ onBackHome }: NovedadesProps) {
 
           {/* Presentación Principal del Evento en tarjeta Gris Grafito (#1C1E24) */}
           <ScrollReveal direction="up" delay={60} distance={22}>
-            <div className="relative rounded-sm bg-[#1C1E24] border border-[#C5A059]/25 p-5 sm:p-9 lg:p-11 overflow-hidden">
+            <div className="relative rounded-sm card-static-gold p-5 sm:p-9 lg:p-11 overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#C5A059]" />
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
                 {/* Columna Izquierda: Título, Subtítulo Unificado y Descripción */}
                 <div className="lg:col-span-7 space-y-4 sm:space-y-5">
                   <div className="space-y-2">
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading leading-none">
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading leading-none glow-text-subtle">
                       SYSTEMA HETS CAMP 2026
                     </h1>
                     <p className="text-base sm:text-xl font-heading uppercase tracking-wide text-[#C5A059] font-bold">
@@ -166,7 +166,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                   {/* Metadatos limpios con separadores tipográficos */}
                   <div className="pt-2 border-t border-[#C5A059]/25 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-[#A0A5B1]">
                     <span className="inline-flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-[#C5A059]" />
+                      <Calendar className="w-3.5 h-3.5 text-[#C5A059] icon-gold-glow" />
                       <span className="text-[#F4F4F6]">
                         {isEn
                           ? "November 21 to 23, 2026"
@@ -177,7 +177,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                       ·
                     </span>
                     <span className="inline-flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
+                      <MapPin className="w-3.5 h-3.5 text-[#C5A059] icon-gold-glow" />
                       <span className="text-[#F4F4F6]">Estancia Santa Rita, Punta Indio</span>
                     </span>
                   </div>
@@ -185,7 +185,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
 
                 {/* Columna Derecha: Imagen Editorial del Encuentro en la Naturaleza */}
                 <div className="lg:col-span-5">
-                  <div className="relative rounded-sm overflow-hidden border border-[#C5A059]/25 bg-[#121316] shadow-xl">
+                  <div className="relative rounded-sm overflow-hidden card-premium-gold">
                     <div className="aspect-[16/11] relative overflow-hidden">
                       <img
                         src={SITE_CONFIG.assets.entrenamientoAireLibre}
@@ -196,7 +196,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                             SITE_CONFIG.assets.heroImage;
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#07080A] via-transparent to-transparent" />
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-[#F4F4F6]">
                         <span className="uppercase tracking-wider font-bold text-[#C5A059]">
                           Punta Indio · Buenos Aires
@@ -207,7 +207,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                       </div>
                     </div>
 
-                    <div className="p-3.5 sm:p-4 bg-[#121316] border-t border-[#C5A059]/25 flex items-center justify-between gap-2">
+                    <div className="p-3.5 sm:p-4 bg-[#07080A] border-t border-[#C5A059]/25 flex items-center justify-between gap-2">
                       <div>
                         <span className="text-xs font-heading font-bold uppercase tracking-wider text-[#F4F4F6] block">
                           Prof. Diego Martín Ledesma
@@ -220,7 +220,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                         href={whatsappCampUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-shimmer-lightning px-3.5 py-2 text-[11px] font-mono font-bold uppercase tracking-wider text-[#121316] bg-[#C5A059] hover:bg-[#D4AF37] rounded-xs inline-flex items-center gap-1.5 shrink-0"
+                        className="btn-shimmer-lightning px-3.5 py-2 text-[11px] font-mono font-bold uppercase tracking-wider text-[#07080A] bg-[#C5A059] hover:bg-[#D4AF37] rounded-xs inline-flex items-center gap-1.5 shrink-0"
                       >
                         <MessageSquare className="w-3.5 h-3.5" />
                         <span className="font-bold">{isEn ? "Reserve" : "Reservar"}</span>
@@ -234,8 +234,16 @@ export function Novedades({ onBackHome }: NovedadesProps) {
         </div>
       </section>
 
-      {/* 2. SECCIÓN EDITORIAL ABIERTA: EJES, QUÉ INCLUYE Y VALORES */}
-      <section className="py-10 sm:py-16 bg-[#121316] text-[#F4F4F6] relative">
+      {/* Divisor Discreto */}
+      <div
+        aria-hidden="true"
+        className="relative w-full z-30 select-none pointer-events-none"
+      >
+        <div className="section-divider-line" />
+      </div>
+
+      {/* 2. SECCIÓN EDITORIAL EN GRIS GRAFITO (#1C1E24): EJES, QUÉ INCLUYE Y VALORES */}
+      <section className="py-12 sm:py-20 section-surface-secondary text-[#F4F4F6] relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14">
           {/* Ejes de la Experiencia en la Naturaleza */}
           <ScrollReveal direction="up" distance={20}>
@@ -257,10 +265,10 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                   return (
                     <div
                       key={eje.label}
-                      className="flex flex-col gap-2 pb-3 border-b border-[#C5A059]/25"
+                      className="flex flex-col gap-2 pb-3 border-b border-[#C5A059]/25 group transition-transform duration-300 hover:-translate-y-1"
                     >
-                      <Icon className="w-5 h-5 text-[#C5A059] stroke-[1.75]" />
-                      <span className="text-xs sm:text-sm font-heading font-bold uppercase tracking-wide text-[#F4F4F6] leading-snug">
+                      <Icon className="w-5 h-5 text-[#C5A059] group-hover:text-[#D4AF37] stroke-[1.75] icon-gold-glow" />
+                      <span className="text-xs sm:text-sm font-heading font-bold uppercase tracking-wide text-[#F4F4F6] group-hover:text-[#D4AF37] transition-colors leading-snug">
                         {eje.label}
                       </span>
                     </div>
@@ -295,7 +303,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                       key={item.texto}
                       className="py-4 first:pt-0 flex items-start gap-3.5"
                     >
-                      <Icon className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5 stroke-[1.75]" />
+                      <Icon className="w-5 h-5 text-[#C5A059] icon-gold-glow shrink-0 mt-0.5 stroke-[1.75]" />
                       <div>
                         <div className="flex items-center gap-2">
                           <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
@@ -333,14 +341,14 @@ export function Novedades({ onBackHome }: NovedadesProps) {
               </div>
             </ScrollReveal>
 
-            {/* Columna Derecha (5 cols): Valores y Reserva de Cupo en tarjeta Gris Grafito (#1C1E24) */}
+            {/* Columna Derecha (5 cols): Valores y Reserva de Cupo en tarjeta Gris Carbón (#121316) sobre fondo #1C1E24 */}
             <ScrollReveal
               direction="up"
               delay={140}
               distance={22}
               className="lg:col-span-5 relative"
             >
-              <div className="relative p-5 sm:p-8 bg-[#1C1E24] text-[#F4F4F6] border border-[#C5A059]/25 rounded-sm flex flex-col justify-between space-y-6">
+              <div className="relative p-5 sm:p-8 card-on-secondary-gold text-[#F4F4F6] rounded-sm flex flex-col justify-between space-y-6">
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#C5A059]" />
 
                 <div className="space-y-5">
@@ -353,7 +361,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                   </div>
 
                   {/* Tarjeta Unificada de Valor de Inscripción Vigente */}
-                  <div className="p-4 sm:p-5 rounded-sm bg-[#121316] border border-[#C5A059] space-y-1.5">
+                  <div className="p-4 sm:p-5 rounded-sm bg-[#0D0E12] border border-[#C5A059] shadow-[0_0_20px_rgba(197,160,89,0.16)] space-y-1.5">
                     <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider">
                       <span className="text-[#C5A059] font-bold">
                         {isEn ? "CURRENT REGISTRATION VALUE" : "VALOR DE INSCRIPCIÓN VIGENTE"}
@@ -362,13 +370,13 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                         {isEn ? "November 2026" : "Noviembre 2026"}
                       </span>
                     </div>
-                    <div className="text-3xl sm:text-4xl font-mono font-extrabold text-[#F4F4F6] tabular-nums tracking-tight">
+                    <div className="text-3xl sm:text-4xl font-mono font-extrabold text-[#F4F4F6] tabular-nums tracking-tight glow-text-subtle">
                       $120.000
                     </div>
                   </div>
 
                   {/* Referencia discreta de preventa finalizada */}
-                  <div className="px-4 py-3 rounded-sm bg-[#121316]/70 border border-[#C5A059]/25 flex items-center justify-between opacity-75">
+                  <div className="px-4 py-3 rounded-sm bg-[#0D0E12]/70 border border-[#C5A059]/25 flex items-center justify-between opacity-75">
                     <div className="text-[11px] font-mono uppercase tracking-wider text-[#A0A5B1]">
                       <span>
                         {isEn ? "EARLY BIRD (UNTIL OCT 31)" : "PREVENTA HASTA EL 31 DE OCTUBRE"}
@@ -405,7 +413,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                     href={whatsappCampUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-shimmer-lightning w-full min-h-[52px] h-auto px-4 sm:px-5 py-3.5 rounded-sm text-xs sm:text-sm font-bold uppercase tracking-wider text-[#121316] bg-[#C5A059] hover:bg-[#D4AF37] flex items-center justify-center gap-2.5 shadow-xl shadow-[#C5A059]/25 active:scale-[0.98] whitespace-normal sm:whitespace-nowrap text-center leading-snug"
+                    className="btn-shimmer-lightning w-full min-h-[52px] h-auto px-4 sm:px-5 py-3.5 rounded-sm text-xs sm:text-sm font-bold uppercase tracking-wider text-[#07080A] bg-[#C5A059] hover:bg-[#D4AF37] flex items-center justify-center gap-2.5 shadow-xl shadow-[#C5A059]/25 active:scale-[0.98] whitespace-normal sm:whitespace-nowrap text-center leading-snug"
                   >
                     <MessageSquare className="w-4 h-4 fill-current shrink-0" />
                     <span className="font-bold">
@@ -421,8 +429,16 @@ export function Novedades({ onBackHome }: NovedadesProps) {
         </div>
       </section>
 
+      {/* Divisor Discreto */}
+      <div
+        aria-hidden="true"
+        className="relative w-full z-30 select-none pointer-events-none"
+      >
+        <div className="section-divider-line" />
+      </div>
+
       {/* 3. PUENTE DE CIERRE */}
-      <section className="pt-12 pb-12 sm:pt-18 sm:pb-16 bg-[#121316] text-center">
+      <section className="pt-12 pb-12 sm:pt-18 sm:pb-16 bg-[#07080A] text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 space-y-4">
           <p className="text-sm sm:text-base font-sans text-[#A0A5B1] leading-relaxed">
             Una experiencia de respiración, movimiento natural, relajación,
@@ -433,9 +449,9 @@ export function Novedades({ onBackHome }: NovedadesProps) {
             <button
               type="button"
               onClick={handleReturnHome}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-[#F4F4F6] bg-[#1C1E24] hover:bg-[#C5A059] hover:text-[#121316] border border-[#C5A059]/25 rounded-sm transition-colors cursor-pointer min-h-[44px] group"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-[#F4F4F6] bg-[#0D0E12] hover:bg-[#C5A059] hover:text-[#07080A] border border-[#C5A059]/25 rounded-sm transition-colors cursor-pointer min-h-[44px] group"
             >
-              <ArrowLeft className="w-3.5 h-3.5 text-[#C5A059] group-hover:text-[#121316]" />
+              <ArrowLeft className="w-3.5 h-3.5 text-[#C5A059] group-hover:text-[#07080A]" />
               <span>
                 {isEn
                   ? "Return to Systema HETS Home"

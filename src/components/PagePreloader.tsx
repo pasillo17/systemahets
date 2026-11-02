@@ -28,7 +28,7 @@ export function PagePreloader() {
   return (
     <div
       aria-hidden={fading}
-      className={`fixed inset-0 z-[9999] pointer-events-none bg-[#121316] flex flex-col items-center justify-center select-none transition-all duration-500 ease-out ${
+      className={`fixed inset-0 z-[9999] pointer-events-none bg-[#07080A] flex flex-col items-center justify-center select-none transition-all duration-500 ease-out ${
         fading
           ? "opacity-0 scale-[1.01]"
           : "opacity-100 scale-100"
@@ -37,7 +37,7 @@ export function PagePreloader() {
       {/* Fondo con halo radial en Dorado Antiguo tenue */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-radial from-[#C5A059]/12 via-transparent to-[#121316] pointer-events-none"
+        className="absolute inset-0 bg-radial from-[#C5A059]/12 via-transparent to-[#07080A] pointer-events-none"
       />
 
       {/* Contenedor central de marca con ritmo de respiración suave */}
@@ -48,7 +48,7 @@ export function PagePreloader() {
           {/* Halo expansivo en Dorado Antiguo */}
           <div className="absolute inset-0 rounded-full bg-[#C5A059]/20 blur-xl animate-pulse" />
           
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#C5A059]/50 flex items-center justify-center bg-[#1C1E24]/95 shadow-[0_0_28px_rgba(197,160,89,0.22)]">
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#C5A059]/50 flex items-center justify-center bg-[#0D0E12]/95 shadow-[0_0_28px_rgba(197,160,89,0.22)]">
             {/* Círculos concéntricos de Systema en Dorado Antiguo y Blanco Humo */}
             <svg
               className="w-10 h-10 sm:w-12 sm:h-12 text-[#C5A059] animate-subtle-float"
@@ -81,7 +81,7 @@ export function PagePreloader() {
         </p>
 
         {/* Línea de carga progresiva en Dorado Antiguo */}
-        <div className="w-36 sm:w-48 h-[2px] bg-[#1C1E24] rounded-full overflow-hidden relative border border-[#C5A059]/25">
+        <div className="w-36 sm:w-48 h-[2px] bg-[#0D0E12] rounded-full overflow-hidden relative border border-[#C5A059]/25">
           <div className="h-full bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#C5A059] rounded-full animate-[shimmerSlide_1.2s_ease-in-out_infinite]" />
         </div>
       </div>

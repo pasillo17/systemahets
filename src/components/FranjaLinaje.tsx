@@ -11,11 +11,8 @@ export function FranjaLinaje() {
   return (
     <section
       id="linaje"
-      className="relative z-20 bg-[#121316] pt-6 sm:pt-10 md:pt-14 pb-10 sm:pb-16 md:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden select-none"
+      className="relative z-20 bg-[#0D0E12] pt-10 sm:pt-14 md:pt-16 pb-6 sm:pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden select-none"
     >
-      {/* Divisor superior sutil */}
-      <div className="max-w-5xl mx-auto mb-6 sm:mb-10 divider-earth-fade" />
-
       <div className="max-w-6xl mx-auto relative z-10">
         {/* 1. MÓVIL (< md): COMPOSICIÓN ABIERTA Y LIMPIA SIN CAJA PESADA */}
         <div className="block md:hidden">
