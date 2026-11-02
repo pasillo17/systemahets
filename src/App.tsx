@@ -64,6 +64,15 @@ function MainApp() {
     } else {
       window.history.replaceState(null, "", href === "#inicio" ? "#" : href);
       if (href === "#inicio") {
+        if (window.scrollY < 120) {
+          // Si el usuario ya está arriba en el hero y pulsa "Inicio" para explorar la página,
+          // lo desplazamos suavemente hacia la primera sección de contenido (El Systema / Linaje)
+          const target = document.getElementById("systema") || document.getElementById("linaje");
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+            return;
+          }
+        }
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         const target = document.querySelector(href);

@@ -95,26 +95,26 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
         </p>
 
         {/* BOTONES DE ACCIÓN: Terracota Pampeana (#B85332) + Tierra Sombra Elevada (#2E241F) */}
-        <div className="w-full pt-2 sm:pt-3 lg:pt-4 max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
-          <div className="grid grid-cols-2 sm:flex sm:flex-row items-stretch sm:items-center justify-center gap-2 sm:gap-4 w-full">
-            {/* Botón Principal: Explorar el Systema (Terracota Pampeana Shimmer) */}
+        <div className="w-full pt-2 sm:pt-3 lg:pt-4 max-w-xs sm:max-w-md lg:max-w-lg mx-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-4 w-full">
+            {/* Botón Principal: Conocer el Systema (Terracota Pampeana Shimmer) */}
             <button
               type="button"
               onClick={handleScrollToSystem}
-              className="btn-shimmer-lightning w-full sm:flex-1 min-h-[46px] sm:min-h-[50px] px-3 sm:px-6 py-2.5 sm:py-3.5 text-[11px] xs:text-xs sm:text-sm font-bold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 shadow-lg shadow-[#B85332]/30 active:scale-[0.98] transform hover:-translate-y-0.5 cursor-pointer group whitespace-nowrap"
+              className="btn-shimmer-lightning w-full sm:flex-1 min-h-[48px] sm:min-h-[50px] px-4 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#B85332]/30 active:scale-[0.98] transform hover:-translate-y-0.5 cursor-pointer group"
             >
-              <span className="truncate font-extrabold">{t("hero.btnSystema")}</span>
-              <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 transition-transform group-hover:translate-y-0.5" />
+              <span className="font-extrabold leading-tight text-center">{t("hero.btnSystema")}</span>
+              <ArrowDown className="w-4 h-4 shrink-0 transition-transform group-hover:translate-y-0.5" />
             </button>
 
-            {/* Botón Secundario: Ver Clases y Horarios (Adobe Tierra + Borde Ocre Arcilla) */}
+            {/* Botón Secundario: Ver Clases y Sedes (Adobe Tierra + Borde Ocre Arcilla) */}
             <button
               type="button"
               onClick={handleScrollToClasses}
-              className="w-full sm:flex-1 min-h-[46px] sm:min-h-[50px] px-3 sm:px-6 py-2.5 sm:py-3.5 text-[11px] xs:text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#F4EDE2] hover:bg-[#B85332] border border-[#C49A64]/70 hover:border-[#DF7E5B] rounded-sm transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 active:scale-[0.98] cursor-pointer bg-[#2E241F]/90 backdrop-blur-sm shadow-[0_0_20px_rgba(196,154,100,0.16)] group whitespace-nowrap"
+              className="w-full sm:flex-1 min-h-[48px] sm:min-h-[50px] px-4 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#F4EDE2] hover:bg-[#B85332] border border-[#C49A64]/70 hover:border-[#DF7E5B] rounded-sm transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer bg-[#2E241F]/90 backdrop-blur-sm shadow-[0_0_20px_rgba(196,154,100,0.16)] group"
             >
-              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C49A64] group-hover:text-[#F4EDE2] shrink-0 transition-colors" />
-              <span className="truncate">{t("hero.btnClases")}</span>
+              <Calendar className="w-4 h-4 text-[#C49A64] group-hover:text-[#F4EDE2] shrink-0 transition-colors" />
+              <span className="leading-tight text-center">{t("hero.btnClases")}</span>
             </button>
           </div>
         </div>

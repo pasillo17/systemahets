@@ -460,7 +460,7 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                     href={whatsappCampUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-shimmer-lightning w-full min-h-[52px] px-5 py-3.5 rounded-sm text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#F4EDE2] flex items-center justify-center gap-2.5 shadow-xl shadow-[#B85332]/30 active:scale-[0.98]"
+                    className="btn-shimmer-lightning w-full min-h-[52px] h-auto px-4 sm:px-5 py-3.5 rounded-sm text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#F4EDE2] flex items-center justify-center gap-2.5 shadow-xl shadow-[#B85332]/30 active:scale-[0.98] whitespace-normal sm:whitespace-nowrap text-center leading-snug"
                   >
                     <MessageSquare className="w-4 h-4 fill-current shrink-0" />
                     <span>

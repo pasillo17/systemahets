@@ -284,7 +284,7 @@ export function Entrenamientos() {
         {/* 3. MODAL LIGHTBOX AMPLIADO */}
         {currentLightboxItem && (
           <div
-            className="fixed inset-0 z-50 bg-[#171210]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
+            className="fixed inset-0 z-[120] bg-[#171210]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
             onClick={() => setActiveLightboxIndex(null)}
             role="dialog"
             aria-modal="true"
@@ -293,9 +293,9 @@ export function Entrenamientos() {
               className="relative max-w-4xl w-full bg-[#261E1A] border border-[#C49A64]/55 rounded-sm overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="px-4 py-3 bg-[#1F1916] border-b border-[#C4B5A3]/25 flex items-center justify-between">
-                <div className="flex items-center gap-2 truncate pr-2">
-                  <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#C86442] font-semibold">
+              <div className="px-4 py-3 bg-[#1F1916] border-b border-[#C4B5A3]/25 flex items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center gap-1.5 pr-2">
+                  <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#C86442] font-semibold leading-snug">
                     Systema HETS · {currentLightboxItem.categoria}
                   </span>
                   <span className="text-[#C4B5A3] text-[11px]">
@@ -305,10 +305,10 @@ export function Entrenamientos() {
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
-                  className="w-9 h-9 flex items-center justify-center text-[#C4B5A3] hover:text-[#F4EDE2] rounded-sm border border-[#C49A64]/45 bg-[#2A211C] cursor-pointer"
+                  className="w-10 h-10 flex items-center justify-center text-[#C4B5A3] hover:text-[#F4EDE2] rounded-sm border border-[#C49A64]/45 bg-[#2A211C] cursor-pointer shrink-0"
                   aria-label="Cerrar visor"
                 >
-                  <X className="w-4 h-4 text-[#C86442]" />
+                  <X className="w-5 h-5 text-[#C86442]" />
                 </button>
               </div>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, X, Calendar, CheckCircle2 } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
@@ -13,6 +13,17 @@ export function DiegoLedesma() {
   const [modalHistoriaOpen, setModalHistoriaOpen] = useState(false);
   const [portraitLoaded, setPortraitLoaded] = useState(false);
   const { lang, t } = useLanguage();
+
+  useEffect(() => {
+    if (modalHistoriaOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [modalHistoriaOpen]);
 
   const hitos = SITE_CONFIG.trayectoriaDiego.map((hito) => {
     if (lang === "en") {
@@ -157,10 +168,10 @@ export function DiegoLedesma() {
                   {/* Pie editorial del retrato */}
                   <div className="p-2 sm:p-3.5 bg-[#1F1916] border-t border-[#C49A64]/45 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <div>
-                      <span className="text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#F4EDE2] block truncate">
+                      <span className="text-[10px] sm:text-[11px] font-heading font-bold uppercase tracking-wider text-[#F4EDE2] block leading-snug">
                         Diego M. Ledesma
                       </span>
-                      <span className="text-[9px] sm:text-[10px] font-mono text-[#C4B5A3] block truncate">
+                      <span className="text-[9px] sm:text-[10px] font-mono text-[#C4B5A3] block leading-snug">
                         {lang === "en" ? "Head Instructor" : "Director & Fundador"}
                       </span>
                     </div>
@@ -205,10 +216,10 @@ export function DiegoLedesma() {
                   <button
                     type="button"
                     onClick={() => setModalHistoriaOpen(true)}
-                    className="btn-shimmer-lightning w-auto inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 cursor-pointer shadow-md shadow-[#B85332]/25 min-h-[46px] active:scale-[0.98] group whitespace-nowrap"
+                    className="btn-shimmer-lightning w-auto inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 cursor-pointer shadow-md shadow-[#B85332]/25 min-h-[46px] active:scale-[0.98] group whitespace-normal sm:whitespace-nowrap text-center leading-snug"
                   >
                     <span>{t("diego.btnHistory")}</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>
               </div>
@@ -222,10 +233,10 @@ export function DiegoLedesma() {
               <button
                 type="button"
                 onClick={() => setModalHistoriaOpen(true)}
-                className="btn-shimmer-lightning w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 cursor-pointer shadow-md min-h-[46px] active:scale-[0.98] group whitespace-nowrap"
+                className="btn-shimmer-lightning w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 cursor-pointer shadow-md min-h-[48px] h-auto active:scale-[0.98] group whitespace-normal text-center leading-snug"
               >
                 <span>{t("diego.btnHistory")}</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
 
@@ -316,32 +327,34 @@ export function DiegoLedesma() {
         </div>
       </div>
 
-      {/* Modal Conocer su Historia */}
+      {/* Modal Conocer su Historia — Ventana a pantalla completa en celular con scroll cómodo y cierre fijo */}
       {modalHistoriaOpen && (
         <div
-          className="fixed inset-0 z-50 bg-[#171210]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
+          className="fixed inset-0 z-[120] bg-[#171210]/95 backdrop-blur-md flex items-center justify-center p-0 sm:p-6 animate-in fade-in duration-200"
           onClick={() => setModalHistoriaOpen(false)}
           role="dialog"
           aria-modal="true"
+          aria-label={t("diego.modalTitle")}
         >
           <div
-            className="relative max-w-2xl w-full bg-[#261E1A] text-[#F4EDE2] border border-[#C49A64]/55 rounded-sm overflow-hidden shadow-2xl p-5 sm:p-7 space-y-4 max-h-[90vh] overflow-y-auto"
+            className="relative w-full h-full sm:h-auto sm:max-h-[90vh] max-w-2xl bg-[#261E1A] text-[#F4EDE2] sm:border border-[#C49A64]/55 sm:rounded-sm overflow-hidden shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-[#C4B5A3]/25 pb-3 gap-3">
+            {/* Cabecera Fija del Modal (sin truncar títulos en celular) */}
+            <div className="shrink-0 p-4 sm:p-6 pt-[calc(1rem+env(safe-area-inset-top,0px))] sm:pt-6 bg-[#1F1916] border-b border-[#C49A64]/35 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 min-w-0">
                 <img
                   src={SITE_CONFIG.assets.diegoPortrait}
                   alt="Diego Martín Ledesma"
-                  className="w-12 h-12 rounded-full object-cover object-top border border-[#C86442]/70 shrink-0 shadow-md"
-                  width={48}
-                  height={48}
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover object-top border-2 border-[#C86442]/80 shrink-0 shadow-md"
+                  width={56}
+                  height={56}
                 />
                 <div className="min-w-0">
-                  <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#C86442] block truncate">
+                  <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#C86442] block leading-snug">
                     {t("diego.modalKicker")}
                   </span>
-                  <h3 className="text-base sm:text-lg font-bold uppercase tracking-wide text-[#F4EDE2] font-heading truncate">
+                  <h3 className="text-sm sm:text-lg font-bold uppercase tracking-wide text-[#F4EDE2] font-heading leading-tight mt-0.5">
                     {t("diego.modalTitle")}
                   </h3>
                 </div>
@@ -349,24 +362,32 @@ export function DiegoLedesma() {
               <button
                 type="button"
                 onClick={() => setModalHistoriaOpen(false)}
-                className="w-10 h-10 flex items-center justify-center text-[#C4B5A3] hover:text-[#F4EDE2] rounded-sm border border-[#C49A64]/45 bg-[#1F1916] cursor-pointer shrink-0"
+                className="w-11 h-11 flex items-center justify-center text-[#C4B5A3] hover:text-[#F4EDE2] rounded-sm border border-[#C49A64]/55 bg-[#2A211C] cursor-pointer shrink-0"
                 aria-label="Cerrar biografía"
               >
                 <X className="w-5 h-5 text-[#C86442]" />
               </button>
             </div>
 
-            <div className="space-y-3.5 text-sm text-[#F4EDE2] leading-relaxed">
-              <p>{t("diego.modalP1")}</p>
-              <p className="text-[#C4B5A3]">{t("diego.modalP2")}</p>
-              <p>{t("diego.modalP3")}</p>
+            {/* Cuerpo Central con Scroll Cómodo y Fluido */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-5 sm:p-7 space-y-4 text-sm sm:text-base text-[#F4EDE2] leading-relaxed">
+              <p className="text-[#F4EDE2] font-medium leading-relaxed">
+                {t("diego.modalP1")}
+              </p>
+              <p className="text-[#E5DAC9] leading-relaxed">
+                {t("diego.modalP2")}
+              </p>
+              <p className="text-[#F4EDE2] leading-relaxed">
+                {t("diego.modalP3")}
+              </p>
             </div>
 
-            <div className="pt-3 border-t border-[#C4B5A3]/25 flex justify-end">
+            {/* Pie Fijo con Botón de Cierre Cómodo */}
+            <div className="shrink-0 p-4 sm:px-7 sm:py-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))] sm:pb-4 bg-[#1F1916] border-t border-[#C49A64]/35 flex justify-end">
               <button
                 type="button"
                 onClick={() => setModalHistoriaOpen(false)}
-                className="w-full sm:w-auto min-h-[48px] px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#F4EDE2] bg-[#1F1916] border border-[#C49A64]/55 hover:border-[#C86442] rounded-sm transition-colors cursor-pointer"
+                className="w-full sm:w-auto min-h-[48px] px-6 py-3 text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] bg-[#B85332] hover:bg-[#C86442] border border-[#DF7E5B]/60 rounded-sm transition-colors cursor-pointer shadow-md"
               >
                 {t("diego.modalClose")}
               </button>

@@ -95,7 +95,7 @@ export function FranjaPrincipios() {
                       {item.titulo}
                     </h3>
 
-                    <p className="text-[11px] sm:text-xs text-[#362B24] leading-snug sm:leading-relaxed font-sans sm:max-w-[210px] line-clamp-2 sm:line-clamp-none">
+                    <p className="text-[11px] sm:text-xs text-[#362B24] leading-snug sm:leading-relaxed font-sans sm:max-w-[210px]">
                       {item.descripcion}
                     </p>
                   </div>

@@ -160,10 +160,10 @@ export function Clases() {
                   href={sede.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-shimmer-lightning inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 min-h-[44px] sm:min-h-[46px] shadow-lg shadow-[#B85332]/25 active:scale-[0.98] group whitespace-nowrap"
+                  className="btn-shimmer-lightning inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 min-h-[46px] h-auto shadow-lg shadow-[#B85332]/25 active:scale-[0.98] group whitespace-normal sm:whitespace-nowrap text-center leading-tight"
                 >
                   <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-                  <span className="truncate">
+                  <span>
                     {lang === "en" ? "Open in Maps" : "Ver Ubicación"}
                   </span>
                   <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 transition-transform group-hover:scale-110" />
@@ -173,10 +173,10 @@ export function Clases() {
                   href={getWhatsAppUrl(SITE_CONFIG.mensajesWhatsApp.clasePrueba)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#F4EDE2] bg-[#1A1412] hover:bg-[#B85332] border border-[#C49A64]/70 hover:border-[#DF7E5B] rounded-sm transition-all duration-300 min-h-[44px] sm:min-h-[46px] shadow-[0_0_15px_rgba(196,154,100,0.16)] active:scale-[0.98] group whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#F4EDE2] bg-[#1A1412] hover:bg-[#B85332] border border-[#C49A64]/70 hover:border-[#DF7E5B] rounded-sm transition-all duration-300 min-h-[46px] h-auto shadow-[0_0_15px_rgba(196,154,100,0.16)] active:scale-[0.98] group whitespace-normal sm:whitespace-nowrap text-center leading-tight"
                 >
                   <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C49A64] group-hover:text-[#F4EDE2] shrink-0 transition-colors" />
-                  <span className="truncate">
+                  <span>
                     {lang === "en" ? "Book Trial Class" : "Coordinar Clase"}
                   </span>
                 </a>

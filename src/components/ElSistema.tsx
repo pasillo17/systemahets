@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, X, Wind, Activity, Compass, Shield } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { ImageWithFallback } from "./ImageWithFallback";
@@ -14,6 +14,17 @@ import { ScrollReveal } from "./ScrollReveal";
 export function ElSistema() {
   const [modalOpen, setModalOpen] = useState(false);
   const { t } = useLanguage();
+
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [modalOpen]);
 
   const pilares = [
     {
@@ -83,12 +94,12 @@ export function ElSistema() {
                 fallbackTitle={t("systema.cardImgTitle")}
                 fallbackSubtitle={t("systema.cardImgDesc")}
               />
-              <div className="p-2.5 sm:p-3.5 bg-[#1F1916] border-t border-[#C49A64]/35 flex items-center justify-between gap-3">
+              <div className="p-3 sm:p-3.5 bg-[#1F1916] border-t border-[#C49A64]/35 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3">
                 <div className="min-w-0">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C86442] block font-semibold truncate">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C86442] block font-semibold leading-snug">
                     {t("systema.cardImgTitle")}
                   </span>
-                  <p className="text-[11px] sm:text-xs text-[#C4B5A3] mt-0.5 line-clamp-1">
+                  <p className="text-[11px] sm:text-xs text-[#C4B5A3] mt-0.5 leading-snug">
                     {t("systema.cardImgDesc")}
                   </p>
                 </div>
@@ -130,10 +141,10 @@ export function ElSistema() {
               <button
                 type="button"
                 onClick={() => setModalOpen(true)}
-                className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 cursor-pointer shadow-lg shadow-[#B85332]/25 min-h-[46px] sm:min-h-[48px] active:scale-[0.98] group whitespace-nowrap"
+                className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] rounded-sm transition-all duration-300 cursor-pointer shadow-lg shadow-[#B85332]/25 min-h-[48px] h-auto active:scale-[0.98] group whitespace-normal sm:whitespace-nowrap text-center leading-snug"
               >
                 <span>{t("systema.btnMore")}</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
           </ScrollReveal>
@@ -259,77 +270,83 @@ export function ElSistema() {
         </ScrollReveal>
       </div>
 
-      {/* Modal Editorial: Los 4 Pilares Invariables */}
+      {/* Modal Editorial: Los 4 Pilares Invariables (Ventana a pantalla completa en celular con scroll cómodo) */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 bg-[#171210]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
+          className="fixed inset-0 z-[120] bg-[#171210]/95 backdrop-blur-md flex items-center justify-center p-0 sm:p-6 animate-in fade-in duration-200"
           onClick={() => setModalOpen(false)}
           role="dialog"
           aria-modal="true"
+          aria-label={t("systema.modalTitle")}
         >
           <div
-            className="relative max-w-2xl w-full bg-[#261E1A] border border-[#C49A64]/55 rounded-sm overflow-hidden shadow-2xl p-5 sm:p-7 space-y-4 max-h-[90vh] overflow-y-auto"
+            className="relative w-full h-full sm:h-auto sm:max-h-[90vh] max-w-2xl bg-[#261E1A] sm:border border-[#C49A64]/55 sm:rounded-sm overflow-hidden shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-[#C4B5A3]/25 pb-3">
+            {/* Cabecera fija */}
+            <div className="shrink-0 p-4 sm:p-6 pt-[calc(1rem+env(safe-area-inset-top,0px))] sm:pt-6 bg-[#1F1916] border-b border-[#C49A64]/35 flex items-center justify-between gap-3">
               <div>
-                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#C86442]">
+                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#C86442] block">
                   {t("systema.modalKicker")}
                 </span>
-                <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide text-[#F4EDE2] font-heading">
+                <h3 className="text-base sm:text-xl font-bold uppercase tracking-wide text-[#F4EDE2] font-heading leading-tight mt-0.5">
                   {t("systema.modalTitle")}
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setModalOpen(false)}
-                className="w-10 h-10 flex items-center justify-center text-[#C4B5A3] hover:text-[#F4EDE2] rounded-sm border border-[#C49A64]/45 bg-[#1F1916] cursor-pointer"
+                className="w-11 h-11 flex items-center justify-center text-[#C4B5A3] hover:text-[#F4EDE2] rounded-sm border border-[#C49A64]/55 bg-[#2A211C] cursor-pointer shrink-0"
                 aria-label="Cerrar modal"
               >
                 <X className="w-5 h-5 text-[#C86442]" />
               </button>
             </div>
 
-            <p className="text-sm text-[#F4EDE2] leading-relaxed">
-              {t("systema.modalIntro")}
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-              {pilares.map((p, idx) => (
-                <div
-                  key={p.titulo}
-                  className="p-3.5 bg-[#1F1916] border border-[#C49A64]/40 rounded-sm"
-                >
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-xs font-mono font-bold text-[#C86442]">
-                      0{idx + 1}
-                    </span>
-                    <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#F4EDE2] font-heading">
-                      {p.titulo}
-                    </h4>
-                  </div>
-                  <p className="text-xs text-[#C4B5A3] leading-relaxed">
-                    {p.descripcion}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Nota de Identidad dentro del modal también */}
-            <div className="p-3.5 sm:p-4 bg-[#1F1916] border border-[#C86442]/50 rounded-sm space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#C86442] block font-bold">
-                {t("systema.hetsTitle")}
-              </span>
-              <p className="text-xs text-[#F4EDE2]/90 leading-relaxed">
-                {t("systema.hetsDesc")}
+            {/* Cuerpo scrollable */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-5 sm:p-7 space-y-4">
+              <p className="text-sm sm:text-base text-[#F4EDE2] leading-relaxed">
+                {t("systema.modalIntro")}
               </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                {pilares.map((p, idx) => (
+                  <div
+                    key={p.titulo}
+                    className="p-3.5 bg-[#1F1916] border border-[#C49A64]/40 rounded-sm"
+                  >
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="text-xs font-mono font-bold text-[#C86442]">
+                        0{idx + 1}
+                      </span>
+                      <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#F4EDE2] font-heading">
+                        {p.titulo}
+                      </h4>
+                    </div>
+                    <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed">
+                      {p.descripcion}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Nota de Identidad dentro del modal también */}
+              <div className="p-3.5 sm:p-4 bg-[#1F1916] border border-[#C86442]/50 rounded-sm space-y-1">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C86442] block font-bold">
+                  {t("systema.hetsTitle")}
+                </span>
+                <p className="text-xs sm:text-sm text-[#F4EDE2]/90 leading-relaxed">
+                  {t("systema.hetsDesc")}
+                </p>
+              </div>
             </div>
 
-            <div className="pt-3 border-t border-[#C4B5A3]/25 flex justify-end">
+            {/* Pie fijo */}
+            <div className="shrink-0 p-4 sm:px-7 sm:py-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))] sm:pb-4 bg-[#1F1916] border-t border-[#C49A64]/35 flex justify-end">
               <button
                 type="button"
                 onClick={() => setModalOpen(false)}
-                className="w-full sm:w-auto min-h-[48px] px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#F4EDE2] bg-[#1F1916] border border-[#C49A64]/55 hover:border-[#C86442] rounded-sm transition-colors cursor-pointer"
+                className="w-full sm:w-auto min-h-[48px] px-6 py-3 text-xs font-extrabold uppercase tracking-wider text-[#F4EDE2] bg-[#B85332] hover:bg-[#C86442] border border-[#DF7E5B]/60 rounded-sm transition-colors cursor-pointer shadow-md"
               >
                 {t("systema.modalClose")}
               </button>

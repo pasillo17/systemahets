@@ -57,15 +57,15 @@ export function ContactoConversion() {
                     href={getClasePruebaWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 text-xs font-extrabold uppercase tracking-widest text-[#F4EDE2] rounded-sm transition-all duration-300 shadow-xl shadow-[#B85332]/30 min-h-[48px] active:scale-[0.98] cursor-pointer group whitespace-nowrap"
+                    className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-4 sm:px-8 py-3.5 sm:py-4 text-xs font-extrabold uppercase tracking-wider sm:tracking-widest text-[#F4EDE2] rounded-sm transition-all duration-300 shadow-xl shadow-[#B85332]/30 min-h-[52px] h-auto active:scale-[0.98] cursor-pointer group whitespace-normal sm:whitespace-nowrap text-center leading-snug"
                   >
                     <MessageSquare className="w-4 h-4 fill-current shrink-0 transition-transform group-hover:scale-110" />
-                    <span>{t("contact.btnTrial")}</span>
+                    <span className="flex-1 sm:flex-initial">{t("contact.btnTrial")}</span>
                     <ArrowRight className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-1" />
                   </a>
                 </div>
 
-                <p className="text-[10px] sm:text-[11px] font-mono text-[#C4B5A3]">
+                <p className="text-[11px] sm:text-xs font-mono text-[#C4B5A3] leading-relaxed">
                   {t("contact.subtext")}
                 </p>
 
@@ -80,40 +80,40 @@ export function ContactoConversion() {
                       href={SITE_CONFIG.redes.whatsappCanal}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-1.5 py-2 px-2.5 rounded-xs border border-[#C86442]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[38px]"
+                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2.5 px-3 rounded-xs border border-[#C86442]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[42px] leading-tight"
                     >
                       <MessageSquare className="w-3.5 h-3.5 text-[#C86442] shrink-0" />
-                      <span className="truncate">{t("contact.waChannel")}</span>
+                      <span>{t("contact.waChannel")}</span>
                     </a>
 
                     <a
                       href={SITE_CONFIG.redes.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-1.5 py-2 px-2.5 rounded-xs border border-[#C49A64]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[38px]"
+                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2.5 px-3 rounded-xs border border-[#C49A64]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[42px] leading-tight"
                     >
                       <Instagram className="w-3.5 h-3.5 text-[#C49A64] shrink-0" />
-                      <span className="truncate">{t("contact.instagram")}</span>
+                      <span>{t("contact.instagram")}</span>
                     </a>
 
                     <a
                       href={SITE_CONFIG.redes.youtube}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-1.5 py-2 px-2.5 rounded-xs border border-[#C86442]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[38px]"
+                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2.5 px-3 rounded-xs border border-[#C86442]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[42px] leading-tight"
                     >
                       <Youtube className="w-3.5 h-3.5 text-[#C86442] shrink-0" />
-                      <span className="truncate">{t("contact.youtube")}</span>
+                      <span>{t("contact.youtube")}</span>
                     </a>
 
                     <a
                       href={SITE_CONFIG.redes.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-1.5 py-2 px-2.5 rounded-xs border border-[#C49A64]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[38px]"
+                      className="text-[#F4EDE2] hover:text-[#DF7E5B] transition-colors flex items-center gap-2 py-2.5 px-3 rounded-xs border border-[#C49A64]/45 hover:border-[#C86442] bg-[#1C1613]/90 min-h-[42px] leading-tight"
                     >
                       <Facebook className="w-3.5 h-3.5 text-[#C49A64] shrink-0" />
-                      <span className="truncate">{t("contact.facebook")}</span>
+                      <span>{t("contact.facebook")}</span>
                     </a>
                   </div>
                 </div>

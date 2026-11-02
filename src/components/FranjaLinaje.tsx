@@ -52,13 +52,13 @@ export function FranjaLinaje() {
                 />
               </div>
 
-              {/* Lado Derecho: Contenido condensado con metadatos limpios */}
+              {/* Lado Derecho: Contenido condensado con metadatos completos y sin recortes */}
               <div className="flex-1 min-w-0 space-y-1">
-                <div className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-[0.18em] text-[#C86442] font-semibold truncate">
+                <div className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-[0.16em] text-[#C86442] font-semibold leading-snug">
                   <span>{t("linaje.kicker")}</span>
                 </div>
 
-                <h3 className="text-xs xs:text-sm font-heading font-bold uppercase tracking-tight text-[#F4EDE2] leading-tight truncate">
+                <h3 className="text-xs xs:text-sm font-heading font-bold uppercase tracking-tight text-[#F4EDE2] leading-snug">
                   {t("linaje.title")}
                 </h3>
 

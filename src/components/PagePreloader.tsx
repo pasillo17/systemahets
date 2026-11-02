@@ -28,10 +28,10 @@ export function PagePreloader() {
   return (
     <div
       aria-hidden={fading}
-      className={`fixed inset-0 z-[9999] bg-[#1F1916] flex flex-col items-center justify-center select-none transition-all duration-700 ease-out ${
+      className={`fixed inset-0 z-[9999] pointer-events-none bg-[#1F1916] flex flex-col items-center justify-center select-none transition-all duration-500 ease-out ${
         fading
-          ? "opacity-0 pointer-events-none scale-[1.01]"
-          : "opacity-100 pointer-events-auto scale-100"
+          ? "opacity-0 scale-[1.01]"
+          : "opacity-100 scale-100"
       }`}
     >
       {/* Fondo con halo radial en Terracota tenue */}
