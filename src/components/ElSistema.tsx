@@ -48,29 +48,29 @@ export function ElSistema() {
   return (
     <section
       id="systema"
-      className="py-10 sm:py-20 bg-flow-systema text-[#231C18] relative overflow-hidden"
+      className="py-10 sm:py-20 bg-flow-systema text-[#F4EDE2] relative overflow-hidden"
     >
-      {/* Luz ambiental sutil en Terracota Pampeana (#B85332) y Ocre Arcilla (#9C7340) */}
+      {/* Luz ambiental sutil en Terracota Pampeana (#B85332) y Ocre Arcilla (#C49A64) */}
       <div
         aria-hidden="true"
-        className="absolute top-1/3 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-[#B85332]/8 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/3 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-[#B85332]/12 rounded-full blur-3xl pointer-events-none"
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-1/4 -right-32 w-72 sm:w-96 h-72 sm:h-96 bg-[#9C7340]/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-1/4 -right-32 w-72 sm:w-96 h-72 sm:h-96 bg-[#C49A64]/12 rounded-full blur-3xl pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Kicker editorial con divisor de sección en Piedra Pampeana */}
+        {/* Kicker editorial con divisor de sección en Ocre Arcilla */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-5 sm:mb-12 flex items-center justify-between border-b border-[#C9B8A0] pb-3 sm:pb-4">
+          <div className="mb-5 sm:mb-12 flex items-center justify-between border-b border-[#C49A64]/35 pb-3 sm:pb-4">
             <div className="flex items-center gap-3">
-              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#9E3E1E] font-bold">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#DF7E5B] font-bold">
                 {t("systema.kicker")}
               </span>
-              <span className="hidden sm:inline-block w-8 h-[2px] bg-[#9E3E1E]" />
+              <span className="hidden sm:inline-block w-8 h-[2px] bg-[#C86442]" />
             </div>
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E4B20] font-bold">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C49A64] font-bold">
               SYSTEMA HETS
             </span>
           </div>
@@ -85,7 +85,7 @@ export function ElSistema() {
             distance={24}
             className="lg:col-span-5 order-2 lg:order-1"
           >
-            <div className="relative rounded-sm overflow-hidden border border-[#C49A64]/65 bg-[#261E1A] earth-block-transition-glow group hover:border-[#B85332] transition-all duration-500">
+            <div className="relative rounded-sm overflow-hidden border border-[#C49A64]/65 bg-[#261E1A] earth-block-transition-glow group hover:border-[#C86442] transition-all duration-500">
               <ImageWithFallback
                 src={SITE_CONFIG.assets.heroImage}
                 alt="Práctica de biomecánica y movimiento consciente en dojo"
@@ -96,7 +96,7 @@ export function ElSistema() {
               />
               <div className="p-3 sm:p-3.5 bg-[#1F1916] border-t border-[#C49A64]/35 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3">
                 <div className="min-w-0">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C86442] block font-semibold leading-snug">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#DF7E5B] block font-semibold leading-snug">
                     {t("systema.cardImgTitle")}
                   </span>
                   <p className="text-[11px] sm:text-xs text-[#C4B5A3] mt-0.5 leading-snug">
@@ -118,22 +118,22 @@ export function ElSistema() {
             className="lg:col-span-4 space-y-3 sm:space-y-4 order-1 lg:order-2"
           >
             <div>
-              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#9E3E1E] block mb-1 font-bold">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#DF7E5B] block mb-1 font-bold">
                 {t("systema.badge")}
               </span>
               <h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#231C18] font-heading"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading"
                 style={{ textWrap: "balance" }}
               >
                 {t("systema.title")}
               </h2>
             </div>
 
-            <p className="text-sm sm:text-lg text-[#231C18] leading-relaxed font-medium">
+            <p className="text-sm sm:text-lg text-[#F4EDE2] leading-relaxed font-medium">
               {t("systema.definition")}
             </p>
 
-            <p className="text-xs sm:text-sm text-[#362B24] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed">
               {t("systema.p2")}
             </p>
 
@@ -149,70 +149,70 @@ export function ElSistema() {
             </div>
           </ScrollReveal>
 
-          {/* Área 3: Tres Conceptos Breves sobre tarjetas en Hueso Pergamino (#F8F3EB) */}
+          {/* Área 3: Tres Conceptos Breves sobre tarjetas en Adobe Oscuro Cálido (#261E1A) */}
           <ScrollReveal
             direction="up"
             delay={200}
             distance={24}
-            className="lg:col-span-3 lg:border-l lg:border-[#D6C8B4] lg:pl-6 order-3"
+            className="lg:col-span-3 lg:border-l lg:border-[#C49A64]/30 lg:pl-6 order-3"
           >
             <div className="flex lg:flex-col gap-2.5 sm:gap-3 overflow-x-auto lg:overflow-visible pb-1 lg:pb-0 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
               {/* Concepto 1: ADAPTACIÓN */}
               <SpotlightCard
-                spotlightColor="rgba(184, 83, 50, 0.12)"
-                borderColor="rgba(184, 83, 50, 0.55)"
-                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] transition-all card-light-steel-elevation group"
+                spotlightColor="rgba(200, 100, 66, 0.16)"
+                borderColor="rgba(200, 100, 66, 0.65)"
+                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] transition-all card-specular-edge group"
               >
                 <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#9E3E1E] font-bold">
-                    <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#7A5426] group-hover:scale-110 transition-transform" />
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#DF7E5B] font-bold">
+                    <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C49A64] group-hover:scale-110 transition-transform" />
                     <span>{t("systema.adaptacion")}</span>
                   </div>
-                  <span className="text-[10px] font-mono text-[#6E4B20] font-bold tabular-nums">
+                  <span className="text-[10px] font-mono text-[#C49A64] font-bold tabular-nums">
                     01
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#362B24] leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
                   {t("systema.adaptacionDesc")}
                 </p>
               </SpotlightCard>
 
               {/* Concepto 2: EFICIENCIA */}
               <SpotlightCard
-                spotlightColor="rgba(156, 115, 64, 0.12)"
-                borderColor="rgba(184, 83, 50, 0.55)"
-                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] transition-all card-light-steel-elevation group"
+                spotlightColor="rgba(196, 154, 100, 0.16)"
+                borderColor="rgba(200, 100, 66, 0.65)"
+                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] transition-all card-specular-edge group"
               >
                 <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#6E4B20] font-bold">
-                    <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#9E3E1E] group-hover:scale-110 transition-transform" />
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C49A64] font-bold">
+                    <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#DF7E5B] group-hover:scale-110 transition-transform" />
                     <span>{t("systema.eficiencia")}</span>
                   </div>
-                  <span className="text-[10px] font-mono text-[#9E3E1E] font-bold tabular-nums">
+                  <span className="text-[10px] font-mono text-[#DF7E5B] font-bold tabular-nums">
                     02
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#362B24] leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
                   {t("systema.eficienciaDesc")}
                 </p>
               </SpotlightCard>
 
               {/* Concepto 3: CONCIENCIA */}
               <SpotlightCard
-                spotlightColor="rgba(184, 83, 50, 0.12)"
-                borderColor="rgba(184, 83, 50, 0.55)"
-                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] transition-all card-light-steel-elevation group"
+                spotlightColor="rgba(200, 100, 66, 0.16)"
+                borderColor="rgba(200, 100, 66, 0.65)"
+                className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] transition-all card-specular-edge group"
               >
                 <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#9E3E1E] font-bold">
-                    <Wind className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#7A5426] group-hover:scale-110 transition-transform" />
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#DF7E5B] font-bold">
+                    <Wind className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C49A64] group-hover:scale-110 transition-transform" />
                     <span>{t("systema.conciencia")}</span>
                   </div>
-                  <span className="text-[10px] font-mono text-[#6E4B20] font-bold tabular-nums">
+                  <span className="text-[10px] font-mono text-[#C49A64] font-bold tabular-nums">
                     03
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#362B24] leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed font-sans">
                   {t("systema.concienciaDesc")}
                 </p>
               </SpotlightCard>

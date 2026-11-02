@@ -74,29 +74,29 @@ export function DiegoLedesma() {
   return (
     <section
       id="diego-ledesma"
-      className="py-10 sm:py-20 bg-flow-diego text-[#231C18] relative overflow-hidden"
+      className="py-10 sm:py-20 bg-flow-diego text-[#F4EDE2] relative overflow-hidden"
     >
       {/* Luz ambiental sutil en Terracota y Ocre Arcilla */}
       <div
         aria-hidden="true"
-        className="absolute top-1/3 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-[#B85332]/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/3 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-[#B85332]/12 rounded-full blur-3xl pointer-events-none"
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-10 left-10 w-64 h-64 bg-[#9C7340]/12 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-10 left-10 w-64 h-64 bg-[#C49A64]/12 rounded-full blur-3xl pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Cabecera de sección con divisor editorial */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-5 sm:mb-12 flex items-center justify-between border-b border-[#C9B8A0] pb-3 sm:pb-4">
+          <div className="mb-5 sm:mb-12 flex items-center justify-between border-b border-[#C49A64]/35 pb-3 sm:pb-4">
             <div className="flex items-center gap-3">
-              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#9E3E1E] font-bold">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#DF7E5B] font-bold">
                 {t("diego.kicker")}
               </span>
-              <span className="hidden sm:inline-block w-8 h-[2px] bg-[#9E3E1E]" />
+              <span className="hidden sm:inline-block w-8 h-[2px] bg-[#C86442]" />
             </div>
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#6E4B20] font-bold tabular-nums">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C49A64] font-bold tabular-nums">
               RYABKO · VASILIEV · HETS
             </span>
           </div>
@@ -112,15 +112,15 @@ export function DiegoLedesma() {
             className="lg:col-span-7 space-y-4 sm:space-y-6"
           >
             <div className="space-y-1">
-              <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#9E3E1E] font-bold">
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#DF7E5B] font-bold">
                 <span>{t("diego.tag")}</span>
-                <span className="text-[#4A3B32]" aria-hidden="true">·</span>
-                <span className="text-[#6E4B20]">
+                <span className="text-[#C4B5A3]/50" aria-hidden="true">·</span>
+                <span className="text-[#C49A64]">
                   40+ {lang === "en" ? "YEARS" : "AÑOS"}
                 </span>
               </div>
               <h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#231C18] font-heading"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading"
                 style={{ textWrap: "balance" }}
               >
                 {t("diego.name")}
@@ -131,7 +131,7 @@ export function DiegoLedesma() {
             <div className="grid grid-cols-12 gap-3.5 sm:gap-7 items-start pt-1">
               {/* Retrato Editorial Oficial de Diego Ledesma (Marco en Tierra Sombra #1F1916 con borde Ocre Arcilla) */}
               <div className="col-span-5 sm:col-span-5 relative group">
-                <div className="relative rounded-sm overflow-hidden border-2 border-[#C49A64]/65 group-hover:border-[#B85332] transition-all duration-300 shadow-xl bg-[#1F1916]">
+                <div className="relative rounded-sm overflow-hidden border-2 border-[#C49A64]/65 group-hover:border-[#C86442] transition-all duration-300 shadow-xl bg-[#1F1916]">
                   <div className="relative aspect-[3/4] overflow-hidden bg-[#1F1916]">
                     {!portraitLoaded && (
                       <div className="absolute inset-0 bg-[#2A211C] animate-pulse flex flex-col items-center justify-center p-2 sm:p-4">
@@ -176,7 +176,7 @@ export function DiegoLedesma() {
                       </span>
                     </div>
                     <div className="sm:text-right flex sm:block items-center justify-between border-t sm:border-t-0 border-[#C4B5A3]/25 pt-1 sm:pt-0">
-                      <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.16em] text-[#C86442] font-bold block">
+                      <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.16em] text-[#DF7E5B] font-bold block">
                         VIII DAN
                       </span>
                       <span className="text-[8px] sm:text-[9px] font-mono uppercase tracking-wider text-[#C49A64] block">
@@ -189,25 +189,25 @@ export function DiegoLedesma() {
 
               {/* Columna derecha junto al retrato */}
               <div className="col-span-7 sm:col-span-7 space-y-3 sm:space-y-4">
-                {/* Cita editorial enmarcada en Hueso Pergamino con borde Terracota */}
-                <figure className="relative py-2.5 sm:py-4 px-3 sm:px-4 bg-[#F8F3EB] border-y-2 border-[#B85332] shadow-sm">
+                {/* Cita editorial enmarcada en Adobe Oscuro Cálido con borde Terracota */}
+                <figure className="relative py-2.5 sm:py-4 px-3 sm:px-4 bg-[#261E1A] border-y-2 border-[#C86442] shadow-md">
                   <span
                     aria-hidden="true"
-                    className="hidden sm:block font-serif text-3xl text-[#B85332]/70 leading-none select-none mb-1"
+                    className="hidden sm:block font-serif text-3xl text-[#DF7E5B]/80 leading-none select-none mb-1"
                   >
                     “
                   </span>
-                  <blockquote className="text-xs sm:text-base text-[#231C18] font-serif italic font-medium leading-snug sm:leading-relaxed">
+                  <blockquote className="text-xs sm:text-base text-[#F4EDE2] font-serif italic font-medium leading-snug sm:leading-relaxed">
                     {t("diego.quote")}
                   </blockquote>
                 </figure>
 
-                <div className="hidden sm:block space-y-3 text-sm text-[#362B24] leading-relaxed">
-                  <p className="text-[#231C18] font-medium">{t("diego.p1")}</p>
+                <div className="hidden sm:block space-y-3 text-sm text-[#C4B5A3] leading-relaxed">
+                  <p className="text-[#F4EDE2] font-medium">{t("diego.p1")}</p>
                   <p>{t("diego.p2")}</p>
                 </div>
 
-                <p className="block sm:hidden text-xs text-[#231C18] font-medium leading-relaxed">
+                <p className="block sm:hidden text-xs text-[#F4EDE2] font-medium leading-relaxed">
                   {t("diego.p1")}
                 </p>
 
@@ -227,7 +227,7 @@ export function DiegoLedesma() {
 
             {/* Segundo párrafo y botón en móvil */}
             <div className="block sm:hidden space-y-3">
-              <p className="text-xs text-[#362B24] leading-relaxed">
+              <p className="text-xs text-[#C4B5A3] leading-relaxed">
                 {t("diego.p2")}
               </p>
               <button
@@ -241,26 +241,26 @@ export function DiegoLedesma() {
             </div>
 
             {/* Perfil Multidisciplinario */}
-            <div className="p-3.5 sm:p-5 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] rounded-sm card-light-steel-elevation transition-all duration-300">
-              <div className="flex items-center justify-between border-b border-[#D6C8B4] pb-2 mb-2.5 sm:pb-2.5 sm:mb-3">
-                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#9E3E1E] font-bold">
+            <div className="p-3.5 sm:p-5 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] rounded-sm card-specular-edge transition-all duration-300">
+              <div className="flex items-center justify-between border-b border-[#C49A64]/30 pb-2 mb-2.5 sm:pb-2.5 sm:mb-3">
+                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#DF7E5B] font-bold">
                   {t("diego.profileTag")}
                 </span>
-                <span className="text-[10px] font-mono text-[#4A3B32] font-bold uppercase tracking-widest">
+                <span className="text-[10px] font-mono text-[#C49A64] font-bold uppercase tracking-widest">
                   01 — 03
                 </span>
               </div>
-              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 text-xs text-[#231C18] font-medium">
+              <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 text-xs text-[#F4EDE2] font-medium">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B85332] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#DF7E5B] shrink-0 mt-0.5" />
                   <span>{t("diego.role1")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B85332] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#DF7E5B] shrink-0 mt-0.5" />
                   <span>{t("diego.role2")}</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#B85332] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#DF7E5B] shrink-0 mt-0.5" />
                   <span>{t("diego.role3")}</span>
                 </li>
               </ul>

@@ -92,27 +92,27 @@ export function Testimonios() {
   return (
     <section
       id="testimonios"
-      className="pt-10 pb-14 sm:pt-20 sm:pb-24 bg-flow-testimonios text-[#231C18] relative overflow-hidden"
+      className="pt-10 pb-14 sm:pt-20 sm:pb-24 bg-flow-testimonios text-[#F4EDE2] relative overflow-hidden"
     >
       {/* Luz ambiental sutil en Terracota Pampeana (#B85332) */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-[250px] bg-[#B85332]/8 blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-[250px] bg-[#B85332]/12 blur-3xl pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Cabecera */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-12 border-b border-[#C9B8A0] pb-3.5 sm:pb-5">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-12 border-b border-[#C49A64]/35 pb-3.5 sm:pb-5">
             <div className="max-w-2xl">
-              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#9E3E1E] font-mono mb-1.5 sm:mb-2 font-bold">
-                <MessageSquareQuote className="w-4 h-4 text-[#7A5426]" />
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#DF7E5B] font-mono mb-1.5 sm:mb-2 font-bold">
+                <MessageSquareQuote className="w-4 h-4 text-[#C49A64]" />
                 <span>{t("test.kicker")}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#231C18] font-heading">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading">
                 {t("test.title")}
               </h2>
-              <p className="text-xs sm:text-base text-[#362B24] leading-relaxed mt-1.5 sm:mt-2 font-medium">
+              <p className="text-xs sm:text-base text-[#C4B5A3] leading-relaxed mt-1.5 sm:mt-2 font-medium">
                 {t("test.subtitle")}
               </p>
             </div>
@@ -121,7 +121,7 @@ export function Testimonios() {
               <button
                 type="button"
                 onClick={handlePrev}
-                className="w-12 h-12 rounded-sm bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] hover:text-[#B85332] text-[#231C18] flex items-center justify-center transition-colors cursor-pointer shadow-xs"
+                className="w-12 h-12 rounded-sm bg-[#261E1A] border border-[#C49A64]/45 hover:border-[#C86442] hover:text-[#DF7E5B] text-[#F4EDE2] flex items-center justify-center transition-colors cursor-pointer shadow-sm"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -129,7 +129,7 @@ export function Testimonios() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="w-12 h-12 rounded-sm bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] hover:text-[#B85332] text-[#231C18] flex items-center justify-center transition-colors cursor-pointer shadow-xs"
+                className="w-12 h-12 rounded-sm bg-[#261E1A] border border-[#C49A64]/45 hover:border-[#C86442] hover:text-[#DF7E5B] text-[#F4EDE2] flex items-center justify-center transition-colors cursor-pointer shadow-sm"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -153,7 +153,7 @@ export function Testimonios() {
               return (
                 <div
                   key={item.id}
-                  className="snap-center shrink-0 w-[85%] sm:w-[380px] md:w-[420px] p-4.5 sm:p-7 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] rounded-sm flex flex-col justify-between card-light-steel-elevation transition-all duration-300 group relative overflow-hidden"
+                  className="snap-center shrink-0 w-[85%] sm:w-[380px] md:w-[420px] p-4.5 sm:p-7 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] rounded-sm flex flex-col justify-between card-specular-edge transition-all duration-300 group relative overflow-hidden"
                 >
                   <div
                     className={`absolute top-0 left-0 right-0 h-[3px] ${
@@ -163,32 +163,32 @@ export function Testimonios() {
                     }`}
                   />
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between text-[10px] font-mono border-b border-[#D6C8B4] pb-3">
-                      <span className="text-[#9E3E1E] uppercase tracking-wider flex items-center gap-1.5 font-bold">
-                        <UserCheck className="w-3.5 h-3.5 text-[#7A5426]" />
+                    <div className="flex items-center justify-between text-[10px] font-mono border-b border-[#C49A64]/30 pb-3">
+                      <span className="text-[#DF7E5B] uppercase tracking-wider flex items-center gap-1.5 font-bold">
+                        <UserCheck className="w-3.5 h-3.5 text-[#C49A64]" />
                         <span>{t("test.studentBadge")}</span>
                       </span>
-                      <span className="text-[#6E4B20] font-bold uppercase tracking-[0.16em]">
+                      <span className="text-[#C49A64] font-bold uppercase tracking-[0.16em]">
                         · {item.tiempo}
                       </span>
                     </div>
 
-                    <blockquote className="text-sm sm:text-base text-[#231C18] leading-relaxed italic font-serif">
+                    <blockquote className="text-sm sm:text-base text-[#F4EDE2] leading-relaxed italic font-serif">
                       “{item.cita}”
                     </blockquote>
                   </div>
 
-                  <div className="pt-5 mt-5 border-t border-[#D6C8B4] flex items-center justify-between">
+                  <div className="pt-5 mt-5 border-t border-[#C49A64]/30 flex items-center justify-between">
                     <div>
-                      <span className="font-heading text-sm font-bold uppercase tracking-wider text-[#231C18] block group-hover:text-[#9E3E1E] transition-colors">
+                      <span className="font-heading text-sm font-bold uppercase tracking-wider text-[#F4EDE2] block group-hover:text-[#DF7E5B] transition-colors">
                         {item.nombre}
                       </span>
-                      <span className="text-xs text-[#362B24] font-sans block mt-0.5 font-medium">
+                      <span className="text-xs text-[#C4B5A3] font-sans block mt-0.5 font-medium">
                         {item.rol}
                       </span>
                     </div>
 
-                    <div className="text-[11px] font-mono font-bold text-[#9E3E1E] tabular-nums">
+                    <div className="text-[11px] font-mono font-bold text-[#DF7E5B] tabular-nums">
                       0{idx + 1} / 0{testimonios.length}
                     </div>
                   </div>
@@ -206,8 +206,8 @@ export function Testimonios() {
               onClick={() => scrollToTestimonial(dotIdx)}
               className={`h-2.5 rounded-xs transition-all cursor-pointer ${
                 activeIndex === dotIdx
-                  ? "bg-[#B85332] w-6"
-                  : "bg-[#7D6B5D]/35 w-2.5"
+                  ? "bg-[#C86442] w-6"
+                  : "bg-[#C4B5A3]/30 w-2.5"
               }`}
               aria-label={`Testimonial ${dotIdx + 1}`}
             />

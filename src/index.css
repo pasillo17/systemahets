@@ -202,7 +202,7 @@ h1, h2, h3, .font-heading {
 }
 
 .card-light-steel-elevation {
-  box-shadow: inset 0 1px 0 0 rgba(255, 252, 247, 0.9), 0 10px 26px -4px rgba(35, 28, 24, 0.08);
+  box-shadow: inset 0 1px 0 0 rgba(196, 154, 100, 0.22), 0 12px 28px -4px rgba(14, 10, 8, 0.52);
 }
 
 /* Active tactile press for touchscreens */
@@ -227,7 +227,8 @@ h1, h2, h3, .font-heading {
 }
 
 /* ============================================================================
-   TRANSICIONES CONTINUAS ENTRE TIERRA SOMBRA (MARRÓN) Y HUESO / ARENA (BLANCO CÁLIDO)
+   CONTINUIDAD CROMÁTICA INTEGRAL EN MARRÓN TIERRA SOMBRA (#1F1916),
+   ADOBE OSCURO CÁLIDO (#261E1A) Y QUEBRACHO TOSTADO (#2A211C)
    ============================================================================ */
 
 /* 1. Hero -> FranjaLinaje: Continuidad en Tierra Sombra Profunda */
@@ -236,99 +237,86 @@ h1, h2, h3, .font-heading {
     180deg,
     #1F1916 0%,
     #261E1A 55%,
-    #251D19 100%
+    #231B17 100%
   );
 }
 
-/* 2. FranjaLinaje -> FranjaPrincipios: Degradado orgánico de Marrón Tierra a Blanco Hueso / Arena */
+/* 2. FranjaLinaje -> FranjaPrincipios: Transición suave entre Tierra Sombra y Adobe Cálido */
 .bg-flow-brown-to-light {
   background: linear-gradient(
     180deg,
-    #251D19 0%,
-    #281F1B 64%,
-    #342822 76%,
-    #5E493B 86%,
-    #9C8470 93%,
-    #D2C0AC 97%,
-    #EFE7DA 100%
+    #231B17 0%,
+    #271F1A 50%,
+    #211A16 100%
   );
 }
 
-/* 3. FranjaPrincipios: De Arena Cálida (#EFE7DA) hacia Blanco Hueso Luminoso (#F8F3EB) */
+/* 3. FranjaPrincipios: Tierra Sombra hacia Adobe Oscuro Cálido */
 .bg-flow-principios {
   background: linear-gradient(
     180deg,
-    #EFE7DA 0%,
-    #F5EFE5 45%,
-    #F8F3EB 100%
+    #211A16 0%,
+    #261E1A 50%,
+    #1F1916 100%
   );
 }
 
-/* 4. ElSystema: De Blanco Hueso (#F8F3EB) hacia Arena Cálida y Tierra Suave (#E5DAC9) */
+/* 4. ElSystema: De Tierra Sombra (#1F1916) pasando por Adobe Cálido (#28201B) */
 .bg-flow-systema {
   background: linear-gradient(
     180deg,
-    #F8F3EB 0%,
-    #F4EDE2 55%,
-    #EBE0D0 82%,
-    #E5DAC9 100%
+    #1F1916 0%,
+    #261E1A 48%,
+    #231B17 100%
   );
 }
 
-/* 5. DiegoLedesma: De Arena Piedra (#E5DAC9) pasando por Blanco Hueso (#F8F3EB) a Arena Cálida (#EFE7DA) */
+/* 5. DiegoLedesma: Profundidad terrenal en Quebracho y Tierra Sombra */
 .bg-flow-diego {
   background: linear-gradient(
     180deg,
-    #E5DAC9 0%,
-    #F3ECE1 35%,
-    #F8F3EB 68%,
-    #EFE7DA 100%
+    #231B17 0%,
+    #1E1815 45%,
+    #261E1A 100%
   );
 }
 
-/* 6. Entrenamientos: De Arena Cálida (#EFE7DA) pasando por Blanco Hueso (#F8F3EB) hacia Tierra Suave (#E2D5C1) */
+/* 6. Entrenamientos: De Adobe Oscuro (#261E1A) hacia Tierra Sombra (#1F1916) */
 .bg-flow-entrenamientos {
   background: linear-gradient(
     180deg,
-    #EFE7DA 0%,
-    #F8F3EB 50%,
-    #EDE2D2 85%,
-    #E2D5C1 100%
+    #261E1A 0%,
+    #211A16 50%,
+    #1D1714 100%
   );
 }
 
-/* 7. Clases y Horarios: Abraza el tablero marrón con una transición cálida hacia Blanco Hueso (#F8F3EB) */
+/* 7. Clases y Horarios: Continuidad orgánica en Adobe y Tierra Sombra */
 .bg-flow-clases {
   background: linear-gradient(
     180deg,
-    #E2D5C1 0%,
-    #D8C7B0 25%,
-    #EBE1D2 58%,
-    #F8F3EB 100%
+    #1D1714 0%,
+    #251D19 48%,
+    #1F1916 100%
   );
 }
 
-/* 8. Testimonios: De Blanco Hueso (#F8F3EB) fundiéndose suavemente hacia Tierra Media al final */
+/* 8. Testimonios: De Tierra Sombra (#1F1916) hacia Adobe Cálido (#251D19) */
 .bg-flow-testimonios {
   background: linear-gradient(
     180deg,
-    #F8F3EB 0%,
-    #F4EDE2 58%,
-    #E5DAC9 82%,
-    #CDBAA6 100%
+    #1F1916 0%,
+    #261E1A 52%,
+    #211A16 100%
   );
 }
 
-/* 9. FraseDestacada: Puente de transición de Tierra Suave (#CDBAA6) hacia Marrón Tierra Sombra (#1F1916) */
+/* 9. FraseDestacada: Pausa reflexiva en Tierra Sombra Profunda */
 .bg-flow-light-to-brown {
   background: linear-gradient(
     180deg,
-    #CDBAA6 0%,
-    #9A816D 8%,
-    #5E493B 18%,
-    #362A23 28%,
-    #251D19 40%,
-    #211A16 70%,
+    #211A16 0%,
+    #1B1512 50%,
     #1F1916 100%
   );
 }
@@ -339,16 +327,16 @@ h1, h2, h3, .font-heading {
     180deg,
     #1F1916 0%,
     #231C18 50%,
-    #1A1412 100%
+    #181310 100%
   );
 }
 
-/* Sombra envolvente cálida para bloques de Marrón Tierra dentro de secciones claras */
+/* Sombra envolvente cálida para bloques destacados de Adobe Tierra */
 .earth-block-transition-glow {
   box-shadow:
-    0 24px 60px -12px rgba(38, 30, 26, 0.42),
-    0 0 0 6px rgba(196, 154, 100, 0.14),
-    0 0 50px rgba(184, 83, 50, 0.16);
+    0 24px 60px -12px rgba(12, 9, 8, 0.72),
+    0 0 0 1px rgba(196, 154, 100, 0.18),
+    0 0 42px rgba(184, 83, 50, 0.14);
 }
 
 /* Divisor editorial difuminado (reemplaza bordes rectos de corte brusco) */

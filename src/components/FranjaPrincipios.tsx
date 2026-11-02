@@ -38,15 +38,15 @@ export function FranjaPrincipios() {
   ];
 
   return (
-    <section className="relative z-20 bg-flow-principios text-[#231C18] pt-2 pb-8 sm:pt-4 sm:pb-14 overflow-hidden">
-      {/* Resplandor ambiental sutil en Terracota y Ocre sobre Arena Piedra */}
+    <section className="relative z-20 bg-flow-principios text-[#F4EDE2] pt-2 pb-8 sm:pt-4 sm:pb-14 overflow-hidden">
+      {/* Resplandor ambiental sutil en Terracota y Ocre sobre Tierra Sombra */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-72 h-28 bg-[#B85332]/10 blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-72 h-28 bg-[#B85332]/12 blur-3xl pointer-events-none"
       />
       <div
         aria-hidden="true"
-        className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-72 h-28 bg-[#9C7340]/12 blur-3xl pointer-events-none"
+        className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-72 h-28 bg-[#C49A64]/12 blur-3xl pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
@@ -61,7 +61,7 @@ export function FranjaPrincipios() {
                 delay={idx * 70}
                 distance={20}
               >
-                <div className="p-3.5 sm:p-6 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] rounded-sm transition-all duration-300 card-light-steel-elevation group h-full relative overflow-hidden">
+                <div className="p-3.5 sm:p-6 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] rounded-sm transition-all duration-300 card-specular-edge group h-full relative overflow-hidden">
                   {/* Filete superior en Terracota Pampeana y Ocre Arcilla */}
                   <div
                     className={`absolute top-0 left-0 right-0 h-[3px] ${
@@ -76,26 +76,26 @@ export function FranjaPrincipios() {
                       <div
                         className={`w-8 h-8 sm:w-12 sm:h-12 rounded-sm flex items-center justify-center shrink-0 transition-all duration-300 sm:mb-2.5 ${
                           isTerracotta
-                            ? "bg-[#261E1A] border border-[#C86442]/70 text-[#DF7E5B] group-hover:bg-[#B85332] group-hover:text-[#F4EDE2] shadow-sm"
-                            : "bg-[#261E1A] border border-[#C49A64]/65 text-[#C49A64] group-hover:bg-[#9C7340] group-hover:text-[#F4EDE2] shadow-sm"
+                            ? "bg-[#1A1412] border border-[#C86442]/70 text-[#DF7E5B] group-hover:bg-[#B85332] group-hover:text-[#F4EDE2] shadow-sm"
+                            : "bg-[#1A1412] border border-[#C49A64]/65 text-[#C49A64] group-hover:bg-[#9C7340] group-hover:text-[#F4EDE2] shadow-sm"
                         }`}
                       >
                         <Icon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.75]" />
                       </div>
                       <span
                         className={`sm:hidden text-[10px] font-mono font-bold tabular-nums ${
-                          isTerracotta ? "text-[#9E3E1E]" : "text-[#7A5426]"
+                          isTerracotta ? "text-[#DF7E5B]" : "text-[#C49A64]"
                         }`}
                       >
                         0{idx + 1}
                       </span>
                     </div>
 
-                    <h3 className="text-xs sm:text-sm font-heading uppercase tracking-wider text-[#231C18] font-bold group-hover:text-[#9E3E1E] transition-colors leading-tight mb-1 sm:mb-1.5">
+                    <h3 className="text-xs sm:text-sm font-heading uppercase tracking-wider text-[#F4EDE2] font-bold group-hover:text-[#DF7E5B] transition-colors leading-tight mb-1 sm:mb-1.5">
                       {item.titulo}
                     </h3>
 
-                    <p className="text-[11px] sm:text-xs text-[#362B24] leading-snug sm:leading-relaxed font-sans sm:max-w-[210px]">
+                    <p className="text-[11px] sm:text-xs text-[#C4B5A3] leading-snug sm:leading-relaxed font-sans sm:max-w-[210px]">
                       {item.descripcion}
                     </p>
                   </div>

@@ -66,31 +66,31 @@ export function Clases() {
   return (
     <section
       id="sedes-y-clases"
-      className="py-10 sm:py-20 bg-flow-clases text-[#231C18] relative overflow-hidden"
+      className="py-10 sm:py-20 bg-flow-clases text-[#F4EDE2] relative overflow-hidden"
     >
       {/* Luz ambiental sutil en Terracota Pampeana y Ocre Arcilla */}
       <div
         aria-hidden="true"
-        className="absolute top-1/4 right-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#B85332]/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/4 right-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#B85332]/12 rounded-full blur-3xl pointer-events-none"
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-1/4 left-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#9C7340]/12 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-1/4 left-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#C49A64]/12 rounded-full blur-3xl pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Cabecera de Sección con Divisor Editorial */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-6 sm:mb-10 border-b border-[#C9B8A0] pb-3.5 sm:pb-5 flex flex-col lg:flex-row lg:items-end justify-between gap-2.5 sm:gap-4">
+          <div className="mb-6 sm:mb-10 border-b border-[#C49A64]/35 pb-3.5 sm:pb-5 flex flex-col lg:flex-row lg:items-end justify-between gap-2.5 sm:gap-4">
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-1.5 sm:mb-2">
-                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#9E3E1E] font-bold">
+                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#DF7E5B] font-bold">
                   {t("clases.kicker")}
                 </span>
-                <span className="hidden sm:inline-block w-8 h-[2px] bg-[#9E3E1E]" />
+                <span className="hidden sm:inline-block w-8 h-[2px] bg-[#C86442]" />
               </div>
               <h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#231C18] font-heading"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4EDE2] font-heading"
                 style={{ textWrap: "balance" }}
               >
                 {lang === "en"
@@ -98,7 +98,7 @@ export function Clases() {
                   : "Horarios de Entrenamiento, Sede y Modalidades"}
               </h2>
             </div>
-            <p className="text-xs sm:text-base text-[#362B24] leading-relaxed max-w-md lg:text-right font-medium">
+            <p className="text-xs sm:text-base text-[#C4B5A3] leading-relaxed max-w-md lg:text-right font-medium">
               {t("clases.subtitle")}
             </p>
           </div>
@@ -542,18 +542,18 @@ export function Clases() {
 
         {/* =====================================================================
             MODALIDADES DE ENTRENAMIENTO (GRUPALES, INDIVIDUALES, SEMINARIOS)
-            Tarjetas en Hueso Pergamino (#F8F3EB) sobre fondo Arena Piedra (#E5DAC9)
+            Tarjetas en Adobe Oscuro Cálido (#261E1A) sobre fondo Tierra Sombra (#1F1916)
            ===================================================================== */}
         <ScrollReveal direction="up" delay={90} distance={24}>
           <div>
             <div className="flex items-center justify-between mb-3.5 sm:mb-5">
               <div className="flex items-center gap-2.5">
-                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#9E3E1E] font-bold">
+                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#DF7E5B] font-bold">
                   {lang === "en" ? "Training Formats" : "Formatos de Práctica"}
                 </span>
-                <span className="hidden sm:inline-block w-8 h-[2px] bg-[#9E3E1E]" />
+                <span className="hidden sm:inline-block w-8 h-[2px] bg-[#C86442]" />
               </div>
-              <span className="text-[10px] sm:text-xs font-mono text-[#4A3B32] font-bold uppercase tracking-wider">
+              <span className="text-[10px] sm:text-xs font-mono text-[#C49A64] font-bold uppercase tracking-wider">
                 {lang === "en" ? "3 Modalities" : "3 Modalidades"}
               </span>
             </div>
@@ -565,14 +565,14 @@ export function Clases() {
                 return (
                   <SpotlightCard
                     key={m.titulo}
-                    spotlightColor="rgba(184, 83, 50, 0.12)"
-                    borderColor="rgba(184, 83, 50, 0.65)"
-                    className="snap-center shrink-0 w-[84%] sm:w-[340px] md:w-auto p-4 sm:p-7 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] rounded-sm transition-all duration-300 flex flex-col justify-between card-light-steel-elevation group h-full relative"
+                    spotlightColor="rgba(200, 100, 66, 0.16)"
+                    borderColor="rgba(200, 100, 66, 0.65)"
+                    className="snap-center shrink-0 w-[84%] sm:w-[340px] md:w-auto p-4 sm:p-7 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] rounded-sm transition-all duration-300 flex flex-col justify-between card-specular-edge group h-full relative"
                   >
                     <div className="space-y-3 sm:space-y-4">
-                      <div className="flex items-center justify-between border-b border-[#D6C8B4] pb-2.5 sm:pb-3.5">
+                      <div className="flex items-center justify-between border-b border-[#C49A64]/30 pb-2.5 sm:pb-3.5">
                         <div
-                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-sm bg-[#261E1A] border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                          className={`w-9 h-9 sm:w-10 sm:h-10 rounded-sm bg-[#1A1412] border flex items-center justify-center shrink-0 transition-all duration-300 ${
                             isTerracotta
                               ? "border-[#C86442]/70 text-[#DF7E5B] group-hover:bg-[#B85332] group-hover:text-[#F4EDE2]"
                               : "border-[#C49A64]/65 text-[#C49A64] group-hover:bg-[#9C7340] group-hover:text-[#F4EDE2]"
@@ -580,7 +580,7 @@ export function Clases() {
                         >
                           <Icon className="w-4 h-4 stroke-[1.75]" />
                         </div>
-                        <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.2em] text-[#4A3B32] group-hover:text-[#9E3E1E] tabular-nums transition-colors">
+                        <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.2em] text-[#C4B5A3] group-hover:text-[#DF7E5B] tabular-nums transition-colors">
                           0{idx + 1} / 03
                         </span>
                       </div>
@@ -588,30 +588,30 @@ export function Clases() {
                       <div>
                         <span
                           className={`text-[10px] font-mono uppercase tracking-[0.2em] block font-bold ${
-                            isTerracotta ? "text-[#9E3E1E]" : "text-[#6E4B20]"
+                            isTerracotta ? "text-[#DF7E5B]" : "text-[#C49A64]"
                           }`}
                         >
                           {m.subtitulo}
                         </span>
-                        <h3 className="text-base sm:text-lg font-bold uppercase tracking-wide text-[#231C18] font-heading mt-0.5 sm:mt-1 group-hover:text-[#9E3E1E] transition-colors">
+                        <h3 className="text-base sm:text-lg font-bold uppercase tracking-wide text-[#F4EDE2] font-heading mt-0.5 sm:mt-1 group-hover:text-[#DF7E5B] transition-colors">
                           {m.titulo}
                         </h3>
                       </div>
 
-                      <p className="text-xs sm:text-sm font-medium text-[#231C18] italic font-serif leading-relaxed py-2 border-y border-[#D6C8B4]">
+                      <p className="text-xs sm:text-sm font-medium text-[#F4EDE2] italic font-serif leading-relaxed py-2 border-y border-[#C49A64]/30">
                         “{m.descripcion}”
                       </p>
 
-                      <p className="text-xs sm:text-sm text-[#362B24] leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#C4B5A3] leading-relaxed">
                         {m.detalles}
                       </p>
                     </div>
 
-                    <div className="pt-3 mt-4 sm:pt-4 sm:mt-5 border-t border-[#D6C8B4] flex items-center justify-between">
-                      <span className="text-[10px] font-mono text-[#9E3E1E] font-bold uppercase tracking-wider">
+                    <div className="pt-3 mt-4 sm:pt-4 sm:mt-5 border-t border-[#C49A64]/30 flex items-center justify-between">
+                      <span className="text-[10px] font-mono text-[#DF7E5B] font-bold uppercase tracking-wider">
                         {t("clases.groupsNote")}
                       </span>
-                      <span className="text-[10px] font-mono text-[#6E4B20] font-bold uppercase tracking-widest">
+                      <span className="text-[10px] font-mono text-[#C49A64] font-bold uppercase tracking-widest">
                         HETS
                       </span>
                     </div>
@@ -619,9 +619,9 @@ export function Clases() {
                 );
               })}
             </div>
-            <div className="flex md:hidden items-center justify-between px-1 pt-1.5 text-[10px] font-mono text-[#4A3B32] uppercase tracking-wider font-semibold">
+            <div className="flex md:hidden items-center justify-between px-1 pt-1.5 text-[10px] font-mono text-[#C4B5A3] uppercase tracking-wider font-semibold">
               <span>{lang === "en" ? "Swipe modalities →" : "Deslizá modalidades →"}</span>
-              <span className="text-[#9E3E1E] font-bold tabular-nums">01 — 03</span>
+              <span className="text-[#DF7E5B] font-bold tabular-nums">01 — 03</span>
             </div>
           </div>
         </ScrollReveal>

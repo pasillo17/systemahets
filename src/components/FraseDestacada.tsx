@@ -9,11 +9,11 @@ export function FraseDestacada() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative pt-24 pb-14 sm:pt-36 sm:pb-24 bg-flow-light-to-brown overflow-hidden text-center">
+    <section className="relative py-12 sm:py-20 bg-flow-light-to-brown overflow-hidden text-center">
       {/* Resplandor ambiental centrado en Terracota y Ocre Arcilla */}
       <div
         aria-hidden="true"
-        className="absolute top-2/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[580px] h-32 sm:h-56 bg-gradient-to-r from-[#B85332]/18 via-[#C49A64]/18 to-[#B85332]/18 rounded-full blur-[80px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[580px] h-32 sm:h-56 bg-gradient-to-r from-[#B85332]/18 via-[#C49A64]/18 to-[#B85332]/18 rounded-full blur-[80px] pointer-events-none"
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

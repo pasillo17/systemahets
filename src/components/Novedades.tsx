@@ -244,24 +244,24 @@ export function Novedades({ onBackHome }: NovedadesProps) {
         </div>
       </section>
 
-      {/* 2. SECCIÓN CLARA EN BLANCO HUESO (#F8F3EB) Y ARENA CÁLIDA (#EFE7DA) CON CONTRASTE ALTO (#231C18 / #362B24) */}
-      <section className="py-10 sm:py-18 bg-flow-systema text-[#231C18] relative">
+      {/* 2. SECCIÓN EN TIERRA SOMBRA (#1F1916) Y ADOBE OSCURO CÁLIDO (#261E1A) CON CONTRASTE ALTO (#F4EDE2 / #C4B5A3) */}
+      <section className="py-10 sm:py-18 bg-flow-systema text-[#F4EDE2] relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
           {/* Ejes de la Experiencia en la Naturaleza */}
           <ScrollReveal direction="up" distance={20}>
             <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#C9B8A0] pb-3">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-[#C49A64]/35 pb-3">
                 <div>
-                  <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#9E3E1E] font-bold block">
+                  <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#DF7E5B] font-bold block">
                     {isEn ? "TRAINING PILLARS" : "EJES DE LA JORNADA"}
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-tight text-[#231C18] mt-0.5">
+                  <h2 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-tight text-[#F4EDE2] mt-0.5">
                     {isEn
                       ? "Practice in Contact with Nature"
                       : "Entrenamiento en Contacto con la Naturaleza"}
                   </h2>
                 </div>
-                <span className="text-xs font-mono text-[#4A3B32] font-bold">
+                <span className="text-xs font-mono text-[#C49A64] font-bold">
                   Estancia Santa Rita · Punta Indio
                 </span>
               </div>
@@ -272,17 +272,17 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                   return (
                     <div
                       key={eje.label}
-                      className="p-3.5 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] rounded-sm card-light-steel-elevation flex flex-col justify-between gap-2 transition-colors"
+                      className="p-3.5 bg-[#261E1A] border border-[#C49A64]/40 hover:border-[#C86442] rounded-sm card-specular-edge flex flex-col justify-between gap-2 transition-colors"
                     >
                       <div className="flex items-center justify-between">
-                        <div className="w-8 h-8 rounded-xs bg-[#261E1A] text-[#DF7E5B] border border-[#C86442]/60 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-xs bg-[#1A1412] text-[#DF7E5B] border border-[#C86442]/60 flex items-center justify-center">
                           <Icon className="w-4 h-4" />
                         </div>
-                        <span className="text-[10px] font-mono font-bold text-[#6E4B20] tabular-nums">
+                        <span className="text-[10px] font-mono font-bold text-[#C49A64] tabular-nums">
                           0{idx + 1}
                         </span>
                       </div>
-                      <span className="text-xs font-heading font-bold uppercase tracking-wide text-[#231C18] leading-snug">
+                      <span className="text-xs font-heading font-bold uppercase tracking-wide text-[#F4EDE2] leading-snug">
                         {eje.label}
                       </span>
                     </div>
@@ -302,18 +302,18 @@ export function Novedades({ onBackHome }: NovedadesProps) {
               className="lg:col-span-7 flex flex-col justify-between"
             >
               <SpotlightCard
-                spotlightColor="rgba(184, 83, 50, 0.1)"
-                borderColor="rgba(184, 83, 50, 0.55)"
-                className="p-5 sm:p-8 bg-[#F8F3EB] border border-[#C9B8A0] rounded-sm card-light-steel-elevation h-full flex flex-col justify-between space-y-6 relative overflow-hidden"
+                spotlightColor="rgba(200, 100, 66, 0.14)"
+                borderColor="rgba(200, 100, 66, 0.65)"
+                className="p-5 sm:p-8 bg-[#261E1A] border border-[#C49A64]/45 rounded-sm card-specular-edge h-full flex flex-col justify-between space-y-6 relative overflow-hidden"
               >
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#B85332] via-[#9C7340] to-transparent" />
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#B85332] via-[#C49A64] to-transparent" />
 
                 <div className="space-y-5">
-                  <div className="border-b border-[#D6C8B4] pb-3.5">
-                    <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#9E3E1E] font-bold block">
+                  <div className="border-b border-[#C49A64]/30 pb-3.5">
+                    <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#DF7E5B] font-bold block">
                       {isEn ? "REGISTRATION DETAILS" : "DETALLE DEL SEMINARIO"}
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-wide text-[#231C18] mt-1">
+                    <h3 className="text-xl sm:text-2xl font-heading font-bold uppercase tracking-wide text-[#F4EDE2] mt-1">
                       {isEn
                         ? "La inscripción incluye:"
                         : "La inscripción incluye:"}
@@ -327,19 +327,19 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                       return (
                         <li
                           key={item.texto}
-                          className="p-3.5 sm:p-4 rounded-sm bg-[#EFE7DA] border border-[#D6C8B4] flex items-start gap-3.5"
+                          className="p-3.5 sm:p-4 rounded-sm bg-[#1F1916] border border-[#C49A64]/35 flex items-start gap-3.5"
                         >
                           <div className="w-9 h-9 rounded-xs bg-[#261E1A] text-[#DF7E5B] border border-[#C86442]/60 flex items-center justify-center shrink-0 mt-0.5">
                             <Icon className="w-4 h-4" />
                           </div>
                           <div>
                             <div className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-[#9E3E1E] shrink-0" />
-                              <span className="text-sm sm:text-base font-bold text-[#231C18]">
+                              <CheckCircle2 className="w-4 h-4 text-[#DF7E5B] shrink-0" />
+                              <span className="text-sm sm:text-base font-bold text-[#F4EDE2]">
                                 {item.texto}
                               </span>
                             </div>
-                            <p className="text-xs sm:text-sm text-[#362B24] mt-1 leading-relaxed">
+                            <p className="text-xs sm:text-sm text-[#C4B5A3] mt-1 leading-relaxed">
                               {item.detalle}
                             </p>
                           </div>
@@ -350,19 +350,19 @@ export function Novedades({ onBackHome }: NovedadesProps) {
                 </div>
 
                 {/* Avisos importantes: No incluye hospedaje ni transporte + Cupos y Fecha */}
-                <div className="space-y-3 pt-4 border-t border-[#D6C8B4]">
-                  <div className="p-3.5 rounded-sm bg-[#EFE7DA] border-l-4 border-[#9E3E1E] flex items-center gap-3">
-                    <AlertCircle className="w-5 h-5 text-[#9E3E1E] shrink-0" />
-                    <p className="text-xs sm:text-sm font-bold text-[#231C18]">
+                <div className="space-y-3 pt-4 border-t border-[#C49A64]/30">
+                  <div className="p-3.5 rounded-sm bg-[#1F1916] border-l-4 border-[#C86442] flex items-center gap-3">
+                    <AlertCircle className="w-5 h-5 text-[#DF7E5B] shrink-0" />
+                    <p className="text-xs sm:text-sm font-bold text-[#F4EDE2]">
                       {isEn
                         ? "Does not include lodging or transportation."
                         : "No incluye hospedaje ni transporte."}
                     </p>
                   </div>
 
-                  <div className="p-3.5 rounded-sm bg-[#EFE7DA] border-l-4 border-[#6E4B20] flex items-center gap-3">
-                    <Clock className="w-5 h-5 text-[#6E4B20] shrink-0" />
-                    <p className="text-xs sm:text-sm font-bold text-[#231C18]">
+                  <div className="p-3.5 rounded-sm bg-[#1F1916] border-l-4 border-[#C49A64] flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-[#C49A64] shrink-0" />
+                    <p className="text-xs sm:text-sm font-bold text-[#F4EDE2]">
                       {isEn
                         ? "Limited spots. Specific date of the 1-day seminar to be confirmed."
                         : "Cupos limitados. Fecha específica de la jornada a confirmar."}
