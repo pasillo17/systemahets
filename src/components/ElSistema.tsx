@@ -35,7 +35,7 @@ export function ElSistema() {
   ];
 
   return (
-    <section id="systema" className="py-14 sm:py-20 bg-[#080807] text-[#F1EBDD] relative overflow-hidden border-t border-[#A58A60]/15">
+    <section id="systema" className="py-10 sm:py-20 bg-[#080807] text-[#F1EBDD] relative overflow-hidden border-t border-[#A58A60]/15">
       
       {/* Luz de fondo ambiental tenue en CSS puro */}
       <div
@@ -45,69 +45,78 @@ export function ElSistema() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Kicker editorial */}
+        {/* Kicker editorial con divisor de sección */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-6 sm:mb-10">
-            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#C2A87E] block mb-2 font-semibold">
-              {t("systema.kicker")}
+          <div className="mb-5 sm:mb-12 flex items-center justify-between border-b border-[#A58A60]/20 pb-3 sm:pb-4">
+            <div className="flex items-center gap-3">
+              <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.26em] text-[#C2A87E] font-semibold">
+                {t("systema.kicker")}
+              </span>
+              <span className="hidden sm:inline-block w-8 h-[1px] bg-[#A58A60]/40" />
+            </div>
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#8C887E]">
+              SYSTEMA HETS
             </span>
-            <div className="h-[1px] w-12 bg-[#A58A60]/40" />
           </div>
         </ScrollReveal>
 
-        {/* Composición Asimétrica en 3 Áreas */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Composición Asimétrica en 3 Áreas (Compactada en móvil) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 items-center">
           
-          {/* Área 1: Fotografía de Práctica con Fallback Elegante */}
-          <ScrollReveal direction="up" delay={80} distance={28} className="lg:col-span-5 order-2 lg:order-1">
+          {/* Área 1: Fotografía de Práctica con Fallback Elegante (16:9 en móvil para no ocupar altura excesiva) */}
+          <ScrollReveal direction="up" delay={80} distance={24} className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative rounded-sm overflow-hidden border border-[#A58A60]/30 bg-[#12110F] shadow-2xl group card-specular-edge hover:border-[#A58A60]/60 transition-all duration-500">
               <ImageWithFallback
                 src={SITE_CONFIG.assets.heroImage}
                 alt="Práctica de biomecánica y movimiento consciente en dojo"
-                aspectRatioClass="aspect-[4/3] sm:aspect-[16/11]"
+                aspectRatioClass="aspect-[16/9] sm:aspect-[16/11]"
                 className="w-full h-full object-cover filter brightness-90 contrast-105 transition-transform duration-700 group-hover:scale-105"
                 fallbackTitle={t("systema.cardImgTitle")}
                 fallbackSubtitle={t("systema.cardImgDesc")}
               />
-              <div className="p-3 bg-[#0c0b0a]/90 backdrop-blur-sm border-t border-[#A58A60]/20 flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C2A87E] block font-semibold">
+              <div className="p-2.5 sm:p-3.5 bg-[#0c0b0a]/95 backdrop-blur-sm border-t border-[#A58A60]/20 flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C2A87E] block font-semibold truncate">
                     {t("systema.cardImgTitle")}
                   </span>
-                  <p className="text-xs text-[#C4BFB4] mt-0.5 line-clamp-1">
+                  <p className="text-[11px] sm:text-xs text-[#C4BFB4] mt-0.5 line-clamp-1">
                     {t("systema.cardImgDesc")}
                   </p>
                 </div>
-                <div className="w-2 h-2 rounded-full bg-[#A58A60]/40 group-hover:bg-[#C2A87E] transition-colors" />
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#8C887E] shrink-0">
+                  HETS · BS.AS.
+                </span>
               </div>
             </div>
           </ScrollReveal>
 
           {/* Área 2: Título y Definición Central — SIEMPRE SYSTEMA CON 'Y' */}
-          <ScrollReveal direction="up" delay={160} distance={28} className="lg:col-span-4 space-y-4 order-1 lg:order-2">
+          <ScrollReveal direction="up" delay={140} distance={24} className="lg:col-span-4 space-y-3 sm:space-y-4 order-1 lg:order-2">
             <div>
-              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#C2A87E] block mb-1 font-semibold">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#C2A87E] block mb-1 font-semibold">
                 {t("systema.badge")}
               </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
+              <h2
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading"
+                style={{ textWrap: "balance" }}
+              >
                 {t("systema.title")}
               </h2>
             </div>
 
-            {/* Texto en crema con tamaño >= 16px para alta legibilidad móvil */}
-            <p className="text-base sm:text-lg text-[#EAE5D9] leading-relaxed font-normal">
+            <p className="text-sm sm:text-lg text-[#EAE5D9] leading-relaxed font-normal">
               {t("systema.definition")}
             </p>
 
-            <p className="text-sm text-[#C4BFB4] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#C4BFB4] leading-relaxed">
               {t("systema.p2")}
             </p>
 
-            <div className="pt-2">
+            <div className="pt-1 sm:pt-2">
               <button
                 type="button"
                 onClick={() => setModalOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#080807] bg-gradient-to-r from-[#A58A60] via-[#C2A87E] to-[#A58A60] bg-[length:200%_auto] hover:bg-right rounded-sm transition-all duration-300 cursor-pointer shadow-lg shadow-[#A58A60]/20 min-h-[48px] active:scale-[0.98] group hover:shadow-[0_0_20px_rgba(165,138,96,0.35)]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 text-xs font-bold uppercase tracking-wider text-[#080807] bg-gradient-to-r from-[#A58A60] via-[#C2A87E] to-[#A58A60] bg-[length:200%_auto] hover:bg-right rounded-sm transition-all duration-300 cursor-pointer shadow-lg shadow-[#A58A60]/20 min-h-[46px] sm:min-h-[48px] active:scale-[0.98] group hover:shadow-[0_0_20px_rgba(165,138,96,0.35)]"
               >
                 <span>{t("systema.btnMore")}</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -115,42 +124,51 @@ export function ElSistema() {
             </div>
           </ScrollReveal>
 
-          {/* Área 3: Tres Conceptos Breves con SpotlightCard */}
-          <ScrollReveal direction="up" delay={240} distance={28} className="lg:col-span-3 space-y-3 lg:border-l lg:border-[#A58A60]/20 lg:pl-6 order-3">
-            
-            {/* Concepto 1: ADAPTACIÓN */}
-            <SpotlightCard className="p-4 bg-[#12110F]/80 border border-[#A58A60]/20 hover:border-[#A58A60]/50 transition-all card-specular-edge group">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C2A87E] font-bold mb-1">
-                <Compass className="w-4 h-4 text-[#A58A60] group-hover:scale-110 transition-transform" />
-                <span>{t("systema.adaptacion")}</span>
-              </div>
-              <p className="text-sm text-[#EAE5D9] leading-relaxed font-sans">
-                {t("systema.adaptacionDesc")}
-              </p>
-            </SpotlightCard>
+          {/* Área 3: Tres Conceptos Breves (Carrusel horizontal deslizable en móvil, columna en PC) */}
+          <ScrollReveal direction="up" delay={200} distance={24} className="lg:col-span-3 lg:border-l lg:border-[#A58A60]/20 lg:pl-6 order-3">
+            <div className="flex lg:flex-col gap-2.5 sm:gap-3 overflow-x-auto lg:overflow-visible pb-1 lg:pb-0 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+              {/* Concepto 1: ADAPTACIÓN */}
+              <SpotlightCard className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#12110F]/90 border border-[#A58A60]/20 hover:border-[#A58A60]/50 transition-all card-specular-edge group">
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C2A87E] font-bold">
+                    <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A58A60] group-hover:scale-110 transition-transform" />
+                    <span>{t("systema.adaptacion")}</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#8C887E] tabular-nums">01</span>
+                </div>
+                <p className="text-xs sm:text-sm text-[#EAE5D9] leading-relaxed font-sans">
+                  {t("systema.adaptacionDesc")}
+                </p>
+              </SpotlightCard>
 
-            {/* Concepto 2: EFICIENCIA */}
-            <SpotlightCard className="p-4 bg-[#12110F]/80 border border-[#A58A60]/20 hover:border-[#A58A60]/50 transition-all card-specular-edge group">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C2A87E] font-bold mb-1">
-                <Activity className="w-4 h-4 text-[#A58A60] group-hover:scale-110 transition-transform" />
-                <span>{t("systema.eficiencia")}</span>
-              </div>
-              <p className="text-sm text-[#EAE5D9] leading-relaxed font-sans">
-                {t("systema.eficienciaDesc")}
-              </p>
-            </SpotlightCard>
+              {/* Concepto 2: EFICIENCIA */}
+              <SpotlightCard className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#12110F]/90 border border-[#A58A60]/20 hover:border-[#A58A60]/50 transition-all card-specular-edge group">
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C2A87E] font-bold">
+                    <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A58A60] group-hover:scale-110 transition-transform" />
+                    <span>{t("systema.eficiencia")}</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#8C887E] tabular-nums">02</span>
+                </div>
+                <p className="text-xs sm:text-sm text-[#EAE5D9] leading-relaxed font-sans">
+                  {t("systema.eficienciaDesc")}
+                </p>
+              </SpotlightCard>
 
-            {/* Concepto 3: CONCIENCIA */}
-            <SpotlightCard className="p-4 bg-[#12110F]/80 border border-[#A58A60]/20 hover:border-[#A58A60]/50 transition-all card-specular-edge group">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C2A87E] font-bold mb-1">
-                <Wind className="w-4 h-4 text-[#A58A60] group-hover:scale-110 transition-transform" />
-                <span>{t("systema.conciencia")}</span>
-              </div>
-              <p className="text-sm text-[#EAE5D9] leading-relaxed font-sans">
-                {t("systema.concienciaDesc")}
-              </p>
-            </SpotlightCard>
-
+              {/* Concepto 3: CONCIENCIA */}
+              <SpotlightCard className="snap-center shrink-0 w-[78%] sm:w-[260px] lg:w-full p-3.5 sm:p-4 bg-[#12110F]/90 border border-[#A58A60]/20 hover:border-[#A58A60]/50 transition-all card-specular-edge group">
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C2A87E] font-bold">
+                    <Wind className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#A58A60] group-hover:scale-110 transition-transform" />
+                    <span>{t("systema.conciencia")}</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#8C887E] tabular-nums">03</span>
+                </div>
+                <p className="text-xs sm:text-sm text-[#EAE5D9] leading-relaxed font-sans">
+                  {t("systema.concienciaDesc")}
+                </p>
+              </SpotlightCard>
+            </div>
           </ScrollReveal>
 
         </div>

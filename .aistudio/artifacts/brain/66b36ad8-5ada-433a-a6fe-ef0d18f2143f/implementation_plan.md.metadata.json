@@ -1,6 +1,6 @@
 {
-  "summary":  "Plan para implementar animaciones de entrada suaves (scroll reveal & slide-up) en todas las secciones principales y tarjetas del sitio:\n1. Creación del hook/componente reutilizable de Scroll Reveal basado en IntersectionObserver nativo con aceleración por hardware.\n2. Integración en Hero, Franja de Linaje, Principios, El Systema, Diego Ledesma, Entrenamientos, Sedes/Clases, Testimonios y Contacto.\n3. Respeto estricto a accesibilidad y rendimiento en celulares sin parpadeos ni demoras.",
-  "updatedAt":  "2026-11-02T03:33:13.283643502Z",
+  "summary":  "Plan de implementación para eliminar el enlace directo de WhatsApp en el Hero y aplicar un pulido integral de estética marcial de lujo (barra de progreso de lectura dorada, navegación activa al scrollear, disciplina Zero-Pill editorial, filetes dorados finos y jerarquía visual en Diego Ledesma, Clases y Contacto).",
+  "updatedAt":  "2026-11-02T04:12:37.398336751Z",
   "requestFeedback":  true,
   "userFacing":  true
 }

@@ -22,7 +22,14 @@ import { PagePreloader } from "./components/PagePreloader";
 
 function MainApp() {
   const scrollToSystem = () => {
-    const el = document.getElementById("systema");
+    const el = document.getElementById("systema") || document.getElementById("linaje");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToClasses = () => {
+    const el = document.getElementById("sedes-y-clases");
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -41,8 +48,8 @@ function MainApp() {
 
       {/* Flujo Narrativo Mobile-First */}
       <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
-        {/* 1. Hero: Resumido, logo protagonista, sin círculos, botón "Conocer el Systema" */}
-        <Hero onExploreSystem={scrollToSystem} />
+        {/* 1. Hero: Resumido, logo protagonista, botones de exploración interna */}
+        <Hero onExploreSystem={scrollToSystem} onExploreClasses={scrollToClasses} />
 
         {/* 2. Franja de Linaje Oficial: 2 Grandes Escuelas de Systema */}
         <FranjaLinaje />

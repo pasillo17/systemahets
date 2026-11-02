@@ -95,17 +95,19 @@ export function Entrenamientos() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Cabecera Editorial Concisa (Sin sobre-explicar) */}
+        {/* Cabecera Editorial Concisa con Divisor de Sección */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="max-w-2xl mb-6 sm:mb-10 text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#C2A87E] font-mono mb-2 font-semibold">
-              <Camera className="w-4 h-4 text-[#A58A60]" />
-              <span>{t("ent.kicker") || "Galería de Práctica"}</span>
+          <div className="mb-6 sm:mb-10 border-b border-[#A58A60]/20 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div>
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.24em] text-[#C2A87E] font-mono mb-2 font-semibold">
+                <Camera className="w-4 h-4 text-[#A58A60]" />
+                <span>{t("ent.kicker") || "Galería de Práctica"}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
+                {t("ent.title") || "Entrenamientos"}
+              </h2>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
-              {t("ent.title") || "Entrenamientos"}
-            </h2>
-            <p className="text-xs sm:text-sm text-[#C4BFB4] mt-1.5 font-sans leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#C4BFB4] font-sans leading-relaxed max-w-md sm:text-right">
               {lang === "en" 
                 ? "Real practice, organic adaptation, and conscious movement in open space."
                 : "Práctica real, adaptabilidad orgánica y movimiento consciente en espacio abierto."}
@@ -144,21 +146,21 @@ export function Entrenamientos() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#12110F] via-transparent to-transparent opacity-90 pointer-events-none" />
 
                 {/* Botón flotante para ampliar */}
-                <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#080807]/80 text-[#D8C7A5] border border-[#A58A60]/40 backdrop-blur-xs">
+                <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#080807]/85 text-[#D8C7A5] border border-[#A58A60]/40 backdrop-blur-xs">
                   <Maximize2 className="w-3.5 h-3.5 text-[#A58A60]" />
                 </div>
 
-                {/* Tag de Categoría */}
+                {/* Etiqueta editorial de Categoría */}
                 <div className="absolute top-3 left-3">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#F59E0B] bg-[#080807]/90 px-2.5 py-1 border border-[#C05621]/50 rounded-xs font-semibold backdrop-blur-xs shadow-md">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#C2A87E] bg-[#080807]/90 px-2.5 py-1 border border-[#A58A60]/40 rounded-xs font-semibold backdrop-blur-xs shadow-md">
                     {items[activeSlide].categoria}
                   </span>
                 </div>
 
-                {/* Contador de fotos (1 / 2) */}
+                {/* Contador de fotos (01 / 02) */}
                 <div className="absolute bottom-3 right-3">
-                  <span className="text-[10px] font-mono text-[#F1EBDD] bg-[#080807]/85 px-2 py-0.5 rounded-xs border border-[#A58A60]/30">
-                    {activeSlide + 1} / {totalSlides}
+                  <span className="text-[10px] font-mono text-[#F1EBDD] bg-[#080807]/85 px-2 py-0.5 rounded-xs border border-[#A58A60]/30 tabular-nums">
+                    0{activeSlide + 1} / 0{totalSlides}
                   </span>
                 </div>
               </div>
@@ -201,9 +203,9 @@ export function Entrenamientos() {
 
             {/* Indicadores de puntos y control inferior móvil */}
             <div className="flex items-center justify-between mt-3 px-1">
-              <span className="text-[10px] font-mono text-[#A58A60] uppercase tracking-wider flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-[#F59E0B]" />
-                Deslizá para pasar foto
+              <span className="text-[10px] font-mono text-[#A58A60] uppercase tracking-wider flex items-center gap-1.5">
+                <Sparkles className="w-3 h-3 text-[#C2A87E]" />
+                {lang === "en" ? "Swipe to browse" : "Deslizá para pasar foto"}
               </span>
 
               {/* Puntos de paginación interactivos */}
@@ -251,15 +253,15 @@ export function Entrenamientos() {
                   {/* Degradado inferior */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#12110F] via-transparent to-transparent opacity-80 pointer-events-none" />
 
-                  {/* Tag de Categoría */}
+                  {/* Etiqueta editorial de Categoría */}
                   <div className="absolute top-3 left-3">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#F59E0B] bg-[#080807]/90 px-2.5 py-1 border border-[#C05621]/50 rounded-xs font-semibold backdrop-blur-xs shadow-md">
-                      {item.categoria}
+                    <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#C2A87E] bg-[#080807]/90 px-2.5 py-1 border border-[#A58A60]/40 rounded-xs font-semibold backdrop-blur-xs shadow-md">
+                      0{idx + 1} · {item.categoria}
                     </span>
                   </div>
 
                   {/* Ícono de ampliación al pasar el mouse */}
-                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#080807]/80 text-[#D8C7A5] border border-[#A58A60]/30 shadow-md backdrop-blur-xs group-hover:border-[#C2A87E] transition-colors">
+                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#080807]/85 text-[#D8C7A5] border border-[#A58A60]/30 shadow-md backdrop-blur-xs group-hover:border-[#C2A87E] transition-colors">
                     <Maximize2 className="w-3.5 h-3.5 text-[#A58A60] group-hover:scale-110 transition-transform" />
                   </div>
                 </div>

@@ -1,58 +1,74 @@
-# Plan de Implementación: Animaciones de Entrada Suaves (Scroll Reveal)
+# Systema HETS — Pulido Integral de Estética Marcial de Lujo
 
-## 1. Diagnóstico y Decisiones de Diseño
-- **Objetivo del usuario**: Que los elementos y secciones del sitio no aparezcan de forma estática o rígida, sino que tengan una **aparición suave hacia arriba al hacer scroll** en todas las secciones y tarjetas principales.
-- **Elecciones confirmadas**:
-  - Estilo: *Aparición suave hacia arriba (fade-in + slide-up)* con curvas naturales (`cubic-bezier(0.16, 1, 0.3, 1)`).
-  - Alcance: *Todas las secciones principales y tarjetas del sitio*.
-- **Enfoque técnico de alto rendimiento**:
-  - Utilizar un hook/componente ligero basado en la API nativa `IntersectionObserver` de los navegadores.
-  - Ventajas: 0 dependencias externas pesadas, aceleración por GPU (`transform: translate3d(...)` y `opacity`), sin caídas de frames en teléfonos móviles ni retrasos al scrollear.
-  - Cumplimiento de accesibilidad: si el usuario tiene activado *"prefers-reduced-motion"*, las animaciones se desactivan automáticamente.
+### User Review & Critical Decisions
+
+- **Eliminación del bloque de WhatsApp en el Hero (Selección Focus Mode confirmada)**: Se retirará por completo el bloque inferior de consulta directa (`"¿Querés consultar directamente? Escribinos por WhatsApp"`) de la portada inicial, dejando exclusivamente los dos botones de exploración interna (`"Conocer el Systema"` y `"Ver Clases y Sedes"`) para fomentar el recorrido completo por la página antes de la conversión.
+- **Barra de progreso de lectura dorada y navegación activa**: Se incorporará una línea de progreso de lectura superior en dorado bruñido que acompaña el scroll de principio a fin, junto con detección automática de la sección visible en la barra de navegación y divisores editoriales con filetes dorados entre secciones.
+- **Refinamiento de tarjetas en Diego Ledesma, Clases y Sedes**: Se reemplazarán las etiquetas tipo cápsula/píldora y los bordes laterales gruesos por metadatos editoriales limpios con numeración monoespaciada (`01`, `02`, `03`), separadores tipográficos (`·`, `/`) y marcos de filete fino (`1px solid`), elevando la sobriedad e impacto visual.
 
 ---
 
-## 2. Pasos de la Implementación
+### 1. Overview & Core Concept
 
-### Paso 1: Componente y Hook `ScrollReveal`
-- Crear el componente contenedor reutilizable `src/components/ScrollReveal.tsx` (y hook opcional `useScrollReveal`):
-  - Detecta cuando el elemento entra en el viewport del usuario (con un umbral o margen de anticipación cómodo, ej. `rootMargin: "0px 0px -50px 0px"`).
-  - Aplica clases de transición CSS:
-    - Estado oculto inicial: `opacity-0 translate-y-6 sm:translate-y-8`
-    - Estado visible animado: `opacity-100 translate-y-0 duration-700 ease-out`
-  - Permite retardo opcional (`delay` en ms) para que tarjetas contiguas puedan aparecer con un ritmo escalonado armonioso.
+El objetivo de esta iteración es llevar el portal oficial de **Systema HETS — Diego Ledesma** a su máxima expresión de **estética marcial de lujo**: sobria, con contrastes profundos de obsidiana y carbón cálido, filetes dorados de precisión y una jerarquía tipográfica editorial impecable.
 
-### Paso 2: Integración en Secciones y Tarjetas Principales
-1. **Hero**:
-   - Aparición orquestada del logotipo central, títulos y botones de acción al cargar la página.
-2. **Franja de Linaje Oficial (Escuelas Matrices)**:
-   - Aparición fluida al scrollear desde el Hero.
-3. **Franja de Principios**:
-   - Revelado suave de las 4 tarjetas de principios con un desfase sutil entre ellas.
-4. **El Systema**:
-   - Entrada de la imagen de práctica biomecánica y los bloques conceptuales.
-5. **Diego Ledesma**:
-   - Revelado del retrato editorial, la biografía y la columna de trayectoria formativa.
-6. **Entrenamientos (Fotos Oficiales y Carrusel)**:
-   - Entrada suave de la cabecera y del visor/carrusel de fotos al llegar a la sección.
-7. **Sedes y Clases**:
-   - Revelado de las cifras de prueba social, las tarjetas de modalidad (grupal, individual, seminarios) y el mapa del dojo.
-8. **Testimonios**:
-   - Entrada suave de las tarjetas de testimonios de los alumnos.
-9. **Contacto y Frase Destacada**:
-   - Entrada de los bloques de reserva por WhatsApp y el cierre solemne institucional.
-
-### Paso 3: Ajustes de CSS en `src/index.css`
-- Declarar las clases de transición y optimizaciones para `will-change: opacity, transform` cuando la animación está activa, liberando recursos de memoria una vez completada.
+Al eliminar la salida prematura hacia WhatsApp en el Hero, el sitio guía al visitante a través de una narrativa progresiva: desde el linaje eslavo y los principios biomecánicos, pasando por la trayectoria del Maestro Diego Ledesma y las modalidades de práctica, hasta culminar orgánicamente en el cronograma de la Sede Central y la reserva de clase de prueba al final del recorrido.
 
 ---
 
-## 3. Plan de Verificación
+### 2. User Experience & Visual Design
 
-1. **Prueba visual y de scroll**:
-   - Desplazarse por toda la página desde el inicio hasta el pie, verificando que cada sección y grupo de tarjetas se revele suavemente hacia arriba.
-   - Probar en vista móvil emulando pantalla táctil para asegurar que el scroll sea completamente fluido y sin saltos bruscos.
-2. **Auditoría de código**:
-   - Ejecutar `lint_applet` (`tsc --noEmit`) para comprobar ausencia de errores de tipado o imports.
-   - Ejecutar `compile_applet`.
-   - Ejecutar `npm run build` para asegurar la correcta compilación y empaquetado de producción en Vite.
+- **Presupuestación Cromática 60-30-10 y Atmósfera**:
+  - **60% Base Obsidiana (`#080807`)**: Fondo principal profundo que otorga autoridad y calma visual.
+  - **30% Superficies de Carbón Cálido (`#12110F`)**: Tarjetas y módulos arquitectónicos delimitados por filetes sutiles (`rgba(165, 138, 96, 0.25)`).
+  - **10% Bronce y Oro Bruñido (`#A58A60` / `#C2A87E`)**: Reservado para acentos interactivos, numeración editorial, filetes de foco y la barra de progreso de lectura.
+- **Disciplina Editorial (Zero-Pill & Filetes Finos)**:
+  - Las credenciales del Maestro Diego Ledesma (`VIII Dan`, linaje y certificaciones) y los indicadores de estado o categoría dejarán de mostrarse dentro de cápsulas naranjas para presentarse como cabeceras editoriales en tipografía monoespaciada con filetes horizontales finos.
+  - Las citas destacadas sustituirán el borde lateral grueso por un diseño de cita editorial enmarcada con comillas tipográficas sutiles y filetes superiores e inferiores.
+- **Jerarquía en Tarjetas de Clases y Cronograma Semanal**:
+  - Las tres modalidades de entrenamiento incorporarán numeración de serie (`01`, `02`, `03`) en la esquina superior derecha y una separación clara entre el subtítulo técnico, el título principal, la premisa en serif itálica y el alcance práctico.
+  - La grilla semanal de horarios utilizará números tabulares (`tabular-nums`) para alinear con precisión las franjas horarias y destacará los días activos mediante un filete superior dorado e indicador tipográfico limpio.
+- **Progreso de Lectura y Transiciones entre Secciones**:
+  - La cabecera fija integrará en su borde inferior una barra de progreso de lectura de `2px` en gradiente dorado (`#A58A60` → `#C2A87E` → `#F59E0B`) que refleja el avance exacto en la página, además de resaltar en dorado el ítem del menú correspondiente a la sección actual.
+
+---
+
+### 3. Key Product Decisions & Trade-Offs
+
+- **Recorrido Narrativo antes que Redirección Inmediata**: Retirar el enlace de WhatsApp del Hero evita que el usuario abandone la página sin conocer la propuesta de valor, el linaje y los horarios de la sede, manteniendo el acceso directo a la reserva en la barra superior y en los bloques de Sedes y Contacto.
+- **Sobriedad Editorial sobre Decoración Recargada**: En lugar de añadir insignias de colores llamativos o múltiples bordes gruesos que compiten por la atención, se prioriza el espacio negativo, los filetes de `1px` y el contraste entre tipografía geométrica (`Space Grotesk`), serif clásica (`Instrument Serif`) y técnica (`JetBrains Mono`).
+- **Fluidez en Móvil y Escritorio**: La barra de progreso de lectura y el detector de sección activa operan mediante escuchas de scroll pasivas optimizadas con `requestAnimationFrame`, garantizando 60 FPS constantes en dispositivos móviles sin bloquear el hilo principal.
+
+---
+
+### 4. Technical Architecture & Data Strategy
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        EXPERIENCIA DE NAVEGACIÓN                        │
+│  ┌───────────────────────────────────────────────────────────────────┐  │
+│  │ Navbar Fija + Barra de Progreso Dorada (0% - 100%) + Sección Activa│  │
+│  └───────────────┬───────────────────────────────────┬───────────────┘  │
+│                  │ Scroll Suave (#systema)           │ Scroll (#clases) │
+│                  ▼                                   ▼                  │
+│  ┌───────────────────────────────┐   ┌───────────────────────────────┐  │
+│  │ HERO (Portada Limpia)         │   │ SEDES Y CLASES                │  │
+│  │ • Sin desvío prematuro a WSP  │   │ • Modalidades numeradas 01-03 │  │
+│  │ • Doble CTA de exploración    │   │ • Cronograma tabular-nums     │  │
+│  └───────────────┬───────────────┘   └───────────────┬───────────────┘  │
+│                  │ Recorrido Editorial               │                  │
+│                  ▼                                   ▼                  │
+│  ┌───────────────────────────────┐   ┌───────────────────────────────┐  │
+│  │ EL SYSTEMA & DIEGO LEDESMA    │   │ CONTACTO Y CONVERSIÓN FINAL   │  │
+│  │ • Cabeceras Zero-Pill         │   │ • Cierre editorial de lujo    │  │
+│  │ • Citas con filetes finos 1px │   │ • Reserva directa por WhatsApp│  │
+│  └───────────────────────────────┘   └───────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+- **Gestión de Estado de Lectura y Sección Activa**:
+  - Cálculo reactivo del porcentaje de desplazamiento vertical (`scrollY / (scrollHeight - innerHeight)`) sincronizado con una barra de ancho dinámico en la cabecera.
+  - Observación de las secciones principales (`#inicio`, `#systema`, `#diego-ledesma`, `#entrenamientos`, `#sedes-y-clases`, `#testimonios`, `#contacto`) para iluminar automáticamente el enlace activo en la barra de navegación.
+- **Limpieza de Componentes y Consistencia Bilingüe (ES/EN)**:
+  - Eliminación del nodo de consulta directa de WhatsApp en el Hero y depuración de importaciones no utilizadas.
+  - Preservación estricta del soporte bilingüe español/inglés y de la grafía oficial **SYSTEMA** en todos los textos y metadatos editoriales.

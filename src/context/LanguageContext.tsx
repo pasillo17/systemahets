@@ -30,6 +30,9 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.bajada": "Movimiento consciente, autoprotección y desarrollo integral.",
     "hero.btnWhatsapp": "Consultar por WhatsApp",
     "hero.btnSystema": "Conocer el Systema",
+    "hero.btnClases": "Ver Clases y Sedes",
+    "hero.directWspPrompt": "¿Querés consultar directamente?",
+    "hero.directWspLink": "Escribinos por WhatsApp →",
     "hero.scroll": "Deslizar para explorar",
 
     // Linaje
@@ -193,6 +196,9 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.bajada": "Conscious movement, self-protection, and holistic personal growth.",
     "hero.btnWhatsapp": "Inquire via WhatsApp",
     "hero.btnSystema": "Discover the Systema",
+    "hero.btnClases": "Classes & Locations",
+    "hero.directWspPrompt": "Prefer to ask directly?",
+    "hero.directWspLink": "Chat via WhatsApp →",
     "hero.scroll": "Scroll to explore",
 
     // Linaje

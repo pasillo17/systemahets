@@ -89,7 +89,7 @@ export function Testimonios() {
   }, [testimonios.length]);
 
   return (
-    <section id="testimonios" className="py-14 sm:py-20 bg-[#080807] text-[#F1EBDD] border-t border-[#A58A60]/15 relative overflow-hidden">
+    <section id="testimonios" className="py-10 sm:py-20 bg-[#080807] text-[#F1EBDD] border-t border-[#A58A60]/15 relative overflow-hidden">
       
       {/* Luz ambiental sutil en CSS puro */}
       <div
@@ -101,16 +101,16 @@ export function Testimonios() {
         
         {/* Cabecera */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-12 border-b border-[#A58A60]/20 pb-3.5 sm:pb-5">
             <div className="max-w-2xl">
-              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#C2A87E] font-mono mb-2 font-semibold">
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#C2A87E] font-mono mb-1.5 sm:mb-2 font-semibold">
                 <MessageSquareQuote className="w-4 h-4 text-[#A58A60]" />
                 <span>{t("test.kicker")}</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
                 {t("test.title")}
               </h2>
-              <p className="text-sm sm:text-base text-[#EAE5D9] leading-relaxed mt-2">
+              <p className="text-xs sm:text-base text-[#EAE5D9] leading-relaxed mt-1.5 sm:mt-2">
                 {t("test.subtitle")}
               </p>
             </div>
@@ -140,7 +140,7 @@ export function Testimonios() {
         <ScrollReveal direction="up" delay={80} distance={24}>
           <div
             ref={scrollRef}
-            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
+            className="flex gap-3.5 sm:gap-6 overflow-x-auto pb-4 sm:pb-6 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
             style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
           >
           {testimonios.map((item, idx) => (
@@ -148,16 +148,17 @@ export function Testimonios() {
               key={item.id}
               spotlightColor="rgba(194, 168, 126, 0.15)"
               borderColor="rgba(194, 168, 126, 0.45)"
-              className="snap-center shrink-0 w-[86%] sm:w-[380px] md:w-[420px] p-6 sm:p-7 bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] rounded-sm flex flex-col justify-between shadow-2xl card-specular-edge transition-all duration-300 group"
+              className="snap-center shrink-0 w-[85%] sm:w-[380px] md:w-[420px] p-4.5 sm:p-7 bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] rounded-sm flex flex-col justify-between shadow-2xl card-specular-edge transition-all duration-300 group relative overflow-hidden"
             >
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-[#A58A60]/50 via-transparent to-transparent" />
               <div className="space-y-4">
-                <div className="flex items-center justify-between text-[10px] font-mono">
+                <div className="flex items-center justify-between text-[10px] font-mono border-b border-[#A58A60]/15 pb-3">
                   <span className="text-[#C2A87E] uppercase tracking-wider flex items-center gap-1.5 font-semibold">
                     <UserCheck className="w-3.5 h-3.5 text-[#A58A60]" />
                     <span>{t("test.studentBadge")}</span>
                   </span>
-                  <span className="text-[#A58A60] text-[9px] uppercase tracking-wider bg-[#080807] px-2 py-0.5 border border-[#A58A60]/30 rounded-xs">
-                    {item.tiempo}
+                  <span className="text-[#8C887E] uppercase tracking-[0.16em]">
+                    · {item.tiempo}
                   </span>
                 </div>
 
@@ -176,7 +177,7 @@ export function Testimonios() {
                   </span>
                 </div>
 
-                <div className="text-[10px] font-mono text-[#A58A60]">
+                <div className="text-[10px] font-mono text-[#A58A60] tabular-nums">
                   0{idx + 1} / 0{testimonios.length}
                 </div>
               </div>

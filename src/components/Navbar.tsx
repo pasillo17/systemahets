@@ -5,13 +5,58 @@ import { useLanguage } from "../context/LanguageContext";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("#inicio");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { lang, toggleLang, t } = useLanguage();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
+    let ticking = false;
+
+    const updateScrollState = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 15);
+
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        const progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+        setScrollProgress(progress);
+      }
+
+      // Detectar sección activa para resaltar en la navegación
+      const sectionMap: { id: string; navHref: string }[] = [
+        { id: "contacto", navHref: "#contacto" },
+        { id: "testimonios", navHref: "#sedes-y-clases" },
+        { id: "sedes-y-clases", navHref: "#sedes-y-clases" },
+        { id: "entrenamientos", navHref: "#systema" },
+        { id: "diego-ledesma", navHref: "#systema" },
+        { id: "systema", navHref: "#systema" },
+        { id: "inicio", navHref: "#inicio" },
+      ];
+
+      const viewportThreshold = window.innerHeight * 0.35;
+      for (const item of sectionMap) {
+        const el = document.getElementById(item.id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= viewportThreshold) {
+            setActiveSection(item.navHref);
+            break;
+          }
+        }
+      }
+
+      ticking = false;
     };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollState);
+        ticking = true;
+      }
+    };
+
+    updateScrollState();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -38,6 +83,7 @@ export function Navbar() {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+    setActiveSection(href);
     const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
@@ -48,7 +94,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#080807]/95 backdrop-blur-md border-b border-[#A58A60]/20 shadow-xl py-2 sm:py-2.5"
+          ? "bg-[#080807]/95 backdrop-blur-md border-b border-[#A58A60]/25 shadow-[0_10px_30px_rgba(0,0,0,0.85)] py-2 sm:py-2.5"
           : "bg-[#080807]/90 sm:bg-[#080807]/75 backdrop-blur-sm border-b border-white/5 py-2 sm:py-3"
       }`}
     >
@@ -71,29 +117,46 @@ export function Navbar() {
               (e.target as HTMLImageElement).src = SITE_CONFIG.assets.logoFallbackUrl;
             }}
           />
-          <span className="font-heading text-sm sm:text-base font-bold tracking-wider text-[#F1EBDD] group-hover:text-[#A58A60] transition-colors leading-tight whitespace-nowrap">
-            SYSTEMA HETS
-          </span>
+          <div className="flex flex-col">
+            <span className="font-heading text-sm sm:text-base font-bold tracking-wider text-[#F1EBDD] group-hover:text-[#C2A87E] transition-colors leading-tight whitespace-nowrap">
+              SYSTEMA HETS
+            </span>
+            <span className="hidden sm:block text-[9px] font-mono uppercase tracking-[0.22em] text-[#8C887E] group-hover:text-[#A58A60] transition-colors">
+              Diego Ledesma
+            </span>
+          </div>
         </a>
 
-        {/* Enlaces de escritorio */}
+        {/* Enlaces de escritorio con indicador editorial activo */}
         <nav className="hidden lg:flex items-center text-[11px] font-mono tracking-widest text-[#D8C7A5]">
-          {navLinks.map((link, idx) => (
-            <div key={link.href} className="flex items-center">
-              <a
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className="hover:text-white transition-colors px-3 py-1.5 whitespace-nowrap min-h-[36px] flex items-center"
-              >
-                {link.label}
-              </a>
-              {idx < navLinks.length - 1 && (
-                <span className="text-[#3E3A33] text-[9px] select-none" aria-hidden="true">
-                  |
-                </span>
-              )}
-            </div>
-          ))}
+          {navLinks.map((link, idx) => {
+            const isActive = activeSection === link.href;
+            return (
+              <div key={link.href} className="flex items-center">
+                <a
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className={`relative px-3.5 py-1.5 whitespace-nowrap min-h-[36px] flex items-center transition-colors duration-300 ${
+                    isActive
+                      ? "text-[#F1EBDD] font-semibold"
+                      : "text-[#C4BFB4] hover:text-[#F1EBDD]"
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  <span
+                    className={`absolute bottom-0.5 left-3.5 right-3.5 h-[1px] bg-gradient-to-r from-transparent via-[#C2A87E] to-transparent transition-all duration-300 ${
+                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-50"
+                    }`}
+                  />
+                </a>
+                {idx < navLinks.length - 1 && (
+                  <span className="text-[#3E3A33] text-[9px] select-none" aria-hidden="true">
+                    ·
+                  </span>
+                )}
+              </div>
+            );
+          })}
         </nav>
 
         {/* Lado derecho: Idioma (ES / EN) + Botón WhatsApp en desktop + Menú hamburguesa en mobile */}
@@ -140,6 +203,17 @@ export function Navbar() {
           </button>
         </div>
 
+      </div>
+
+      {/* Barra de progreso de lectura dorada en el filo inferior de la cabecera */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-transparent overflow-hidden pointer-events-none"
+      >
+        <div
+          className="h-full bg-gradient-to-r from-[#A58A60] via-[#C2A87E] to-[#F59E0B] shadow-[0_0_10px_rgba(194,168,126,0.75)] transition-[width] duration-150 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
 
       {/* MENÚ HAMBURGUESA A PANTALLA COMPLETA EN MOBILE */}
@@ -192,14 +266,17 @@ export function Navbar() {
 
           {/* Lista de enlaces con zonas táctiles grandes (mínimo 48px) */}
           <nav className="flex flex-col my-auto py-6 divide-y divide-[#25221E]/80">
-            {navLinks.map((link) => (
+            {navLinks.map((link, idx) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="min-h-[50px] flex items-center justify-between text-[#F1EBDD] hover:text-[#A58A60] active:text-[#C2A87E] font-heading text-lg uppercase tracking-wider py-3.5 px-2 transition-colors"
+                className="min-h-[54px] flex items-center justify-between text-[#F1EBDD] hover:text-[#C2A87E] active:text-[#C2A87E] font-heading text-lg uppercase tracking-wider py-3.5 px-2 transition-colors"
               >
-                <span>{link.label}</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-mono text-[#A58A60]/70 tabular-nums">0{idx + 1}</span>
+                  <span>{link.label}</span>
+                </div>
                 <ArrowRight className="w-4 h-4 text-[#A58A60]" />
               </a>
             ))}
