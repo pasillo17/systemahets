@@ -10,14 +10,13 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * SpotlightCard: Tarjeta interactiva con resplandor seguidor de cursor
- * y borde perimetral reactivo en bronce cálido para Systema HETS.
- * Utiliza variables CSS (--mouse-x, --mouse-y) para 60/120 FPS sin re-renders de React.
+ * y borde perimetral reactivo en Terracota Pampeana (#B85332) y Ocre Arcilla (#C49A64).
  */
 export function SpotlightCard({
   children,
   className = "",
-  spotlightColor = "rgba(194, 168, 126, 0.14)",
-  borderColor = "rgba(194, 168, 126, 0.4)",
+  spotlightColor = "rgba(184, 83, 50, 0.14)",
+  borderColor = "rgba(184, 83, 50, 0.55)",
   interactive = true,
   ...props
 }: SpotlightCardProps) {
@@ -47,7 +46,7 @@ export function SpotlightCard({
       onMouseMove={interactive ? handleMouseMove : undefined}
       onMouseEnter={interactive ? handleMouseEnter : undefined}
       onMouseLeave={interactive ? handleMouseLeave : undefined}
-      className={`relative rounded-sm overflow-hidden bg-[#12110F] border border-[#A58A60]/20 transition-all duration-300 ${className}`}
+      className={`relative rounded-sm overflow-hidden transition-all duration-300 ${className}`}
       {...props}
     >
       {/* Resplandor interior interactivo guiado por cursor */}
@@ -62,10 +61,10 @@ export function SpotlightCard({
         />
       )}
 
-      {/* Sutil resplandor perimetral estático para móvil y reposo */}
+      {/* Sutil resplandor perimetral estático en Ocre Arcilla */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#A58A60]/5 blur-2xl z-0"
+        className="pointer-events-none absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#C49A64]/10 blur-2xl z-0"
       />
 
       {/* Halo de borde al hacer hover */}

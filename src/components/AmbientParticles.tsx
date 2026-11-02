@@ -1,18 +1,14 @@
 import { useEffect, useRef } from "react";
 
 /**
- * AmbientParticles & Martial Penumbra:
- * Genera una atmósfera cinematográfica envolvente para Systema HETS:
- * - Niebla y orbes difusos de bronce en respiración continua.
- * - Textura de grano cinematográfico ligero (evita banding de gradientes).
- * - Partículas de polvo marcial dorado en suspensión suave.
- * - Respeta fielmente prefers-reduced-motion.
+ * AmbientParticles & Pampean Earth Atmosphere:
+ * Genera una atmósfera sutil en Ocre Arcilla (#C49A64) y Terracota Pampeana (#C86442).
+ * Respeta fielmente prefers-reduced-motion.
  */
 export function AmbientParticles() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    // Respetar prefers-reduced-motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
@@ -33,17 +29,17 @@ export function AmbientParticles() {
     };
     window.addEventListener("resize", handleResize);
 
-    // Partículas de polvo marcial en suspensión
-    const particleCount = Math.min(26, Math.floor(window.innerWidth / 40));
-    const particles = Array.from({ length: particleCount }).map(() => ({
+    const particleCount = Math.min(24, Math.floor(window.innerWidth / 45));
+    const particles = Array.from({ length: particleCount }).map((_, i) => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 1.6 + 0.6,
-      speedY: -(Math.random() * 0.22 + 0.06),
-      speedX: (Math.random() - 0.5) * 0.12,
-      opacity: Math.random() * 0.45 + 0.15,
+      size: Math.random() * 1.5 + 0.6,
+      speedY: -(Math.random() * 0.2 + 0.05),
+      speedX: (Math.random() - 0.5) * 0.1,
+      opacity: Math.random() * 0.38 + 0.12,
       pulseSpeed: Math.random() * 0.012 + 0.006,
       pulseOffset: Math.random() * Math.PI * 2,
+      isTerracotta: i % 3 === 0,
     }));
 
     let time = 0;
@@ -68,9 +64,11 @@ export function AmbientParticles() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(194, 168, 126, ${currentOpacity})`;
+        ctx.fillStyle = p.isTerracotta
+          ? `rgba(200, 100, 66, ${currentOpacity})`
+          : `rgba(196, 154, 100, ${currentOpacity})`;
         ctx.shadowBlur = 4;
-        ctx.shadowColor = "rgba(165, 138, 96, 0.4)";
+        ctx.shadowColor = "rgba(184, 83, 50, 0.35)";
         ctx.fill();
         ctx.shadowBlur = 0;
       });
@@ -88,51 +86,31 @@ export function AmbientParticles() {
 
   return (
     <>
-      {/* Capa de atmósfera y niebla marcial (Orbes difusos de luz ámbar/bronce) */}
+      {/* Capa de atmósfera suave en Terracota Pampeana (#B85332) y Ocre Arcilla (#C49A64) */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       >
-        {/* Orbe superior izquierdo */}
-        <div className="absolute -top-[15%] -left-[10%] w-[650px] h-[650px] rounded-full bg-[#A58A60]/8 blur-[130px] animate-glow-pulse" />
+        {/* Orbe superior izquierdo en Terracota */}
+        <div className="absolute -top-[15%] -left-[10%] w-[650px] h-[650px] rounded-full bg-[#B85332]/7 blur-[130px] animate-glow-pulse" />
 
-        {/* Orbe central profundo */}
+        {/* Orbe central en Ocre Arcilla */}
         <div
-          className="absolute top-[45%] -right-[15%] w-[700px] h-[700px] rounded-full bg-[#C2A87E]/6 blur-[150px] animate-glow-pulse"
+          className="absolute top-[45%] -right-[15%] w-[700px] h-[700px] rounded-full bg-[#C49A64]/8 blur-[150px] animate-glow-pulse"
           style={{ animationDelay: "-3s" }}
         />
 
-        {/* Orbe inferior de tierra */}
+        {/* Orbe inferior cálido */}
         <div
-          className="absolute -bottom-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#7A6341]/10 blur-[140px] animate-glow-pulse"
+          className="absolute -bottom-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#B85332]/7 blur-[140px] animate-glow-pulse"
           style={{ animationDelay: "-5s" }}
         />
-
-        {/* Viñeta cinematográfica en bordes */}
-        <div className="absolute inset-0 martial-vignette opacity-70" />
       </div>
 
-      {/* Textura de grano cinematográfico SVG suave (elimina banding y da acabado fílmico) */}
-      <svg
-        className="pointer-events-none fixed inset-0 z-10 w-full h-full opacity-[0.035] mix-blend-screen"
-        aria-hidden="true"
-      >
-        <filter id="cinematic-grain">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.8"
-            numOctaves="3"
-            stitchTiles="stitch"
-          />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#cinematic-grain)" />
-      </svg>
-
-      {/* Partículas de polvo marcial en canvas */}
+      {/* Partículas en canvas */}
       <canvas
         ref={canvasRef}
-        className="pointer-events-none fixed inset-0 z-10 opacity-70"
+        className="pointer-events-none fixed inset-0 z-10 opacity-60"
         aria-hidden="true"
       />
     </>

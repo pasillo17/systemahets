@@ -5,23 +5,32 @@
   --font-condensed: "Oswald", sans-serif;
   --font-sans: "Plus Jakarta Sans", sans-serif;
 
-  --color-noir-deep: #080807;
-  --color-noir-carbon: #12110F;
-  --color-bronze: #A58A60;
-  --color-bronze-dark: #7A6341;
-  --color-bronze-light: #C2A87E;
-  --color-parchment: #D8C7A5;
-  --color-warm-white: #F1EBDD;
-  --color-cream-body: #EAE5D9;
-  /* Secondary text with high contrast (>4.5:1 on dark backgrounds) for WCAG AA */
-  --color-secondary-text: #C4BFB4;
+  /* Tierra Sombra Profunda & Adobe Oscuro (Secciones de profundidad terrenal, nunca negro frío) */
+  --color-earth-deep: #1F1916;
+  --color-earth-umber: #261E1A;
+  --color-earth-surface: #2E241F;
+  --color-earth-card: #342923;
+  --color-earth-border: #8C7A6B;
 
-  /* Cobre fundido y ámbar fuego para insignias, turnos y estados activos */
-  --color-copper: #C05621;
-  --color-copper-deep: #9A3412;
-  --color-copper-light: #E07A5F;
-  --color-amber-fire: #F59E0B;
-  --color-amber-glow: rgba(217, 119, 6, 0.3);
+  /* Arena Cálida & Piedra Pampeana (Secciones luminosas de amplitud territorial) */
+  --color-sand-warm: #EFE7DA;
+  --color-sand-stone: #E5DAC9;
+  --color-sand-card: #F8F3EB;
+  --color-quebracho-text: #231C18;
+  --color-earth-body: #57483F;
+  --color-stone-muted: #7D6B5D;
+
+  /* Texto sobre Tierra Sombra */
+  --color-bone-warm: #F4EDE2;
+  --color-sand-muted: #C4B5A3;
+
+  /* Pigmentos Querandíes: Terracota Pampeana (#B85332 / #C86442) y Ocre Arcilla (#C49A64 / #9C7340) */
+  --color-terracotta: #B85332;
+  --color-terracotta-light: #C86442;
+  --color-terracotta-ember: #DF7E5B;
+  --color-ochre: #C49A64;
+  --color-ochre-deep: #9C7340;
+  --color-terracotta-glow: rgba(184, 83, 50, 0.28);
 }
 
 html {
@@ -31,12 +40,11 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #080807;
-  color: #F1EBDD;
+  background-color: #1F1916;
+  color: #F4EDE2;
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
-  /* Safe area handling */
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
 }
@@ -51,29 +59,30 @@ h1, h2, h3, .font-heading {
   letter-spacing: 0.04em;
 }
 
-/* Subtle bronze hairline styling */
-.border-bronze-subtle {
-  border-color: rgba(165, 138, 96, 0.25);
+/* Divisores sutiles en Arena Suave y bordes en Terracota / Ocre Arcilla */
+.border-steel-subtle {
+  border-color: rgba(196, 181, 163, 0.25);
 }
 
-.border-bronze-glow {
-  border-color: rgba(165, 138, 96, 0.5);
+.border-lightning-glow {
+  border-color: rgba(200, 100, 66, 0.55);
+  box-shadow: 0 0 18px rgba(184, 83, 50, 0.22);
 }
 
-/* Custom scrollbar in aged bronze and carbon black */
+/* Custom scrollbar en Tierra Sombra (#1F1916) y Terracota Pampeana (#C86442) */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #080807;
+  background: #1F1916;
 }
 ::-webkit-scrollbar-thumb {
-  background: #25221E;
+  background: rgba(196, 154, 100, 0.45);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A58A60;
+  background: #C86442;
 }
 
 /* Safe areas helper classes */
@@ -132,46 +141,68 @@ h1, h2, h3, .font-heading {
   animation: subtleFloat 5s ease-in-out infinite;
 }
 
-.text-gold-gradient {
-  background: linear-gradient(135deg, #F1EBDD 0%, #D8C7A5 40%, #A58A60 80%, #F1EBDD 100%);
+/* Gradiente de texto en Hueso Cálido (#F4EDE2), Ocre Arcilla (#C49A64) y Terracota (#C86442) */
+.text-lightning-gradient {
+  background: linear-gradient(135deg, #F4EDE2 0%, #C49A64 48%, #C86442 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Shimmering bronze button luxury treatment */
-.btn-shimmer-gold {
+/* Gradiente de texto editorial para secciones de Arena Cálida (#EFE7DA) y Tierra Sombra */
+.text-gold-light-section {
+  background: linear-gradient(135deg, #F4EDE2 0%, #DF7E5B 50%, #C49A64 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-steel-gradient {
+  background: linear-gradient(135deg, #F4EDE2 0%, #C4B5A3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Botón Principal en Terracota Pampeana (#B85332), Óxido Natural (#C86442) y Ocre Arcilla (#C49A64) */
+.btn-shimmer-lightning {
   position: relative;
   background-size: 200% auto;
   background-image: linear-gradient(
     110deg,
-    #A58A60 0%,
-    #C2A87E 25%,
-    #F1EBDD 50%,
-    #C2A87E 75%,
-    #A58A60 100%
+    #A34526 0%,
+    #B85332 35%,
+    #CF6C4A 50%,
+    #B85332 65%,
+    #A34526 100%
   );
   animation: shimmerSlide 8s linear infinite;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-shimmer-gold:hover {
+.btn-shimmer-lightning:hover {
   animation-duration: 3s;
-  box-shadow: 0 0 25px rgba(194, 168, 126, 0.45), 0 0 50px rgba(165, 138, 96, 0.2);
+  box-shadow: 0 0 24px rgba(184, 83, 50, 0.42), 0 0 46px rgba(196, 154, 100, 0.24);
 }
 
-/* Glass & Vignette martial layers */
+/* Vignette terrenal en Tierra Sombra (#1F1916) */
 .martial-vignette {
   background: radial-gradient(
     ellipse at center,
-    transparent 50%,
-    rgba(8, 8, 7, 0.6) 80%,
-    #080807 100%
+    transparent 55%,
+    rgba(31, 25, 22, 0.55) 82%,
+    rgba(31, 25, 22, 0.85) 100%
   );
 }
 
 .card-specular-edge {
-  box-shadow: inset 0 1px 0 0 rgba(241, 235, 221, 0.1), 0 8px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 1px 0 0 rgba(244, 237, 226, 0.12), 0 10px 30px rgba(18, 14, 12, 0.48);
+}
+
+.card-steel-elevation {
+  box-shadow: inset 0 1px 0 0 rgba(196, 154, 100, 0.22), 0 12px 28px -4px rgba(18, 14, 12, 0.42);
+}
+
+.card-light-steel-elevation {
+  box-shadow: inset 0 1px 0 0 rgba(255, 252, 247, 0.9), 0 10px 26px -4px rgba(35, 28, 24, 0.08);
 }
 
 /* Active tactile press for touchscreens */
@@ -182,17 +213,153 @@ h1, h2, h3, .font-heading {
   transform: scale(0.97);
 }
 
-/* Gold glimmer sheen on borders */
-.gold-glow-border {
-  border-color: rgba(194, 168, 126, 0.4);
-  box-shadow: 0 0 15px rgba(165, 138, 96, 0.15);
+/* Terracota & Ocre sheen on borders */
+.lightning-glow-border {
+  border-color: rgba(200, 100, 66, 0.45);
+  box-shadow: 0 0 16px rgba(184, 83, 50, 0.18);
 }
 
 /* Focus glow for form controls */
-.focus-gold-ring:focus {
+.focus-lightning-ring:focus {
   outline: none;
-  border-color: #C2A87E;
-  box-shadow: 0 0 15px rgba(194, 168, 126, 0.3);
+  border-color: #B85332;
+  box-shadow: 0 0 15px rgba(184, 83, 50, 0.35);
+}
+
+/* ============================================================================
+   TRANSICIONES CONTINUAS ENTRE TIERRA SOMBRA (MARRÓN) Y HUESO / ARENA (BLANCO CÁLIDO)
+   ============================================================================ */
+
+/* 1. Hero -> FranjaLinaje: Continuidad en Tierra Sombra Profunda */
+.bg-flow-hero {
+  background: linear-gradient(
+    180deg,
+    #1F1916 0%,
+    #261E1A 55%,
+    #251D19 100%
+  );
+}
+
+/* 2. FranjaLinaje -> FranjaPrincipios: Degradado orgánico de Marrón Tierra a Blanco Hueso / Arena */
+.bg-flow-brown-to-light {
+  background: linear-gradient(
+    180deg,
+    #251D19 0%,
+    #281F1B 64%,
+    #342822 76%,
+    #5E493B 86%,
+    #9C8470 93%,
+    #D2C0AC 97%,
+    #EFE7DA 100%
+  );
+}
+
+/* 3. FranjaPrincipios: De Arena Cálida (#EFE7DA) hacia Blanco Hueso Luminoso (#F8F3EB) */
+.bg-flow-principios {
+  background: linear-gradient(
+    180deg,
+    #EFE7DA 0%,
+    #F5EFE5 45%,
+    #F8F3EB 100%
+  );
+}
+
+/* 4. ElSystema: De Blanco Hueso (#F8F3EB) hacia Arena Cálida y Tierra Suave (#E5DAC9) */
+.bg-flow-systema {
+  background: linear-gradient(
+    180deg,
+    #F8F3EB 0%,
+    #F4EDE2 55%,
+    #EBE0D0 82%,
+    #E5DAC9 100%
+  );
+}
+
+/* 5. DiegoLedesma: De Arena Piedra (#E5DAC9) pasando por Blanco Hueso (#F8F3EB) a Arena Cálida (#EFE7DA) */
+.bg-flow-diego {
+  background: linear-gradient(
+    180deg,
+    #E5DAC9 0%,
+    #F3ECE1 35%,
+    #F8F3EB 68%,
+    #EFE7DA 100%
+  );
+}
+
+/* 6. Entrenamientos: De Arena Cálida (#EFE7DA) pasando por Blanco Hueso (#F8F3EB) hacia Tierra Suave (#E2D5C1) */
+.bg-flow-entrenamientos {
+  background: linear-gradient(
+    180deg,
+    #EFE7DA 0%,
+    #F8F3EB 50%,
+    #EDE2D2 85%,
+    #E2D5C1 100%
+  );
+}
+
+/* 7. Clases y Horarios: Abraza el tablero marrón con una transición cálida hacia Blanco Hueso (#F8F3EB) */
+.bg-flow-clases {
+  background: linear-gradient(
+    180deg,
+    #E2D5C1 0%,
+    #D8C7B0 25%,
+    #EBE1D2 58%,
+    #F8F3EB 100%
+  );
+}
+
+/* 8. Testimonios: De Blanco Hueso (#F8F3EB) fundiéndose suavemente hacia Tierra Media al final */
+.bg-flow-testimonios {
+  background: linear-gradient(
+    180deg,
+    #F8F3EB 0%,
+    #F4EDE2 58%,
+    #E5DAC9 82%,
+    #CDBAA6 100%
+  );
+}
+
+/* 9. FraseDestacada: Puente de transición de Tierra Suave (#CDBAA6) hacia Marrón Tierra Sombra (#1F1916) */
+.bg-flow-light-to-brown {
+  background: linear-gradient(
+    180deg,
+    #CDBAA6 0%,
+    #9A816D 8%,
+    #5E493B 18%,
+    #362A23 28%,
+    #251D19 40%,
+    #211A16 70%,
+    #1F1916 100%
+  );
+}
+
+/* 10. Contacto -> Footer: Continuidad profunda en Marrón Tierra Sombra */
+.bg-flow-contacto {
+  background: linear-gradient(
+    180deg,
+    #1F1916 0%,
+    #231C18 50%,
+    #1A1412 100%
+  );
+}
+
+/* Sombra envolvente cálida para bloques de Marrón Tierra dentro de secciones claras */
+.earth-block-transition-glow {
+  box-shadow:
+    0 24px 60px -12px rgba(38, 30, 26, 0.42),
+    0 0 0 6px rgba(196, 154, 100, 0.14),
+    0 0 50px rgba(184, 83, 50, 0.16);
+}
+
+/* Divisor editorial difuminado (reemplaza bordes rectos de corte brusco) */
+.divider-earth-fade {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(196, 154, 100, 0.45) 50%,
+    transparent 100%
+  );
 }
 
 /* Accessibility: Respect prefers-reduced-motion */
@@ -204,4 +371,3 @@ h1, h2, h3, .font-heading {
     scroll-behavior: auto !important;
   }
 }
-

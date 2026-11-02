@@ -8,15 +8,8 @@ interface ImageWithFallbackProps extends React.ImgHTMLAttributes<HTMLImageElemen
 }
 
 /**
- * Componente de imagen resiliente para Systema HETS.
- * Si la imagen no carga o la ruta no existe:
- * - Oculta el ícono de imagen rota del navegador.
- * - Oculta el texto alt roto.
- * - Renderiza un contenedor elegante con fondo de carbono oscuro, borde tenue
- *   y el isotipo de Systema HETS en tono dorado suave.
- *
- * // CAMPO / IMAGEN EDITABLE: Para reemplazar imágenes por fotos reales,
- * // actualizar el atributo 'src' con la ruta a la imagen en /src/assets/ o /public/
+ * Componente de imagen resiliente para Systema HETS en Tierra Sombra (#261E1A),
+ * Terracota Pampeana (#C86442), Ocre Arcilla (#C49A64) y Hueso Cálido (#F4EDE2).
  */
 export function ImageWithFallback({
   src,
@@ -33,23 +26,23 @@ export function ImageWithFallback({
   if (!src || hasError) {
     return (
       <div
-        className={`w-full ${aspectRatioClass} bg-[#12110F] border border-[#A58A60]/25 rounded-sm flex flex-col items-center justify-center p-6 text-center select-none relative overflow-hidden group`}
+        className={`w-full ${aspectRatioClass} bg-[#261E1A] border border-[#C49A64]/35 rounded-sm flex flex-col items-center justify-center p-6 text-center select-none relative overflow-hidden group`}
         role="img"
         aria-label={alt || fallbackTitle}
       >
-        {/* Glow dorado sutil de fondo */}
-        <div className="absolute inset-0 bg-radial from-[#A58A60]/10 via-transparent to-transparent pointer-events-none" />
+        {/* Glow Terracota sutil de fondo */}
+        <div className="absolute inset-0 bg-radial from-[#B85332]/12 via-transparent to-transparent pointer-events-none" />
 
-        {/* Emblema / Isotipo minimalista */}
-        <div className="relative z-10 w-12 h-12 rounded-full border border-[#A58A60]/40 bg-[#080807]/90 flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(165,138,96,0.15)]">
-          <Shield className="w-5 h-5 text-[#A58A60]" />
+        {/* Emblema / Isotipo minimalista en Terracota */}
+        <div className="relative z-10 w-12 h-12 rounded-full border border-[#C49A64]/50 bg-[#1F1916]/90 flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(184,83,50,0.2)]">
+          <Shield className="w-5 h-5 text-[#C86442]" />
         </div>
 
         {/* Textos institucionales sobrios */}
-        <span className="relative z-10 font-heading text-xs sm:text-sm uppercase tracking-wider text-[#F1EBDD] font-bold">
+        <span className="relative z-10 font-heading text-xs sm:text-sm uppercase tracking-wider text-[#F4EDE2] font-bold">
           {fallbackTitle}
         </span>
-        <span className="relative z-10 text-[11px] font-mono text-[#C8C2B5] mt-1 tracking-wide">
+        <span className="relative z-10 text-[11px] font-mono text-[#C4B5A3] mt-1 tracking-wide">
           {fallbackSubtitle}
         </span>
       </div>
@@ -57,10 +50,10 @@ export function ImageWithFallback({
   }
 
   return (
-    <div className={`relative w-full ${aspectRatioClass} overflow-hidden bg-[#12110F]`}>
+    <div className={`relative w-full ${aspectRatioClass} overflow-hidden bg-[#261E1A]`}>
       {!isLoaded && (
-        <div className="absolute inset-0 bg-[#12110F] animate-pulse flex items-center justify-center">
-          <Shield className="w-6 h-6 text-[#A58A60]/30" />
+        <div className="absolute inset-0 bg-[#261E1A] animate-pulse flex items-center justify-center">
+          <Shield className="w-6 h-6 text-[#C49A64]/40" />
         </div>
       )}
       <img

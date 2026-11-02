@@ -2,12 +2,13 @@ import { useState, useRef, useEffect } from "react";
 import { MessageSquareQuote, ChevronLeft, ChevronRight, UserCheck } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
-import { SpotlightCard } from "./SpotlightCard";
 import { ScrollReveal } from "./ScrollReveal";
 
 /**
- * Sección "Lo que dicen los alumnos":
- * Carrusel interactivo scroll-snap con soporte bilingüe ES / EN.
+ * SECCIÓN TESTIMONIOS:
+ * "Lo que dicen los alumnos" sobre fondo Arena Cálida (#EFE7DA),
+ * tarjetas en Hueso Pergamino (#F8F3EB) y acentos en Terracota Pampeana (#B85332),
+ * Ocre Arcilla (#9C7340), Carbón de Quebracho (#231C18) y Tierra Media (#57483F).
  */
 export function Testimonios() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -89,28 +90,29 @@ export function Testimonios() {
   }, [testimonios.length]);
 
   return (
-    <section id="testimonios" className="py-10 sm:py-20 bg-[#080807] text-[#F1EBDD] border-t border-[#A58A60]/15 relative overflow-hidden">
-      
-      {/* Luz ambiental sutil en CSS puro */}
+    <section
+      id="testimonios"
+      className="pt-10 pb-14 sm:pt-20 sm:pb-24 bg-flow-testimonios text-[#231C18] relative overflow-hidden"
+    >
+      {/* Luz ambiental sutil en Terracota Pampeana (#B85332) */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-[250px] bg-[#A58A60]/8 blur-3xl pointer-events-none animate-glow-pulse"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-[250px] bg-[#B85332]/8 blur-3xl pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         {/* Cabecera */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-12 border-b border-[#A58A60]/20 pb-3.5 sm:pb-5">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-12 border-b border-[#C9B8A0] pb-3.5 sm:pb-5">
             <div className="max-w-2xl">
-              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#C2A87E] font-mono mb-1.5 sm:mb-2 font-semibold">
-                <MessageSquareQuote className="w-4 h-4 text-[#A58A60]" />
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#9E3E1E] font-mono mb-1.5 sm:mb-2 font-bold">
+                <MessageSquareQuote className="w-4 h-4 text-[#7A5426]" />
                 <span>{t("test.kicker")}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#231C18] font-heading">
                 {t("test.title")}
               </h2>
-              <p className="text-xs sm:text-base text-[#EAE5D9] leading-relaxed mt-1.5 sm:mt-2">
+              <p className="text-xs sm:text-base text-[#362B24] leading-relaxed mt-1.5 sm:mt-2 font-medium">
                 {t("test.subtitle")}
               </p>
             </div>
@@ -119,7 +121,7 @@ export function Testimonios() {
               <button
                 type="button"
                 onClick={handlePrev}
-                className="w-12 h-12 rounded-sm bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] hover:text-[#A58A60] text-[#F1EBDD] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-12 h-12 rounded-sm bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] hover:text-[#B85332] text-[#231C18] flex items-center justify-center transition-colors cursor-pointer shadow-xs"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -127,7 +129,7 @@ export function Testimonios() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="w-12 h-12 rounded-sm bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] hover:text-[#A58A60] text-[#F1EBDD] flex items-center justify-center transition-colors cursor-pointer"
+                className="w-12 h-12 rounded-sm bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] hover:text-[#B85332] text-[#231C18] flex items-center justify-center transition-colors cursor-pointer shadow-xs"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -141,49 +143,59 @@ export function Testimonios() {
           <div
             ref={scrollRef}
             className="flex gap-3.5 sm:gap-6 overflow-x-auto pb-4 sm:pb-6 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
-            style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+            style={{
+              scrollSnapType: "x mandatory",
+              WebkitOverflowScrolling: "touch",
+            }}
           >
-          {testimonios.map((item, idx) => (
-            <SpotlightCard
-              key={item.id}
-              spotlightColor="rgba(194, 168, 126, 0.15)"
-              borderColor="rgba(194, 168, 126, 0.45)"
-              className="snap-center shrink-0 w-[85%] sm:w-[380px] md:w-[420px] p-4.5 sm:p-7 bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] rounded-sm flex flex-col justify-between shadow-2xl card-specular-edge transition-all duration-300 group relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-[#A58A60]/50 via-transparent to-transparent" />
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-[10px] font-mono border-b border-[#A58A60]/15 pb-3">
-                  <span className="text-[#C2A87E] uppercase tracking-wider flex items-center gap-1.5 font-semibold">
-                    <UserCheck className="w-3.5 h-3.5 text-[#A58A60]" />
-                    <span>{t("test.studentBadge")}</span>
-                  </span>
-                  <span className="text-[#8C887E] uppercase tracking-[0.16em]">
-                    · {item.tiempo}
-                  </span>
-                </div>
+            {testimonios.map((item, idx) => {
+              const isOchre = idx === 1;
+              return (
+                <div
+                  key={item.id}
+                  className="snap-center shrink-0 w-[85%] sm:w-[380px] md:w-[420px] p-4.5 sm:p-7 bg-[#F8F3EB] border border-[#D6C8B4] hover:border-[#B85332] rounded-sm flex flex-col justify-between card-light-steel-elevation transition-all duration-300 group relative overflow-hidden"
+                >
+                  <div
+                    className={`absolute top-0 left-0 right-0 h-[3px] ${
+                      isOchre
+                        ? "bg-gradient-to-r from-[#9C7340] via-[#C49A64] to-transparent"
+                        : "bg-gradient-to-r from-[#B85332] via-[#C86442] to-transparent"
+                    }`}
+                  />
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between text-[10px] font-mono border-b border-[#D6C8B4] pb-3">
+                      <span className="text-[#9E3E1E] uppercase tracking-wider flex items-center gap-1.5 font-bold">
+                        <UserCheck className="w-3.5 h-3.5 text-[#7A5426]" />
+                        <span>{t("test.studentBadge")}</span>
+                      </span>
+                      <span className="text-[#6E4B20] font-bold uppercase tracking-[0.16em]">
+                        · {item.tiempo}
+                      </span>
+                    </div>
 
-                <blockquote className="text-base text-[#EAE5D9] leading-relaxed italic font-serif">
-                  “{item.cita}”
-                </blockquote>
-              </div>
+                    <blockquote className="text-sm sm:text-base text-[#231C18] leading-relaxed italic font-serif">
+                      “{item.cita}”
+                    </blockquote>
+                  </div>
 
-              <div className="pt-5 mt-5 border-t border-[#A58A60]/20 flex items-center justify-between">
-                <div>
-                  <span className="font-heading text-sm font-bold uppercase tracking-wider text-[#F1EBDD] block group-hover:text-[#C2A87E] transition-colors">
-                    {item.nombre}
-                  </span>
-                  <span className="text-xs text-[#C4BFB4] font-sans block mt-0.5">
-                    {item.rol}
-                  </span>
-                </div>
+                  <div className="pt-5 mt-5 border-t border-[#D6C8B4] flex items-center justify-between">
+                    <div>
+                      <span className="font-heading text-sm font-bold uppercase tracking-wider text-[#231C18] block group-hover:text-[#9E3E1E] transition-colors">
+                        {item.nombre}
+                      </span>
+                      <span className="text-xs text-[#362B24] font-sans block mt-0.5 font-medium">
+                        {item.rol}
+                      </span>
+                    </div>
 
-                <div className="text-[10px] font-mono text-[#A58A60] tabular-nums">
-                  0{idx + 1} / 0{testimonios.length}
+                    <div className="text-[11px] font-mono font-bold text-[#9E3E1E] tabular-nums">
+                      0{idx + 1} / 0{testimonios.length}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </SpotlightCard>
-          ))}
-        </div>
+              );
+            })}
+          </div>
         </ScrollReveal>
 
         <div className="flex items-center justify-center gap-2 pt-2 sm:hidden">
@@ -192,16 +204,15 @@ export function Testimonios() {
               key={dotIdx}
               type="button"
               onClick={() => scrollToTestimonial(dotIdx)}
-              className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
+              className={`h-2.5 rounded-xs transition-all cursor-pointer ${
                 activeIndex === dotIdx
-                  ? "bg-[#A58A60] w-6"
-                  : "bg-[#25221E] border border-[#A58A60]/30"
+                  ? "bg-[#B85332] w-6"
+                  : "bg-[#7D6B5D]/35 w-2.5"
               }`}
               aria-label={`Testimonial ${dotIdx + 1}`}
             />
           ))}
         </div>
-
       </div>
     </section>
   );

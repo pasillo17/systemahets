@@ -18,6 +18,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.entrenamientos": "ENTRENAMIENTOS",
     "nav.sedes": "SEDES Y CLASES",
     "nav.testimonios": "TESTIMONIOS",
+    "nav.novedades": "NOVEDADES",
     "nav.contacto": "CONTACTO",
     "nav.consultar": "CONSULTAR POR WHATSAPP",
     "nav.menuTitle": "SYSTEMA HETS",
@@ -87,6 +88,10 @@ const translations: Record<Language, Record<string, string>> = {
     "systema.pilar3Desc": "Alineación natural de la columna vertebral sin posturas rígidas de combate. Permite actuar desde cualquier ángulo con economía biomecánica.",
     "systema.pilar4": "Movimiento Continuo",
     "systema.pilar4Desc": "Fluir ante los obstáculos en lugar de chocar contra ellos. La inercia del movimiento continuo desvía la agresión y recupera el equilibrio espontáneamente.",
+    "systema.hetsKicker": "Identidad & Raíz Territorial",
+    "systema.hetsTitle": "¿Por qué se llama Systema HETS?",
+    "systema.hetsDesc": "Rinde homenaje a los guerreros Het (querandíes), integrando sus valores de adaptación y arraigo territorial con la metodología práctica de Systema.",
+    "systema.hetsTag": "Herencia Querandí · Adaptación",
     "systema.modalClose": "Cerrar",
 
     // Diego Ledesma
@@ -184,6 +189,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.entrenamientos": "TRAINING",
     "nav.sedes": "LOCATIONS & CLASSES",
     "nav.testimonios": "TESTIMONIALS",
+    "nav.novedades": "NOVEDADES / NEWS",
     "nav.contacto": "CONTACT",
     "nav.consultar": "INQUIRE VIA WHATSAPP",
     "nav.menuTitle": "SYSTEMA HETS",
@@ -253,6 +259,10 @@ const translations: Record<Language, Record<string, string>> = {
     "systema.pilar3Desc": "Natural spinal alignment free from rigid combat stances. Enables fluid action from any angle with maximum biomechanical economy.",
     "systema.pilar4": "Continuous Movement",
     "systema.pilar4Desc": "Flowing through obstacles rather than colliding with them. Continuous momentum deflects aggression and restores spontaneous equilibrium.",
+    "systema.hetsKicker": "Identity & Territorial Roots",
+    "systema.hetsTitle": "Why is it called Systema HETS?",
+    "systema.hetsDesc": "It pays tribute to the Het (Querandí) warriors, integrating their values of adaptation and territorial rootedness with the practical methodology of Systema.",
+    "systema.hetsTag": "Querandí Heritage · Adaptation",
     "systema.modalClose": "Close",
 
     // Diego Ledesma

@@ -1,23 +1,18 @@
 import { useState, useEffect } from "react";
 
 /**
- * PagePreloader: Pantalla de entrada y transición suave para Systema HETS.
- * Evita la aparición brusca de imágenes y fuentes en la carga inicial:
- * 1. Muestra un velo estético en negro carbón (#080807) con el emblema de Systema y respiración consciente.
- * 2. Permite que el navegador decodifique y pinte el Hero y los recursos críticos.
- * 3. Se desvanece de forma sedosa (fade-out de 700ms) y luego se retira completamente del DOM.
+ * PagePreloader: Pantalla de entrada y transición suave para Systema HETS
+ * en Tierra Sombra (#1F1916), Terracota Pampeana (#C86442) y Ocre Arcilla (#C49A64).
  */
 export function PagePreloader() {
   const [mounted, setMounted] = useState(true);
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    // Permitir un tiempo mínimo de calma (650ms) para que el layout e imágenes iniciales se preparen
     const minTimer = setTimeout(() => {
       setFading(true);
     }, 650);
 
-    // Retirar del DOM una vez completado el fade-out
     const unmountTimer = setTimeout(() => {
       setMounted(false);
     }, 1400);
@@ -33,16 +28,16 @@ export function PagePreloader() {
   return (
     <div
       aria-hidden={fading}
-      className={`fixed inset-0 z-[9999] bg-[#080807] flex flex-col items-center justify-center select-none transition-all duration-700 ease-out ${
+      className={`fixed inset-0 z-[9999] bg-[#1F1916] flex flex-col items-center justify-center select-none transition-all duration-700 ease-out ${
         fading
           ? "opacity-0 pointer-events-none scale-[1.01]"
           : "opacity-100 pointer-events-auto scale-100"
       }`}
     >
-      {/* Fondo con halo radial dorado tenue */}
+      {/* Fondo con halo radial en Terracota tenue */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-radial from-[#A58A60]/12 via-transparent to-[#080807] pointer-events-none"
+        className="absolute inset-0 bg-radial from-[#B85332]/15 via-transparent to-[#1F1916] pointer-events-none"
       />
 
       {/* Contenedor central de marca con ritmo de respiración suave */}
@@ -50,44 +45,44 @@ export function PagePreloader() {
         
         {/* Emblema con animación de respiración (Inspirar / Exhalar) */}
         <div className="relative mb-6">
-          {/* Halo expansivo tenue */}
-          <div className="absolute inset-0 rounded-full bg-[#C2A87E]/20 blur-xl animate-pulse" />
+          {/* Halo expansivo en Terracota */}
+          <div className="absolute inset-0 rounded-full bg-[#B85332]/22 blur-xl animate-pulse" />
           
-          <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#A58A60]/40 flex items-center justify-center bg-[#12110F]/90 shadow-[0_0_25px_rgba(165,138,96,0.25)]">
-            {/* Círculos concéntricos de Systema */}
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#C49A64]/60 flex items-center justify-center bg-[#2A211C]/95 shadow-[0_0_28px_rgba(184,83,50,0.28)]">
+            {/* Círculos concéntricos de Systema en Terracota y Ocre Arcilla */}
             <svg
-              className="w-10 h-10 sm:w-12 sm:h-12 text-[#C2A87E] animate-subtle-float"
+              className="w-10 h-10 sm:w-12 sm:h-12 text-[#C86442] animate-subtle-float"
               viewBox="0 0 100 100"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
             >
-              <circle cx="50" cy="50" r="44" strokeDasharray="3 3" opacity="0.4" />
-              <circle cx="50" cy="50" r="32" stroke="#A58A60" opacity="0.7" />
-              <circle cx="50" cy="50" r="18" stroke="#F1EBDD" />
-              <circle cx="50" cy="50" r="5" fill="#C2A87E" />
+              <circle cx="50" cy="50" r="44" strokeDasharray="3 3" opacity="0.45" />
+              <circle cx="50" cy="50" r="32" stroke="#C49A64" opacity="0.8" />
+              <circle cx="50" cy="50" r="18" stroke="#F4EDE2" />
+              <circle cx="50" cy="50" r="5" fill="#C86442" />
               {/* Ejes cardinales de equilibrio biomecánico */}
-              <line x1="50" y1="6" x2="50" y2="24" stroke="#A58A60" opacity="0.5" />
-              <line x1="50" y1="76" x2="50" y2="94" stroke="#A58A60" opacity="0.5" />
-              <line x1="6" y1="50" x2="24" y2="50" stroke="#A58A60" opacity="0.5" />
-              <line x1="76" y1="50" x2="94" y2="50" stroke="#A58A60" opacity="0.5" />
+              <line x1="50" y1="6" x2="50" y2="24" stroke="#C49A64" opacity="0.65" />
+              <line x1="50" y1="76" x2="50" y2="94" stroke="#C49A64" opacity="0.65" />
+              <line x1="6" y1="50" x2="24" y2="50" stroke="#C49A64" opacity="0.65" />
+              <line x1="76" y1="50" x2="94" y2="50" stroke="#C49A64" opacity="0.65" />
             </svg>
           </div>
         </div>
 
         {/* Nombre Institucional */}
-        <h2 className="font-heading text-xl sm:text-2xl uppercase tracking-[0.28em] text-[#F1EBDD] font-bold mb-1.5">
-          <span className="text-gold-gradient">SYSTEMA HETS</span>
+        <h2 className="font-heading text-xl sm:text-2xl uppercase tracking-[0.28em] text-[#F4EDE2] font-bold mb-1.5">
+          <span className="text-lightning-gradient">SYSTEMA HETS</span>
         </h2>
 
-        {/* Bajada con los 4 pilares: Respiración, Relajación, Postura, Movimiento */}
-        <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#C2A87E] opacity-90 mb-6">
+        {/* Bajada con los pilares en Ocre Arcilla */}
+        <p className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#C49A64] opacity-95 mb-6">
           Respiración · Relajación · Movimiento
         </p>
 
-        {/* Línea dorada de carga progresiva suave */}
-        <div className="w-36 sm:w-48 h-[2px] bg-[#1a1815] rounded-full overflow-hidden relative border border-[#A58A60]/20">
-          <div className="h-full bg-gradient-to-r from-[#A58A60] via-[#F1EBDD] to-[#C2A87E] rounded-full animate-[shimmerSlide_1.2s_ease-in-out_infinite]" />
+        {/* Línea de carga progresiva en Terracota y Ocre Arcilla */}
+        <div className="w-36 sm:w-48 h-[2px] bg-[#2A211C] rounded-full overflow-hidden relative border border-[#C49A64]/35">
+          <div className="h-full bg-gradient-to-r from-[#B85332] via-[#C49A64] to-[#B85332] rounded-full animate-[shimmerSlide_1.2s_ease-in-out_infinite]" />
         </div>
       </div>
     </div>
