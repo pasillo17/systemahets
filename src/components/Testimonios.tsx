@@ -3,6 +3,7 @@ import { MessageSquareQuote, ChevronLeft, ChevronRight, UserCheck } from "lucide
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { SpotlightCard } from "./SpotlightCard";
+import { ScrollReveal } from "./ScrollReveal";
 
 /**
  * Sección "Lo que dicen los alumnos":
@@ -93,52 +94,55 @@ export function Testimonios() {
       {/* Luz ambiental sutil en CSS puro */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-[250px] bg-[#A58A60]/5 blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-[250px] bg-[#A58A60]/8 blur-3xl pointer-events-none animate-glow-pulse"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Cabecera */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#C2A87E] font-mono mb-2 font-semibold">
-              <MessageSquareQuote className="w-4 h-4 text-[#A58A60]" />
-              <span>{t("test.kicker")}</span>
+        <ScrollReveal direction="up" distance={20}>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#C2A87E] font-mono mb-2 font-semibold">
+                <MessageSquareQuote className="w-4 h-4 text-[#A58A60]" />
+                <span>{t("test.kicker")}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
+                {t("test.title")}
+              </h2>
+              <p className="text-sm sm:text-base text-[#EAE5D9] leading-relaxed mt-2">
+                {t("test.subtitle")}
+              </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
-              {t("test.title")}
-            </h2>
-            <p className="text-sm sm:text-base text-[#EAE5D9] leading-relaxed mt-2">
-              {t("test.subtitle")}
-            </p>
-          </div>
 
-          <div className="hidden sm:flex items-center gap-2">
-            <button
-              type="button"
-              onClick={handlePrev}
-              className="w-12 h-12 rounded-sm bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] hover:text-[#A58A60] text-[#F1EBDD] flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              className="w-12 h-12 rounded-sm bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] hover:text-[#A58A60] text-[#F1EBDD] flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+            <div className="hidden sm:flex items-center gap-2">
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="w-12 h-12 rounded-sm bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] hover:text-[#A58A60] text-[#F1EBDD] flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="w-12 h-12 rounded-sm bg-[#12110F] border border-[#A58A60]/30 hover:border-[#A58A60] hover:text-[#A58A60] text-[#F1EBDD] flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Carrusel Deslizable */}
-        <div
-          ref={scrollRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
-          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
-        >
+        <ScrollReveal direction="up" delay={80} distance={24}>
+          <div
+            ref={scrollRef}
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
+            style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+          >
           {testimonios.map((item, idx) => (
             <SpotlightCard
               key={item.id}
@@ -179,6 +183,7 @@ export function Testimonios() {
             </SpotlightCard>
           ))}
         </div>
+        </ScrollReveal>
 
         <div className="flex items-center justify-center gap-2 pt-2 sm:hidden">
           {testimonios.map((_, dotIdx) => (

@@ -1,6 +1,7 @@
 import { MessageSquare, ArrowRight, Youtube, Instagram, Facebook, Sparkles } from "lucide-react";
 import { SITE_CONFIG, getClasePruebaWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
+import { ScrollReveal } from "./ScrollReveal";
 
 /**
  * Sección Final de Conversión e Inscripción:
@@ -17,13 +18,14 @@ export function ContactoConversion() {
       {/* Fondo puro en CSS con halo de luz tenue */}
       <div
         aria-hidden="true"
-        className="absolute bottom-1/4 right-1/4 w-[320px] sm:w-[450px] h-[320px] sm:h-[450px] bg-[#A58A60]/8 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-1/4 right-1/4 w-[320px] sm:w-[450px] h-[320px] sm:h-[450px] bg-[#A58A60]/8 rounded-full blur-3xl pointer-events-none animate-glow-pulse"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Franja de Conversión Centralizada con Luz Perimetral */}
-        <div className="p-6 sm:p-10 lg:p-14 bg-[#12110F]/90 backdrop-blur-md border border-[#A58A60]/40 rounded-sm shadow-2xl relative overflow-hidden card-specular-edge">
+        <ScrollReveal direction="up" distance={28}>
+          <div className="p-6 sm:p-10 lg:p-14 bg-[#12110F]/90 backdrop-blur-md border border-[#A58A60]/40 rounded-sm shadow-2xl relative overflow-hidden card-specular-edge">
           
           {/* Línea superior dorada brillante con pulso */}
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C2A87E] to-transparent opacity-90" />
@@ -151,6 +153,7 @@ export function ContactoConversion() {
 
           </div>
         </div>
+        </ScrollReveal>
 
       </div>
     </section>

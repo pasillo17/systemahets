@@ -4,6 +4,7 @@ import { SITE_CONFIG } from "../config/siteConfig";
 import { ImageWithFallback } from "./ImageWithFallback";
 import { useLanguage } from "../context/LanguageContext";
 import { SpotlightCard } from "./SpotlightCard";
+import { ScrollReveal } from "./ScrollReveal";
 
 /**
  * Sección EL SYSTEMA:
@@ -39,25 +40,26 @@ export function ElSistema() {
       {/* Luz de fondo ambiental tenue en CSS puro */}
       <div
         aria-hidden="true"
-        className="absolute top-1/3 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-[#A58A60]/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/3 -left-32 w-72 sm:w-96 h-72 sm:h-96 bg-[#A58A60]/10 rounded-full blur-3xl pointer-events-none animate-glow-pulse"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Kicker editorial */}
-        <div className="mb-6 sm:mb-10">
-          <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#C2A87E] block mb-2 font-semibold">
-            {t("systema.kicker")}
-          </span>
-          <div className="h-[1px] w-12 bg-[#A58A60]/40" />
-        </div>
+        <ScrollReveal direction="up" distance={20}>
+          <div className="mb-6 sm:mb-10">
+            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#C2A87E] block mb-2 font-semibold">
+              {t("systema.kicker")}
+            </span>
+            <div className="h-[1px] w-12 bg-[#A58A60]/40" />
+          </div>
+        </ScrollReveal>
 
         {/* Composición Asimétrica en 3 Áreas */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Área 1: Fotografía de Práctica con Fallback Elegante */}
-          {/* // CAMPO / IMAGEN EDITABLE: Reemplazar src por fotografía real de práctica en dojo */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
+          <ScrollReveal direction="up" delay={80} distance={28} className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative rounded-sm overflow-hidden border border-[#A58A60]/30 bg-[#12110F] shadow-2xl group card-specular-edge hover:border-[#A58A60]/60 transition-all duration-500">
               <ImageWithFallback
                 src={SITE_CONFIG.assets.heroImage}
@@ -79,10 +81,10 @@ export function ElSistema() {
                 <div className="w-2 h-2 rounded-full bg-[#A58A60]/40 group-hover:bg-[#C2A87E] transition-colors" />
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Área 2: Título y Definición Central — SIEMPRE SYSTEMA CON 'Y' */}
-          <div className="lg:col-span-4 space-y-4 order-1 lg:order-2">
+          <ScrollReveal direction="up" delay={160} distance={28} className="lg:col-span-4 space-y-4 order-1 lg:order-2">
             <div>
               <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#C2A87E] block mb-1 font-semibold">
                 {t("systema.badge")}
@@ -111,10 +113,10 @@ export function ElSistema() {
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Área 3: Tres Conceptos Breves con SpotlightCard */}
-          <div className="lg:col-span-3 space-y-3 lg:border-l lg:border-[#A58A60]/20 lg:pl-6 order-3">
+          <ScrollReveal direction="up" delay={240} distance={28} className="lg:col-span-3 space-y-3 lg:border-l lg:border-[#A58A60]/20 lg:pl-6 order-3">
             
             {/* Concepto 1: ADAPTACIÓN */}
             <SpotlightCard className="p-4 bg-[#12110F]/80 border border-[#A58A60]/20 hover:border-[#A58A60]/50 transition-all card-specular-edge group">
@@ -149,7 +151,7 @@ export function ElSistema() {
               </p>
             </SpotlightCard>
 
-          </div>
+          </ScrollReveal>
 
         </div>
 

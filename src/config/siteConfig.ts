@@ -11,11 +11,7 @@
 import logoSystema from "../assets/images/logo_systema_hets.png";
 import heroDojo from "../assets/images/hero_systema_dojo_1793283800364.jpg";
 import portraitDiego from "../assets/images/diego_ledesma.jpg";
-import knifeTraining from "../assets/images/gallery_knife_training_1793283802821.jpg";
-import breathWork from "../assets/images/gallery_breath_work_1793283802095.jpg";
-import outdoorSeminar from "../assets/images/gallery_outdoor_seminar_1793283802865.jpg";
-import groundFlow from "../assets/images/gallery_ground_flow_1793283816523.jpg";
-import exhibitionImg from "../assets/images/gallery_exhibition_1793283817104.jpg";
+import escuelasAfiliadasImg from "../assets/images/emblemas_escuelas.png";
 
 export const SITE_CONFIG = {
   // Datos Generales e Identidad
@@ -27,7 +23,7 @@ export const SITE_CONFIG = {
   // Hero Editorial (Textos breves y contundentes)
   heroKicker: "Arte marcial ruso · La Plata / Buenos Aires",
   heroTitulo: "Mucho más que defensa personal",
-  heroBajada: "Movimiento consciente, autoconocimiento y desarrollo integral.",
+  heroBajada: "Movimiento consciente, autoprotección y desarrollo integral.",
   
   // Frase institucional de cierre
   fraseDestacada: "El verdadero combate es con uno mismo.",
@@ -61,14 +57,13 @@ export const SITE_CONFIG = {
   assets: {
     logo: logoSystema,
     logoFallbackUrl: "https://github.com/pasillo17/galeriaPasillo/blob/main/Dise%C3%B1o%20sin%20t%C3%ADtulo%20(3).png?raw=true",
+    escuelasAfiliadas: escuelasAfiliadasImg,
+    escuelasAfiliadasFallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Emblemas%20de%20guerreros%20medievales.png",
     heroImage: heroDojo,
     diegoPortrait: portraitDiego,
     diegoPortraitFallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/refs/heads/main/Gemini_Generated_Image_wl7f8cwl7f8cwl7f%20(1).jfif",
-    knifeTraining,
-    breathWork,
-    outdoorSeminar,
-    groundFlow,
-    exhibitionImg,
+    entrenamientoAireLibre: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Entrenamiento%20marcial%20al%20aire%20libre.png?raw=true",
+    demostracionParque: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png?raw=true",
   },
 
   // Franja de Prueba Social (Datos de autoridad real)
@@ -132,7 +127,7 @@ export const SITE_CONFIG = {
     diasResumen: "Lunes a Viernes (turnos mañana, mediodía y noche)",
     diasResumenEn: "Monday to Friday (morning, midday and evening)",
     nivel: "Todos los niveles — No se requiere experiencia previa",
-    cupos: "Grupos reducidos orientados al autoconocimiento y la autonomía",
+    cupos: "Grupos reducidos orientados a la autoprotección y la autonomía",
     // Link directo a Google Maps provisto por el usuario
     mapsUrl: "https://maps.app.goo.gl/sKyYkVaPniX4X4WcA",
     coordenadas: {
@@ -242,43 +237,29 @@ export const SITE_CONFIG = {
     },
   ],
 
-  // Tarjetas de Entrenamientos (Galería de 5 tarjetas resilientes)
-  // // CAMPO EDITABLE: Actualizar títulos, descripciones o fotos según actividades
+  // Entrenamientos: 2 fotografías oficiales de práctica (conciso y directo)
   entrenamientos: [
     {
       id: "ent-1",
-      titulo: "Redirección de Masa y Desequilibrio",
-      descripcion: "Exploración de la física del movimiento sin confrontación de fuerza rígida.",
-      categoria: "Movimiento",
-      imagen: knifeTraining,
+      titulo: "Entrenamiento al Aire Libre",
+      tituloEn: "Outdoor Martial Training",
+      descripcion: "Adaptación en terreno natural, fluidez de movimiento y biomecánica en espacio abierto.",
+      descripcionEn: "Natural terrain adaptation, movement flow, and biomechanics in open space.",
+      categoria: "Al Aire Libre",
+      categoriaEn: "Outdoors",
+      imagen: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Entrenamiento%20marcial%20al%20aire%20libre.png?raw=true",
+      fallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Entrenamiento%20marcial%20al%20aire%20libre.png",
     },
     {
       id: "ent-2",
-      titulo: "Ground Flow y Rodamiento en Suelo",
-      descripcion: "Transiciones fluidas sobre el piso con economía biomecánica y sin impacto articular.",
-      categoria: "Suelo",
-      imagen: groundFlow,
-    },
-    {
-      id: "ent-3",
-      titulo: "Respiración y Disipación Diafragmática",
-      descripcion: "Reconfiguración del sistema nervioso para operar con pulso calmo bajo estrés o sorpresa.",
-      categoria: "Respiración",
-      imagen: breathWork,
-    },
-    {
-      id: "ent-4",
-      titulo: "Defensa Táctica y Distancia Corta",
-      descripcion: "Trabajo sensorial relajado, respondiendo a la trayectoria sin tensión muscular anticipada.",
-      categoria: "Defensa",
-      imagen: exhibitionImg,
-    },
-    {
-      id: "ent-5",
-      titulo: "Práctica en Terreno Real y Exteriores",
-      descripcion: "Seminarios al aire libre: caídas y adaptación en suelo irregular, tierra y pendientes naturales.",
-      categoria: "Outdoor",
-      imagen: outdoorSeminar,
+      titulo: "Demostración y Práctica en el Parque",
+      tituloEn: "Park Demonstration & Practice",
+      descripcion: "Respuesta instintiva, trabajo en parejas y soltura física ante situaciones imprevistas.",
+      descripcionEn: "Instinctive response, partner work, and physical release in real-world scenarios.",
+      categoria: "En el Parque",
+      categoriaEn: "Park Session",
+      imagen: "https://github.com/pasillo17/SYSTEMA-HETS/blob/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png?raw=true",
+      fallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Demostraci%C3%B3n%20de%20artes%20marciales%20en%20el%20parque.png",
     },
   ],
 };

@@ -1,176 +1,297 @@
-import { useState, useEffect } from "react";
-import { Camera, Maximize2, X, ChevronLeft, ChevronRight, Shield } from "lucide-react";
+import { useState, useRef, useEffect, TouchEvent } from "react";
+import { Camera, Maximize2, X, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
-import { ImageWithFallback } from "./ImageWithFallback";
 import { useLanguage } from "../context/LanguageContext";
-import { SpotlightCard } from "./SpotlightCard";
+import { ScrollReveal } from "./ScrollReveal";
 
+/**
+ * Sección ENTRENAMIENTOS:
+ * - 2 fotos oficiales provistas por el usuario (Entrenamiento al aire libre & Demostración en el parque).
+ * - Enfoque conciso, sin sobre-explicar ("LO DE ENTRENAMIENTOS NO EXPLIQUEMOS TANTO").
+ * - Formato carrusel interactivo en celular con soporte táctil (swipe), botones de navegación y puntos indicadores.
+ * - En desktop: Grilla visual equilibrada de 2 columnas con lightbox integrado.
+ */
 export function Entrenamientos() {
-  const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const { lang, t } = useLanguage();
 
   const items = SITE_CONFIG.entrenamientos.map((item) => {
     if (lang === "en") {
-      switch (item.id) {
-        case "ent-1":
-          return {
-            ...item,
-            titulo: "Mass Redirection & Off-Balancing",
-            descripcion: "Exploring movement physics without clashing against rigid incoming force.",
-            categoria: "Movement",
-          };
-        case "ent-2":
-          return {
-            ...item,
-            titulo: "Ground Flow & Tactical Rolling",
-            descripcion: "Smooth transitions on the floor with biomechanical efficiency and zero joint impact.",
-            categoria: "Floor",
-          };
-        case "ent-3":
-          return {
-            ...item,
-            titulo: "Diaphragmatic Breathwork & Dissipation",
-            descripcion: "Recalibrating the nervous system to maintain a calm pulse under stress or surprise.",
-            categoria: "Breath",
-          };
-        case "ent-4":
-          return {
-            ...item,
-            titulo: "Tactical Defense & Close Quarters",
-            descripcion: "Relaxed sensory response, guiding the attack path without early muscular tension.",
-            categoria: "Defense",
-          };
-        case "ent-5":
-          return {
-            ...item,
-            titulo: "Real Terrain & Outdoor Practice",
-            descripcion: "Outdoor workshops: safe falls and adaptation on uneven ground, earth, and natural slopes.",
-            categoria: "Outdoor",
-          };
-        default:
-          return item;
-      }
+      return {
+        ...item,
+        titulo: item.tituloEn || item.titulo,
+        descripcion: item.descripcionEn || item.descripcion,
+        categoria: item.categoriaEn || item.categoria,
+      };
     }
     return item;
   });
 
+  const totalSlides = items.length;
+
+  const nextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  // Manejo de gestos táctiles (Swipe en celulares)
+  const handleTouchStart = (e: TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchEndX(null);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    const minSwipeDistance = 45; // Distancia mínima en píxeles para considerar swipe
+
+    if (distance > minSwipeDistance) {
+      // Deslizar hacia la izquierda -> siguiente foto
+      nextSlide();
+    } else if (distance < -minSwipeDistance) {
+      // Deslizar hacia la derecha -> foto anterior
+      prevSlide();
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
+  // Teclado para lightbox
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (activeItemIndex === null) return;
+      if (activeLightboxIndex === null) return;
       if (e.key === "Escape") {
-        setActiveItemIndex(null);
+        setActiveLightboxIndex(null);
       } else if (e.key === "ArrowLeft") {
-        navigateLightbox(-1);
+        setActiveLightboxIndex((prev) => (prev !== null ? (prev - 1 + totalSlides) % totalSlides : 0));
       } else if (e.key === "ArrowRight") {
-        navigateLightbox(1);
+        setActiveLightboxIndex((prev) => (prev !== null ? (prev + 1) % totalSlides : 0));
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeItemIndex]);
+  }, [activeLightboxIndex, totalSlides]);
 
-  const navigateLightbox = (direction: number) => {
-    if (activeItemIndex === null) return;
-    const next = (activeItemIndex + direction + items.length) % items.length;
-    setActiveItemIndex(next);
-  };
-
-  const currentItem = activeItemIndex !== null ? items[activeItemIndex] : null;
+  const currentLightboxItem = activeLightboxIndex !== null ? items[activeLightboxIndex] : null;
 
   return (
-    <section id="entrenamientos" className="py-14 sm:py-20 bg-[#080807] text-[#F1EBDD] border-t border-[#A58A60]/15 relative overflow-hidden">
+    <section id="entrenamientos" className="py-12 sm:py-16 lg:py-20 bg-[#080807] text-[#F1EBDD] border-t border-[#A58A60]/15 relative overflow-hidden select-none">
       
-      {/* Luz ambiental sutil en CSS puro */}
+      {/* Luz ambiental sutil */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[250px] bg-[#A58A60]/5 blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[250px] bg-[#A58A60]/5 blur-3xl pointer-events-none animate-glow-pulse"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Cabecera Editorial */}
-        <div className="max-w-3xl mb-8 sm:mb-12">
-          <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#C2A87E] font-mono mb-2 font-semibold">
-            <Camera className="w-4 h-4 text-[#A58A60]" />
-            <span>{t("ent.kicker")}</span>
+        {/* Cabecera Editorial Concisa (Sin sobre-explicar) */}
+        <ScrollReveal direction="up" distance={20}>
+          <div className="max-w-2xl mb-6 sm:mb-10 text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-[10px] sm:text-xs uppercase tracking-[0.22em] text-[#C2A87E] font-mono mb-2 font-semibold">
+              <Camera className="w-4 h-4 text-[#A58A60]" />
+              <span>{t("ent.kicker") || "Galería de Práctica"}</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
+              {t("ent.title") || "Entrenamientos"}
+            </h2>
+            <p className="text-xs sm:text-sm text-[#C4BFB4] mt-1.5 font-sans leading-relaxed">
+              {lang === "en" 
+                ? "Real practice, organic adaptation, and conscious movement in open space."
+                : "Práctica real, adaptabilidad orgánica y movimiento consciente en espacio abierto."}
+            </p>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
-            {t("ent.title")}
-          </h2>
-          <p className="text-sm sm:text-base text-[#EAE5D9] italic font-serif mt-1.5">
-            {t("ent.quote")}
-          </p>
+        </ScrollReveal>
+
+        {/* 1. MÓVIL: FORMATO CARRUSEL INTERACTIVO CON SWIPE Y BOTONES */}
+        <div className="block md:hidden">
+          <ScrollReveal direction="up" delay={80} distance={24}>
+            <div 
+              className="relative rounded-sm overflow-hidden bg-[#12110F] border border-[#A58A60]/30 shadow-2xl touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Contenedor de la foto activa */}
+              <div 
+                className="relative aspect-[4/3] w-full overflow-hidden bg-[#080807] cursor-pointer"
+                onClick={() => setActiveLightboxIndex(activeSlide)}
+              >
+                <img
+                  src={items[activeSlide].imagen}
+                  alt={items[activeSlide].titulo}
+                  className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05] transition-all duration-300"
+                  loading="eager"
+                  onError={(e) => {
+                    const fallback = items[activeSlide].fallbackUrl;
+                    if (fallback) {
+                      (e.target as HTMLImageElement).src = fallback;
+                    }
+                  }}
+                />
+                
+                {/* Gradiente inferior */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12110F] via-transparent to-transparent opacity-90 pointer-events-none" />
+
+                {/* Botón flotante para ampliar */}
+                <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#080807]/80 text-[#D8C7A5] border border-[#A58A60]/40 backdrop-blur-xs">
+                  <Maximize2 className="w-3.5 h-3.5 text-[#A58A60]" />
+                </div>
+
+                {/* Tag de Categoría */}
+                <div className="absolute top-3 left-3">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#F59E0B] bg-[#080807]/90 px-2.5 py-1 border border-[#C05621]/50 rounded-xs font-semibold backdrop-blur-xs shadow-md">
+                    {items[activeSlide].categoria}
+                  </span>
+                </div>
+
+                {/* Contador de fotos (1 / 2) */}
+                <div className="absolute bottom-3 right-3">
+                  <span className="text-[10px] font-mono text-[#F1EBDD] bg-[#080807]/85 px-2 py-0.5 rounded-xs border border-[#A58A60]/30">
+                    {activeSlide + 1} / {totalSlides}
+                  </span>
+                </div>
+              </div>
+
+              {/* Pie de la tarjeta en móvil: Título y descripción concisa */}
+              <div className="p-4 bg-[#12110F] border-t border-[#A58A60]/20 space-y-1.5">
+                <h3 className="text-base font-heading font-bold uppercase tracking-wide text-[#F1EBDD]">
+                  {items[activeSlide].titulo}
+                </h3>
+                <p className="text-xs text-[#C4BFB4] leading-relaxed">
+                  {items[activeSlide].descripcion}
+                </p>
+              </div>
+
+              {/* Flechas táctiles de navegación superpuestas */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevSlide();
+                }}
+                className="absolute left-2 top-[35%] -translate-y-1/2 w-9 h-9 rounded-full bg-[#080807]/85 border border-[#A58A60]/50 text-[#F1EBDD] flex items-center justify-center active:scale-95 transition-all shadow-lg backdrop-blur-xs"
+                aria-label="Foto anterior"
+              >
+                <ChevronLeft className="w-5 h-5 text-[#C2A87E]" />
+              </button>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextSlide();
+                }}
+                className="absolute right-2 top-[35%] -translate-y-1/2 w-9 h-9 rounded-full bg-[#080807]/85 border border-[#A58A60]/50 text-[#F1EBDD] flex items-center justify-center active:scale-95 transition-all shadow-lg backdrop-blur-xs"
+                aria-label="Foto siguiente"
+              >
+                <ChevronRight className="w-5 h-5 text-[#C2A87E]" />
+              </button>
+            </div>
+
+            {/* Indicadores de puntos y control inferior móvil */}
+            <div className="flex items-center justify-between mt-3 px-1">
+              <span className="text-[10px] font-mono text-[#A58A60] uppercase tracking-wider flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-[#F59E0B]" />
+                Deslizá para pasar foto
+              </span>
+
+              {/* Puntos de paginación interactivos */}
+              <div className="flex items-center gap-2">
+                {items.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveSlide(idx)}
+                    className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
+                      activeSlide === idx
+                        ? "w-6 bg-[#C2A87E]"
+                        : "w-2 bg-[#A58A60]/40 hover:bg-[#A58A60]/80"
+                    }`}
+                    aria-label={`Ir a foto ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
 
-        {/* Grilla de 5 Tarjetas con SpotlightCard */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {items.map((item, idx) => {
-            const hasMedia = Boolean(item.imagen);
-
-            return (
-              <SpotlightCard
-                key={item.id}
-                onClick={() => setActiveItemIndex(idx)}
-                spotlightColor="rgba(194, 168, 126, 0.16)"
-                borderColor="rgba(194, 168, 126, 0.55)"
-                className="group relative bg-[#12110F] border border-[#A58A60]/25 hover:border-[#A58A60] rounded-sm overflow-hidden transition-all duration-500 cursor-pointer flex flex-col justify-between shadow-xl card-specular-edge hover:shadow-[0_0_25px_rgba(165,138,96,0.3)] active:scale-[0.99]"
+        {/* 2. TABLET Y DESKTOP: GRILLA DE 2 COLUMNAS EDITORIAL CON LIGHTBOX */}
+        <div className="hidden md:grid md:grid-cols-2 gap-6 lg:gap-8">
+          {items.map((item, idx) => (
+            <ScrollReveal key={item.id} direction="up" delay={idx * 140} distance={28}>
+              <div
+                onClick={() => setActiveLightboxIndex(idx)}
+                className="group relative rounded-sm overflow-hidden bg-[#12110F] border border-[#A58A60]/30 hover:border-[#C2A87E] transition-all duration-500 cursor-pointer shadow-xl card-specular-edge hover:shadow-[0_0_30px_rgba(165,138,96,0.25)] flex flex-col justify-between h-full"
               >
-                {hasMedia ? (
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#080807]">
-                    <ImageWithFallback
-                      src={item.imagen}
-                      alt={item.titulo}
-                      aspectRatioClass="aspect-[4/3]"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108 filter brightness-90 contrast-105"
-                      fallbackTitle={item.titulo}
-                      fallbackSubtitle={`Systema HETS · ${item.categoria}`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#12110F] via-transparent to-transparent opacity-85 pointer-events-none" />
+                {/* Imagen con Aspect Ratio elegante */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#080807]">
+                  <img
+                    src={item.imagen}
+                    alt={item.titulo}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 contrast-105"
+                    loading="lazy"
+                    onError={(e) => {
+                      if (item.fallbackUrl) {
+                        (e.target as HTMLImageElement).src = item.fallbackUrl;
+                      }
+                    }}
+                  />
+                  
+                  {/* Degradado inferior */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#12110F] via-transparent to-transparent opacity-80 pointer-events-none" />
 
-                    <div className="absolute top-2.5 right-2.5 p-2 rounded-sm bg-[#080807]/85 text-[#D8C7A5] border border-[#A58A60]/30 shadow-md backdrop-blur-xs group-hover:border-[#A58A60] transition-colors">
-                      <Maximize2 className="w-3.5 h-3.5 text-[#A58A60] group-hover:scale-110 transition-transform" />
-                    </div>
-
-                    <div className="absolute bottom-2.5 left-2.5">
-                      <span className="text-[9px] font-mono uppercase tracking-widest text-[#F59E0B] bg-[#080807]/90 px-2 py-0.5 border border-[#C05621]/50 rounded-xs backdrop-blur-xs shadow-[0_0_8px_rgba(192,86,33,0.25)] font-semibold">
-                        {item.categoria}
-                      </span>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="p-5 bg-[#12110F] border-b border-[#A58A60]/15 flex items-center justify-between">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#F59E0B] bg-[#080807] px-2 py-0.5 border border-[#C05621]/50 rounded-xs font-semibold">
+                  {/* Tag de Categoría */}
+                  <div className="absolute top-3 left-3">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#F59E0B] bg-[#080807]/90 px-2.5 py-1 border border-[#C05621]/50 rounded-xs font-semibold backdrop-blur-xs shadow-md">
                       {item.categoria}
                     </span>
-                    <Shield className="w-4 h-4 text-[#A58A60]/60" />
                   </div>
-                )}
 
-                <div className="p-4 bg-[#12110F]/90 flex-1 flex flex-col justify-between">
+                  {/* Ícono de ampliación al pasar el mouse */}
+                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#080807]/80 text-[#D8C7A5] border border-[#A58A60]/30 shadow-md backdrop-blur-xs group-hover:border-[#C2A87E] transition-colors">
+                    <Maximize2 className="w-3.5 h-3.5 text-[#A58A60] group-hover:scale-110 transition-transform" />
+                  </div>
+                </div>
+
+                {/* Pie de foto conciso */}
+                <div className="p-5 bg-[#12110F] border-t border-[#A58A60]/20 flex flex-col justify-between flex-1">
                   <div>
-                    <h3 className="text-sm sm:text-base font-heading uppercase tracking-wide text-[#F1EBDD] font-bold group-hover:text-[#C2A87E] transition-colors line-clamp-1">
+                    <h3 className="text-lg font-heading font-bold uppercase tracking-wide text-[#F1EBDD] group-hover:text-[#C2A87E] transition-colors">
                       {item.titulo}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#C4BFB4] mt-1.5 leading-relaxed line-clamp-2">
+                    <p className="text-xs sm:text-sm text-[#C4BFB4] mt-2 leading-relaxed">
                       {item.descripcion}
                     </p>
                   </div>
 
-                  <div className="pt-3 mt-3 border-t border-[#A58A60]/15 flex items-center justify-between text-[10px] font-mono text-[#C2A87E]">
-                    <span className="group-hover:text-[#F1EBDD] transition-colors">{t("ent.viewDetail")}</span>
+                  <div className="pt-3 mt-4 border-t border-[#A58A60]/15 flex items-center justify-between text-[11px] font-mono text-[#C2A87E]">
+                    <span className="group-hover:text-[#F1EBDD] transition-colors">
+                      {lang === "en" ? "Expand photograph" : "Ampliar fotografía"}
+                    </span>
                     <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </div>
                 </div>
-              </SpotlightCard>
-            );
-          })}
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
 
-        {/* Modal Lightbox Editorial Ampliado */}
-        {currentItem && (
+        {/* 3. MODAL LIGHTBOX AMPLIADO */}
+        {currentLightboxItem && (
           <div
             className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
-            onClick={() => setActiveItemIndex(null)}
+            onClick={() => setActiveLightboxIndex(null)}
             role="dialog"
             aria-modal="true"
           >
@@ -178,80 +299,67 @@ export function Entrenamientos() {
               className="relative max-w-4xl w-full bg-[#12110F] border border-[#A58A60]/50 rounded-sm overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Barra superior de la modal */}
               <div className="px-4 py-3 bg-[#080807] border-b border-[#A58A60]/20 flex items-center justify-between">
                 <div className="flex items-center gap-2 truncate pr-2">
                   <span className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#F59E0B] font-semibold">
-                    Systema HETS · {currentItem.categoria}
+                    Systema HETS · {currentLightboxItem.categoria}
                   </span>
                   <span className="text-[#C4BFB4] text-[11px]">
-                    ({(activeItemIndex || 0) + 1}/{items.length})
+                    ({((activeLightboxIndex || 0) + 1)} / {totalSlides})
                   </span>
                 </div>
                 <button
                   type="button"
-                  onClick={() => setActiveItemIndex(null)}
-                  className="w-10 h-10 flex items-center justify-center text-[#C4BFB4] hover:text-white rounded-sm border border-[#A58A60]/30 bg-[#12110F] cursor-pointer"
+                  onClick={() => setActiveLightboxIndex(null)}
+                  className="w-9 h-9 flex items-center justify-center text-[#C4BFB4] hover:text-white rounded-sm border border-[#A58A60]/30 bg-[#12110F] cursor-pointer"
                   aria-label="Cerrar visor"
                 >
-                  <X className="w-5 h-5 text-[#A58A60]" />
+                  <X className="w-4 h-4 text-[#A58A60]" />
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-y-auto">
-                <div className="md:col-span-7 relative bg-black flex items-center justify-center p-2 min-h-[220px] sm:min-h-[350px]">
-                  {currentItem.imagen ? (
-                    <ImageWithFallback
-                      src={currentItem.imagen}
-                      alt={currentItem.titulo}
-                      aspectRatioClass="aspect-[4/3]"
-                      className="max-h-[50vh] w-auto max-w-full object-contain"
-                      fallbackTitle={currentItem.titulo}
-                      fallbackSubtitle={`Systema HETS · ${currentItem.categoria}`}
-                    />
-                  ) : (
-                    <div className="text-center p-6 text-[#C4BFB4]">
-                      <Shield className="w-10 h-10 text-[#A58A60] mx-auto mb-2" />
-                      <p className="text-xs font-mono">{t("ent.noMedia")}</p>
-                    </div>
-                  )}
+              {/* Imagen central ampliada con flechas laterales */}
+              <div className="relative bg-[#050505] flex items-center justify-center p-2 sm:p-4 min-h-[300px] max-h-[65vh]">
+                <img
+                  src={currentLightboxItem.imagen}
+                  alt={currentLightboxItem.titulo}
+                  className="max-h-[60vh] w-auto max-w-full object-contain mx-auto"
+                />
 
-                  <button
-                    type="button"
-                    onClick={() => navigateLightbox(-1)}
-                    className="absolute left-2 w-12 h-12 flex items-center justify-center rounded-full bg-[#080807]/85 text-[#F1EBDD] hover:bg-[#A58A60] hover:text-[#080807] border border-[#A58A60]/40 transition-colors shadow-lg cursor-pointer"
-                    aria-label="Foto anterior"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
+                {/* Flechas de navegación en Lightbox */}
+                <button
+                  type="button"
+                  onClick={() => setActiveLightboxIndex((prev) => (prev !== null ? (prev - 1 + totalSlides) % totalSlides : 0))}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#080807]/80 border border-[#A58A60]/40 text-[#F1EBDD] flex items-center justify-center hover:bg-[#A58A60] hover:text-[#080807] transition-all cursor-pointer"
+                  aria-label="Foto anterior"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
 
-                  <button
-                    type="button"
-                    onClick={() => navigateLightbox(1)}
-                    className="absolute right-2 w-12 h-12 flex items-center justify-center rounded-full bg-[#080807]/85 text-[#F1EBDD] hover:bg-[#A58A60] hover:text-[#080807] border border-[#A58A60]/40 transition-colors shadow-lg cursor-pointer"
-                    aria-label="Foto siguiente"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveLightboxIndex((prev) => (prev !== null ? (prev + 1) % totalSlides : 0))}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#080807]/80 border border-[#A58A60]/40 text-[#F1EBDD] flex items-center justify-center hover:bg-[#A58A60] hover:text-[#080807] transition-all cursor-pointer"
+                  aria-label="Foto siguiente"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Pie de la modal con descripción concisa */}
+              <div className="p-4 bg-[#0c0b0a] border-t border-[#A58A60]/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <h4 className="text-sm sm:text-base font-heading font-bold uppercase text-[#F1EBDD]">
+                    {currentLightboxItem.titulo}
+                  </h4>
+                  <p className="text-xs text-[#C4BFB4] mt-0.5">
+                    {currentLightboxItem.descripcion}
+                  </p>
                 </div>
-
-                <div className="md:col-span-5 p-5 sm:p-6 bg-[#12110F] flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#A58A60]/20 space-y-4">
-                  <div className="space-y-3">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C2A87E] block">
-                      {t("ent.kicker")}
-                    </span>
-                    <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide text-white font-heading">
-                      {currentItem.titulo}
-                    </h3>
-                    <p className="text-sm text-[#EAE5D9] leading-relaxed">
-                      {currentItem.descripcion}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-[#A58A60]/20 text-[11px] text-[#C4BFB4] font-mono flex items-center justify-between">
-                    <span>{t("ent.keysNav")}</span>
-                    <span>{t("ent.keysClose")}</span>
-                  </div>
-                </div>
+                <span className="text-[10px] font-mono text-[#C2A87E] shrink-0">
+                  Systema HETS · Arte Marcial Ruso
+                </span>
               </div>
             </div>
           </div>

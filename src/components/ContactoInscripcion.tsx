@@ -162,7 +162,7 @@ export function ContactoInscripcion({ initialSedeId }: ContactoInscripcionProps)
                     >
                       <option value="clase-prueba" className="bg-[#07140c] text-white">Clase de Prueba Gratuita (90 min)</option>
                       <option value="curso-regular" className="bg-[#07140c] text-white">Membresía Mensual Regular</option>
-                      <option value="taller-respiracion" className="bg-[#07140c] text-white">Taller de Respiración y Autoconocimiento</option>
+                      <option value="taller-respiracion" className="bg-[#07140c] text-white">Taller de Respiración y Autoprotección</option>
                       <option value="seminario-armas" className="bg-[#07140c] text-white">Seminario de Armas y Supervivencia</option>
                     </select>
                   </div>

@@ -2,6 +2,7 @@ import { Users, User, Calendar, MapPin, ExternalLink, Clock, MessageSquare, Chec
 import { SITE_CONFIG, getWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { SpotlightCard } from "./SpotlightCard";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function Clases() {
   const sede = SITE_CONFIG.sedePrincipal;
@@ -71,94 +72,100 @@ export function Clases() {
       {/* Luz ambiental sutil en CSS puro */}
       <div
         aria-hidden="true"
-        className="absolute top-1/3 right-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#A58A60]/8 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/3 right-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#A58A60]/10 rounded-full blur-3xl pointer-events-none animate-glow-pulse"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Cabecera de Sección */}
-        <div className="max-w-3xl mb-8 sm:mb-12">
-          <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#C2A87E] block mb-2 font-semibold">
-            {t("clases.kicker")}
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
-            {t("clases.title")}
-          </h2>
-          <p className="text-sm sm:text-base text-[#EAE5D9] leading-relaxed mt-2">
-            {t("clases.subtitle")}
-          </p>
-        </div>
+        <ScrollReveal direction="up" distance={20}>
+          <div className="max-w-3xl mb-8 sm:mb-12">
+            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#C2A87E] block mb-2 font-semibold">
+              {t("clases.kicker")}
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F1EBDD] font-heading">
+              {t("clases.title")}
+            </h2>
+            <p className="text-sm sm:text-base text-[#EAE5D9] leading-relaxed mt-2">
+              {t("clases.subtitle")}
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* FRANJA DE PRUEBA SOCIAL CON RESPLANDOR */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-14">
-          {pruebaSocial.map((item) => (
-            <SpotlightCard
-              key={item.etiqueta}
-              spotlightColor="rgba(194, 168, 126, 0.12)"
-              borderColor="rgba(194, 168, 126, 0.4)"
-              className="p-4 sm:p-5 bg-[#12110F]/90 border border-[#A58A60]/25 rounded-sm flex flex-col justify-between card-specular-edge hover:border-[#A58A60]/60 transition-all duration-300"
-            >
-              <div>
-                <span className="text-2xl sm:text-3xl font-bold font-mono text-[#C2A87E] block group-hover:text-gold-gradient">
-                  {item.cifra}
-                </span>
-                <span className="text-xs sm:text-sm font-heading font-semibold uppercase tracking-wider text-[#F1EBDD] block mt-1">
-                  {item.etiqueta}
-                </span>
-              </div>
-              <p className="text-[11px] sm:text-xs text-[#C4BFB4] mt-2 leading-relaxed">
-                {item.detalle}
-              </p>
-            </SpotlightCard>
-          ))}
-        </div>
+        <ScrollReveal direction="up" delay={80} distance={24}>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-14">
+            {pruebaSocial.map((item) => (
+              <SpotlightCard
+                key={item.etiqueta}
+                spotlightColor="rgba(194, 168, 126, 0.12)"
+                borderColor="rgba(194, 168, 126, 0.4)"
+                className="p-4 sm:p-5 bg-[#12110F]/90 border border-[#A58A60]/25 rounded-sm flex flex-col justify-between card-specular-edge hover:border-[#A58A60]/60 transition-all duration-300"
+              >
+                <div>
+                  <span className="text-2xl sm:text-3xl font-bold font-mono text-[#C2A87E] block group-hover:text-gold-gradient">
+                    {item.cifra}
+                  </span>
+                  <span className="text-xs sm:text-sm font-heading font-semibold uppercase tracking-wider text-[#F1EBDD] block mt-1">
+                    {item.etiqueta}
+                  </span>
+                </div>
+                <p className="text-[11px] sm:text-xs text-[#C4BFB4] mt-2 leading-relaxed">
+                  {item.detalle}
+                </p>
+              </SpotlightCard>
+            ))}
+          </div>
+        </ScrollReveal>
 
         {/* Tres Bloques de Modalidades con SpotlightCard */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-14">
-          {modalidades.map((m) => {
+          {modalidades.map((m, idx) => {
             const Icon = m.icono;
             return (
-              <SpotlightCard
-                key={m.titulo}
-                spotlightColor="rgba(194, 168, 126, 0.16)"
-                borderColor="rgba(194, 168, 126, 0.5)"
-                className="p-5 sm:p-7 bg-[#12110F] border border-[#A58A60]/25 hover:border-[#A58A60] rounded-sm transition-all duration-300 flex flex-col justify-between shadow-xl card-specular-edge group"
-              >
-                <div className="space-y-3.5">
-                  <div className="w-11 h-11 rounded-sm bg-[#080807] border border-[#A58A60]/30 group-hover:border-[#A58A60] group-hover:shadow-[0_0_15px_rgba(165,138,96,0.3)] flex items-center justify-center text-[#A58A60] group-hover:text-[#F1EBDD] shrink-0 transition-all duration-300">
-                    <Icon className="w-5 h-5 stroke-[1.5]" />
+              <ScrollReveal key={m.titulo} direction="up" delay={idx * 100} distance={28}>
+                <SpotlightCard
+                  spotlightColor="rgba(194, 168, 126, 0.16)"
+                  borderColor="rgba(194, 168, 126, 0.5)"
+                  className="p-5 sm:p-7 bg-[#12110F] border border-[#A58A60]/25 hover:border-[#A58A60] rounded-sm transition-all duration-300 flex flex-col justify-between shadow-xl card-specular-edge group h-full"
+                >
+                  <div className="space-y-3.5">
+                    <div className="w-11 h-11 rounded-sm bg-[#080807] border border-[#A58A60]/30 group-hover:border-[#A58A60] group-hover:shadow-[0_0_15px_rgba(165,138,96,0.3)] flex items-center justify-center text-[#A58A60] group-hover:text-[#F1EBDD] shrink-0 transition-all duration-300">
+                      <Icon className="w-5 h-5 stroke-[1.5]" />
+                    </div>
+
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#C2A87E] block font-semibold">
+                        {m.subtitulo}
+                      </span>
+                      <h3 className="text-base sm:text-lg font-bold uppercase tracking-wide text-white font-heading mt-0.5 group-hover:text-[#C2A87E] transition-colors">
+                        {m.titulo}
+                      </h3>
+                    </div>
+
+                    <p className="text-sm font-medium text-[#F1EBDD] italic font-serif leading-relaxed">
+                      “{m.descripcion}”
+                    </p>
+
+                    <p className="text-xs sm:text-sm text-[#C4BFB4] leading-relaxed">
+                      {m.detalles}
+                    </p>
                   </div>
 
-                  <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#C2A87E] block font-semibold">
-                      {m.subtitulo}
+                  <div className="pt-4 mt-4 border-t border-[#A58A60]/15">
+                    <span className="text-[10px] font-mono text-[#C2A87E] uppercase tracking-wider block">
+                      {t("clases.groupsNote")}
                     </span>
-                    <h3 className="text-base sm:text-lg font-bold uppercase tracking-wide text-white font-heading mt-0.5 group-hover:text-[#C2A87E] transition-colors">
-                      {m.titulo}
-                    </h3>
                   </div>
-
-                  <p className="text-sm font-medium text-[#F1EBDD] italic font-serif leading-relaxed">
-                    “{m.descripcion}”
-                  </p>
-
-                  <p className="text-xs sm:text-sm text-[#C4BFB4] leading-relaxed">
-                    {m.detalles}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-[#A58A60]/15">
-                  <span className="text-[10px] font-mono text-[#C2A87E] uppercase tracking-wider block">
-                    {t("clases.groupsNote")}
-                  </span>
-                </div>
-              </SpotlightCard>
+                </SpotlightCard>
+              </ScrollReveal>
             );
           })}
         </div>
 
         {/* TARJETA DE SEDE Y CRONOGRAMA DETALLADO DE HORARIOS */}
-        <div className="p-5 sm:p-8 lg:p-10 bg-[#12110F] border border-[#A58A60]/40 rounded-sm shadow-2xl card-specular-edge relative overflow-hidden">
+        <ScrollReveal direction="up" delay={120} distance={28}>
+          <div className="p-5 sm:p-8 lg:p-10 bg-[#12110F] border border-[#A58A60]/40 rounded-sm shadow-2xl card-specular-edge relative overflow-hidden">
           
           {/* Luz ambiental sutil detrás de la sede */}
           <div
@@ -327,6 +334,7 @@ export function Clases() {
           </div>
 
         </div>
+        </ScrollReveal>
 
       </div>
     </section>

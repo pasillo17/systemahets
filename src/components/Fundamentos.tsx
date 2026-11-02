@@ -187,7 +187,7 @@ export function Fundamentos() {
 
             <div className="lg:col-span-5 p-6 bg-[#07140c] border border-emerald-900/60 rounded-lg">
               <h4 className="text-xs uppercase tracking-wider text-emerald-400 font-semibold mb-4">
-                Aplicación en el autoconocimiento y la vida:
+                Aplicación en la autoprotección y la vida:
               </h4>
               <ul className="space-y-3">
                 {activeFundamento.puntosClave.map((punto, pIdx) => (
@@ -209,7 +209,7 @@ export function Fundamentos() {
             <div className="lg:col-span-6 space-y-4">
               <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-orange-400 font-semibold">
                 <Wind className="w-4 h-4 text-emerald-400" />
-                <span>Simulador de Autoconocimiento</span>
+                <span>Simulador de Autoprotección</span>
                 <span aria-hidden="true">·</span>
                 <span>Fisiología en Vivo</span>
               </div>

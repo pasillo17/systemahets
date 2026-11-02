@@ -66,8 +66,8 @@ export function ImageWithFallback({
       <img
         src={src}
         alt={alt}
-        className={`${className} transition-opacity duration-300 ${
-          isLoaded ? "opacity-100" : "opacity-0"
+        className={`${className} transition-all duration-700 ease-out ${
+          isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-[1.02]"
         }`}
         loading="lazy"
         onLoad={() => setIsLoaded(true)}

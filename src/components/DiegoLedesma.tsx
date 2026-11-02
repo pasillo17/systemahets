@@ -2,9 +2,11 @@ import { useState } from "react";
 import { ArrowRight, X, Calendar, CheckCircle2 } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function DiegoLedesma() {
   const [modalHistoriaOpen, setModalHistoriaOpen] = useState(false);
+  const [portraitLoaded, setPortraitLoaded] = useState(false);
   const { lang, t } = useLanguage();
 
   // Hitos de la trayectoria formativa de 40 años
@@ -55,24 +57,26 @@ export function DiegoLedesma() {
       {/* Luz ambiental sutil en CSS puro */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 right-0 w-72 sm:w-80 h-72 sm:h-80 bg-[#A58A60]/8 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/2 right-0 w-72 sm:w-80 h-72 sm:h-80 bg-[#A58A60]/10 rounded-full blur-3xl pointer-events-none animate-glow-pulse"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Cabecera de sección */}
-        <div className="mb-8 sm:mb-12">
-          <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#C2A87E] block mb-2 font-semibold">
-            {t("diego.kicker")}
-          </span>
-          <div className="h-[1px] w-12 bg-[#A58A60]/40" />
-        </div>
+        <ScrollReveal direction="up" distance={20}>
+          <div className="mb-8 sm:mb-12">
+            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.24em] text-[#C2A87E] block mb-2 font-semibold">
+              {t("diego.kicker")}
+            </span>
+            <div className="h-[1px] w-12 bg-[#A58A60]/40" />
+          </div>
+        </ScrollReveal>
 
         {/* Grilla Editorial Principal */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           
           {/* Columna Izquierda: Biografía, Retrato Oficial y Filosofía */}
-          <div className="lg:col-span-7 space-y-5">
+          <ScrollReveal direction="up" delay={80} distance={28} className="lg:col-span-7 space-y-5">
             <div className="space-y-1">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xs text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#F59E0B] bg-[#C05621]/15 border border-[#C05621]/40 shadow-[0_0_12px_rgba(217,119,6,0.2)] font-semibold mb-1">
                 {t("diego.tag")}
@@ -88,14 +92,28 @@ export function DiegoLedesma() {
               <div className="sm:col-span-5 relative group">
                 <div className="relative rounded-sm overflow-hidden border border-[#A58A60]/40 group-hover:border-[#C2A87E] transition-all duration-300 shadow-2xl bg-[#12110F] card-specular-edge">
                   <div className="relative aspect-[3/4] overflow-hidden bg-[#080807]">
+                    {!portraitLoaded && (
+                      <div className="absolute inset-0 bg-[#12110F] animate-pulse flex flex-col items-center justify-center p-4">
+                        <div className="w-12 h-12 rounded-full border border-[#A58A60]/30 flex items-center justify-center mb-2 shadow-[0_0_15px_rgba(165,138,96,0.15)]">
+                          <span className="font-heading text-xs font-bold text-[#A58A60]">HETS</span>
+                        </div>
+                        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C2A87E]/70">
+                          Systema HETS
+                        </span>
+                      </div>
+                    )}
                     <img
                       src={SITE_CONFIG.assets.diegoPortrait}
                       alt="Diego Martín Ledesma — Fundador e Instructor Internacional de Systema HETS"
-                      className="w-full h-full object-cover object-top filter brightness-[0.97] contrast-[1.03] group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className={`w-full h-full object-cover object-top filter brightness-[0.97] contrast-[1.03] group-hover:scale-105 transition-all duration-700 ease-out ${
+                        portraitLoaded ? "opacity-100 scale-100" : "opacity-0 scale-[1.02]"
+                      }`}
                       loading="lazy"
                       width={480}
                       height={640}
+                      onLoad={() => setPortraitLoaded(true)}
                       onError={(e) => {
+                        setPortraitLoaded(true);
                         if (SITE_CONFIG.assets.diegoPortraitFallbackUrl) {
                           (e.target as HTMLImageElement).src = SITE_CONFIG.assets.diegoPortraitFallbackUrl;
                         }
@@ -170,10 +188,10 @@ export function DiegoLedesma() {
               </ul>
             </div>
 
-          </div>
+          </ScrollReveal>
 
           {/* Columna Derecha: Trayectoria Formativa Ampliada con Resplandor */}
-          <div className="lg:col-span-5">
+          <ScrollReveal direction="up" delay={160} distance={28} className="lg:col-span-5">
             <div className="p-5 sm:p-7 bg-[#12110F]/90 border border-[#A58A60]/35 rounded-sm shadow-2xl card-specular-edge backdrop-blur-sm relative overflow-hidden group">
               <div
                 aria-hidden="true"
@@ -207,7 +225,7 @@ export function DiegoLedesma() {
                 ))}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
 

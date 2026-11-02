@@ -44,7 +44,7 @@ export const REDES_SOCIALES = {
   logoExternalUrl: "https://github.com/pasillo17/galeriaPasillo/blob/main/Dise%C3%B1o%20sin%20t%C3%ADtulo%20(2).png?raw=true"
 };
 
-export const MANIFIESTO_FUNDAMENTAL = "Systema es mucho más que defensa personal. Es un enfoque de autoconocimiento que integra herramientas para el desarrollo corporal, el movimiento consciente y el mejoramiento integral de la persona.";
+export const MANIFIESTO_FUNDAMENTAL = "Systema es mucho más que defensa personal. Es un enfoque de autoprotección que integra herramientas para el desarrollo corporal, el movimiento consciente y el mejoramiento integral de la persona.";
 
 export const SYSTEMA_HISTORIA = [
   {
@@ -70,7 +70,7 @@ export const SYSTEMA_HISTORIA = [
   {
     periodo: "1990 – Presente",
     titulo: "03. Desclasificación, Legado Global y Enfoque HETS",
-    texto: "Con la disolución de la Unión Soviética, el Coronel Mikhail Ryabko y Vladimir Vasiliev desclasificaron y enseñaron este arte al público internacional. En Systema HETS asumimos esta herencia desde su verdadera raíz humanista: no como un método para alimentar la violencia o la agresividad, sino como una disciplina integral de autoconocimiento, salud postural, respiración regenerativa y libertad de movimiento ante las tensiones del mundo contemporáneo.",
+    texto: "Con la disolución de la Unión Soviética, el Coronel Mikhail Ryabko y Vladimir Vasiliev desclasificaron y enseñaron este arte al público internacional. En Systema HETS asumimos esta herencia desde su verdadera raíz humanista: no como un método para alimentar la violencia o la agresividad, sino como una disciplina integral de autoprotección, salud postural, respiración regenerativa y libertad de movimiento ante las tensiones del mundo contemporáneo.",
     detalles: [
       "Apertura de dojos y canales formativos oficiales en la comunidad hispana.",
       "Enfoque en la preservación de la vida: destruir la agresión, no al ser humano.",
@@ -84,7 +84,7 @@ export const FUNDAMENTOS_DATA = [
     id: "respiracion",
     numero: "01",
     titulo: "Respiración (Дыхание)",
-    lema: "La respiración es el combustible del cuerpo y el ancla del autoconocimiento.",
+    lema: "La respiración es el combustible del cuerpo y el ancla de la autoprotección.",
     descripcion: "La regla cardinal de Systema: nunca contengas la respiración. Bajo dolor, sorpresa o esfuerzo extremo, el cuerpo humano tiende instintivamente a bloquear el diafragma, acumulando tensión y ácido láctico. En Systema HETS entrenamos respiraciones continuas, respiración en ráfaga (burst breathing) y respiración diafragmática para metabolizar el estrés en tiempo real y recobrar la calma instantánea.",
     puntosClave: [
       "Inhalación nasal y exhalación bucal sin interrupciones.",
@@ -142,7 +142,7 @@ export const INSTRUCTORES_DATA: Instructor[] = [
     rango: "Certificado Senior HQ Moscú / Toronto",
     experiencia: "24 años de práctica marcial · 16 años dedicado a Systema",
     especialidad: "Biomecánica del movimiento consciente y acondicionamiento táctico",
-    descripcion: "Pionero en la divulgación de Systema en el ámbito hispanohablante. Concibe el arte como un camino de autoconocimiento y salud integral donde la serenidad mental prevalece sobre cualquier impulso agresivo.",
+    descripcion: "Pionero en la divulgación de Systema en el ámbito hispanohablante. Concibe el arte como un camino de autoprotección y salud integral donde la serenidad mental prevalece sobre cualquier impulso agresivo.",
     certificaciones: [
       "Certificación Internacional Oficial Systema HQ (Toronto, Canadá)",
       "Diplomado en Biomecánica y Fisiología del Movimiento",
@@ -376,7 +376,7 @@ export const TESTIMONIOS_DATA = [
 export const FAQS_DATA = [
   {
     q: "¿Por qué afirman que Systema es mucho más que defensa personal?",
-    a: "Porque el combate es solo el laboratorio más exigente para poner a prueba tus reacciones psicofísicas. Las herramientas de respiración, soltura fascial y alineación postural que desarrollas en el dojo se aplican las 24 horas del día: para disolver el estrés laboral, superar el miedo, prevenir dolores de espalda y vivir con mayor libertad y autoconocimiento."
+    a: "Porque el combate es solo el laboratorio más exigente para poner a prueba tus reacciones psicofísicas. Las herramientas de respiración, soltura fascial y alineación postural que desarrollas en el dojo se aplican las 24 horas del día: para disolver el estrés laboral, superar el miedo, prevenir dolores de espalda y vivir con mayor libertad y autoprotección."
   },
   {
     q: "¿Necesito experiencia previa en artes marciales para empezar?",

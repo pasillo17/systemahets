@@ -1,6 +1,7 @@
 import { Shield, Activity, HeartPulse, Compass } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { SpotlightCard } from "./SpotlightCard";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function FranjaPrincipios() {
   const { t } = useLanguage();
@@ -33,32 +34,38 @@ export function FranjaPrincipios() {
       {/* Luz ambiental sutil en CSS puro */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-24 bg-[#A58A60]/8 blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-24 bg-[#A58A60]/8 blur-3xl pointer-events-none animate-glow-pulse"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-          {principios.map((item) => {
+          {principios.map((item, idx) => {
             const Icon = item.icono;
             return (
-              <SpotlightCard
+              <ScrollReveal
                 key={item.titulo}
-                spotlightColor="rgba(194, 168, 126, 0.16)"
-                borderColor="rgba(194, 168, 126, 0.5)"
-                className="p-4 sm:p-6 bg-[#080807]/80 hover:border-[#A58A60]/50 transition-all duration-300 card-specular-edge group"
+                direction="up"
+                delay={idx * 80}
+                distance={24}
               >
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-sm bg-[#12110F] border border-[#A58A60]/30 group-hover:border-[#A58A60] group-hover:shadow-[0_0_15px_rgba(165,138,96,0.3)] flex items-center justify-center mb-3 shrink-0 text-[#A58A60] group-hover:text-[#F1EBDD] transition-all duration-300">
-                    <Icon className="w-5 h-5 stroke-[1.5]" />
+                <SpotlightCard
+                  spotlightColor="rgba(194, 168, 126, 0.16)"
+                  borderColor="rgba(194, 168, 126, 0.5)"
+                  className="p-4 sm:p-6 bg-[#080807]/80 hover:border-[#A58A60]/50 transition-all duration-300 card-specular-edge group h-full"
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-sm bg-[#12110F] border border-[#A58A60]/30 group-hover:border-[#A58A60] group-hover:shadow-[0_0_15px_rgba(165,138,96,0.3)] flex items-center justify-center mb-3 shrink-0 text-[#A58A60] group-hover:text-[#F1EBDD] transition-all duration-300">
+                      <Icon className="w-5 h-5 stroke-[1.5]" />
+                    </div>
+                    <h3 className="text-xs sm:text-sm font-heading uppercase tracking-wider text-[#F1EBDD] font-bold group-hover:text-[#C2A87E] transition-colors">
+                      {item.titulo}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-[#C4BFB4] mt-1.5 leading-relaxed font-sans max-w-[200px]">
+                      {item.descripcion}
+                    </p>
                   </div>
-                  <h3 className="text-xs sm:text-sm font-heading uppercase tracking-wider text-[#F1EBDD] font-bold group-hover:text-[#C2A87E] transition-colors">
-                    {item.titulo}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs text-[#C4BFB4] mt-1.5 leading-relaxed font-sans max-w-[200px]">
-                    {item.descripcion}
-                  </p>
-                </div>
-              </SpotlightCard>
+                </SpotlightCard>
+              </ScrollReveal>
             );
           })}
         </div>

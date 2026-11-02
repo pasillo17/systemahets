@@ -27,10 +27,26 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     "hero.kicker": "Arte marcial ruso · La Plata / Buenos Aires",
     "hero.titulo": "Mucho más que defensa personal",
-    "hero.bajada": "Movimiento consciente, autoconocimiento y desarrollo integral.",
+    "hero.bajada": "Movimiento consciente, autoprotección y desarrollo integral.",
     "hero.btnWhatsapp": "Consultar por WhatsApp",
     "hero.btnSystema": "Conocer el Systema",
     "hero.scroll": "Deslizar para explorar",
+
+    // Linaje
+    "linaje.kicker": "Linaje & Raíces Marciales",
+    "linaje.title": "Parte de las 2 Grandes Escuelas de Systema",
+    "linaje.badge": "Tradición Viva & Autoprotección",
+    "linaje.desc": "Systema HETS está formado y enraizado directamente en las 2 grandes escuelas matrices del arte marcial ruso.",
+    "linaje.ryabkoNombre": "Mikhail Ryabko",
+    "linaje.ryabkoSede": "Moscú · Rusia",
+    "linaje.ryabkoRol": "Escuela Matriz Fundacional",
+    "linaje.ryabkoDesc": "Raíz cosaca tradicional, soltura fascial y control sereno bajo tensión.",
+    "linaje.vasilievNombre": "Vladimir Vasiliev",
+    "linaje.vasilievSede": "Toronto · Canadá",
+    "linaje.vasilievRol": "Escuela Matriz Internacional",
+    "linaje.vasilievDesc": "Biomecánica adaptativa, economía de movimiento y expansión táctica mundial.",
+    "linaje.escuela1": "Linaje Mikhail Ryabko · Moscú",
+    "linaje.escuela2": "Linaje Vladimir Vasiliev · Toronto",
 
     // Principios
     "principios.defensa": "DEFENSA PERSONAL",
@@ -39,7 +55,7 @@ const translations: Record<Language, Record<string, string>> = {
     "principios.movimientoDesc": "Economía biomecánica, soltura fascial y fluidez corporal continua.",
     "principios.salud": "SALUD Y BIENESTAR",
     "principios.saludDesc": "Disipación del estrés, postura orgánica y preservación articular.",
-    "principios.autoconocimiento": "AUTOCONOCIMIENTO",
+    "principios.autoconocimiento": "AUTOPROTECCIÓN",
     "principios.autoconocimientoDesc": "Dominio de la respiración diafragmática y calma interna bajo presión.",
 
     // El Systema
@@ -150,7 +166,7 @@ const translations: Record<Language, Record<string, string>> = {
     "quote.sub": "Principio Institucional · Diego Ledesma",
 
     // Footer
-    "footer.desc": "Arte marcial ruso y desarrollo corporal integral. Movimiento consciente, respiración táctica y autoconocimiento.",
+    "footer.desc": "Arte marcial ruso y desarrollo corporal integral. Movimiento consciente, respiración táctica y autoprotección.",
     "footer.sections": "Secciones",
     "footer.channels": "Contacto y Redes",
     "footer.youtubeChannel": "Canal Oficial de YouTube",
@@ -174,10 +190,26 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     "hero.kicker": "Russian martial art · La Plata / Buenos Aires",
     "hero.titulo": "Much more than self-defense",
-    "hero.bajada": "Conscious movement, self-knowledge, and holistic personal growth.",
+    "hero.bajada": "Conscious movement, self-protection, and holistic personal growth.",
     "hero.btnWhatsapp": "Inquire via WhatsApp",
     "hero.btnSystema": "Discover the Systema",
     "hero.scroll": "Scroll to explore",
+
+    // Linaje
+    "linaje.kicker": "Lineage & Martial Roots",
+    "linaje.title": "Part of the 2 Great Systema Schools",
+    "linaje.badge": "Living Tradition & Self-Protection",
+    "linaje.desc": "Systema HETS is directly trained and rooted in the 2 great traditional matrices of Russian martial arts.",
+    "linaje.ryabkoNombre": "Mikhail Ryabko",
+    "linaje.ryabkoSede": "Moscow · Russia",
+    "linaje.ryabkoRol": "Foundational Matrix",
+    "linaje.ryabkoDesc": "Traditional Cossack roots, fascial release, and calm mastery under high pressure.",
+    "linaje.vasilievNombre": "Vladimir Vasiliev",
+    "linaje.vasilievSede": "Toronto · Canada",
+    "linaje.vasilievRol": "International Matrix",
+    "linaje.vasilievDesc": "Adaptive biomechanics, movement economy, and worldwide tactical expansion.",
+    "linaje.escuela1": "Mikhail Ryabko Lineage · Moscow",
+    "linaje.escuela2": "Vladimir Vasiliev Lineage · Toronto",
 
     // Principios
     "principios.defensa": "SELF-DEFENSE",
@@ -186,7 +218,7 @@ const translations: Record<Language, Record<string, string>> = {
     "principios.movimientoDesc": "Biomechanical economy, fascial release, and continuous flow.",
     "principios.salud": "HEALTH & WELLNESS",
     "principios.saludDesc": "Stress dissipation, organic posture, and joint preservation.",
-    "principios.autoconocimiento": "SELF-KNOWLEDGE",
+    "principios.autoconocimiento": "SELF-PROTECTION",
     "principios.autoconocimientoDesc": "Diaphragmatic breath mastery and deep inner calm under pressure.",
 
     // El Systema
@@ -297,7 +329,7 @@ const translations: Record<Language, Record<string, string>> = {
     "quote.sub": "Core Institutional Principle · Diego Ledesma",
 
     // Footer
-    "footer.desc": "Russian martial art and holistic body conditioning. Mindful movement, tactical breathing, and self-knowledge.",
+    "footer.desc": "Russian martial art and holistic body conditioning. Mindful movement, tactical breathing, and self-protection.",
     "footer.sections": "Navigation",
     "footer.channels": "Contact & Social",
     "footer.youtubeChannel": "Official YouTube Channel",

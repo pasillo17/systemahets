@@ -1,49 +1,58 @@
-# Plan de Solución: Corrección de Pantalla en Blanco en GitHub Pages
+# Plan de Implementación: Animaciones de Entrada Suaves (Scroll Reveal)
 
-## 1. Diagnóstico de la Causa Raíz
-Has identificado las dos razones exactas por las que la pantalla se muestra en blanco:
-1. **Sensibilidad a mayúsculas/minúsculas**: Tu repositorio se llama `systema-hets` (minúsculas), mientras que la base anterior apuntaba a `/SYSTEMA-HETS/` (mayúsculas). En los servidores de GitHub Pages, esto produce un error 404 al intentar cargar los archivos JavaScript y CSS compilados.
-2. **"Deploy from a branch" sirviendo archivos fuente sin compilar**: Al tener seleccionada la opción *"Deploy from a branch"* apuntando a la rama `main` en la raíz `/`, GitHub Pages está sirviendo directamente los archivos originales del proyecto (`index.html` con `<script src="/src/main.tsx">`) en lugar del código compilado en la carpeta `dist`. Los navegadores no pueden ejecutar TypeScript (`.tsx`) directamente, lo que detiene la ejecución y deja la página completamente blanca.
+## 1. Diagnóstico y Decisiones de Diseño
+- **Objetivo del usuario**: Que los elementos y secciones del sitio no aparezcan de forma estática o rígida, sino que tengan una **aparición suave hacia arriba al hacer scroll** en todas las secciones y tarjetas principales.
+- **Elecciones confirmadas**:
+  - Estilo: *Aparición suave hacia arriba (fade-in + slide-up)* con curvas naturales (`cubic-bezier(0.16, 1, 0.3, 1)`).
+  - Alcance: *Todas las secciones principales y tarjetas del sitio*.
+- **Enfoque técnico de alto rendimiento**:
+  - Utilizar un hook/componente ligero basado en la API nativa `IntersectionObserver` de los navegadores.
+  - Ventajas: 0 dependencias externas pesadas, aceleración por GPU (`transform: translate3d(...)` y `opacity`), sin caídas de frames en teléfonos móviles ni retrasos al scrollear.
+  - Cumplimiento de accesibilidad: si el usuario tiene activado *"prefers-reduced-motion"*, las animaciones se desactivan automáticamente.
 
 ---
 
-## 2. Solución Integral Propuesta
+## 2. Pasos de la Implementación
 
-### Cambio 1: Base con Rutas Relativas Universales (`vite.config.ts`)
-- Cambiar la propiedad `base` en `vite.config.ts` a rutas relativas `'./'`:
-  ```ts
-  base: './',
-  ```
-- **Ventaja**: Hace que el código compilado cargue sus recursos como `./assets/index-xxx.js` y `./assets/index-xxx.css`. Funciona **en cualquier nombre de repositorio**, ya sea `systema-hets`, `SYSTEMA-HETS`, dominio personalizado o subdirectorio, eliminando para siempre los errores 404 por discrepancia de nombres.
+### Paso 1: Componente y Hook `ScrollReveal`
+- Crear el componente contenedor reutilizable `src/components/ScrollReveal.tsx` (y hook opcional `useScrollReveal`):
+  - Detecta cuando el elemento entra en el viewport del usuario (con un umbral o margen de anticipación cómodo, ej. `rootMargin: "0px 0px -50px 0px"`).
+  - Aplica clases de transición CSS:
+    - Estado oculto inicial: `opacity-0 translate-y-6 sm:translate-y-8`
+    - Estado visible animado: `opacity-100 translate-y-0 duration-700 ease-out`
+  - Permite retardo opcional (`delay` en ms) para que tarjetas contiguas puedan aparecer con un ritmo escalonado armonioso.
 
-### Cambio 2: Soporte para Despliegue con `gh-pages` (para "Deploy from a branch")
-- Instalar la herramienta estándar `gh-pages` como dependencia de desarrollo:
-  - Script en `package.json`:
-    - `"predeploy": "npm run build"`
-    - `"deploy": "gh-pages -d dist"`
-- Así, si prefieres mantener *"Deploy from a branch"*, solo ejecutas `npm run deploy` y publicará automáticamente la carpeta compilada `dist` en una rama separada llamada `gh-pages`.
+### Paso 2: Integración en Secciones y Tarjetas Principales
+1. **Hero**:
+   - Aparición orquestada del logotipo central, títulos y botones de acción al cargar la página.
+2. **Franja de Linaje Oficial (Escuelas Matrices)**:
+   - Aparición fluida al scrollear desde el Hero.
+3. **Franja de Principios**:
+   - Revelado suave de las 4 tarjetas de principios con un desfase sutil entre ellas.
+4. **El Systema**:
+   - Entrada de la imagen de práctica biomecánica y los bloques conceptuales.
+5. **Diego Ledesma**:
+   - Revelado del retrato editorial, la biografía y la columna de trayectoria formativa.
+6. **Entrenamientos (Fotos Oficiales y Carrusel)**:
+   - Entrada suave de la cabecera y del visor/carrusel de fotos al llegar a la sección.
+7. **Sedes y Clases**:
+   - Revelado de las cifras de prueba social, las tarjetas de modalidad (grupal, individual, seminarios) y el mapa del dojo.
+8. **Testimonios**:
+   - Entrada suave de las tarjetas de testimonios de los alumnos.
+9. **Contacto y Frase Destacada**:
+   - Entrada de los bloques de reserva por WhatsApp y el cierre solemne institucional.
 
-### Cambio 3: Actualización del flujo de GitHub Actions (`.github/workflows/deploy.yml`)
-- Mantener y ajustar el workflow automatizado para que funcione tanto si usas GitHub Actions como si usas la rama `gh-pages`.
-
-### Cambio 4: Ajuste de `public/404.html`
-- Adaptar el script de redirección a minúsculas (`systema-hets`) y hacerlo tolerante a mayúsculas o minúsculas.
+### Paso 3: Ajustes de CSS en `src/index.css`
+- Declarar las clases de transición y optimizaciones para `will-change: opacity, transform` cuando la animación está activa, liberando recursos de memoria una vez completada.
 
 ---
 
 ## 3. Plan de Verificación
 
-1. **Compilación local**:
-   - Ejecutar `compile_applet` (`npm run build`).
-   - Verificar en `dist/index.html` que los enlaces a assets sean relativos: `./assets/index-...js` y `./assets/index-...css`.
-2. **Linter y tipos**:
-   - Ejecutar `lint_applet` para asegurar 0 errores de TypeScript.
-3. **Prueba en servidor**:
-   - Verificar que la aplicación siga funcionando impecablemente tanto en local como con la nueva base.
-
----
-
-## 4. Instrucciones Finales para el Usuario en GitHub
-Se detallarán las 2 opciones sencillas para activar tu sitio en GitHub Pages:
-- **Opción recomendada (automática)**: En GitHub > Settings > Pages > Source: cambiar a **GitHub Actions**.
-- **Opción por rama (manual)**: Ejecutar `npm run deploy` y en GitHub > Settings > Pages seleccionar la rama **`gh-pages`** (en lugar de `main`).
+1. **Prueba visual y de scroll**:
+   - Desplazarse por toda la página desde el inicio hasta el pie, verificando que cada sección y grupo de tarjetas se revele suavemente hacia arriba.
+   - Probar en vista móvil emulando pantalla táctil para asegurar que el scroll sea completamente fluido y sin saltos bruscos.
+2. **Auditoría de código**:
+   - Ejecutar `lint_applet` (`tsc --noEmit`) para comprobar ausencia de errores de tipado o imports.
+   - Ejecutar `compile_applet`.
+   - Ejecutar `npm run build` para asegurar la correcta compilación y empaquetado de producción en Vite.

@@ -7,6 +7,7 @@ import { HashRouter } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
+import { FranjaLinaje } from "./components/FranjaLinaje";
 import { FranjaPrincipios } from "./components/FranjaPrincipios";
 import { ElSistema } from "./components/ElSistema";
 import { DiegoLedesma } from "./components/DiegoLedesma";
@@ -17,6 +18,7 @@ import { ContactoConversion } from "./components/ContactoConversion";
 import { FraseDestacada } from "./components/FraseDestacada";
 import { Footer } from "./components/Footer";
 import { AmbientParticles } from "./components/AmbientParticles";
+import { PagePreloader } from "./components/PagePreloader";
 
 function MainApp() {
   const scrollToSystem = () => {
@@ -28,6 +30,9 @@ function MainApp() {
 
   return (
     <div className="min-h-screen bg-[#080807] text-[#F1EBDD] flex flex-col font-sans selection:bg-[#A58A60] selection:text-[#080807] overflow-x-hidden relative">
+      {/* Velo de entrada suave / Preloader de respiración consciente */}
+      <PagePreloader />
+
       {/* Capa de partículas ambientales ligeras (respeta prefers-reduced-motion) */}
       <AmbientParticles />
 
@@ -39,7 +44,10 @@ function MainApp() {
         {/* 1. Hero: Resumido, logo protagonista, sin círculos, botón "Conocer el Systema" */}
         <Hero onExploreSystem={scrollToSystem} />
 
-        {/* 2. Franja de Principios */}
+        {/* 2. Franja de Linaje Oficial: 2 Grandes Escuelas de Systema */}
+        <FranjaLinaje />
+
+        {/* 3. Franja de Principios */}
         <FranjaPrincipios />
 
         {/* 3. El Systema (con Y siempre: SYSTEMA) */}

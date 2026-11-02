@@ -17,7 +17,7 @@ export function Instructores() {
             Instructores Oficiales de la Escuela
           </h2>
           <p className="text-emerald-100/80 mt-4 text-base sm:text-lg leading-relaxed">
-            Nuestros instructores son educadores del movimiento humano y facilitadores de autoconocimiento, dedicados a acompañar tu desarrollo corporal y serenidad de forma progresiva y segura.
+            Nuestros instructores son educadores del movimiento humano y facilitadores de autoprotección, dedicados a acompañar tu desarrollo corporal y serenidad de forma progresiva y segura.
           </p>
         </div>
 
