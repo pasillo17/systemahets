@@ -1,46 +1,45 @@
-# Plan de Atmósfera Visual: Gama Continua en Marrón Tierra Sombra y Adobe Oscuro Cálido
+# Plan de Optimización SEO Integral — Systema HETS Argentina
 
 ## Objetivo
-Eliminar por completo los fondos blancos y crema claros (`#F8F3EB`, `#EFE7DA`, `#E5DAC9`) en las secciones intermedias y unificar toda la experiencia de **Systema HETS** bajo una atmósfera orgánica, profunda y marcial en tonos **Marrón Tierra Sombra (`#1F1916`)**, **Adobe Oscuro Cálido (`#261E1A`)** y **Quebracho Tostado (`#2E241F`)**, garantizando máxima legibilidad, contraste y coherencia de principio a fin.
+Posicionar **Systema HETS (Prof. Diego Martín Ledesma)** en Google con alcance nacional en **toda Argentina** (seminarios intensivos, clases presenciales en La Plata/Buenos Aires y formación personalizada/online), incorporando metadatos optimizados, **Preguntas Frecuentes invisibles en JSON-LD (`FAQPage`)**, datos estructurados del evento **Systema HETS Camp 2026 (`Event`)** y archivos de indexación técnica (`robots.txt` y `sitemap.xml`).
 
 ---
 
-## 1. Nueva Paleta de Fondos y Degradados Continuos (`src/index.css`)
-Reemplazaremos las clases de transición `.bg-flow-*` que pasaban hacia tonos blancos por una progresión armónica de capas de tierra oscura cálida:
-
-- **Base Principal (`Tierra Sombra Profunda`)**: `#1F1916`
-- **Capa Intermedia (`Adobe Oscuro Cálido`)**: `#261E1A`
-- **Capa de Realce / Superficie (`Quebracho Tostado`)**: `#2E241F` y `#342923`
-- **Resplandores Ambientales**: Halos radiales sutiles en **Terracota Pampeana (`rgba(184, 83, 50, 0.12)`)** y **Ocre Arcilla (`rgba(196, 154, 100, 0.08)`)** para separar visualmente cada sección sin cortes bruscos ni parches blancos.
-
----
-
-## 2. Actualización de Secciones y Contraste Tipográfico
-Adaptaremos las secciones que antes tenían fondo claro para que luzcan impecables sobre la nueva gama **Tierra Sombra & Adobe Oscuro**:
-
-1. **Franja de Principios (`src/components/FranjaPrincipios.tsx`)**:
-   - Fondo en transición continua desde `#251D19` hacia `#1F1916`.
-   - Tarjetas de los 4 principios en **Adobe Profundo (`#261E1A`)** con borde sutil en **Ocre Arcilla (`#C49A64/35`)**, títulos en **Hueso Cálido (`#F4EDE2`)**, acentos en **Terracota (`#C86442`)** y descripciones en **Arena Suave (`#D6C7B5`)**.
-2. **El Systema (`src/components/ElSistema.tsx`)**:
-   - Fondo en degradado cálido `#1F1916` → `#261E1A` → `#221B17`.
-   - Textos principales en **Hueso Cálido (`#F4EDE2`)** y secundarios en **Arena Suave (`#C4B5A3`)**.
-   - Tarjetas de los 4 pilares en `#2A211C` con bordes iluminados en Terracota y Ocre, logrando integración total con el bloque protagonista *"¿Por qué se llama Systema HETS?"*.
-3. **Diego Martín Ledesma (`src/components/DiegoLedesma.tsx`)**:
-   - Fondo en **Adobe Oscuro (`#221B17` → `#28201B` → `#1F1916`)**.
-   - Cita destacada enmarcada en `#2A211C` con filetes en **Terracota Pampeana (`#C86442`)** y texto en `#F4EDE2`.
-   - Biografía y credenciales con contraste nítido en Hueso Cálido y Ocre Arcilla.
-4. **Galería de Entrenamientos (`src/components/Entrenamientos.tsx`)**:
-   - Fondo oscuro cálido (`#1F1916` → `#261E1A`) que hace resaltar las fotografías y videos del carrusel como en una sala de proyección editorial.
-   - Botones de filtro y controles en `#2A211C` con indicador activo en **Terracota Pampeana (`#B85332`)**.
-5. **Sedes, Días y Horarios (`src/components/Clases.tsx`)**:
-   - Integración orgánica del contenedor de la sede dentro de la gama Tierra Sombra (`#261E1A` / `#1F1916`) con realce perimetral en Ocre y Terracota.
-6. **Testimonios y Frase Destacada (`src/components/Testimonios.tsx` y `src/components/FraseDestacada.tsx`)**:
-   - Tarjetas de reseñas en **Adobe Cálido (`#261E1A`)** con estrellas en **Ocre Arcilla (`#C49A64`)** y relatos en `#F4EDE2`, seguidas de una transición fluida hacia la frase final y el bloque de contacto.
-7. **Página de Novedades (`src/components/Novedades.tsx`)**:
-   - Secciones informativas del **Buenos Aires Camp 2026** unificadas también en gama Tierra Sombra y Adobe oscuro para que toda la navegación mantenga la misma identidad visual.
+## 1. Metadatos de Alcance Nacional y Redes Sociales (`/index.html` y `/src/App.tsx`)
+- **Título SEO Principal (`<title>`, `og:title`, `twitter:title`)**:
+  - `"Systema HETS Argentina | Arte Marcial Ruso, Clases y Seminarios – Diego Ledesma"` (optimizado para búsquedas en toda Argentina tanto de clases como de seminarios e instrucción en *Systema*).
+- **Descripción Meta (`<meta name="description">`, `og:description`, `twitter:description`)**:
+  - `"Escuela oficial de Systema (Arte Marcial Ruso) en Argentina dirigida por Diego Martín Ledesma. Seminarios en todo el país, clases presenciales y online de movimiento consciente, respiración y defensa personal."`
+- **Palabras Clave y Geolocalización (`keywords`, `geo.region`, `theme-color`)**:
+  - Etiquetas meta semánticas orientadas a *Systema Argentina, Arte Marcial Ruso Argentina, Seminarios de Systema, Clases de Systema online y presenciales, Defensa Personal Consciente, Diego Martín Ledesma, Mikhail Ryabko, Vladimir Vasiliev*.
+  - `theme-color` actualizado a `#1F1916` (Marrón Tierra Sombra) y `body` sincronizado en `#1F1916`.
+- **Actualización Dinámica de Título por Vista (`src/App.tsx`)**:
+  - Cuando el usuario navega a `#novedades`, el título del documento cambia dinámicamente a `"Systema HETS Camp 2026 – Seminario Intensivo | Systema HETS Argentina"` y regresa al título principal al volver al inicio.
 
 ---
 
-## 3. Verificación
-- Comprobación de contraste de lectura en todas las tarjetas, etiquetas y botones tanto en celular como en escritorio.
-- Compilación completa del proyecto (`compile_applet`) sin errores.
+## 2. Datos Estructurados Avanzados Schema.org en JSON-LD (`/index.html`)
+Se implementará un grafo unificado (`@graph`) en `<script type="application/ld+json">` totalmente invisible en el diseño visual pero leído directamente por los rastreadores de Google:
+
+1. **`SportsActivityLocation` & `EducationalOrganization` (Alcance Nacional + Sede Oficial)**:
+   - Teléfono oficial actualizado: `+54 9 11 5653-2401`.
+   - Cobertura nacional (`areaServed: "Argentina"`) junto con la dirección física de la sede en La Plata (`Calle 22 Nº 1027 e/ 53 y 54`) y coordenadas GPS precisas.
+   - Horarios oficiales detallados en `openingHoursSpecification` (Lunes a Viernes en turnos mañana `08:30–10:00`, mediodía `12:00–13:30` y noche `19:00–20:30`).
+   - Enlaces `sameAs` verificados hacia Instagram, Facebook, YouTube y el Canal Oficial de WhatsApp.
+2. **`FAQPage` Invisible para Google (Rich Snippets de Preguntas Frecuentes)**:
+   - Incluye las preguntas clave que los usuarios buscan en Google en Argentina (sin alterar la estética de la página):
+     - *¿Qué es Systema HETS y en qué se diferencia de otras artes marciales?*
+     - *¿Dónde se dictan clases y seminarios de Systema HETS en Argentina?*
+     - *¿Se necesita experiencia previa para empezar a entrenar Systema?*
+     - *¿Cuáles son los horarios de entrenamiento y cómo reservo una clase de prueba o seminario?*
+     - *¿Quién es el director e instructor de Systema HETS Argentina?*
+3. **`Event` (Seminario Intensivo — Systema HETS Camp 2026)**:
+   - Datos estructurados del **Systema HETS Camp 2026 (21 al 23 de noviembre en Estancia Santa Rita, Punta Indio)** con organizador, ubicación y valores oficiales para que Google indexe el evento en búsquedas de seminarios marciales en Argentina.
+
+---
+
+## 3. Archivos Técnicos de Indexación (`/public/robots.txt` y `/public/sitemap.xml`)
+- **`/public/robots.txt`**:
+  - Permite la indexación completa (`Allow: /`) a todos los motores de búsqueda (`User-agent: *`) y declara la ruta exacta del mapa del sitio (`Sitemap: https://systemahets.com/sitemap.xml`).
+- **`/public/sitemap.xml`**:
+  - Mapa del sitio XML estándar con las URLs principales de `https://systemahets.com/` y secciones clave, facilitando el alta inmediata en **Google Search Console**.

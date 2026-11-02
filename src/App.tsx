@@ -41,6 +41,16 @@ function MainApp() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  useEffect(() => {
+    if (currentView === "novedades") {
+      document.title =
+        "Systema HETS Camp 2026 – Seminario Intensivo | Systema HETS Argentina";
+    } else {
+      document.title =
+        "Systema HETS Argentina | Arte Marcial Ruso, Clases y Seminarios – Diego Ledesma";
+    }
+  }, [currentView]);
+
   const handleOpenNovedades = () => {
     setCurrentView("novedades");
     window.history.replaceState(null, "", "#novedades");
