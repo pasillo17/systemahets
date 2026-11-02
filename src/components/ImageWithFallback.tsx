@@ -26,23 +26,23 @@ export function ImageWithFallback({
   if (!src || hasError) {
     return (
       <div
-        className={`w-full ${aspectRatioClass} bg-[#0D0E12] border border-[#C5A059]/25 rounded-sm flex flex-col items-center justify-center p-6 text-center select-none relative overflow-hidden group`}
+        className={`w-full ${aspectRatioClass} bg-[#1B140F] border border-[#D97736]/30 rounded-sm flex flex-col items-center justify-center p-6 text-center select-none relative overflow-hidden group`}
         role="img"
         aria-label={alt || fallbackTitle}
       >
-        {/* Glow Dorado sutil de fondo */}
-        <div className="absolute inset-0 bg-radial from-[#C5A059]/10 via-transparent to-transparent pointer-events-none" />
+        {/* Glow Naranja/Dorado sutil de fondo */}
+        <div className="absolute inset-0 bg-radial from-[#D97736]/12 via-transparent to-transparent pointer-events-none" />
 
-        {/* Emblema / Isotipo minimalista en Dorado Antiguo */}
-        <div className="relative z-10 w-12 h-12 rounded-full border border-[#C5A059]/25 bg-[#07080A]/90 flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(197,160,89,0.2)]">
-          <Shield className="w-5 h-5 text-[#C5A059]" />
+        {/* Emblema / Isotipo minimalista en Naranja Terracota */}
+        <div className="relative z-10 w-12 h-12 rounded-full border border-[#D97736]/30 bg-[#110D0A]/90 flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(217,119,54,0.22)]">
+          <Shield className="w-5 h-5 text-[#D97736]" />
         </div>
 
         {/* Textos institucionales sobrios */}
-        <span className="relative z-10 font-heading text-xs sm:text-sm uppercase tracking-wider text-[#F4F4F6] font-bold">
+        <span className="relative z-10 font-heading text-xs sm:text-sm uppercase tracking-wider text-[#F5EFE6] font-bold">
           {fallbackTitle}
         </span>
-        <span className="relative z-10 text-[11px] font-mono text-[#A0A5B1] mt-1 tracking-wide">
+        <span className="relative z-10 text-[11px] font-mono text-[#B8A99A] mt-1 tracking-wide">
           {fallbackSubtitle}
         </span>
       </div>
@@ -50,10 +50,10 @@ export function ImageWithFallback({
   }
 
   return (
-    <div className={`relative w-full ${aspectRatioClass} overflow-hidden bg-[#0D0E12]`}>
+    <div className={`relative w-full ${aspectRatioClass} overflow-hidden bg-[#1B140F]`}>
       {!isLoaded && (
-        <div className="absolute inset-0 bg-[#0D0E12] animate-pulse flex items-center justify-center">
-          <Shield className="w-6 h-6 text-[#C5A059]/40" />
+        <div className="absolute inset-0 bg-[#1B140F] animate-pulse flex items-center justify-center">
+          <Shield className="w-6 h-6 text-[#D97736]/45" />
         </div>
       )}
       <img

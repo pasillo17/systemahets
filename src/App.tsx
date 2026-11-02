@@ -120,14 +120,14 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#07080A] text-[#F4F4F6] flex flex-col font-sans selection:bg-[#C5A059] selection:text-[#07080A] overflow-x-hidden relative">
-      {/* Velo de entrada suave / Preloader de respiración consciente en Gris Carbón y Dorado Antiguo */}
+    <div className="min-h-screen bg-[#110D0A] text-[#F5EFE6] flex flex-col font-sans selection:bg-[#D97736] selection:text-[#110D0A] overflow-x-hidden relative">
+      {/* Velo de entrada suave / Preloader de respiración consciente en Tierra, Naranja y Dorado */}
       <PagePreloader />
 
-      {/* Capa de partículas sutiles en Dorado Antiguo (#C5A059) */}
+      {/* Capa de partículas sutiles en Naranja Terracota (#D97736) y Dorado (#C5A059) */}
       <AmbientParticles />
 
-      {/* Header fijo y compacto en Gris Carbón (#121316) y Dorado Antiguo (#C5A059) */}
+      {/* Header fijo y compacto en Tierra Profunda (#110D0A), Naranja Terracota (#D97736) y Dorado (#C5A059) */}
       <Navbar
         currentView={currentView}
         onOpenNovedades={handleOpenNovedades}

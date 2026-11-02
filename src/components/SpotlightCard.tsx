@@ -15,8 +15,8 @@ interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function SpotlightCard({
   children,
   className = "",
-  spotlightColor = "rgba(197, 160, 89, 0.14)",
-  borderColor = "rgba(197, 160, 89, 0.45)",
+  spotlightColor = "rgba(217, 119, 54, 0.16)",
+  borderColor = "rgba(217, 119, 54, 0.48)",
   interactive = true,
   ...props
 }: SpotlightCardProps) {
@@ -49,10 +49,10 @@ export function SpotlightCard({
       className={`relative rounded-sm overflow-hidden card-premium-gold ${className}`}
       {...props}
     >
-      {/* Filete especular superior en Dorado Antiguo */}
+      {/* Filete especular superior en Naranja Terracota y Dorado */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/45 to-transparent z-10"
+        className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D97736]/55 to-transparent z-10"
       />
 
       {/* Resplandor interior interactivo guiado por cursor */}
@@ -67,10 +67,10 @@ export function SpotlightCard({
         />
       )}
 
-      {/* Sutil resplandor perimetral estático en Dorado Antiguo */}
+      {/* Sutil resplandor perimetral estático en Naranja Terracota y Dorado */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#C5A059]/10 blur-2xl z-0"
+        className="pointer-events-none absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#D97736]/12 blur-2xl z-0"
       />
 
       {/* Halo de borde al hacer hover */}

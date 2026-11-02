@@ -76,23 +76,23 @@ export function PreguntasFrecuentes() {
   return (
     <section
       id="preguntas-frecuentes"
-      className="py-10 sm:py-16 bg-[#07080A] text-[#F4F4F6] relative overflow-hidden"
+      className="py-10 sm:py-16 bg-[#110D0A] text-[#F5EFE6] relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-6 sm:mb-8 border-b border-[#C5A059]/25 pb-3.5">
-            <h2 className="text-2xl sm:text-3xl font-heading font-bold uppercase tracking-tight text-[#F4F4F6] glow-text-subtle">
+          <div className="mb-6 sm:mb-8 border-b border-[#D97736]/30 pb-3.5">
+            <h2 className="text-2xl sm:text-3xl font-heading font-bold uppercase tracking-tight text-[#F5EFE6] glow-text-subtle">
               {isEn ? "Frequently Asked Questions" : "Preguntas frecuentes"}
             </h2>
           </div>
         </ScrollReveal>
 
-        {/* Acordeón en Negro Ónix (#0D0E12) con bisel superior y líneas divisorias en Dorado suave */}
+        {/* Acordeón en Tierra Sombra (#1B140F) con bisel superior y líneas divisorias en Naranja/Dorado suave */}
         <ScrollReveal direction="up" delay={60} distance={20}>
-          <div className="card-static-gold rounded-sm divide-y divide-[#C5A059]/25 overflow-hidden relative">
+          <div className="card-static-gold rounded-sm divide-y divide-[#D97736]/25 overflow-hidden relative">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/50 to-transparent"
+              className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D97736]/55 to-transparent"
             />
             {faqs.map((item, idx) => {
               const isOpen = openIndex === idx;
@@ -100,7 +100,7 @@ export function PreguntasFrecuentes() {
                 <div
                   key={item.pregunta}
                   className={`p-4 sm:p-5 transition-colors duration-300 ${
-                    isOpen ? "bg-[#07080A]/50" : "hover:bg-[#07080A]/30"
+                    isOpen ? "bg-[#110D0A]/55" : "hover:bg-[#110D0A]/35"
                   }`}
                 >
                   <button
@@ -113,20 +113,20 @@ export function PreguntasFrecuentes() {
                       className={`text-sm sm:text-base font-heading font-bold uppercase tracking-wide transition-colors leading-snug ${
                         isOpen
                           ? "text-[#D4AF37]"
-                          : "text-[#F4F4F6] group-hover:text-[#C5A059]"
+                          : "text-[#F5EFE6] group-hover:text-[#D97736]"
                       }`}
                     >
                       {item.pregunta}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-[#C5A059] shrink-0 transition-transform duration-300 ${
+                      className={`w-5 h-5 text-[#D97736] shrink-0 transition-transform duration-300 ${
                         isOpen ? "rotate-180 text-[#D4AF37] icon-gold-glow" : ""
                       }`}
                     />
                   </button>
 
                   {isOpen && (
-                    <div className="pt-3 pr-6 text-xs sm:text-sm text-[#A0A5B1] leading-relaxed font-sans animate-in fade-in duration-200">
+                    <div className="pt-3 pr-6 text-xs sm:text-sm text-[#B8A99A] leading-relaxed font-sans animate-in fade-in duration-200">
                       {item.respuesta}
                     </div>
                   )}

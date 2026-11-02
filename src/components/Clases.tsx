@@ -68,65 +68,65 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
   return (
     <section
       id="sedes-y-clases"
-      className="py-14 sm:py-22 section-surface-secondary text-[#F4F4F6] relative overflow-hidden"
+      className="py-14 sm:py-22 section-surface-secondary text-[#F5EFE6] relative overflow-hidden"
     >
-      {/* Halo ambiental sutil en Dorado Antiguo */}
+      {/* Halo ambiental sutil en Naranja Terracota y Dorado */}
       <div
         aria-hidden="true"
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[360px] sm:w-[600px] h-[280px] sm:h-[380px] bg-[#C5A059]/7 rounded-full blur-[110px] pointer-events-none"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[360px] sm:w-[600px] h-[280px] sm:h-[380px] bg-[#D97736]/10 rounded-full blur-[110px] pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Cabecera de Sección directa */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-7 sm:mb-10 border-b border-[#C5A059]/25 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
+          <div className="mb-7 sm:mb-10 border-b border-[#D97736]/30 pb-4 flex flex-col lg:flex-row lg:items-end justify-between gap-3">
             <h2
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading glow-text-subtle"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading glow-text-subtle"
               style={{ textWrap: "balance" }}
             >
               {t("clases.title")}
             </h2>
-            <p className="text-xs sm:text-base text-[#A0A5B1] leading-relaxed max-w-xl lg:text-right font-normal">
+            <p className="text-xs sm:text-base text-[#B8A99A] leading-relaxed max-w-xl lg:text-right font-normal">
               {t("clases.subtitle")}
             </p>
           </div>
         </ScrollReveal>
 
-        {/* VISTA ÚNICA DE HORARIOS DE LUNES A VIERNES Y SEDE EN LA PLATA (Superficie contrastada #121316 sobre sección #1C1E24) */}
+        {/* VISTA ÚNICA DE HORARIOS DE LUNES A VIERNES Y SEDE EN LA PLATA (Superficie contrastada #110D0A sobre sección #1B140F) */}
         <ScrollReveal direction="up" delay={60} distance={24}>
           <div
             id="horarios"
-            className="mb-12 sm:mb-16 p-4 sm:p-8 card-static-on-secondary-gold text-[#F4F4F6] rounded-sm relative overflow-hidden"
+            className="mb-12 sm:mb-16 p-4 sm:p-8 card-static-on-secondary-gold text-[#F5EFE6] rounded-sm relative overflow-hidden"
           >
-            {/* Filete especular superior en Dorado Antiguo */}
+            {/* Filete especular superior en Naranja Terracota y Dorado */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059]/55 to-transparent"
+              className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D97736]/60 to-transparent"
             />
 
             {/* Cabecera de Sede y Botones de Acción */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[#C5A059]/25 pb-5 mb-6">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[#D97736]/30 pb-5 mb-6">
               <div>
-                <h3 className="text-lg sm:text-2xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading">
+                <h3 className="text-lg sm:text-2xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading">
                   {sede.nombre}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#A0A5B1] mt-1 flex flex-wrap items-center gap-1.5 font-sans">
-                  <MapPin className="w-3.5 h-3.5 text-[#C5A059] icon-gold-glow shrink-0 inline" />
-                  <span className="text-[#F4F4F6]">{sede.direccion}</span>
+                <p className="text-xs sm:text-sm text-[#B8A99A] mt-1 flex flex-wrap items-center gap-1.5 font-sans">
+                  <MapPin className="w-3.5 h-3.5 text-[#D97736] icon-gold-glow shrink-0 inline" />
+                  <span className="text-[#F5EFE6]">{sede.direccion}</span>
                   <span aria-hidden="true">·</span>
                   <span>{sede.ciudad}</span>
                 </p>
               </div>
 
               <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3 shrink-0 w-full lg:w-auto">
-                {/* Botón Primario: Reservar clase de prueba en Dorado Antiguo (#C5A059) con texto #07080A font-bold */}
+                {/* Botón Primario: Reservar clase de prueba en Naranja/Dorado con texto #110D0A font-bold */}
                 <a
                   href={getWhatsAppUrl(SITE_CONFIG.mensajesWhatsApp.clasePrueba)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-shimmer-lightning inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#07080A] bg-[#C5A059] hover:bg-[#D4AF37] rounded-sm min-h-[46px] h-auto whitespace-normal sm:whitespace-nowrap text-center leading-tight"
+                  className="btn-shimmer-lightning inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#110D0A] bg-[#D97736] hover:bg-[#D4AF37] rounded-sm min-h-[46px] h-auto whitespace-normal sm:whitespace-nowrap text-center leading-tight"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#07080A] shrink-0" />
+                  <MessageSquare className="w-3.5 h-3.5 text-[#110D0A] shrink-0" />
                   <span className="font-bold">
                     {lang === "en" ? "Book Trial Class" : "Reservar clase de prueba"}
                   </span>
@@ -137,9 +137,9 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                   href={sede.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary-gold inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#F4F4F6] bg-[#0D0E12] hover:bg-[#C5A059] hover:text-[#07080A] rounded-sm min-h-[46px] h-auto active:scale-[0.98] whitespace-normal sm:whitespace-nowrap text-center leading-tight group"
+                  className="btn-secondary-gold inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#F5EFE6] bg-[#1B140F] hover:bg-[#D97736] hover:text-[#110D0A] rounded-sm min-h-[46px] h-auto active:scale-[0.98] whitespace-normal sm:whitespace-nowrap text-center leading-tight group"
                 >
-                  <MapPin className="w-3.5 h-3.5 text-[#C5A059] group-hover:text-[#07080A] shrink-0 transition-colors" />
+                  <MapPin className="w-3.5 h-3.5 text-[#D97736] group-hover:text-[#110D0A] shrink-0 transition-colors" />
                   <span>{t("clases.btnDirections")}</span>
                   <ExternalLink className="w-3 h-3 shrink-0" />
                 </a>
@@ -147,7 +147,7 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
             </div>
 
             {/* VISTA MÓVIL Y TABLET (< lg): Lista limpia de Lunes a Viernes */}
-            <div className="divide-y divide-[#C5A059]/25 lg:hidden">
+            <div className="divide-y divide-[#D97736]/25 lg:hidden">
               {diasActivos.map((item) => {
                 const isToday = todayIndex === item.diaNumero;
                 const turnosList = lang === "en" ? item.turnosEn : item.turnos;
@@ -163,18 +163,18 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                   >
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="text-base font-heading font-bold uppercase tracking-wide text-[#F4F4F6] group-hover:text-[#D4AF37] transition-colors">
+                        <span className="text-base font-heading font-bold uppercase tracking-wide text-[#F5EFE6] group-hover:text-[#D4AF37] transition-colors">
                           {lang === "en" ? item.diaEn : item.dia}
                         </span>
                         {isToday && (
-                          <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase bg-[#C5A059] text-[#07080A] rounded-xs shadow-[0_0_10px_rgba(197,160,89,0.4)]">
+                          <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase bg-gradient-to-r from-[#D97736] to-[#C5A059] text-[#110D0A] rounded-xs shadow-[0_0_10px_rgba(217,119,54,0.45)]">
                             {lang === "en" ? "TODAY" : "HOY"}
                           </span>
                         )}
                       </div>
-                      <span className="text-xs text-[#A0A5B1] block mt-0.5">
+                      <span className="text-xs text-[#B8A99A] block mt-0.5">
                         {lang === "en" ? item.rotuloEn : item.rotulo} ·{" "}
-                        <span className="text-[#C5A059] group-hover:text-[#D4AF37] font-semibold">Reservar →</span>
+                        <span className="text-[#D97736] group-hover:text-[#D4AF37] font-semibold">Reservar →</span>
                       </span>
                     </div>
 
@@ -182,7 +182,7 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                       {turnosList.map((turno, idx) => (
                         <span
                           key={idx}
-                          className="text-sm sm:text-base font-mono font-bold text-[#F4F4F6] tabular-nums"
+                          className="text-sm sm:text-base font-mono font-bold text-[#F5EFE6] tabular-nums"
                         >
                           {turno}
                         </span>
@@ -194,7 +194,7 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
             </div>
 
             {/* VISTA ESCRITORIO (lg+): Tabla de 5 columnas limpia de Lunes a Viernes */}
-            <div className="hidden lg:grid lg:grid-cols-5 divide-x divide-[#C5A059]/25 border-y border-[#C5A059]/25 py-5">
+            <div className="hidden lg:grid lg:grid-cols-5 divide-x divide-[#D97736]/25 border-y border-[#D97736]/25 py-5">
               {diasActivos.map((item) => {
                 const isToday = todayIndex === item.diaNumero;
                 const turnosList = lang === "en" ? item.turnosEn : item.turnos;
@@ -204,31 +204,31 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                     className="px-5 first:pl-0 last:pr-0 flex flex-col justify-between group/col transition-transform duration-300 hover:-translate-y-0.5"
                   >
                     <div>
-                      <div className="flex items-center justify-between gap-2 pb-2 mb-3 border-b border-[#C5A059]/25 group-hover/col:border-[#C5A059]/50 transition-colors">
-                        <span className="text-base font-heading font-bold uppercase tracking-wide text-[#F4F4F6] group-hover/col:text-[#D4AF37] transition-colors">
+                      <div className="flex items-center justify-between gap-2 pb-2 mb-3 border-b border-[#D97736]/25 group-hover/col:border-[#D97736]/55 transition-colors">
+                        <span className="text-base font-heading font-bold uppercase tracking-wide text-[#F5EFE6] group-hover/col:text-[#D4AF37] transition-colors">
                           {lang === "en" ? item.diaEn : item.dia}
                         </span>
                         {isToday && (
-                          <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase bg-[#C5A059] text-[#07080A] rounded-xs shadow-[0_0_12px_rgba(197,160,89,0.4)]">
+                          <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase bg-gradient-to-r from-[#D97736] to-[#C5A059] text-[#110D0A] rounded-xs shadow-[0_0_12px_rgba(217,119,54,0.45)]">
                             {lang === "en" ? "TODAY" : "HOY"}
                           </span>
                         )}
                       </div>
 
-                      <span className="text-xs text-[#C5A059] block mb-3">
+                      <span className="text-xs text-[#D97736] block mb-3">
                         {lang === "en" ? item.rotuloEn : item.rotulo}
                       </span>
 
                       <div className="space-y-2.5">
                         {turnosList.map((turno, idx) => (
                           <div key={idx}>
-                            <span className="text-base xl:text-lg font-mono font-bold text-[#F4F4F6] tabular-nums block">
+                            <span className="text-base xl:text-lg font-mono font-bold text-[#F5EFE6] tabular-nums block">
                               {turno}
                             </span>
                             {lang !== "en" &&
                               item.turnosSub &&
                               item.turnosSub[idx] && (
-                                <span className="text-xs text-[#A0A5B1] block">
+                                <span className="text-xs text-[#B8A99A] block">
                                   {item.turnosSub[idx]}
                                 </span>
                               )}
@@ -243,7 +243,7 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-5 pt-2.5 border-t border-[#C5A059]/25 inline-flex items-center justify-between text-xs text-[#C5A059] hover:text-[#D4AF37] font-semibold transition-colors group/day"
+                      className="mt-5 pt-2.5 border-t border-[#D97736]/25 inline-flex items-center justify-between text-xs text-[#D97736] hover:text-[#D4AF37] font-semibold transition-colors group/day"
                     >
                       <span>
                         {lang === "en"
@@ -258,18 +258,18 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
             </div>
 
             {/* Nota de pie del cronograma */}
-            <div className="pt-4 mt-4 lg:mt-5 border-t lg:border-t-0 border-[#C5A059]/25 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 text-xs text-[#A0A5B1]">
+            <div className="pt-4 mt-4 lg:mt-5 border-t lg:border-t-0 border-[#D97736]/25 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 text-xs text-[#B8A99A]">
               <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5">
-                <span className="inline-flex items-center gap-1.5 text-[#F4F4F6]">
-                  <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span className="inline-flex items-center gap-1.5 text-[#F5EFE6]">
+                  <CheckCircle2 className="w-4 h-4 text-[#D97736] shrink-0" />
                   <span>
                     {lang === "en"
                       ? "Open to all levels (no prior experience needed)"
                       : "Abierto a todos los niveles (no hace falta experiencia previa)"}
                   </span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 text-[#F4F4F6]">
-                  <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span className="inline-flex items-center gap-1.5 text-[#F5EFE6]">
+                  <CheckCircle2 className="w-4 h-4 text-[#D97736] shrink-0" />
                   <span>
                     {lang === "en"
                       ? "Small guided groups"
@@ -286,9 +286,9 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
             </div>
 
             {/* Mapa interactivo con estilo oscuro + Referencia visual del interior de nuestra sede */}
-            <div className="mt-5 pt-5 border-t border-[#C5A059]/25 grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+            <div className="mt-5 pt-5 border-t border-[#D97736]/25 grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
               {/* Mapa embebido oscuro (ocupa 7 columnas en desktop, ancho completo en móvil) */}
-              <div className="lg:col-span-7 relative rounded-sm overflow-hidden border border-[#C5A059]/25 bg-[#0D0E12] min-h-[210px] sm:min-h-[230px]">
+              <div className="lg:col-span-7 relative rounded-sm overflow-hidden border border-[#D97736]/30 bg-[#1B140F] min-h-[210px] sm:min-h-[230px]">
                 <iframe
                   title={
                     lang === "en"
@@ -300,11 +300,11 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-[#C5A059]/25 rounded-sm" />
+                <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-[#D97736]/30 rounded-sm" />
               </div>
 
               {/* Vista interior de la sede y referencia rápida de ubicación (5 columnas en desktop) */}
-              <div className="lg:col-span-5 relative rounded-sm overflow-hidden border border-[#C5A059]/25 bg-[#0D0E12] flex flex-col justify-between group">
+              <div className="lg:col-span-5 relative rounded-sm overflow-hidden border border-[#D97736]/30 bg-[#1B140F] flex flex-col justify-between group">
                 <div className="relative h-36 sm:h-40 lg:h-full min-h-[140px] overflow-hidden">
                   <img
                     src={SITE_CONFIG.assets.heroImage}
@@ -316,15 +316,15 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                     className="w-full h-full object-cover filter brightness-[0.88] contrast-[1.05] transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07080A] via-[#07080A]/35 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#110D0A] via-[#110D0A]/35 to-transparent" />
                   <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between gap-2">
                     <div>
-                      <span className="text-xs font-heading font-bold uppercase tracking-wide text-[#F4F4F6] block">
+                      <span className="text-xs font-heading font-bold uppercase tracking-wide text-[#F5EFE6] block">
                         {lang === "en"
                           ? "Sede Central · La Plata"
                           : "Sede Central · Casco Urbano"}
                       </span>
-                      <span className="text-[11px] text-[#A0A5B1] block">
+                      <span className="text-[11px] text-[#B8A99A] block">
                         {lang === "en"
                           ? "Calle 22 Nº 1027 (between 53 & 54) · Near Parque San Martín"
                           : "Calle 22 Nº 1027 (entre 53 y 54) · A pasos del Parque San Martín"}
@@ -337,9 +337,9 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
           </div>
         </ScrollReveal>
 
-        {/* MODALIDADES SUELTAS SOBRE EL FONDO CON ELEVACIÓN SUTIL E ÍCONOS CON GLOW DORADO */}
+        {/* MODALIDADES SUELTAS SOBRE EL FONDO CON ELEVACIÓN SUTIL E ÍCONOS CON GLOW NARANJA/DORADO */}
         <ScrollReveal direction="up" delay={90} distance={24}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-[#C5A059]/25">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-[#D97736]/25">
             {modalidades.map((m) => {
               const Icon = m.icono;
               return (
@@ -348,24 +348,24 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                   className="pt-6 first:pt-0 md:pt-0 md:px-7 first:md:pl-0 last:md:pr-0 flex flex-col justify-between space-y-3 group transition-transform duration-300 hover:-translate-y-1"
                 >
                   <div className="space-y-2.5">
-                    <div className="w-10 h-10 rounded-xs bg-[#07080A] border border-[#C5A059]/30 group-hover:border-[#D4AF37]/70 flex items-center justify-center transition-all duration-300 shadow-[0_0_16px_rgba(197,160,89,0.14)] group-hover:shadow-[0_0_22px_rgba(197,160,89,0.3)]">
-                      <Icon className="w-5 h-5 stroke-[1.75] text-[#C5A059] group-hover:text-[#D4AF37] icon-gold-glow transition-transform duration-300 group-hover:scale-110" />
+                    <div className="w-10 h-10 rounded-xs bg-[#110D0A] border border-[#D97736]/35 group-hover:border-[#D4AF37]/75 flex items-center justify-center transition-all duration-300 shadow-[0_0_16px_rgba(217,119,54,0.16)] group-hover:shadow-[0_0_22px_rgba(217,119,54,0.34)]">
+                      <Icon className="w-5 h-5 stroke-[1.75] text-[#D97736] group-hover:text-[#D4AF37] icon-gold-glow transition-transform duration-300 group-hover:scale-110" />
                     </div>
 
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide text-[#F4F4F6] group-hover:text-[#D4AF37] transition-colors font-heading">
+                      <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide text-[#F5EFE6] group-hover:text-[#D4AF37] transition-colors font-heading">
                         {m.titulo}
                       </h3>
-                      <span className="text-xs text-[#C5A059] block mt-0.5">
+                      <span className="text-xs text-[#D97736] block mt-0.5">
                         {m.subtitulo}
                       </span>
                     </div>
 
-                    <p className="text-sm text-[#F4F4F6] leading-relaxed font-normal pt-1">
+                    <p className="text-sm text-[#F5EFE6] leading-relaxed font-normal pt-1">
                       {m.descripcion}
                     </p>
 
-                    <p className="text-xs sm:text-sm text-[#A0A5B1] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#B8A99A] leading-relaxed">
                       {m.detalles}
                     </p>
                   </div>
@@ -375,22 +375,22 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
           </div>
         </ScrollReveal>
 
-        {/* BANNER DESTACADO: PRÓXIMO EVENTO ESPECIAL SYSTEMA HETS CAMP 2026 (Superficie #07080A sobre sección #0D0E12) */}
+        {/* BANNER DESTACADO: PRÓXIMO EVENTO ESPECIAL SYSTEMA HETS CAMP 2026 (Superficie #110D0A sobre sección #1B140F) */}
         <ScrollReveal direction="up" delay={120} distance={22} className="mt-10 sm:mt-14">
           <div className="relative rounded-sm card-on-secondary-gold p-5 sm:p-7 lg:p-8 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#C5A059]" />
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#D97736] via-[#D4AF37] to-[#C5A059]" />
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
               <div className="flex items-start gap-3.5 sm:gap-4">
-                <div className="w-10 h-10 rounded-xs bg-[#0D0E12] text-[#C5A059] border border-[#C5A059]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_16px_rgba(197,160,89,0.18)]">
+                <div className="w-10 h-10 rounded-xs bg-[#1B140F] text-[#D97736] border border-[#D97736]/35 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_16px_rgba(217,119,54,0.2)]">
                   <Trees className="w-5 h-5 icon-gold-glow" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-base sm:text-xl font-heading font-bold uppercase tracking-wide text-[#F4F4F6] leading-snug">
+                  <h3 className="text-base sm:text-xl font-heading font-bold uppercase tracking-wide text-[#F5EFE6] leading-snug">
                     {lang === "en"
                       ? "Upcoming Special Event: Systema Hets Camp 2026 · Estancia Santa Rita, Punta Indio (November)"
                       : "Próximo Evento Especial: Systema Hets Camp 2026 · Estancia Santa Rita, Punta Indio (Noviembre)"}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#A0A5B1] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#B8A99A] leading-relaxed">
                     {lang === "en"
                       ? "Intensive gathering in contact with nature guided by Prof. Diego Martín Ledesma. Limited spots with prior reservation."
                       : "Encuentro intensivo en contacto con la naturaleza guiado por el Prof. Diego Martín Ledesma. Cupos limitados con reserva previa."}
@@ -402,7 +402,7 @@ export function Clases({ onOpenNovedades }: ClasesProps) {
                 <button
                   type="button"
                   onClick={handleOpenCamp}
-                  className="btn-shimmer-lightning w-full lg:w-auto min-h-[48px] px-5 sm:px-6 py-3 rounded-sm text-xs font-bold uppercase tracking-wider text-[#07080A] bg-[#C5A059] hover:bg-[#D4AF37] inline-flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap group"
+                  className="btn-shimmer-lightning w-full lg:w-auto min-h-[48px] px-5 sm:px-6 py-3 rounded-sm text-xs font-bold uppercase tracking-wider text-[#110D0A] bg-[#D97736] hover:bg-[#D4AF37] inline-flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap group"
                 >
                   <span className="font-bold">
                     {lang === "en"

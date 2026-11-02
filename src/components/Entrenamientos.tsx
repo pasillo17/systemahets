@@ -86,16 +86,16 @@ export function Entrenamientos() {
   return (
     <section
       id="entrenamientos"
-      className="py-12 sm:py-18 lg:py-20 bg-[#07080A] text-[#F4F4F6] relative overflow-hidden select-none"
+      className="py-12 sm:py-18 lg:py-20 bg-[#110D0A] text-[#F5EFE6] relative overflow-hidden select-none"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Cabecera Editorial Directa */}
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-7 sm:mb-10 border-b border-[#C5A059]/25 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F4F4F6] font-heading glow-text-subtle">
+          <div className="mb-7 sm:mb-10 border-b border-[#D97736]/30 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading glow-text-subtle">
               {t("ent.title")}
             </h2>
-            <p className="text-xs sm:text-sm text-[#A0A5B1] font-sans leading-relaxed max-w-md sm:text-right">
+            <p className="text-xs sm:text-sm text-[#B8A99A] font-sans leading-relaxed max-w-md sm:text-right">
               {t("ent.quote")}
             </p>
           </div>
@@ -139,10 +139,10 @@ export function Entrenamientos() {
                           e.stopPropagation();
                           prevSlide();
                         }}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#07080A]/75 hover:bg-[#07080A]/95 backdrop-blur-xs border border-[#C5A059]/35 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10 shadow-[0_0_12px_rgba(197,160,89,0.2)]"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#110D0A]/75 hover:bg-[#110D0A]/95 backdrop-blur-xs border border-[#D97736]/40 text-[#F5EFE6] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10 shadow-[0_0_12px_rgba(217,119,54,0.22)]"
                         aria-label="Foto anterior"
                       >
-                        <ChevronLeft className="w-4 h-4 text-[#C5A059]" />
+                        <ChevronLeft className="w-4 h-4 text-[#D97736]" />
                       </button>
 
                       <button
@@ -151,19 +151,19 @@ export function Entrenamientos() {
                           e.stopPropagation();
                           nextSlide();
                         }}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#07080A]/75 hover:bg-[#07080A]/95 backdrop-blur-xs border border-[#C5A059]/35 text-[#F4F4F6] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10 shadow-[0_0_12px_rgba(197,160,89,0.2)]"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#110D0A]/75 hover:bg-[#110D0A]/95 backdrop-blur-xs border border-[#D97736]/40 text-[#F5EFE6] flex items-center justify-center active:scale-95 transition-all cursor-pointer z-10 shadow-[0_0_12px_rgba(217,119,54,0.22)]"
                         aria-label="Foto siguiente"
                       >
-                        <ChevronRight className="w-4 h-4 text-[#C5A059]" />
+                        <ChevronRight className="w-4 h-4 text-[#D97736]" />
                       </button>
                     </div>
 
                     {/* Pie de foto sincronizado en el mismo bloque que la imagen activa */}
                     <div className="pt-3.5 space-y-1">
-                      <h3 className="text-base font-heading font-bold uppercase tracking-wide text-[#F4F4F6]">
+                      <h3 className="text-base font-heading font-bold uppercase tracking-wide text-[#F5EFE6]">
                         {slideItem.titulo}
                       </h3>
-                      <p className="text-xs text-[#A0A5B1] leading-relaxed">
+                      <p className="text-xs text-[#B8A99A] leading-relaxed">
                         {slideItem.descripcion}
                       </p>
                     </div>
@@ -180,8 +180,8 @@ export function Entrenamientos() {
                   onClick={() => setActiveSlide(idx)}
                   className={`h-2 transition-all duration-300 rounded-xs cursor-pointer ${
                     activeSlide === idx
-                      ? "w-6 bg-[#C5A059] shadow-[0_0_10px_rgba(197,160,89,0.45)]"
-                      : "w-2 bg-[#A0A5B1]/30 hover:bg-[#C5A059]"
+                      ? "w-6 bg-gradient-to-r from-[#D97736] to-[#D4AF37] shadow-[0_0_10px_rgba(217,119,54,0.5)]"
+                      : "w-2 bg-[#B8A99A]/30 hover:bg-[#D97736]"
                   }`}
                   aria-label={`Ir a ${slideItem.titulo}`}
                 />
@@ -216,17 +216,17 @@ export function Entrenamientos() {
                     }}
                   />
 
-                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#07080A]/85 text-[#C5A059] border border-[#C5A059]/30 group-hover:border-[#D4AF37] group-hover:shadow-[0_0_14px_rgba(197,160,89,0.3)] transition-all">
-                    <Maximize2 className="w-3.5 h-3.5 text-[#C5A059] group-hover:text-[#D4AF37]" />
+                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-[#110D0A]/85 text-[#D97736] border border-[#D97736]/35 group-hover:border-[#D4AF37] group-hover:shadow-[0_0_14px_rgba(217,119,54,0.34)] transition-all">
+                    <Maximize2 className="w-3.5 h-3.5 text-[#D97736] group-hover:text-[#D4AF37]" />
                   </div>
                 </div>
 
                 {/* Pie editorial suelto sobre el fondo */}
                 <div className="space-y-1">
-                  <h3 className="text-base lg:text-lg font-heading font-bold uppercase tracking-wide text-[#F4F4F6] group-hover:text-[#D4AF37] transition-colors">
+                  <h3 className="text-base lg:text-lg font-heading font-bold uppercase tracking-wide text-[#F5EFE6] group-hover:text-[#D4AF37] transition-colors">
                     {item.titulo}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#A0A5B1] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#B8A99A] leading-relaxed">
                     {item.descripcion}
                   </p>
                 </div>
@@ -236,15 +236,15 @@ export function Entrenamientos() {
         </div>
 
         {/* 3. ACCESO AL CANAL DE YOUTUBE (debajo del carrusel/galería de fotos) */}
-        <ScrollReveal direction="up" delay={120} distance={20} className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[#C5A059]/25">
+        <ScrollReveal direction="up" delay={120} distance={20} className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-[#D97736]/30">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1 max-w-2xl">
-              <h3 className="text-base sm:text-lg font-heading font-bold uppercase tracking-wide text-[#F4F4F6]">
+              <h3 className="text-base sm:text-lg font-heading font-bold uppercase tracking-wide text-[#F5EFE6]">
                 {lang === "en"
                   ? "Fluid Movement, Self-Protection and Human Development"
                   : "Soltura corporal, autoprotección y desarrollo humano"}
               </h3>
-              <p className="text-xs sm:text-sm text-[#A0A5B1] leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-[#B8A99A] leading-relaxed font-sans">
                 {lang === "en"
                   ? "In class we work on breathing, balance, and conscious movement applied to real situations so you learn to get out of grabs, manage impacts and reduce the risk of injury, and respond calmly. Watch full classes and seminar clips on our YouTube channel."
                   : "En cada clase trabajamos la respiración, el apoyo del cuerpo y el movimiento consciente aplicado a situaciones reales para aprender a salir de agarres, gestionar impactos y reducir el riesgo de lesiones, y responder con tranquilidad. Podés ver clases completas y seminarios en nuestro canal de YouTube."}
@@ -256,7 +256,7 @@ export function Entrenamientos() {
                 href={SITE_CONFIG.videoEntrenamiento.youtubeChannelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm text-xs font-bold uppercase tracking-wider text-[#07080A] bg-[#C5A059] hover:bg-[#D4AF37] min-h-[46px] whitespace-nowrap text-center leading-tight group"
+                className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm text-xs font-bold uppercase tracking-wider text-[#110D0A] bg-[#D97736] hover:bg-[#D4AF37] min-h-[46px] whitespace-nowrap text-center leading-tight group"
               >
                 <Youtube className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:scale-110" />
                 <span className="font-bold">
@@ -273,30 +273,30 @@ export function Entrenamientos() {
         {/* 4. MODAL LIGHTBOX AMPLIADO */}
         {currentLightboxItem && (
           <div
-            className="fixed inset-0 z-[120] bg-[#07080A]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
+            className="fixed inset-0 z-[120] bg-[#110D0A]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200"
             onClick={() => setActiveLightboxIndex(null)}
             role="dialog"
             aria-modal="true"
           >
             <div
-              className="relative max-w-4xl w-full bg-[#0D0E12] border border-[#C5A059]/25 rounded-sm overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
+              className="relative max-w-4xl w-full bg-[#1B140F] border border-[#D97736]/30 rounded-sm overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="px-4 py-3 bg-[#07080A] border-b border-[#C5A059]/25 flex items-center justify-between gap-2">
-                <span className="text-xs font-heading uppercase tracking-wide text-[#F4F4F6] font-bold">
+              <div className="px-4 py-3 bg-[#110D0A] border-b border-[#D97736]/30 flex items-center justify-between gap-2">
+                <span className="text-xs font-heading uppercase tracking-wide text-[#F5EFE6] font-bold">
                   {currentLightboxItem.titulo}
                 </span>
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
-                  className="w-10 h-10 flex items-center justify-center text-[#A0A5B1] hover:text-[#F4F4F6] rounded-sm border border-[#C5A059]/25 bg-[#0D0E12] cursor-pointer shrink-0"
+                  className="w-10 h-10 flex items-center justify-center text-[#B8A99A] hover:text-[#F5EFE6] rounded-sm border border-[#D97736]/30 bg-[#1B140F] cursor-pointer shrink-0"
                   aria-label="Cerrar visor"
                 >
-                  <X className="w-5 h-5 text-[#C5A059]" />
+                  <X className="w-5 h-5 text-[#D97736]" />
                 </button>
               </div>
 
-              <div className="relative bg-[#07080A] flex items-center justify-center p-2 sm:p-4 min-h-[300px] max-h-[65vh]">
+              <div className="relative bg-[#110D0A] flex items-center justify-center p-2 sm:p-4 min-h-[300px] max-h-[65vh]">
                 <img
                   src={currentLightboxItem.imagen}
                   alt={currentLightboxItem.titulo}
@@ -310,7 +310,7 @@ export function Entrenamientos() {
                       prev !== null ? (prev - 1 + totalSlides) % totalSlides : 0
                     )
                   }
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#0D0E12]/85 border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center hover:bg-[#C5A059] hover:text-[#07080A] transition-all cursor-pointer"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1B140F]/85 border border-[#D97736]/30 text-[#F5EFE6] flex items-center justify-center hover:bg-[#D97736] hover:text-[#110D0A] transition-all cursor-pointer"
                   aria-label="Foto anterior"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -323,15 +323,15 @@ export function Entrenamientos() {
                       prev !== null ? (prev + 1) % totalSlides : 0
                     )
                   }
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#0D0E12]/85 border border-[#C5A059]/25 text-[#F4F4F6] flex items-center justify-center hover:bg-[#C5A059] hover:text-[#07080A] transition-all cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-sm bg-[#1B140F]/85 border border-[#D97736]/30 text-[#F5EFE6] flex items-center justify-center hover:bg-[#D97736] hover:text-[#110D0A] transition-all cursor-pointer"
                   aria-label="Foto siguiente"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="p-4 bg-[#0D0E12] border-t border-[#C5A059]/25">
-                <p className="text-xs sm:text-sm text-[#A0A5B1]">
+              <div className="p-4 bg-[#1B140F] border-t border-[#D97736]/30">
+                <p className="text-xs sm:text-sm text-[#B8A99A]">
                   {currentLightboxItem.descripcion}
                 </p>
               </div>

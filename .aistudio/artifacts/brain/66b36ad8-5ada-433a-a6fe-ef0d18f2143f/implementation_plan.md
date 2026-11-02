@@ -1,62 +1,72 @@
-# Separación Visual entre Secciones: Alternancia de Fondos y Divisores Dorados Luminosos — Systema HETS
+# Actualización de Textos: Movimiento Consciente en El Systema y Los Pilares
 
-> **User Review & Critical Decisions**
-> - **Estrategia de Separación Seleccionada:** Se aplicará **alternancia de tonos de fondo entre Gris Carbón (`#121316`) y Gris Grafito (`#1C1E24`) combinada con divisores dorados luminosos** de ancho completo en cada cambio de sección.
-> - **Contraste de Tarjetas Internas:** En las secciones cuyo fondo pase a ser Gris Grafito (`#1C1E24`), las tarjetas e ítems internos utilizarán Gris Carbón (`#121316`) con borde dorado y bisel especular, manteniendo siempre el contraste de capas y la profundidad 3D.
-> - **Fidelidad de Paleta:** Se conservan estrictamente los colores oficiales (`#121316`, `#1C1E24`, `#C5A059`, `#D4AF37`, `#F4F4F6`, `#A0A5B1` y `rgba(197, 160, 89, 0.25)`).
+Integración de los textos de referencia institucionales sobre **Movimiento Consciente**, **adaptación** y **autoprotección** en la sección **El Systema** y en la franja de **Los 3 Pilares**, manteniendo el **Hero** exactamente como está.
+
+## User Review & Critical Decisions
+
+> [!IMPORTANT]
+> Se respetan las decisiones confirmadas para focalizar los nuevos textos sin alterar la portada (Hero).
+
+- **Secciones a actualizar**: Se integrarán los textos principalmente en **El Systema** (cuerpo principal, síntesis destacada y modal de los 4 pilares) y en **Los 3 Pilares** (*Autoprotección*, *Movimiento Consciente*, *Salud y Desarrollo Humano*).
+- **Hero sin cambios**: El encabezado principal (*Hero*) permanece intacto en estructura, textos, lemas y botones.
+- **Sincronización bilingüe (ES / EN)**: Todas las actualizaciones en español tendrán su equivalente fiel en inglés dentro del selector de idioma.
 
 ---
 
 ## 1. Overview & Core Concept
 
-Actualmente todas las secciones de la página comparten el mismo fondo continuo (`#121316`), haciendo que el recorrido vertical se perciba como un único bloque sin pausas claras. Para que cada sección tenga identidad propia y el usuario distinga de inmediato dónde termina un bloque y dónde comienza el siguiente, implementaremos un **ritmo cromático alternado (`#121316` ⇄ `#1C1E24`)** acompañado por **divisores arquitectónicos en Dorado Antiguo (`#C5A059`)** con halo luminoso central y sombras de transición.
+- **Qué hace este cambio**: Articula el discurso de **Systema HETS** en torno al eje *"Movimiento Consciente — Menos tensión. Más libertad de movimiento"*, explicando con claridad cómo la respiración, la relajación, la percepción y el movimiento natural permiten regular el esfuerzo, gestionar impactos reduciendo riesgos y responder sin rigidez.
+- **Valor principal**: Brinda al visitante una explicación clara, humana y directa de la propuesta pedagógica de la escuela apenas termina de ver el inicio, conectando los 3 pilares con el desarrollo de la sección *El Systema*.
 
 ---
 
 ## 2. User Experience & Visual Design
 
-### Secuencia de Alternancia Cromática por Sección
-1. **Hero (`#inicio`):** Fondo **Gris Carbón (`#121316`)** con viñeta profunda + borde inferior dorado luminoso.
-2. **Linaje Oficial y 3 Pilares (`FranjaLinaje` + `FranjaPrincipios`):** Fondo **Gris Grafito (`#1C1E24`)** para enmarcar el respaldo internacional y los principios como un bloque institucional distinguido.
-3. **El Systema (`#systema`):** Fondo **Gris Carbón (`#121316`)** con tarjetas en `#1C1E24`.
-4. **Sobre Diego Martín Ledesma (`#diego-ledesma`):** Fondo **Gris Grafito (`#1C1E24`)** con retrato y detalles sobre superficie `#121316` y borde dorado.
-5. **Entrenamientos en Acción (`#entrenamientos`):** Fondo **Gris Carbón (`#121316`)** con galería en `#1C1E24`.
-6. **Sedes y Horarios (`#sedes-y-clases`):** Fondo **Gris Grafito (`#1C1E24`)** con tablero de horarios y banner del Camp 2026 contrastados sobre `#121316`.
-7. **Testimonios (`#testimonios`):** Fondo **Gris Carbón (`#121316`)** con tarjetas de reseñas en `#1C1E24`.
-8. **Frase Destacada (`FraseDestacada`):** Banda editorial en **Gris Grafito (`#1C1E24`)** con doble filete dorado superior e inferior.
-9. **Preguntas Frecuentes (`#preguntas-frecuentes`):** Fondo **Gris Carbón (`#121316`)** con acordeón en `#1C1E24`.
-10. **Contacto y Reserva (`#contacto`):** Fondo **Gris Grafito (`#1C1E24`)** con tarjeta principal contrastada en `#121316`.
-11. **Pie de Página (`Footer`):** Cierre institucional en **Gris Carbón (`#121316`)**.
-
-### Divisores Dorados Luminosos entre Bloques
-- **Línea de Corte con Halo Central:** Cada frontera entre secciones contará con un divisor horizontal que combina una línea en degradado dorado (`transparent → #C5A059 → #D4AF37 → #C5A059 → transparent`), una sombra interior suave en el borde superior de cada sección (`inset 0 12px 24px -12px rgba(0, 0, 0, 0.65)`) y un rombo/emblema central sutil en Dorado Antiguo (`#C5A059`) con resplandor (`0 0 12px rgba(197, 160, 89, 0.55)`).
-- **Espaciado Vertical Generoso:** Se ajustará el `padding` vertical de las secciones para dar aire limpio antes y después de cada divisor.
+- **Distribución de los nuevos textos por sección**:
+  1. **Franja de los 3 Pilares (`FranjaPrincipios`)**:
+     - **Autoprotección**: *"Aprendé a resolver situaciones imprevistas utilizando el movimiento inteligente de tu cuerpo. No se trata de ser más fuerte que el otro, sino de conocerte mejor, comprender lo que sucede y desarrollar tu capacidad de adaptación."*
+     - **Movimiento Consciente**: *"Menos tensión. Más libertad de movimiento. Exploramos posibilidades sin imponer movimientos rígidos para que cada persona descubra sus propias capacidades y desarrolle respuestas naturales, eficientes y adaptables."*
+     - **Salud y Desarrollo Humano**: *"El movimiento como camino hacia el autoconocimiento y la autoprotección. A través de la respiración, la relajación y la percepción, aprendemos a regular el esfuerzo, liberar tensiones y fortalecer la confianza."*
+  2. **Sección El Systema (`ElSistema`)**:
+     - **Subtítulo editorial en Dorado Antiguo (`#C5A059`) bajo el título "El Systema"**: *"Movimiento Consciente — Menos tensión. Más libertad de movimiento."*
+     - **Primer párrafo principal**: *"En Systema HETS, el movimiento consciente permite conocer el cuerpo, reconocer tensiones y responder con naturalidad ante situaciones imprevistas. A través de la respiración, la relajación y el movimiento, aprendemos a regular el esfuerzo, mejorar la coordinación y desarrollar nuestra capacidad de adaptación."*
+     - **Segundo párrafo principal**: *"Entrenamos progresivamente la gestión de impactos, buscando reducir riesgos y fortalecer la confianza bajo presión. No imponemos movimientos rígidos: exploramos posibilidades para que cada persona descubra sus propias capacidades y desarrolle respuestas naturales, eficientes y adaptables."*
+     - **Lema de síntesis antes del botón de acción**: *"Conocé tu cuerpo. Liberá tensiones. Movete con libertad."*
+     - **Apertura del modal de los 4 Pilares**: *"Descubrí cómo la respiración, la relajación, la percepción y el movimiento natural pueden ayudarte a responder con mayor libertad, eficiencia y confianza. No se trata de ser más fuerte que el otro, sino de conocerte mejor, comprender lo que sucede y desarrollar tu capacidad de adaptación:"*
+- **Identidad Visual y Tema**:
+  - Se conserva la paleta oscura en Negro Obsidiana (`#07080A`), Negro Ónix (`#0D0E12`), Dorado Antiguo (`#C5A059` / `#D4AF37`), Blanco Humo (`#F4F4F6`) y Gris Plata (`#A0A5B1`), junto con los divisores discretos de `1px`.
 
 ---
 
 ## 3. Key Product Decisions & Trade-Offs
 
-1. **Inversión Inteligente de Superficies (`#121316` ⇄ `#1C1E24`):**
-   - *Decisión:* Cuando una sección tiene fondo `#1C1E24`, sus tarjetas internas pasan a `#121316` (y viceversa).
-   - *Por qué:* Evita que una tarjeta `#1C1E24` se pierda sobre un fondo `#1C1E24`, manteniendo intacto el contraste y el efecto de elevación 3D en toda la web.
-2. **Divisores Ornamentales Sobrios:**
-   - *Decisión:* Usar un filete dorado de `1px` con centro luminoso y un pequeño marcador geométrico (rombo de `6px`) en lugar de barras gruesas.
-   - *Por qué:* Marca una separación nítida y visible a primera vista sin recargar la estética marcial y elegante.
+- **Decisión 1: Jerarquía de lectura en "El Systema"**
+  - *Enfoque elegido*: Incorporar la bajada *"Movimiento Consciente — Menos tensión. Más libertad de movimiento."* justo debajo del título H2 y cerrar el bloque de texto con *"Conocé tu cuerpo. Liberá tensiones. Movete con libertad."* antes del botón de los 4 pilares.
+  - *Por qué*: Permite escanear en 3 segundos las ideas fuerza del texto de referencia sin recargar los párrafos ni perder fluidez visual.
+- **Decisión 2: Preservación total del Hero**
+  - *Enfoque elegido*: Mantener intactos el título *"CONÓCETE Y PROGRESA"*, el lema en ruso y su fonética, la bajada de 3 conceptos y los botones de acción del Hero.
+  - *Por qué*: Respeta la indicación explícita del usuario y evita duplicar frases entre la portada y las secciones inmediatas.
 
 ---
 
-## 4. Technical Architecture & Data Strategy
+## 4. Technical Architecture & Data Strategy *(Technical Reference)*
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                RITMO DE SECCIONES Y DIVISORES LUMINOSOS                 │
-├─────────────────────────────────────────────────────────────────────────┤
-│  Sección Impar: Fondo #121316 (Gris Carbón) + Tarjetas #1C1E24          │
-├───────────────── ◆ ─── Divisor Dorado Luminoso ─── ◆ ───────────────────┤
-│  Sección Par:   Fondo #1C1E24 (Gris Grafito) + Tarjetas #121316         │
-├───────────────── ◆ ─── Divisor Dorado Luminoso ─── ◆ ───────────────────┤
-│  Sección Impar: Fondo #121316 (Gris Carbón) + Tarjetas #1C1E24          │
-└─────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│                   Diccionario Bilingüe (ES / EN)                     │
+│  • Claves de Los 3 Pilares (autoprotección, movimiento, salud)       │
+│  • Claves de El Systema (subtítulo, párrafos, síntesis y modal)      │
+└──────────────────┬───────────────────────────────────┬───────────────┘
+                   │                                   │
+                   ▼                                   ▼
+┌─────────────────────────────────────┐ ┌──────────────────────────────┐
+│     Componente: Los 3 Pilares       │ │    Componente: El Systema    │
+│  • Renderiza los 3 ejes con los     │ │  • Muestra subtítulo dorado  │
+│    nuevos textos de adaptación,     │ │  • Renderiza los 2 párrafos  │
+│    movimiento inteligente y         │ │    y el lema de síntesis     │
+│    autoconocimiento                 │ │  • Actualiza intro del modal │
+└─────────────────────────────────────┘ └──────────────────────────────┘
 ```
 
-- **Estilos Globales de Separación:** Se definirán clases dedicadas para las secciones alternadas y el divisor luminoso con nodo central dorado, asegurando nitidez tanto en pantallas móviles como en monitores de escritorio.
+- **Gestión de Textos e Idioma**:
+  - Las cadenas en español e inglés se centralizan en el contexto de idioma para que el cambio entre `ES` y `EN` refleje de forma inmediata la nueva redacción tanto en la vista principal como dentro del modal interactivo de los 4 pilares.

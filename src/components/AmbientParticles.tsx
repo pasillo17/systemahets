@@ -66,9 +66,9 @@ export function AmbientParticles() {
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = p.isBrightGold
           ? `rgba(212, 175, 55, ${currentOpacity})`
-          : `rgba(197, 160, 89, ${currentOpacity})`;
+          : `rgba(217, 119, 54, ${currentOpacity})`;
         ctx.shadowBlur = 4;
-        ctx.shadowColor = "rgba(197, 160, 89, 0.3)";
+        ctx.shadowColor = "rgba(217, 119, 54, 0.32)";
         ctx.fill();
         ctx.shadowBlur = 0;
       });
@@ -86,12 +86,12 @@ export function AmbientParticles() {
 
   return (
     <>
-      {/* Capa de atmósfera suave en Dorado Antiguo (#C5A059) */}
+      {/* Capa de atmósfera suave en Naranja Terracota (#D97736) y Dorado (#D4AF37) */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       >
-        <div className="absolute -top-[15%] -left-[10%] w-[650px] h-[650px] rounded-full bg-[#C5A059]/5 blur-[130px] animate-glow-pulse" />
+        <div className="absolute -top-[15%] -left-[10%] w-[650px] h-[650px] rounded-full bg-[#D97736]/6 blur-[130px] animate-glow-pulse" />
 
         <div
           className="absolute top-[45%] -right-[15%] w-[700px] h-[700px] rounded-full bg-[#D4AF37]/6 blur-[150px] animate-glow-pulse"
@@ -99,7 +99,7 @@ export function AmbientParticles() {
         />
 
         <div
-          className="absolute -bottom-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#C5A059]/5 blur-[140px] animate-glow-pulse"
+          className="absolute -bottom-[10%] left-[20%] w-[600px] h-[600px] rounded-full bg-[#D97736]/5 blur-[140px] animate-glow-pulse"
           style={{ animationDelay: "-5s" }}
         />
       </div>

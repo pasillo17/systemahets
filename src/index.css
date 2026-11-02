@@ -5,42 +5,44 @@
   --font-condensed: "Oswald", sans-serif;
   --font-sans: "Plus Jakarta Sans", sans-serif;
 
-  /* Nueva Paleta de Colores: Negro Obsidiana (#07080A), Negro Ónix (#0D0E12) y Dorado Sobrio */
-  --color-bg-primary: #07080A;
-  --color-bg-secondary: #0D0E12;
+  /* Paleta Tierra, Naranja Terracota y Dorado Ocre */
+  --color-bg-primary: #110D0A;
+  --color-bg-secondary: #1B140F;
   --color-accent-gold: #C5A059;
   --color-accent-gold-hover: #D4AF37;
-  --color-border-gold: rgba(197, 160, 89, 0.25);
-  --color-text-primary: #F4F4F6;
-  --color-text-secondary: #A0A5B1;
+  --color-accent-orange: #D97736;
+  --color-accent-orange-hover: #E68A45;
+  --color-border-gold: rgba(217, 119, 54, 0.28);
+  --color-text-primary: #F5EFE6;
+  --color-text-secondary: #B8A99A;
 
-  /* Alias semánticos sincronizados con la nueva paleta */
-  --color-earth-deep: #07080A;
-  --color-earth-umber: #0D0E12;
-  --color-earth-surface: #0D0E12;
-  --color-earth-card: #0D0E12;
-  --color-earth-border: rgba(197, 160, 89, 0.25);
+  /* Alias semánticos Tierra, Naranja y Dorado */
+  --color-earth-deep: #110D0A;
+  --color-earth-umber: #1B140F;
+  --color-earth-surface: #1B140F;
+  --color-earth-card: #1B140F;
+  --color-earth-border: rgba(217, 119, 54, 0.28);
 
-  --color-bone-warm: #F4F4F6;
-  --color-sand-muted: #A0A5B1;
+  --color-bone-warm: #F5EFE6;
+  --color-sand-muted: #B8A99A;
 
-  --color-terracotta: #C5A059;
-  --color-terracotta-light: #D4AF37;
-  --color-terracotta-ember: #D4AF37;
+  --color-terracotta: #D97736;
+  --color-terracotta-light: #E68A45;
+  --color-terracotta-ember: #C86428;
   --color-ochre: #C5A059;
-  --color-ochre-deep: #C5A059;
-  --color-terracotta-glow: rgba(197, 160, 89, 0.25);
+  --color-ochre-deep: #D4AF37;
+  --color-terracotta-glow: rgba(217, 119, 54, 0.28);
 }
 
 :root {
-  --bg-primary: #07080A;
-  --bg-secondary: #0D0E12;
-  --accent-primary: #C5A059;
+  --bg-primary: #110D0A;
+  --bg-secondary: #1B140F;
+  --accent-primary: #D97736;
   --accent-hover: #D4AF37;
-  --btn-primary-text: #07080A;
-  --border-gold-subtle: rgba(197, 160, 89, 0.25);
-  --text-primary: #F4F4F6;
-  --text-secondary: #A0A5B1;
+  --btn-primary-text: #110D0A;
+  --border-gold-subtle: rgba(217, 119, 54, 0.28);
+  --text-primary: #F5EFE6;
+  --text-secondary: #B8A99A;
 }
 
 html {
@@ -50,8 +52,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #07080A;
-  color: #F4F4F6;
+  background-color: #110D0A;
+  color: #F5EFE6;
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
@@ -62,7 +64,7 @@ body {
 h1, h2, h3, .font-heading {
   font-family: var(--font-condensed);
   letter-spacing: 0.03em;
-  color: #F4F4F6;
+  color: #F5EFE6;
 }
 
 .font-editorial {
@@ -70,26 +72,26 @@ h1, h2, h3, .font-heading {
   letter-spacing: 0.04em;
 }
 
-/* Bordes y líneas divisorias en Dorado suave con transparencia */
+/* Bordes y líneas divisorias en Naranja Terracota y Dorado con transparencia */
 .border-steel-subtle {
-  border-color: rgba(197, 160, 89, 0.25);
+  border-color: rgba(217, 119, 54, 0.28);
 }
 
 .border-lightning-glow {
-  border-color: rgba(197, 160, 89, 0.45);
-  box-shadow: 0 0 18px rgba(197, 160, 89, 0.18);
+  border-color: rgba(217, 119, 54, 0.48);
+  box-shadow: 0 0 18px rgba(217, 119, 54, 0.2);
 }
 
-/* Custom scrollbar en Negro Obsidiana (#07080A) y Dorado Antiguo (#C5A059) */
+/* Custom scrollbar en Tierra Profunda (#110D0A) y Naranja/Dorado */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #07080A;
+  background: #110D0A;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(197, 160, 89, 0.4);
+  background: rgba(217, 119, 54, 0.45);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -152,39 +154,39 @@ h1, h2, h3, .font-heading {
   animation: subtleFloat 5s ease-in-out infinite;
 }
 
-/* Gradientes de texto en Blanco Humo (#F4F4F6) y Dorado Antiguo (#C5A059) */
+/* Gradientes de texto en Hueso Cálido (#F5EFE6), Dorado (#D4AF37) y Naranja Terracota (#D97736) */
 .text-lightning-gradient {
-  background: linear-gradient(135deg, #F4F4F6 0%, #C5A059 55%, #D4AF37 100%);
+  background: linear-gradient(135deg, #F5EFE6 0%, #D4AF37 50%, #D97736 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gold-light-section {
-  background: linear-gradient(135deg, #F4F4F6 0%, #D4AF37 50%, #C5A059 100%);
+  background: linear-gradient(135deg, #F5EFE6 0%, #D4AF37 50%, #D97736 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-steel-gradient {
-  background: linear-gradient(135deg, #F4F4F6 0%, #A0A5B1 100%);
+  background: linear-gradient(135deg, #F5EFE6 0%, #B8A99A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Botón CTA Primario en Dorado Antiguo (#C5A059), Hover en Dorado más claro (#D4AF37) y texto oscuro (#07080A) con font-weight: 700 + Barrido de luz y Glow sutil */
+/* Botón CTA Primario en Naranja Terracota y Dorado (#D97736 -> #C5A059) con texto Tierra Profunda (#110D0A) */
 .btn-shimmer-lightning {
   position: relative;
   overflow: hidden;
-  background-color: #C5A059;
-  color: #07080A !important;
+  background: linear-gradient(135deg, #D97736 0%, #C5A059 100%);
+  color: #110D0A !important;
   font-weight: 700 !important;
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.32),
-    0 6px 22px -4px rgba(197, 160, 89, 0.35),
-    0 0 14px rgba(197, 160, 89, 0.16);
+    0 6px 22px -4px rgba(217, 119, 54, 0.38),
+    0 0 14px rgba(197, 160, 89, 0.2);
   transition:
-    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -208,13 +210,13 @@ h1, h2, h3, .font-heading {
 }
 
 .btn-shimmer-lightning:hover {
-  background-color: #D4AF37;
-  color: #07080A !important;
+  background: linear-gradient(135deg, #E68A45 0%, #D4AF37 100%);
+  color: #110D0A !important;
   transform: translateY(-2px);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
-    0 10px 28px -4px rgba(212, 175, 55, 0.46),
-    0 0 22px rgba(197, 160, 89, 0.32);
+    0 10px 28px -4px rgba(217, 119, 54, 0.48),
+    0 0 22px rgba(212, 175, 55, 0.34);
 }
 
 .btn-shimmer-lightning:hover::after {
@@ -225,12 +227,12 @@ h1, h2, h3, .font-heading {
   transform: translateY(0) scale(0.98);
 }
 
-/* Botón Secundario con borde dorado sutil y halo en hover */
+/* Botón Secundario con borde terracota/dorado sutil y halo cálido en hover */
 .btn-secondary-gold {
   position: relative;
-  border: 1px solid rgba(197, 160, 89, 0.28);
+  border: 1px solid rgba(217, 119, 54, 0.32);
   box-shadow:
-    inset 0 1px 0 0 rgba(244, 244, 246, 0.06),
+    inset 0 1px 0 0 rgba(245, 239, 230, 0.06),
     0 6px 18px -4px rgba(0, 0, 0, 0.65);
   transition:
     border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
@@ -240,22 +242,22 @@ h1, h2, h3, .font-heading {
 }
 
 .btn-secondary-gold:hover {
-  border-color: #D4AF37;
+  border-color: #D97736;
   transform: translateY(-2px);
   box-shadow:
-    inset 0 1px 0 0 rgba(212, 175, 55, 0.22),
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.25),
     0 10px 26px -4px rgba(0, 0, 0, 0.8),
-    0 0 18px rgba(197, 160, 89, 0.22);
+    0 0 18px rgba(217, 119, 54, 0.25);
 }
 
-/* Tarjeta con elevación 3D sutil y resplandor dorado elegante en bordes */
+/* Tarjeta en Tierra Sombra (#1B140F) con elevación 3D sutil y resplandor naranja/dorado en bordes */
 .card-premium-gold {
-  background-color: #0D0E12;
-  border: 1px solid rgba(197, 160, 89, 0.25);
+  background-color: #1B140F;
+  border: 1px solid rgba(217, 119, 54, 0.28);
   box-shadow:
-    inset 0 1px 0 0 rgba(212, 175, 55, 0.18),
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.2),
     0 14px 34px -8px rgba(0, 0, 0, 0.8),
-    0 0 20px -6px rgba(197, 160, 89, 0.08);
+    0 0 20px -6px rgba(217, 119, 54, 0.12);
   transition:
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -264,49 +266,49 @@ h1, h2, h3, .font-heading {
 
 .card-premium-gold:hover {
   transform: translateY(-4px);
-  border-color: rgba(212, 175, 55, 0.52);
+  border-color: rgba(217, 119, 54, 0.55);
   box-shadow:
     inset 0 1px 0 0 rgba(212, 175, 55, 0.35),
     0 22px 46px -10px rgba(0, 0, 0, 0.9),
-    0 0 26px -4px rgba(197, 160, 89, 0.22);
+    0 0 26px -4px rgba(217, 119, 54, 0.25);
 }
 
-/* Superficie contenedora en Negro Ónix (#0D0E12) con bisel superior dorado y halo profundo */
+/* Superficie contenedora en Tierra Sombra (#1B140F) con bisel superior dorado/naranja */
 .card-static-gold {
-  background-color: #0D0E12;
-  border: 1px solid rgba(197, 160, 89, 0.25);
+  background-color: #1B140F;
+  border: 1px solid rgba(217, 119, 54, 0.28);
   box-shadow:
     inset 0 1px 0 0 rgba(212, 175, 55, 0.2),
     0 18px 44px -10px rgba(0, 0, 0, 0.85),
-    0 0 28px -8px rgba(197, 160, 89, 0.12);
+    0 0 28px -8px rgba(217, 119, 54, 0.14);
   transition:
     border-color 0.35s ease,
     box-shadow 0.35s ease;
 }
 
 .card-static-gold:hover {
-  border-color: rgba(197, 160, 89, 0.42);
+  border-color: rgba(217, 119, 54, 0.45);
   box-shadow:
     inset 0 1px 0 0 rgba(212, 175, 55, 0.28),
     0 22px 50px -10px rgba(0, 0, 0, 0.9),
-    0 0 32px -6px rgba(197, 160, 89, 0.18);
+    0 0 32px -6px rgba(217, 119, 54, 0.2);
 }
 
 .glow-text-subtle {
-  text-shadow: 0 2px 24px rgba(197, 160, 89, 0.18);
+  text-shadow: 0 2px 24px rgba(217, 119, 54, 0.22);
 }
 
 .icon-gold-glow {
-  filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.32));
+  filter: drop-shadow(0 0 8px rgba(217, 119, 54, 0.36));
 }
 
-/* Vignette en Negro Obsidiana (#07080A) */
+/* Vignette en Tierra Profunda (#110D0A) */
 .martial-vignette {
   background: radial-gradient(
     ellipse at center,
     transparent 55%,
-    rgba(7, 8, 10, 0.65) 82%,
-    rgba(7, 8, 10, 0.92) 100%
+    rgba(17, 13, 10, 0.65) 82%,
+    rgba(17, 13, 10, 0.92) 100%
   );
 }
 
@@ -314,15 +316,15 @@ h1, h2, h3, .font-heading {
   box-shadow:
     inset 0 1px 0 0 rgba(212, 175, 55, 0.22),
     0 16px 40px -8px rgba(0, 0, 0, 0.82),
-    0 0 28px -6px rgba(197, 160, 89, 0.14);
+    0 0 28px -6px rgba(217, 119, 54, 0.16);
 }
 
 .card-steel-elevation {
-  box-shadow: inset 0 1px 0 0 rgba(197, 160, 89, 0.2), 0 12px 28px -4px rgba(0, 0, 0, 0.65);
+  box-shadow: inset 0 1px 0 0 rgba(217, 119, 54, 0.22), 0 12px 28px -4px rgba(0, 0, 0, 0.65);
 }
 
 .card-light-steel-elevation {
-  box-shadow: inset 0 1px 0 0 rgba(197, 160, 89, 0.2), 0 12px 28px -4px rgba(0, 0, 0, 0.72);
+  box-shadow: inset 0 1px 0 0 rgba(217, 119, 54, 0.22), 0 12px 28px -4px rgba(0, 0, 0, 0.72);
 }
 
 /* Active tactile press for touchscreens */
@@ -333,44 +335,44 @@ h1, h2, h3, .font-heading {
   transform: scale(0.97);
 }
 
-/* Dorado suave sheen on borders */
+/* Terracota y Dorado sheen on borders */
 .lightning-glow-border {
-  border-color: rgba(197, 160, 89, 0.25);
-  box-shadow: 0 0 16px rgba(197, 160, 89, 0.14);
+  border-color: rgba(217, 119, 54, 0.28);
+  box-shadow: 0 0 16px rgba(217, 119, 54, 0.16);
 }
 
 /* Focus glow for form controls */
 .focus-lightning-ring:focus {
   outline: none;
-  border-color: #C5A059;
-  box-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+  border-color: #D97736;
+  box-shadow: 0 0 15px rgba(217, 119, 54, 0.32);
 }
 
 /* ============================================================================
-   ALTERNANCIA DE SECCIONES (#07080A Y #0D0E12) Y DIVISORES DISCRETOS
+   ALTERNANCIA DE SECCIONES TIERRA (#110D0A Y #1B140F) Y DIVISORES DISCRETOS
    ============================================================================ */
 
 .section-surface-primary {
-  background-color: #07080A;
+  background-color: #110D0A;
   position: relative;
 }
 
 .section-surface-secondary {
-  background-color: #0D0E12;
+  background-color: #1B140F;
   position: relative;
   box-shadow:
-    inset 0 18px 32px -18px rgba(0, 0, 0, 0.85),
-    inset 0 -18px 32px -18px rgba(0, 0, 0, 0.85);
+    inset 0 18px 32px -18px rgba(0, 0, 0, 0.8),
+    inset 0 -18px 32px -18px rgba(0, 0, 0, 0.8);
 }
 
-/* Tarjeta en Negro Obsidiana (#07080A) para secciones con fondo Negro Ónix (#0D0E12) */
+/* Tarjeta en Tierra Profunda (#110D0A) para secciones con fondo Tierra Sombra (#1B140F) */
 .card-on-secondary-gold {
-  background-color: #07080A;
-  border: 1px solid rgba(197, 160, 89, 0.26);
+  background-color: #110D0A;
+  border: 1px solid rgba(217, 119, 54, 0.28);
   box-shadow:
-    inset 0 1px 0 0 rgba(212, 175, 55, 0.2),
-    0 16px 40px -8px rgba(0, 0, 0, 0.88),
-    0 0 24px -6px rgba(197, 160, 89, 0.1);
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.22),
+    0 16px 40px -8px rgba(0, 0, 0, 0.85),
+    0 0 24px -6px rgba(217, 119, 54, 0.14);
   transition:
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -379,44 +381,44 @@ h1, h2, h3, .font-heading {
 
 .card-on-secondary-gold:hover {
   transform: translateY(-4px);
-  border-color: rgba(212, 175, 55, 0.52);
+  border-color: rgba(217, 119, 54, 0.55);
   box-shadow:
-    inset 0 1px 0 0 rgba(212, 175, 55, 0.35),
-    0 24px 50px -10px rgba(0, 0, 0, 0.94),
-    0 0 28px -4px rgba(197, 160, 89, 0.22);
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.36),
+    0 24px 50px -10px rgba(0, 0, 0, 0.92),
+    0 0 28px -4px rgba(217, 119, 54, 0.25);
 }
 
-/* Superficie contenedora estática en Negro Obsidiana (#07080A) para secciones #0D0E12 */
+/* Superficie contenedora estática en Tierra Profunda (#110D0A) para secciones #1B140F */
 .card-static-on-secondary-gold {
-  background-color: #07080A;
-  border: 1px solid rgba(197, 160, 89, 0.26);
+  background-color: #110D0A;
+  border: 1px solid rgba(217, 119, 54, 0.28);
   box-shadow:
-    inset 0 1px 0 0 rgba(212, 175, 55, 0.2),
-    0 20px 48px -10px rgba(0, 0, 0, 0.88),
-    0 0 30px -8px rgba(197, 160, 89, 0.12);
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.22),
+    0 20px 48px -10px rgba(0, 0, 0, 0.86),
+    0 0 30px -8px rgba(217, 119, 54, 0.15);
   transition:
     border-color 0.35s ease,
     box-shadow 0.35s ease;
 }
 
 .card-static-on-secondary-gold:hover {
-  border-color: rgba(212, 175, 55, 0.42);
+  border-color: rgba(217, 119, 54, 0.46);
   box-shadow:
-    inset 0 1px 0 0 rgba(212, 175, 55, 0.28),
-    0 24px 54px -10px rgba(0, 0, 0, 0.92),
-    0 0 34px -6px rgba(197, 160, 89, 0.18);
+    inset 0 1px 0 0 rgba(212, 175, 55, 0.3),
+    0 24px 54px -10px rgba(0, 0, 0, 0.9),
+    0 0 34px -6px rgba(217, 119, 54, 0.22);
 }
 
-/* Divisor de sección discreto de 1px con desvanecimiento suave en Dorado Antiguo */
+/* Divisor de sección discreto de 1px con desvanecimiento suave en Naranja Terracota y Dorado */
 .section-divider-line {
   height: 1px;
   width: 100%;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(197, 160, 89, 0.1) 20%,
-    rgba(197, 160, 89, 0.28) 50%,
-    rgba(197, 160, 89, 0.1) 80%,
+    rgba(217, 119, 54, 0.12) 20%,
+    rgba(197, 160, 89, 0.32) 50%,
+    rgba(217, 119, 54, 0.12) 80%,
     transparent 100%
   );
 }
@@ -431,24 +433,24 @@ h1, h2, h3, .font-heading {
 .bg-flow-testimonios,
 .bg-flow-light-to-brown,
 .bg-flow-contacto {
-  background-color: #07080A;
+  background-color: #110D0A;
 }
 
 /* Sombra envolvente sobria para bloques destacados */
 .earth-block-transition-glow {
   box-shadow:
     0 24px 60px -12px rgba(0, 0, 0, 0.85),
-    0 0 0 1px rgba(197, 160, 89, 0.25),
-    0 0 42px rgba(197, 160, 89, 0.1);
+    0 0 0 1px rgba(217, 119, 54, 0.28),
+    0 0 42px rgba(217, 119, 54, 0.12);
 }
 
-/* Divisor editorial difuminado en Dorado suave */
+/* Divisor editorial difuminado en Naranja/Dorado suave */
 .divider-earth-fade {
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(197, 160, 89, 0.3) 50%,
+    rgba(217, 119, 54, 0.32) 50%,
     transparent 100%
   );
 }
