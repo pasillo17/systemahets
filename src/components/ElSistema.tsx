@@ -18,14 +18,14 @@ export function ElSistema() {
   const { lang, t } = useLanguage();
   const { photos: googlePhotos } = useGooglePlaceData(lang);
 
-  // Galería de fotos reales para la tarjeta "Práctica en nuestra sede de La Plata"
+  // Galería de fotos reales de práctica
   const realPracticePhotos = useMemo(() => {
     const basePhotos = [
       {
         id: "real-parejas-laplata",
         url: SITE_CONFIG.assets.practicaSedeLaPlata,
         fallbackUrl: SITE_CONFIG.assets.practicaSedeLaPlataFallbackUrl,
-        alt: "Práctica real en parejas de respiración, postura y salida de agarres — Systema HETS La Plata",
+        alt: "Práctica real en parejas de respiración, postura y salida de agarres — Systema HETS",
         authorName: undefined as string | undefined,
         authorUri: undefined as string | undefined,
       },
@@ -33,7 +33,7 @@ export function ElSistema() {
         id: "real-cuchillo-laplata",
         url: SITE_CONFIG.assets.defensaCuchilloLaPlata,
         fallbackUrl: SITE_CONFIG.assets.defensaCuchilloFallbackUrl,
-        alt: "Trabajo en parejas de control, postura y gestión del movimiento — Systema HETS La Plata",
+        alt: "Trabajo en parejas de control, postura y gestión del movimiento — Systema HETS",
         authorName: undefined as string | undefined,
         authorUri: undefined as string | undefined,
       },
@@ -42,7 +42,7 @@ export function ElSistema() {
         url: SITE_CONFIG.assets.entrenamientoAireLibre,
         fallbackUrl:
           "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Entrenamiento%20marcial%20al%20aire%20libre.png",
-        alt: "Práctica guiada por Diego Ledesma — Systema HETS La Plata",
+        alt: "Práctica guiada por Diego Ledesma — Systema HETS",
         authorName: undefined as string | undefined,
         authorUri: undefined as string | undefined,
       },
@@ -52,7 +52,7 @@ export function ElSistema() {
       id: gp.id,
       url: gp.url,
       fallbackUrl: SITE_CONFIG.assets.practicaSedeLaPlata,
-      alt: "Fotografía real de Systema Hets Diego Ledesma en Google Maps — La Plata",
+      alt: "Fotografía real de práctica — Systema Hets Diego Ledesma",
       authorName: gp.authorName,
       authorUri: gp.authorUri,
     }));
