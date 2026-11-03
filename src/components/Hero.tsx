@@ -11,7 +11,6 @@ interface HeroProps {
 export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
   const { t } = useLanguage();
   const [logoLoaded, setLogoLoaded] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
 
   const handleScrollToSystem = () => {
     if (onExploreSystem) {
@@ -36,36 +35,21 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
       id="inicio"
       className="relative min-h-[100svh] lg:min-h-[92vh] xl:min-h-screen w-full flex flex-col justify-center items-center bg-[#110D0A] text-[#F5EFE6] overflow-hidden px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 lg:pt-24 pb-4 sm:pb-8 lg:pb-12 select-none"
     >
-      {/* Fondo en movimiento: Video corto en bucle sin sonido + imagen de práctica real de respaldo */}
+      {/* Fondo atmosférico sin foto con movimiento orgánico continuo (respiración y fluidez) */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
+        className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#110D0A]"
       >
-        <img
-          src={SITE_CONFIG.assets.heroImage}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-35 scale-105 filter brightness-75 contrast-110 saturate-75"
-          loading="eager"
-          decoding="async"
-        />
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-          poster={SITE_CONFIG.assets.heroImage}
-          onCanPlay={() => setVideoReady(true)}
-          className={`absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.65] contrast-[1.08] saturate-[0.8] transition-opacity duration-1000 ${
-            videoReady ? "opacity-40 sm:opacity-45" : "opacity-0"
-          }`}
-        >
-          <source src={SITE_CONFIG.videoEntrenamiento.mp4Url} type="video/mp4" />
-          <source src={SITE_CONFIG.videoEntrenamiento.fallbackMp4Url} type="video/mp4" />
-        </video>
-        {/* Velo atmosférico en Tierra Profunda (#110D0A) para garantizar contraste y lectura limpia */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#110D0A]/85 via-[#110D0A]/75 to-[#110D0A]/95" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_15%,rgba(17,13,10,0.85)_85%)]" />
+        {/* Halos en movimiento lento en Naranja Terracota (#D97736) y Dorado Ocre (#C5A059 / #D4AF37) */}
+        <div className="absolute -top-1/4 left-1/4 w-[340px] sm:w-[560px] lg:w-[720px] h-[340px] sm:h-[560px] lg:h-[720px] rounded-full bg-gradient-to-br from-[#D97736]/30 via-[#D4AF37]/15 to-transparent blur-[90px] sm:blur-[130px] animate-hero-orb-a" />
+        <div className="absolute -bottom-1/4 right-1/4 w-[320px] sm:w-[520px] lg:w-[680px] h-[320px] sm:h-[520px] lg:h-[680px] rounded-full bg-gradient-to-tl from-[#C5A059]/25 via-[#D97736]/15 to-transparent blur-[90px] sm:blur-[130px] animate-hero-orb-b" />
+
+        {/* Ondas concéntricas sutiles que acompañan el pulso de respiración */}
+        <div className="absolute top-[42%] left-1/2 w-[300px] sm:w-[480px] lg:w-[640px] h-[300px] sm:h-[480px] lg:h-[640px] rounded-full border border-[#D97736]/20 animate-hero-ring" />
+        <div className="absolute top-[42%] left-1/2 w-[420px] sm:w-[660px] lg:w-[860px] h-[420px] sm:h-[660px] lg:h-[860px] rounded-full border border-[#D4AF37]/15 animate-hero-ring-delayed" />
+
+        {/* Viñeta radial en Tierra Profunda (#110D0A) */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(17,13,10,0.88)_85%)]" />
       </div>
 
       {/* Resplandor ambiental en Naranja Terracota (#D97736) y Dorado (#C5A059) detrás del logo */}
@@ -81,10 +65,10 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
       >
         
         {/* LOGO PROTAGONISTA */}
-        <div className="relative flex flex-col items-center justify-center w-full my-0.5 sm:my-1">
+        <div className="relative flex flex-col items-center justify-center w-full my-0.5 sm:my-1 animate-subtle-float">
           <div
             aria-hidden="true"
-            className="absolute inset-0 m-auto w-44 h-44 sm:w-72 sm:h-72 lg:w-[440px] lg:h-[440px] bg-gradient-to-r from-[#D97736]/20 via-[#D4AF37]/24 to-[#C5A059]/20 rounded-full blur-2xl sm:blur-3xl pointer-events-none"
+            className="absolute inset-0 m-auto w-44 h-44 sm:w-72 sm:h-72 lg:w-[440px] lg:h-[440px] bg-gradient-to-r from-[#D97736]/20 via-[#D4AF37]/24 to-[#C5A059]/20 rounded-full blur-2xl sm:blur-3xl pointer-events-none animate-glow-pulse"
           />
 
           <img

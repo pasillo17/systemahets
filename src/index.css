@@ -146,12 +146,61 @@ h1, h2, h3, .font-heading {
   }
 }
 
+@keyframes heroOrbDriftA {
+  0%, 100% {
+    transform: translate3d(-12%, -8%, 0) scale(1);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate3d(10%, 8%, 0) scale(1.14);
+    opacity: 0.45;
+  }
+}
+
+@keyframes heroOrbDriftB {
+  0%, 100% {
+    transform: translate3d(12%, 10%, 0) scale(1.08);
+    opacity: 0.22;
+  }
+  50% {
+    transform: translate3d(-10%, -6%, 0) scale(0.95);
+    opacity: 0.38;
+  }
+}
+
+@keyframes heroRingBreathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.96);
+    opacity: 0.14;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.06);
+    opacity: 0.28;
+  }
+}
+
 .animate-glow-pulse {
   animation: ambientGlowPulse 8s ease-in-out infinite;
 }
 
 .animate-subtle-float {
   animation: subtleFloat 5s ease-in-out infinite;
+}
+
+.animate-hero-orb-a {
+  animation: heroOrbDriftA 14s ease-in-out infinite;
+}
+
+.animate-hero-orb-b {
+  animation: heroOrbDriftB 18s ease-in-out infinite;
+}
+
+.animate-hero-ring {
+  animation: heroRingBreathe 9s ease-in-out infinite;
+}
+
+.animate-hero-ring-delayed {
+  animation: heroRingBreathe 12s ease-in-out 3s infinite;
 }
 
 /* Gradientes de texto en Hueso Cálido (#F5EFE6), Dorado (#D4AF37) y Naranja Terracota (#D97736) */
