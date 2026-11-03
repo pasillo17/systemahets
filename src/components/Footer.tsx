@@ -16,7 +16,6 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
     { label: t("nav.inicio"), href: "#inicio" },
     { label: t("nav.systema"), href: "#systema" },
     { label: t("nav.diego"), href: "#diego-ledesma" },
-    { label: t("nav.entrenamientos"), href: "#entrenamientos" },
     { label: t("nav.sedes"), href: "#sedes-y-clases" },
     { label: t("nav.testimonios"), href: "#testimonios" },
     { label: t("nav.novedades"), href: "#novedades" },

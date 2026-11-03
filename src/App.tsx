@@ -13,7 +13,6 @@ import { FranjaLinaje } from "./components/FranjaLinaje";
 import { FranjaPrincipios } from "./components/FranjaPrincipios";
 import { ElSistema } from "./components/ElSistema";
 import { DiegoLedesma } from "./components/DiegoLedesma";
-import { Entrenamientos } from "./components/Entrenamientos";
 import { Clases } from "./components/Clases";
 import { Testimonios } from "./components/Testimonios";
 import { ContactoConversion } from "./components/ContactoConversion";
@@ -196,12 +195,7 @@ function MainApp() {
 
             <SectionDivider />
 
-            {/* 6. Entrenamientos en acción (Fondo #110D0A) */}
-            <Entrenamientos />
-
-            <SectionDivider />
-
-            {/* 7. Sedes y Clases: Grilla Semanal Única + Banner Camp 2026 (Fondo #1B140F) */}
+            {/* 6. Sedes y Clases: Grilla Semanal Única + Banner Camp 2026 (Fondo #1B140F) */}
             <Clases onOpenNovedades={handleOpenNovedades} />
 
             <SectionDivider />
