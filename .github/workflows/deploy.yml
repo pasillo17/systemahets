@@ -40,6 +40,8 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Compilar aplicación (Vite build)
+        env:
+          VITE_GOOGLE_MAPS_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_API_KEY }}
         run: npm run build
 
       - name: Subir artefacto de compilación
