@@ -4,10 +4,15 @@ import { useLanguage } from "../context/LanguageContext";
 
 interface FooterProps {
   onOpenNovedades?: () => void;
+  onOpenPrensa?: () => void;
   onNavigateHomeSection?: (href: string) => void;
 }
 
-export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) {
+export function Footer({
+  onOpenNovedades,
+  onOpenPrensa,
+  onNavigateHomeSection,
+}: FooterProps) {
   const contacto = SITE_CONFIG.contacto;
   const redes = SITE_CONFIG.redes;
   const { t } = useLanguage();
@@ -18,12 +23,19 @@ export function Footer({ onOpenNovedades, onNavigateHomeSection }: FooterProps) 
     { label: t("nav.diego"), href: "#diego-ledesma" },
     { label: t("nav.sedes"), href: "#sedes-y-clases" },
     { label: t("nav.testimonios"), href: "#testimonios" },
+    { label: t("nav.prensa"), href: "#prensa" },
     { label: t("nav.novedades"), href: "#novedades" },
     { label: t("nav.contacto"), href: "#contacto" },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    if (href === "#prensa") {
+      if (onOpenPrensa) {
+        onOpenPrensa();
+      }
+      return;
+    }
     if (href === "#novedades") {
       if (onOpenNovedades) {
         onOpenNovedades();

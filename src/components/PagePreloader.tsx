@@ -11,11 +11,11 @@ export function PagePreloader() {
   useEffect(() => {
     const minTimer = setTimeout(() => {
       setFading(true);
-    }, 650);
+    }, 200);
 
     const unmountTimer = setTimeout(() => {
       setMounted(false);
-    }, 1400);
+    }, 550);
 
     return () => {
       clearTimeout(minTimer);

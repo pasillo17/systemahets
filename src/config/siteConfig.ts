@@ -344,6 +344,90 @@ export const SITE_CONFIG = {
       fallbackUrl: "https://raw.githubusercontent.com/pasillo17/SYSTEMA-HETS/main/Demostraci%C3%B3n%20de%20defensa%20con%20cuchillo%20al%20aire%20libre.png",
     },
   ],
+
+  // PRENSA Y DIFUSIÓN: 4 Categorías (Radio, Streaming, TV y Notas Escritas)
+  // // CAMPO EDITABLE: Podés agregar o editar notas en cualquiera de las 4 categorías. Si tiene youtubeId, se puede reproducir directo en la web.
+  prensa: [
+    {
+      id: "prensa-streaming-4x4-deportivo",
+      categoria: "streaming" as const,
+      categorias: ["streaming", "radio"] as Array<"radio" | "streaming" | "tv" | "escrita">,
+      categoriaLabel: "Streaming · Radio en Vivo",
+      categoriaLabelEn: "Live Streaming & Radio",
+      medio: "4x4 Deportivo · 1.21 MAS",
+      medioEn: "4x4 Deportivo · 1.21 MAS",
+      titulo: 'Diego Ledesma: "SYSTEMA es conocerse uno mismo"',
+      tituloEn: 'Diego Ledesma: "SYSTEMA is knowing oneself"',
+      descripcion:
+        "Entrevista en vivo sobre los principios de Systema HETS, respiración, relajación activa, educación corporal y autoprotección aplicada a la vida diaria (entrevista desde el minuto 40:00).",
+      descripcionEn:
+        "Live interview on Systema HETS principles, breathing, active relaxation, bodily education, and practical self-protection for daily life (interview starts at minute 40:00).",
+      formato: "Video en Vivo · Minuto 40:00",
+      formatoEn: "Live Video · Minute 40:00",
+      youtubeId: "IzvBY5yXrFk",
+      startSeconds: 2400,
+      minutoLabel: "Minuto 40:00",
+      minutoLabelEn: "Minute 40:00",
+      url: "https://www.youtube.com/live/IzvBY5yXrFk?si=L1NceYRBTv_ZtdyJ&t=2400s",
+    },
+    {
+      id: "prensa-radio-1",
+      categoria: "radio" as const,
+      categorias: ["radio"] as Array<"radio" | "streaming" | "tv" | "escrita">,
+      categoriaLabel: "Radio",
+      categoriaLabelEn: "Radio",
+      medio: "Entrevistas Radiales · La Plata y Buenos Aires",
+      medioEn: "Radio Interviews · La Plata & Buenos Aires",
+      titulo: "El movimiento consciente y la autoprotección en la vida cotidiana",
+      tituloEn: "Conscious movement and self-protection in everyday life",
+      descripcion:
+        "Charla sobre cómo la respiración, la relajación y la percepción ayudan a gestionar el estrés, reducir tensiones y responder con naturalidad ante situaciones imprevistas.",
+      descripcionEn:
+        "Conversation on how breathing, relaxation, and perception help manage stress, release tension, and respond naturally to unexpected situations.",
+      formato: "Nota en Radio · Audio",
+      formatoEn: "Radio Feature · Audio",
+      // // CAMPO EDITABLE: Pegar aquí el link a otra nota de radio
+      url: "https://www.youtube.com/@systemahetsartemarcialruso",
+    },
+    {
+      id: "prensa-tv-1",
+      categoria: "tv" as const,
+      categorias: ["tv"] as Array<"radio" | "streaming" | "tv" | "escrita">,
+      categoriaLabel: "TV",
+      categoriaLabelEn: "TV",
+      medio: "Televisión y Coberturas Audiovisuales",
+      medioEn: "Television & Broadcast Coverage",
+      titulo: "Demostraciones en vivo y formación internacional de Systema HETS",
+      tituloEn: "Live demonstrations and international Systema HETS training",
+      descripcion:
+        "Cobertura televisiva sobre la trayectoria de 40 años del Prof. Diego Martín Ledesma, su formación en Moscú (Ryabko) y Toronto (Vasiliev) y las clases abiertas en Argentina.",
+      descripcionEn:
+        "Television feature on Prof. Diego Martín Ledesma's 40-year martial arts journey, training in Moscow (Ryabko) and Toronto (Vasiliev), and classes across Argentina.",
+      formato: "Nota en TV · Video",
+      formatoEn: "TV Feature · Video",
+      // // CAMPO EDITABLE: Pegar aquí el link a la nota de TV en YouTube o archivo
+      url: "https://www.youtube.com/@systemahetsartemarcialruso",
+    },
+    {
+      id: "prensa-escrita-1",
+      categoria: "escrita" as const,
+      categorias: ["escrita"] as Array<"radio" | "streaming" | "tv" | "escrita">,
+      categoriaLabel: "Notas Escritas",
+      categoriaLabelEn: "Written Press",
+      medio: "Prensa Gráfica y Portales Digitales",
+      medioEn: "Print & Digital Publications",
+      titulo: "Artículos sobre educación corporal, inclusión marcial y desarrollo humano",
+      tituloEn: "Articles on bodily education, martial inclusion, and human development",
+      descripcion:
+        "Publicaciones y entrevistas escritas sobre el enfoque pedagógico de Systema HETS: aprender a resolver situaciones imprevistas sin depender de la fuerza física bruta.",
+      descripcionEn:
+        "Written interviews and articles exploring the pedagogical approach of Systema HETS: resolving unexpected situations without relying on brute physical strength.",
+      formato: "Prensa Escrita · Artículo",
+      formatoEn: "Written Press · Article",
+      // // CAMPO EDITABLE: Pegar aquí el link al diario, revista o nota digital
+      url: "https://www.instagram.com/systemahets",
+    },
+  ],
 };
 
 /**
@@ -358,3 +442,4 @@ export function getWhatsAppUrl(customMessage?: string): string {
 export function getClasePruebaWhatsAppUrl(): string {
   return getWhatsAppUrl(SITE_CONFIG.mensajesWhatsApp.clasePrueba);
 }
+

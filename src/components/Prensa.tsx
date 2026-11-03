@@ -1,1 +1,1 @@
-export { Testimonios as Prensa } from "./Testimonios";
+export { PrensaModal as Prensa, PrensaModal } from "./PrensaModal";

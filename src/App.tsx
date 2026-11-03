@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { HashRouter } from "react-router-dom";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import { LanguageProvider, useLanguage } from "./context/LanguageContext";
@@ -19,10 +19,16 @@ import { ContactoConversion } from "./components/ContactoConversion";
 import { FraseDestacada } from "./components/FraseDestacada";
 import { PreguntasFrecuentes } from "./components/PreguntasFrecuentes";
 import { FloatingWhatsApp } from "./components/FloatingWhatsApp";
-import { Novedades } from "./components/Novedades";
 import { Footer } from "./components/Footer";
 import { AmbientParticles } from "./components/AmbientParticles";
 import { PagePreloader } from "./components/PagePreloader";
+
+const Novedades = lazy(() =>
+  import("./components/Novedades").then((m) => ({ default: m.Novedades }))
+);
+const PrensaModal = lazy(() =>
+  import("./components/PrensaModal").then((m) => ({ default: m.PrensaModal }))
+);
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
 
@@ -40,6 +46,12 @@ function SectionDivider() {
 function MainApp() {
   const { lang } = useLanguage();
   const [quotaExceeded, setQuotaExceeded] = useState(false);
+  const [prensaModalOpen, setPrensaModalOpen] = useState<boolean>(() => {
+    if (typeof window !== "undefined" && window.location.hash.includes("prensa")) {
+      return true;
+    }
+    return false;
+  });
   const [currentView, setCurrentView] = useState<"home" | "novedades">(() => {
     if (typeof window !== "undefined" && window.location.hash.includes("novedades")) {
       return "novedades";
@@ -58,6 +70,8 @@ function MainApp() {
       if (window.location.hash.includes("novedades")) {
         setCurrentView("novedades");
         window.scrollTo({ top: 0, behavior: "instant" });
+      } else if (window.location.hash.includes("prensa")) {
+        setPrensaModalOpen(true);
       }
     };
     window.addEventListener("hashchange", handleHashChange);
@@ -71,7 +85,7 @@ function MainApp() {
         "Systema HETS Camp 2026 – Seminario Intensivo | Systema HETS Argentina";
     } else {
       document.title =
-        "Systema HETS Argentina | Arte Marcial Ruso, Clases y Seminarios – Diego Ledesma";
+        "Systema HETS Argentina | Arte Marcial Ruso – Diego Ledesma";
     }
   }, [currentView]);
 
@@ -79,6 +93,10 @@ function MainApp() {
     setCurrentView("novedades");
     window.history.replaceState(null, "", "#novedades");
     window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
+  const handleOpenPrensa = () => {
+    setPrensaModalOpen(true);
   };
 
   const handleNavigateHomeSection = (href: string) => {
@@ -154,7 +172,7 @@ function MainApp() {
           </div>
         )}
 
-        {/* Velo de entrada suave / Preloader de respiración consciente en Tierra, Naranja y Dorado */}
+        {/* Velo de entrada rápida en Tierra, Naranja y Dorado */}
         <PagePreloader />
 
         {/* Capa de partículas sutiles en Naranja Terracota (#D97736) y Dorado (#C5A059) */}
@@ -164,12 +182,15 @@ function MainApp() {
         <Navbar
           currentView={currentView}
           onOpenNovedades={handleOpenNovedades}
+          onOpenPrensa={handleOpenPrensa}
           onNavigateHomeSection={handleNavigateHomeSection}
         />
 
         {currentView === "novedades" ? (
           <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
-            <Novedades onBackHome={() => handleNavigateHomeSection("#inicio")} />
+            <Suspense fallback={<div className="min-h-screen bg-[#110D0A]" />}>
+              <Novedades onBackHome={() => handleNavigateHomeSection("#inicio")} />
+            </Suspense>
           </main>
         ) : (
           /* Flujo Narrativo de la Página Inicial con alternancia #110D0A / #1B140F y divisores discretos */
@@ -190,8 +211,8 @@ function MainApp() {
 
             <SectionDivider />
 
-            {/* 5. Diego Ledesma & Trayectoria Formativa (Fondo #1B140F) */}
-            <DiegoLedesma />
+            {/* 5. Diego Ledesma & Trayectoria Formativa + Botón Prensa (Fondo #1B140F) */}
+            <DiegoLedesma onOpenPrensa={handleOpenPrensa} />
 
             <SectionDivider />
 
@@ -200,33 +221,44 @@ function MainApp() {
 
             <SectionDivider />
 
-            {/* 8. Reseñas reales de Google Maps (Fondo #110D0A) */}
+            {/* 7. Reseñas reales de Google Maps (Fondo #110D0A) */}
             <Testimonios />
 
             <SectionDivider />
 
-            {/* 9. Frase Destacada (Fondo #1B140F) */}
+            {/* 8. Frase Destacada (Fondo #1B140F) */}
             <FraseDestacada />
 
             <SectionDivider />
 
-            {/* 10. Acordeón de Preguntas Frecuentes (Fondo #110D0A) */}
+            {/* 9. Acordeón de Preguntas Frecuentes (Fondo #110D0A) */}
             <PreguntasFrecuentes />
 
             <SectionDivider />
 
-            {/* 11. Contacto Directo y Reserva de Clase de Prueba (Fondo #1B140F) */}
+            {/* 10. Contacto Directo y Reserva de Clase (Fondo #1B140F) */}
             <ContactoConversion />
 
             <SectionDivider />
           </main>
         )}
 
-        {/* 12. Footer institucional (Fondo #110D0A) */}
+        {/* 11. Footer institucional (Fondo #110D0A) */}
         <Footer
           onOpenNovedades={handleOpenNovedades}
+          onOpenPrensa={handleOpenPrensa}
           onNavigateHomeSection={handleNavigateHomeSection}
         />
+
+        {/* Modal Emergente de Prensa (Radio, Streaming, TV y Notas Escritas) */}
+        {prensaModalOpen && (
+          <Suspense fallback={null}>
+            <PrensaModal
+              isOpen={prensaModalOpen}
+              onClose={() => setPrensaModalOpen(false)}
+            />
+          </Suspense>
+        )}
 
         {/* Botón Flotante Fijo de WhatsApp en esquina inferior derecha */}
         <FloatingWhatsApp />
@@ -244,5 +276,3 @@ export default function App() {
     </HashRouter>
   );
 }
-
-

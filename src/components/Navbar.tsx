@@ -6,12 +6,14 @@ import { useLanguage } from "../context/LanguageContext";
 interface NavbarProps {
   currentView?: "home" | "novedades";
   onOpenNovedades?: () => void;
+  onOpenPrensa?: () => void;
   onNavigateHomeSection?: (href: string) => void;
 }
 
 export function Navbar({
   currentView = "home",
   onOpenNovedades,
+  onOpenPrensa,
   onNavigateHomeSection,
 }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -90,6 +92,7 @@ export function Navbar({
     { label: t("nav.inicio"), href: "#inicio" },
     { label: t("nav.systema"), href: "#systema" },
     { label: t("nav.sedes"), href: "#sedes-y-clases" },
+    { label: t("nav.prensa"), href: "#prensa", isPrensa: true },
     { label: t("nav.novedades"), href: "#novedades", isNovedades: true },
     { label: t("nav.contacto"), href: "#contacto" },
   ];
@@ -99,6 +102,7 @@ export function Navbar({
     { label: t("nav.systema"), href: "#systema" },
     { label: lang === "en" ? "Diego Ledesma" : "Diego Ledesma", href: "#diego-ledesma" },
     { label: t("nav.sedes"), href: "#sedes-y-clases" },
+    { label: t("nav.prensa"), href: "#prensa", isPrensa: true },
     { label: t("nav.novedades"), href: "#novedades", isNovedades: true },
     { label: t("nav.contacto"), href: "#contacto" },
   ];
@@ -106,6 +110,14 @@ export function Navbar({
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+
+    if (href === "#prensa") {
+      if (onOpenPrensa) {
+        onOpenPrensa();
+      }
+      return;
+    }
+
     setActiveSection(href);
 
     if (href === "#novedades") {

@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { Newspaper, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
+
+interface DiegoLedesmaProps {
+  onOpenPrensa?: () => void;
+}
 
 /**
  * Sección Diego Ledesma:
@@ -9,7 +14,7 @@ import { ScrollReveal } from "./ScrollReveal";
  * y el texto debajo ocupando el 100% del ancho disponible.
  * Un único párrafo introductorio conciso acompañado por la lista editorial "Trayectoria Formativa".
  */
-export function DiegoLedesma() {
+export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
   const [portraitLoaded, setPortraitLoaded] = useState(false);
   const { lang, t } = useLanguage();
 
@@ -112,6 +117,7 @@ export function DiegoLedesma() {
                           : "opacity-0 scale-[1.02]"
                       }`}
                       loading="lazy"
+                      decoding="async"
                       width={480}
                       height={640}
                       onLoad={() => setPortraitLoaded(true)}
@@ -139,13 +145,27 @@ export function DiegoLedesma() {
 
               {/* 2. Texto ocupando el 100% del ancho en móvil y 7 columnas en md+ */}
               <div className="w-full md:col-span-7 space-y-4">
-                <p className="text-sm sm:text-base text-[#F5EFE6] font-medium leading-relaxed pl-3.5 sm:pl-4 border-l-2 border-[#D97736] shadow-[-4px_0_14px_-4px_rgba(217,119,54,0.4)]">
+                <p className="text-sm sm:text-base text-[#F5EFE6] font-medium leading-relaxed pl-3.5 sm:pl-4 border-l border-[#D97736]/60">
                   {t("diego.quote")}
                 </p>
 
                 <p className="text-sm sm:text-base text-[#B8A99A] leading-relaxed">
                   {t("diego.p1")}
                 </p>
+
+                {onOpenPrensa && (
+                  <div className="pt-2">
+                    <button
+                      type="button"
+                      onClick={onOpenPrensa}
+                      className="btn-secondary-gold w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#F5EFE6] bg-[#110D0A] hover:bg-[#D97736] hover:text-[#110D0A] rounded-sm min-h-[46px] cursor-pointer transition-all group"
+                    >
+                      <Newspaper className="w-4 h-4 text-[#D97736] group-hover:text-[#110D0A] shrink-0 transition-colors" />
+                      <span>{t("diego.btnPrensa")}</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#D97736] group-hover:text-[#110D0A] shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </ScrollReveal>
@@ -186,3 +206,4 @@ export function DiegoLedesma() {
     </section>
   );
 }
+

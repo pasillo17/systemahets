@@ -136,16 +136,10 @@ export function Testimonios() {
       className="pt-12 pb-16 sm:pt-20 sm:pb-24 bg-[#110D0A] text-[#F5EFE6] relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Cabecera con insignia en vivo de Google Maps */}
+        {/* Cabecera de Testimonios */}
         <ScrollReveal direction="up" distance={20}>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 mb-7 sm:mb-12 border-b border-[#D97736]/30 pb-5">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-[#1B140F] border border-[#D97736]/35 mb-3">
-                <GoogleGIcon className="w-3.5 h-3.5" />
-                <span className="text-[11px] font-heading uppercase tracking-widest text-[#D4AF37]">
-                  {t("test.googleVerified")} · {placeName}
-                </span>
-              </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading glow-text-subtle">
                 {t("test.title")}
               </h2>
@@ -154,7 +148,7 @@ export function Testimonios() {
               </p>
             </div>
 
-            {/* Resumen de calificación en vivo + botón al perfil de Google */}
+            {/* Resumen de calificación en vivo */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               {placeRating !== null && (
                 <div className="flex items-center gap-3 px-4 py-2.5 rounded-sm bg-[#1B140F] border border-[#D97736]/35 shadow-[0_6px_20px_rgba(0,0,0,0.45)]">
@@ -184,17 +178,6 @@ export function Testimonios() {
                   </div>
                 </div>
               )}
-
-              <a
-                href={shareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-sm bg-[#1B140F] hover:bg-[#D97736]/15 border border-[#D97736]/45 hover:border-[#D4AF37] text-xs font-heading uppercase tracking-wider text-[#F5EFE6] hover:text-[#D4AF37] transition-all duration-300 shadow-[0_4px_14px_rgba(0,0,0,0.4)]"
-              >
-                <GoogleGIcon className="w-3.5 h-3.5" />
-                <span>{t("test.viewAllGoogle")}</span>
-                <ExternalLink className="w-3.5 h-3.5 text-[#D97736]" />
-              </a>
 
               {reviews.length > 3 && (
                 <div className="hidden md:flex items-center gap-2">

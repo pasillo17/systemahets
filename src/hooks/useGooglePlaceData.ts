@@ -254,7 +254,7 @@ export function useGooglePlaceData(lang: string) {
 
         const mappedReviews: LiveGoogleReview[] =
           Array.isArray(place.reviews) && place.reviews.length > 0
-            ? place.reviews.map((rev, idx) => ({
+            ? place.reviews.map((rev: any, idx: number) => ({
                 id: `google-review-${idx}-${
                   rev.publishTime ? rev.publishTime.getTime() : idx
                 }`,
@@ -287,7 +287,7 @@ export function useGooglePlaceData(lang: string) {
 
         const mappedPhotos: LiveGooglePlacePhoto[] = Array.isArray(place.photos)
           ? place.photos
-              .map((photo, idx) => {
+              .map((photo: any, idx: number) => {
                 try {
                   if (excludedPhotoIndices.has(idx)) return null;
                   if (
@@ -325,7 +325,7 @@ export function useGooglePlaceData(lang: string) {
                   return null;
                 }
               })
-              .filter((p): p is LiveGooglePlacePhoto => p !== null)
+              .filter((p: LiveGooglePlacePhoto | null): p is LiveGooglePlacePhoto => p !== null)
           : [];
 
         const result: CachedPlaceData = {

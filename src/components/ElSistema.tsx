@@ -131,7 +131,6 @@ export function ElSistema() {
                 <ImageWithFallback
                   key={currentPhoto.id}
                   src={currentPhoto.url}
-                  fallbackUrl={currentPhoto.fallbackUrl}
                   alt={currentPhoto.alt}
                   aspectRatioClass="aspect-[16/10] sm:aspect-[16/11]"
                   className="w-full h-full object-cover object-center filter brightness-95 contrast-105 transition-transform duration-700 group-hover:scale-105"

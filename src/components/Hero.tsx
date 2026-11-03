@@ -46,13 +46,14 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center opacity-35 scale-105 filter brightness-75 contrast-110 saturate-75"
           loading="eager"
+          decoding="async"
         />
         <video
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="none"
           poster={SITE_CONFIG.assets.heroImage}
           onCanPlay={() => setVideoReady(true)}
           className={`absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.65] contrast-[1.08] saturate-[0.8] transition-opacity duration-1000 ${
@@ -95,6 +96,7 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
             width={560}
             height={560}
             fetchPriority="high"
+            decoding="async"
             onLoad={() => setLogoLoaded(true)}
             onError={(e) => {
               setLogoLoaded(true);
@@ -109,6 +111,9 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading leading-none text-balance glow-text-subtle"
             style={{ textWrap: "balance" }}
           >
+            <span className="sr-only">
+              Systema HETS Argentina — Clases y Seminarios de Arte Marcial Ruso, Movimiento Consciente y Autoprotección en La Plata con Diego Martín Ledesma:{" "}
+            </span>
             {t("hero.titulo")}
           </h1>
 

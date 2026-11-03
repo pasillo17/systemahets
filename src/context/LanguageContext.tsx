@@ -18,6 +18,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.entrenamientos": "ENTRENAMIENTOS",
     "nav.sedes": "SEDES Y CLASES",
     "nav.testimonios": "TESTIMONIOS",
+    "nav.prensa": "PRENSA",
     "nav.novedades": "NOVEDADES",
     "nav.contacto": "CONTACTO",
     "nav.consultar": "CONSULTAR POR WHATSAPP",
@@ -98,6 +99,21 @@ const translations: Record<Language, Record<string, string>> = {
     "diego.p1": "Mi visión de la enseñanza parte de acompañar a cada persona a descubrir sus propias capacidades sin moldes rígidos ni exigencias artificiales. A través de la respiración, la percepción y el movimiento consciente aplicado a situaciones reales, buscamos que cada clase sea un espacio humano donde soltar tensiones, fortalecer la salud y construir una serenidad auténtica que se traslade a la vida cotidiana.",
     "diego.timelineHeader": "Trayectoria Formativa",
     "diego.timelineLoc": "La Plata · Buenos Aires",
+    "diego.btnPrensa": "Prensa: Notas en Radio, Streaming, TV y Escritas",
+    "diego.featuredPrensaLabel": "Entrevista en Prensa · Reproducir desde el Minuto 40:00",
+
+    // Prensa Modal
+    "prensa.title": "Prensa y Difusión",
+    "prensa.subtitle": "Entrevistas, participaciones y notas sobre Systema HETS y el movimiento consciente en Radio, Streaming, TV y Prensa Escrita.",
+    "prensa.filterAll": "Todas",
+    "prensa.filterRadio": "Radio",
+    "prensa.filterStreaming": "Streaming",
+    "prensa.filterTv": "TV",
+    "prensa.filterEscrita": "Notas Escritas",
+    "prensa.btnOpen": "Ver / Escuchar nota",
+    "prensa.playHere": "Reproducir desde Min. 40:00",
+    "prensa.openYoutube": "Ver en YouTube (Min. 40:00)",
+    "prensa.close": "Cerrar",
 
     // Entrenamientos
     "ent.title": "Entrenamientos en acción",
@@ -147,7 +163,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Contacto y Conversión (al final)
     "contact.title": "¿Querés venir a probar una clase?",
     "contact.desc": "Escribile directamente a Diego por WhatsApp para elegir el día que te quede más cómodo. Solo necesitás traer una remera y un pantalón deportivo cómodo.",
-    "contact.btnTrial": "Reservar clase de prueba por WhatsApp",
+    "contact.btnTrial": "Contacta y conoce la forma de acceder a tu clase",
     "contact.subtext": "Atención directa de Diego Ledesma · Calle 22 Nº 1027 (entre 53 y 54), La Plata",
     "contact.officialChannels": "Redes y canales:",
     "contact.waChannel": "Canal de WhatsApp",
@@ -176,6 +192,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.entrenamientos": "TRAINING",
     "nav.sedes": "SCHEDULE & LOCATION",
     "nav.testimonios": "REVIEWS",
+    "nav.prensa": "PRESS",
     "nav.novedades": "NEWS",
     "nav.contacto": "CONTACT",
     "nav.consultar": "WHATSAPP INQUIRY",
@@ -256,6 +273,21 @@ const translations: Record<Language, Record<string, string>> = {
     "diego.p1": "My teaching philosophy focuses on guiding each person to discover their own capabilities without rigid molds or artificial demands. Through breathing, perception, and conscious movement applied to real situations, every class becomes a human, respectful space to release tension, nurture health, and cultivate genuine composure for everyday life.",
     "diego.timelineHeader": "Formative Journey",
     "diego.timelineLoc": "La Plata · Buenos Aires",
+    "diego.btnPrensa": "Press: Radio, Streaming, TV & Written Features",
+    "diego.featuredPrensaLabel": "Press Interview · Play from Minute 40:00",
+
+    // Prensa Modal
+    "prensa.title": "Press & Media",
+    "prensa.subtitle": "Interviews, features, and articles on Systema HETS and conscious movement across Radio, Streaming, TV, and Print/Digital Press.",
+    "prensa.filterAll": "All",
+    "prensa.filterRadio": "Radio",
+    "prensa.filterStreaming": "Streaming",
+    "prensa.filterTv": "TV",
+    "prensa.filterEscrita": "Written Press",
+    "prensa.btnOpen": "View / Listen to feature",
+    "prensa.playHere": "Play from Min. 40:00",
+    "prensa.openYoutube": "Watch on YouTube (Min. 40:00)",
+    "prensa.close": "Close",
 
     // Entrenamientos
     "ent.title": "Training in action",
@@ -305,7 +337,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Contacto y Conversión
     "contact.title": "Want to try a class?",
     "contact.desc": "Send Diego a message on WhatsApp to pick the day that works best for you. All you need to bring is a t-shirt and comfortable sweatpants.",
-    "contact.btnTrial": "Book a trial class on WhatsApp",
+    "contact.btnTrial": "Contact us and learn how to join your class",
     "contact.subtext": "Direct coordination with Diego Ledesma · Calle 22 Nº 1027 (btw 53 & 54), La Plata",
     "contact.officialChannels": "Social channels:",
     "contact.waChannel": "WhatsApp Channel",
