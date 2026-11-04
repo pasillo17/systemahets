@@ -35,28 +35,17 @@ export function Hero({ onExploreSystem, onExploreClasses }: HeroProps) {
       id="inicio"
       className="relative min-h-[100svh] lg:min-h-[92vh] xl:min-h-screen w-full flex flex-col justify-center items-center bg-[#110D0A] text-[#F5EFE6] overflow-hidden px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 lg:pt-24 pb-4 sm:pb-8 lg:pb-12 select-none"
     >
-      {/* Fondo atmosférico sin foto con movimiento orgánico continuo (respiración y fluidez) */}
+      {/* Fondo atmosférico limpio sin foto ni círculos sueltos */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#110D0A]"
+        className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#110D0A] flex items-center justify-center"
       >
-        {/* Halos en movimiento lento en Naranja Terracota (#D97736) y Dorado Ocre (#C5A059 / #D4AF37) */}
-        <div className="absolute -top-1/4 left-1/4 w-[340px] sm:w-[560px] lg:w-[720px] h-[340px] sm:h-[560px] lg:h-[720px] rounded-full bg-gradient-to-br from-[#D97736]/30 via-[#D4AF37]/15 to-transparent blur-[90px] sm:blur-[130px] animate-hero-orb-a" />
-        <div className="absolute -bottom-1/4 right-1/4 w-[320px] sm:w-[520px] lg:w-[680px] h-[320px] sm:h-[520px] lg:h-[680px] rounded-full bg-gradient-to-tl from-[#C5A059]/25 via-[#D97736]/15 to-transparent blur-[90px] sm:blur-[130px] animate-hero-orb-b" />
-
-        {/* Ondas concéntricas sutiles que acompañan el pulso de respiración */}
-        <div className="absolute top-[42%] left-1/2 w-[300px] sm:w-[480px] lg:w-[640px] h-[300px] sm:h-[480px] lg:h-[640px] rounded-full border border-[#D97736]/20 animate-hero-ring" />
-        <div className="absolute top-[42%] left-1/2 w-[420px] sm:w-[660px] lg:w-[860px] h-[420px] sm:h-[660px] lg:h-[860px] rounded-full border border-[#D4AF37]/15 animate-hero-ring-delayed" />
+        {/* Resplandor ambiental centrado con movimiento suave de respiración */}
+        <div className="w-[300px] sm:w-[500px] md:w-[620px] lg:w-[780px] h-[300px] sm:h-[500px] md:h-[620px] lg:h-[780px] bg-gradient-to-tr from-[#D97736]/22 via-[#D4AF37]/15 to-transparent rounded-full blur-[80px] sm:blur-[120px] animate-glow-pulse" />
 
         {/* Viñeta radial en Tierra Profunda (#110D0A) */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(17,13,10,0.88)_85%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(17,13,10,0.9)_85%)]" />
       </div>
-
-      {/* Resplandor ambiental en Naranja Terracota (#D97736) y Dorado (#C5A059) detrás del logo */}
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] sm:w-[460px] md:w-[580px] lg:w-[760px] h-[260px] sm:h-[460px] md:h-[580px] lg:h-[760px] bg-gradient-to-tr from-[#D97736]/22 via-[#D4AF37]/16 to-[#1B140F]/25 rounded-full blur-[65px] sm:blur-[105px] pointer-events-none z-[1] animate-glow-pulse"
-      />
 
       {/* Contenedor central */}
       <div
