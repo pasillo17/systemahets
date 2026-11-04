@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Star, ExternalLink } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { useGooglePlaceData } from "../hooks/useGooglePlaceData";
@@ -60,6 +60,7 @@ function ReviewerAvatar({
       onError={() => setImgError(true)}
       className="w-11 h-11 rounded-full object-cover border border-[#D97736]/45 group-hover:border-[#D4AF37] transition-colors shrink-0 shadow-[0_0_14px_rgba(217,119,54,0.22)]"
       loading="lazy"
+      decoding="async"
       width={44}
       height={44}
     />
@@ -68,67 +69,75 @@ function ReviewerAvatar({
 
 /**
  * SECCIÓN TESTIMONIOS:
- * Conectada en tiempo real a Google Maps Platform — Places API (New) para mostrar
- * las reseñas verificadas de "Systema Hets Diego Ledesma" en La Plata, incluyendo
- * atribución obligatoria al autor de cada reseña (AuthorAttribution).
+ * Carrusel fluido acelerado por GPU (translate3d) para respuesta instantánea en PC y móvil.
  */
 export function Testimonios() {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDesktop, setIsDesktop] = useState<boolean>(() =>
+    typeof window !== "undefined" ? window.innerWidth >= 768 : true
+  );
   const [expandedIds, setExpandedIds] = useState<Record<string, boolean>>({});
+  const touchStartX = useRef<number | null>(null);
   const { lang, t } = useLanguage();
-  const { placeName, placeRating, userRatingCount, reviews, isLoading } =
+  const { placeRating, userRatingCount, reviews, isLoading } =
     useGooglePlaceData(lang);
 
-  const scrollToTestimonial = (index: number) => {
-    if (!scrollRef.current) return;
-    const cards = scrollRef.current.children;
-    if (cards[index]) {
-      (cards[index] as HTMLElement).scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-      setActiveIndex(index);
-    }
-  };
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const handleChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    setIsDesktop(mq.matches);
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
+  }, []);
 
   const handleNext = () => {
     if (reviews.length === 0) return;
-    const next = (activeIndex + 1) % reviews.length;
-    scrollToTestimonial(next);
+    setActiveIndex((prev) => (prev + 1) % reviews.length);
   };
 
   const handlePrev = () => {
     if (reviews.length === 0) return;
-    const prev = (activeIndex - 1 + reviews.length) % reviews.length;
-    scrollToTestimonial(prev);
+    setActiveIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container || reviews.length === 0) return;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0]?.clientX ?? null;
+  };
 
-    const handleScroll = () => {
-      const scrollPosition = container.scrollLeft;
-      const firstCard = container.children[0] as HTMLElement | undefined;
-      const cardWidth = firstCard ? firstCard.offsetWidth + 24 : container.offsetWidth;
-      if (cardWidth <= 0) return;
-      const newIndex = Math.round(scrollPosition / cardWidth);
-      if (newIndex >= 0 && newIndex < reviews.length) {
-        setActiveIndex(newIndex);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const endX = e.changedTouches[0]?.clientX ?? touchStartX.current;
+    const deltaX = touchStartX.current - endX;
+    if (Math.abs(deltaX) > 40) {
+      if (deltaX > 0) {
+        handleNext();
+      } else {
+        handlePrev();
       }
-    };
-
-    container.addEventListener("scroll", handleScroll, { passive: true });
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [reviews.length]);
+    }
+    touchStartX.current = null;
+  };
 
   const toggleExpand = (id: string) => {
     setExpandedIds((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const shareUrl = SITE_CONFIG.sedePrincipal.googleShareUrl;
+
+  // En escritorio (3 tarjetas visibles), agregamos las primeras 2 al final de la pista
+  // para que al avanzar hasta la reseña 4 y 5 siempre haya 3 tarjetas completas en pantalla.
+  const renderedReviews =
+    isDesktop && reviews.length > 2
+      ? [
+          ...reviews.map((r, i) => ({ ...r, renderKey: `${r.id}-main-${i}` })),
+          ...reviews
+            .slice(0, 2)
+            .map((r, i) => ({ ...r, renderKey: `${r.id}-clone-${i}` })),
+        ]
+      : reviews.map((r, i) => ({ ...r, renderKey: `${r.id}-main-${i}` }));
+
+  const stepPercent = isDesktop ? 100 / 3 : 100;
+  const translatePercent = activeIndex * stepPercent;
 
   return (
     <section
@@ -148,7 +157,7 @@ export function Testimonios() {
               </p>
             </div>
 
-            {/* Resumen de calificación en vivo */}
+            {/* Resumen de calificación en vivo + flechas de navegación rápidas en PC */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               {placeRating !== null && (
                 <div className="flex items-center gap-3 px-4 py-2.5 rounded-sm bg-[#1B140F] border border-[#D97736]/35 shadow-[0_6px_20px_rgba(0,0,0,0.45)]">
@@ -179,12 +188,12 @@ export function Testimonios() {
                 </div>
               )}
 
-              {reviews.length > 3 && (
+              {reviews.length > 1 && (
                 <div className="hidden md:flex items-center gap-2">
                   <button
                     type="button"
                     onClick={handlePrev}
-                    className="w-10 h-10 rounded-sm bg-[#1B140F] border border-[#D97736]/30 hover:border-[#D4AF37] text-[#F5EFE6] flex items-center justify-center transition-colors cursor-pointer"
+                    className="w-11 h-11 rounded-sm bg-[#1B140F] border border-[#D97736]/35 hover:border-[#D4AF37] hover:bg-[#D97736]/15 text-[#F5EFE6] flex items-center justify-center active:scale-95 transition-all duration-150 cursor-pointer"
                     aria-label="Reseña anterior"
                   >
                     <ChevronLeft className="w-5 h-5 text-[#D97736]" />
@@ -192,7 +201,7 @@ export function Testimonios() {
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="w-10 h-10 rounded-sm bg-[#1B140F] border border-[#D97736]/30 hover:border-[#D4AF37] text-[#F5EFE6] flex items-center justify-center transition-colors cursor-pointer"
+                    className="w-11 h-11 rounded-sm bg-[#1B140F] border border-[#D97736]/35 hover:border-[#D4AF37] hover:bg-[#D97736]/15 text-[#F5EFE6] flex items-center justify-center active:scale-95 transition-all duration-150 cursor-pointer"
                     aria-label="Reseña siguiente"
                   >
                     <ChevronRight className="w-5 h-5 text-[#D97736]" />
@@ -203,7 +212,7 @@ export function Testimonios() {
           </div>
         </ScrollReveal>
 
-        {/* Estado de carga mientras consulta Places API (New) */}
+        {/* Estado de carga */}
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {[0, 1, 2].map((skeletonIdx) => (
@@ -235,118 +244,126 @@ export function Testimonios() {
             ))}
           </div>
         ) : (
-          /* Reseñas reales de Google Maps en carrusel deslizable */
-          <ScrollReveal direction="up" delay={80} distance={24}>
+          /* Pista deslizable fluida acelerada por GPU (translate3d) */
+          <ScrollReveal direction="up" delay={60} distance={20}>
             <div
-              ref={scrollRef}
-              className="flex gap-4 sm:gap-6 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-none items-stretch"
-              style={{
-                scrollSnapType: "x mandatory",
-                WebkitOverflowScrolling: "touch",
-              }}
+              className="overflow-hidden -mx-2 sm:-mx-3 py-1"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
             >
-              {reviews.map((item) => {
-                const isExpanded = !!expandedIds[item.id];
-                const isLong = item.text.length > 240;
-                const displayedText =
-                  isLong && !isExpanded
-                    ? `${item.text.slice(0, 240).trim()}…`
-                    : item.text;
+              <div
+                className="flex items-stretch will-change-transform transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                style={{
+                  transform: `translate3d(-${translatePercent}%, 0, 0)`,
+                }}
+              >
+                {renderedReviews.map((item) => {
+                  const isExpanded = !!expandedIds[item.id];
+                  const isLong = item.text.length > 240;
+                  const displayedText =
+                    isLong && !isExpanded
+                      ? `${item.text.slice(0, 240).trim()}…`
+                      : item.text;
 
-                return (
-                  <SpotlightCard
-                    key={item.id}
-                    className="snap-center shrink-0 w-full md:w-[calc(33.333%-1rem)] p-5 sm:p-6 group flex flex-col justify-between"
-                  >
-                    <div className="space-y-4">
-                      {/* Cabecera de reseña con atribución obligatoria de autor (AuthorAttribution) */}
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex items-center gap-3 min-w-0">
-                          <a
-                            href={item.authorUri}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            title={t("test.viewAuthorProfile")}
-                            className="shrink-0"
-                          >
-                            <ReviewerAvatar
-                              photoUri={item.authorPhotoUri}
-                              name={item.authorName}
-                            />
-                          </a>
-                          <div className="min-w-0">
+                  return (
+                    <div
+                      key={item.renderKey}
+                      className="w-full md:w-1/3 shrink-0 px-2 sm:px-3 flex"
+                    >
+                      <SpotlightCard className="w-full p-5 sm:p-6 group flex flex-col justify-between">
+                        <div className="space-y-4">
+                          {/* Cabecera de reseña con atribución de autor */}
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-center gap-3 min-w-0">
+                              <a
+                                href={item.authorUri}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title={t("test.viewAuthorProfile")}
+                                className="shrink-0"
+                              >
+                                <ReviewerAvatar
+                                  photoUri={item.authorPhotoUri}
+                                  name={item.authorName}
+                                />
+                              </a>
+                              <div className="min-w-0">
+                                <a
+                                  href={item.authorUri}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="font-heading text-sm font-bold uppercase tracking-wide text-[#F5EFE6] hover:text-[#D4AF37] group-hover:text-[#D4AF37] transition-colors block truncate"
+                                >
+                                  {item.authorName}
+                                </a>
+                                <span className="text-xs text-[#B8A99A] font-sans block">
+                                  {t("test.studentBadge")}
+                                </span>
+                              </div>
+                            </div>
+
                             <a
-                              href={item.authorUri}
+                              href={item.googleMapsUri || shareUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="font-heading text-sm font-bold uppercase tracking-wide text-[#F5EFE6] hover:text-[#D4AF37] group-hover:text-[#D4AF37] transition-colors block truncate"
+                              aria-label="Google Maps"
+                              className="p-1.5 rounded-xs bg-[#110D0A]/70 border border-[#D97736]/25 hover:border-[#D4AF37] transition-colors shrink-0"
                             >
-                              {item.authorName}
+                              <GoogleGIcon className="w-3.5 h-3.5" />
                             </a>
-                            <span className="text-xs text-[#B8A99A] font-sans block">
-                              {t("test.studentBadge")}
-                            </span>
+                          </div>
+
+                          {/* Estrellas de reseña */}
+                          <div
+                            className="flex items-center gap-1 text-[#D4AF37]"
+                            aria-label={`${item.rating} estrellas`}
+                          >
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`w-3.5 h-3.5 ${
+                                  i < Math.round(item.rating)
+                                    ? "fill-current text-[#D4AF37] drop-shadow-[0_0_6px_rgba(217,119,54,0.35)]"
+                                    : "text-[#B8A99A]/30"
+                                }`}
+                              />
+                            ))}
+                          </div>
+
+                          {/* Texto real de la reseña */}
+                          <div className="space-y-2">
+                            <p className="text-xs sm:text-sm text-[#B8A99A] group-hover:text-[#F5EFE6]/90 transition-colors leading-relaxed font-sans font-normal whitespace-pre-line">
+                              {displayedText || t("test.noTextReview")}
+                            </p>
+                            {isLong && (
+                              <button
+                                type="button"
+                                onClick={() => toggleExpand(item.id)}
+                                className="text-xs font-heading uppercase tracking-wider text-[#D97736] hover:text-[#D4AF37] transition-colors cursor-pointer"
+                              >
+                                {isExpanded
+                                  ? t("test.readLess")
+                                  : t("test.readMore")}
+                              </button>
+                            )}
                           </div>
                         </div>
-
-                        <a
-                          href={item.googleMapsUri || shareUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Google Maps"
-                          className="p-1.5 rounded-xs bg-[#110D0A]/70 border border-[#D97736]/25 hover:border-[#D4AF37] transition-colors shrink-0"
-                        >
-                          <GoogleGIcon className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
-
-                      {/* Estrellas de reseña en Naranja Terracota y Dorado */}
-                      <div
-                        className="flex items-center gap-1 text-[#D4AF37]"
-                        aria-label={`${item.rating} estrellas`}
-                      >
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`w-3.5 h-3.5 ${
-                              i < Math.round(item.rating)
-                                ? "fill-current text-[#D4AF37] drop-shadow-[0_0_6px_rgba(217,119,54,0.35)]"
-                                : "text-[#B8A99A]/30"
-                            }`}
-                          />
-                        ))}
-                      </div>
-
-                      {/* Texto real de la reseña en Google */}
-                      <div className="space-y-2">
-                        <p className="text-xs sm:text-sm text-[#B8A99A] group-hover:text-[#F5EFE6]/90 transition-colors leading-relaxed font-sans font-normal whitespace-pre-line">
-                          {displayedText || t("test.noTextReview")}
-                        </p>
-                        {isLong && (
-                          <button
-                            type="button"
-                            onClick={() => toggleExpand(item.id)}
-                            className="text-xs font-heading uppercase tracking-wider text-[#D97736] hover:text-[#D4AF37] transition-colors cursor-pointer"
-                          >
-                            {isExpanded ? t("test.readLess") : t("test.readMore")}
-                          </button>
-                        )}
-                      </div>
+                      </SpotlightCard>
                     </div>
-                  </SpotlightCard>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </ScrollReveal>
         )}
 
         {/* Controles e indicadores inferiores */}
         {reviews.length > 1 && (
-          <div className="flex items-center justify-center gap-4 pt-5">
+          <div className="flex items-center justify-center gap-4 pt-6">
             <button
               type="button"
               onClick={handlePrev}
-              className="w-8 h-8 rounded-full bg-[#1B140F] border border-[#D97736]/35 text-[#F5EFE6] flex items-center justify-center active:scale-95 transition-all cursor-pointer shadow-[0_0_12px_rgba(217,119,54,0.18)]"
+              className="w-9 h-9 rounded-full bg-[#1B140F] border border-[#D97736]/40 hover:border-[#D4AF37] text-[#F5EFE6] flex items-center justify-center active:scale-90 transition-all duration-150 cursor-pointer shadow-[0_0_12px_rgba(217,119,54,0.18)]"
               aria-label="Reseña anterior"
             >
               <ChevronLeft className="w-4 h-4 text-[#D97736]" />
@@ -357,11 +374,11 @@ export function Testimonios() {
                 <button
                   key={rev.id}
                   type="button"
-                  onClick={() => scrollToTestimonial(dotIdx)}
-                  className={`h-2 rounded-xs transition-all duration-300 cursor-pointer ${
+                  onClick={() => setActiveIndex(dotIdx)}
+                  className={`h-2 rounded-xs transition-all duration-200 cursor-pointer ${
                     activeIndex === dotIdx
                       ? "bg-gradient-to-r from-[#D97736] to-[#D4AF37] w-6 shadow-[0_0_10px_rgba(217,119,54,0.5)]"
-                      : "bg-[#B8A99A]/30 w-2"
+                      : "bg-[#B8A99A]/30 hover:bg-[#B8A99A]/60 w-2"
                   }`}
                   aria-label={`Reseña ${dotIdx + 1}`}
                 />
@@ -371,7 +388,7 @@ export function Testimonios() {
             <button
               type="button"
               onClick={handleNext}
-              className="w-8 h-8 rounded-full bg-[#1B140F] border border-[#D97736]/35 text-[#F5EFE6] flex items-center justify-center active:scale-95 transition-all cursor-pointer shadow-[0_0_12px_rgba(217,119,54,0.18)]"
+              className="w-9 h-9 rounded-full bg-[#1B140F] border border-[#D97736]/40 hover:border-[#D4AF37] text-[#F5EFE6] flex items-center justify-center active:scale-90 transition-all duration-150 cursor-pointer shadow-[0_0_12px_rgba(217,119,54,0.18)]"
               aria-label="Reseña siguiente"
             >
               <ChevronRight className="w-4 h-4 text-[#D97736]" />
@@ -384,4 +401,3 @@ export function Testimonios() {
 }
 
 export { Testimonios as Prensa };
-

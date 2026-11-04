@@ -4,7 +4,7 @@ import { SITE_CONFIG, getWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 
 interface NavbarProps {
-  currentView?: "home" | "novedades";
+  currentView?: "home" | "novedades" | "prensa";
   onOpenNovedades?: () => void;
   onOpenPrensa?: () => void;
   onNavigateHomeSection?: (href: string) => void;
@@ -37,6 +37,12 @@ export function Navbar({
 
       if (currentView === "novedades") {
         setActiveSection("#novedades");
+        ticking = false;
+        return;
+      }
+
+      if (currentView === "prensa") {
+        setActiveSection("#prensa");
         ticking = false;
         return;
       }
@@ -194,6 +200,8 @@ export function Navbar({
               const isActive =
                 currentView === "novedades"
                   ? link.href === "#novedades"
+                  : currentView === "prensa"
+                  ? link.href === "#prensa"
                   : activeSection === link.href;
               return (
                 <div key={link.href} className="flex items-center">

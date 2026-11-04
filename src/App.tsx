@@ -26,8 +26,8 @@ import { PagePreloader } from "./components/PagePreloader";
 const Novedades = lazy(() =>
   import("./components/Novedades").then((m) => ({ default: m.Novedades }))
 );
-const PrensaModal = lazy(() =>
-  import("./components/PrensaModal").then((m) => ({ default: m.PrensaModal }))
+const Prensa = lazy(() =>
+  import("./components/Prensa").then((m) => ({ default: m.Prensa }))
 );
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "";
@@ -46,15 +46,14 @@ function SectionDivider() {
 function MainApp() {
   const { lang } = useLanguage();
   const [quotaExceeded, setQuotaExceeded] = useState(false);
-  const [prensaModalOpen, setPrensaModalOpen] = useState<boolean>(() => {
-    if (typeof window !== "undefined" && window.location.hash.includes("prensa")) {
-      return true;
-    }
-    return false;
-  });
-  const [currentView, setCurrentView] = useState<"home" | "novedades">(() => {
-    if (typeof window !== "undefined" && window.location.hash.includes("novedades")) {
-      return "novedades";
+  const [currentView, setCurrentView] = useState<"home" | "novedades" | "prensa">(() => {
+    if (typeof window !== "undefined") {
+      if (window.location.hash.includes("novedades")) {
+        return "novedades";
+      }
+      if (window.location.hash.includes("prensa")) {
+        return "prensa";
+      }
     }
     return "home";
   });
@@ -71,7 +70,8 @@ function MainApp() {
         setCurrentView("novedades");
         window.scrollTo({ top: 0, behavior: "instant" });
       } else if (window.location.hash.includes("prensa")) {
-        setPrensaModalOpen(true);
+        setCurrentView("prensa");
+        window.scrollTo({ top: 0, behavior: "instant" });
       }
     };
     window.addEventListener("hashchange", handleHashChange);
@@ -83,9 +83,12 @@ function MainApp() {
     if (currentView === "novedades") {
       document.title =
         "Systema HETS Camp 2026 – Seminario Intensivo | Systema HETS Argentina";
+    } else if (currentView === "prensa") {
+      document.title =
+        "Prensa y Difusión – Diego Ledesma | Systema HETS Argentina";
     } else {
       document.title =
-        "Systema HETS Argentina | Arte Marcial Ruso – Diego Ledesma";
+        "Systema HETS Argentina | Arte Marcial Ruso en La Plata";
     }
   }, [currentView]);
 
@@ -96,7 +99,9 @@ function MainApp() {
   };
 
   const handleOpenPrensa = () => {
-    setPrensaModalOpen(true);
+    setCurrentView("prensa");
+    window.history.replaceState(null, "", "#prensa");
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const handleNavigateHomeSection = (href: string) => {
@@ -192,6 +197,12 @@ function MainApp() {
               <Novedades onBackHome={() => handleNavigateHomeSection("#inicio")} />
             </Suspense>
           </main>
+        ) : currentView === "prensa" ? (
+          <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
+            <Suspense fallback={<div className="min-h-screen bg-[#110D0A]" />}>
+              <Prensa onBackHome={() => handleNavigateHomeSection("#inicio")} />
+            </Suspense>
+          </main>
         ) : (
           /* Flujo Narrativo de la Página Inicial con alternancia #110D0A / #1B140F y divisores discretos */
           <main className="flex-1 overflow-x-hidden relative z-10 w-full max-w-full">
@@ -249,16 +260,6 @@ function MainApp() {
           onOpenPrensa={handleOpenPrensa}
           onNavigateHomeSection={handleNavigateHomeSection}
         />
-
-        {/* Modal Emergente de Prensa (Radio, Streaming, TV y Notas Escritas) */}
-        {prensaModalOpen && (
-          <Suspense fallback={null}>
-            <PrensaModal
-              isOpen={prensaModalOpen}
-              onClose={() => setPrensaModalOpen(false)}
-            />
-          </Suspense>
-        )}
 
         {/* Botón Flotante Fijo de WhatsApp en esquina inferior derecha */}
         <FloatingWhatsApp />
