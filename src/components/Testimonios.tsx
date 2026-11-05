@@ -142,17 +142,29 @@ export function Testimonios() {
   return (
     <section
       id="testimonios"
-      className="pt-12 pb-16 sm:pt-20 sm:pb-24 bg-[#110D0A] text-[#F5EFE6] relative overflow-hidden"
+      className="pt-14 pb-18 sm:pt-20 sm:pb-24 bg-[#110D0A] text-[#F5EFE6] relative overflow-hidden"
     >
+      {/* Marca de agua gigante de fondo */}
+      <div
+        aria-hidden="true"
+        className="hidden lg:block absolute top-8 right-6 font-heading font-black uppercase tracking-[0.22em] text-7xl xl:text-8xl text-[#D97736]/[0.05] select-none pointer-events-none whitespace-nowrap"
+      >
+        OPINIONES
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Cabecera de Testimonios */}
         <ScrollReveal direction="up" distance={20}>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 mb-7 sm:mb-12 border-b border-[#D97736]/30 pb-5">
-            <div className="max-w-2xl">
+            <div className="max-w-2xl space-y-2">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading glow-text-subtle">
                 {t("test.title")}
               </h2>
-              <p className="text-xs sm:text-base text-[#B8A99A] leading-relaxed mt-1.5 font-normal">
+              <div
+                aria-hidden="true"
+                className="h-[3px] w-16 bg-gradient-to-r from-[#D97736] to-[#D4AF37]"
+              />
+              <p className="text-xs sm:text-base text-[#B8A99A] leading-relaxed pt-1 font-normal">
                 {t("test.subtitle")}
               </p>
             </div>

@@ -2,134 +2,124 @@ import { MessageSquare, ArrowRight, Youtube, Instagram, Facebook } from "lucide-
 import { SITE_CONFIG, getClasePruebaWhatsAppUrl } from "../config/siteConfig";
 import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
-import { SpotlightCard } from "./SpotlightCard";
 
+/**
+ * SECCIÓN CONTACTO Y CONVERSIÓN:
+ * Inspirada en la franja inferior de ancho completo con fondo de color sólido vibrante
+ * de la referencia de Pinterest, manteniendo nuestra paleta Naranja Terracota (#D97736),
+ * Dorado (#C5A059 / #D4AF37) y Tierra Profunda (#110D0A).
+ */
 export function ContactoConversion() {
   const { t } = useLanguage();
 
   return (
     <section
       id="contacto"
-      className="relative py-14 sm:py-24 section-surface-secondary text-[#F5EFE6] overflow-hidden"
+      className="relative w-full overflow-hidden bg-[#110D0A]"
     >
-      {/* Fondo puro en CSS con halo en Naranja Terracota (#D97736) y Dorado (#C5A059) */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-1/4 right-1/4 w-[320px] sm:w-[450px] h-[320px] sm:h-[450px] bg-[#D97736]/12 rounded-full blur-3xl pointer-events-none animate-glow-pulse"
-      />
+      {/* 1. FRANJA DE LLAMADA A LA ACCIÓN DE ANCHO COMPLETO EN COLOR SÓLIDO (Estilo referencia Pinterest) */}
+      <div className="relative w-full bg-gradient-to-r from-[#D97736] via-[#C86428] to-[#C5A059] text-[#110D0A] py-12 sm:py-16 lg:py-20 overflow-hidden border-t border-[#D4AF37]/50">
+        {/* Tipografía monumental en marca de agua sobre la banda sólida */}
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-6 right-4 font-heading font-black uppercase tracking-[0.18em] text-6xl sm:text-8xl lg:text-9xl text-[#110D0A]/[0.07] select-none pointer-events-none whitespace-nowrap leading-none"
+        >
+          SYSTEMA HETS
+        </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Franja de Conversión Centralizada en Tierra Profunda (#110D0A) sobre sección Tierra Sombra (#1B140F) */}
-        <ScrollReveal direction="up" distance={24}>
-          <SpotlightCard className="p-5 sm:p-10 lg:p-14 !bg-[#110D0A] relative overflow-hidden">
-            {/* Línea superior en Naranja Terracota (#D97736) y Dorado (#D4AF37) */}
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#D97736] via-[#D4AF37] to-[#C5A059]" />
-
-            {/* Resplandor ambiental de esquina */}
-            <div
-              aria-hidden="true"
-              className="absolute -bottom-16 -right-16 w-64 h-64 bg-[#D97736]/14 rounded-full blur-3xl pointer-events-none"
-            />
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center relative z-10">
-              {/* Texto y Llamado a la Acción de Reserva de Clase */}
-              <div className="lg:col-span-8 space-y-3.5 sm:space-y-5">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="up" distance={20}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Columna Izquierda: Título y descripción sobre el bloque sólido */}
+              <div className="lg:col-span-7 space-y-3 sm:space-y-4">
                 <h2
-                  className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading leading-tight glow-text-subtle"
+                  className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#110D0A] font-heading leading-none"
                   style={{ textWrap: "balance" }}
                 >
                   {t("contact.title")}
                 </h2>
 
-                <p className="text-sm sm:text-lg text-[#F5EFE6] leading-relaxed max-w-xl font-normal">
+                <div
+                  aria-hidden="true"
+                  className="h-[3px] w-16 bg-[#110D0A]"
+                />
+
+                <p className="text-sm sm:text-lg text-[#110D0A]/90 font-medium leading-relaxed max-w-2xl">
                   {t("contact.desc")}
                 </p>
 
-                {/* Botón Principal de Reserva por WhatsApp (Naranja/Dorado, Texto #110D0A font-bold) */}
-                <div className="pt-1 sm:pt-2">
-                  <a
-                    href={getClasePruebaWhatsAppUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-shimmer-lightning w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-4 sm:px-8 py-3.5 sm:py-4 text-xs font-bold uppercase tracking-wider sm:tracking-widest text-[#110D0A] bg-[#D97736] hover:bg-[#D4AF37] rounded-sm min-h-[52px] h-auto cursor-pointer group whitespace-normal sm:whitespace-nowrap text-center leading-snug"
-                  >
-                    <MessageSquare className="w-4 h-4 fill-current shrink-0 transition-transform duration-300 group-hover:scale-110" />
-                    <span className="flex-1 sm:flex-initial font-bold">{t("contact.btnTrial")}</span>
-                    <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-                  </a>
-                </div>
-
-                <p className="text-xs text-[#B8A99A] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#110D0A]/80 font-semibold tracking-wide">
                   {t("contact.subtext")}
                 </p>
-
-                {/* Redes Oficiales y Vías de Comunicación */}
-                <div className="pt-4 sm:pt-5 border-t border-[#D97736]/30 space-y-2.5 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center gap-2 sm:gap-4 text-xs text-[#B8A99A]">
-                  <span className="text-[#D97736] text-xs block sm:inline font-medium">
-                    {t("contact.officialChannels")}
-                  </span>
-
-                  <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 sm:gap-3">
-                    <a
-                      href={SITE_CONFIG.redes.whatsappCanal}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-secondary-gold text-[#F5EFE6] hover:text-[#D4AF37] flex items-center gap-2 py-2 px-3 rounded-xs bg-[#1B140F]"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5 text-[#D97736] shrink-0" />
-                      <span>{t("contact.waChannel")}</span>
-                    </a>
-
-                    <a
-                      href={SITE_CONFIG.redes.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-secondary-gold text-[#F5EFE6] hover:text-[#D4AF37] flex items-center gap-2 py-2 px-3 rounded-xs bg-[#1B140F]"
-                    >
-                      <Instagram className="w-3.5 h-3.5 text-[#D97736] shrink-0" />
-                      <span>{t("contact.instagram")}</span>
-                    </a>
-
-                    <a
-                      href={SITE_CONFIG.redes.youtube}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-secondary-gold text-[#F5EFE6] hover:text-[#D4AF37] flex items-center gap-2 py-2 px-3 rounded-xs bg-[#1B140F]"
-                    >
-                      <Youtube className="w-3.5 h-3.5 text-[#D97736] shrink-0" />
-                      <span>{t("contact.youtube")}</span>
-                    </a>
-
-                    <a
-                      href={SITE_CONFIG.redes.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-secondary-gold text-[#F5EFE6] hover:text-[#D4AF37] flex items-center gap-2 py-2 px-3 rounded-xs bg-[#1B140F]"
-                    >
-                      <Facebook className="w-3.5 h-3.5 text-[#D97736] shrink-0" />
-                      <span>{t("contact.facebook")}</span>
-                    </a>
-                  </div>
-                </div>
               </div>
 
-              {/* Logotipo suelto sin caja recargada en columna derecha (Visible en desktop lg+) */}
-              <div className="hidden lg:flex lg:col-span-4 items-center justify-center">
-                <img
-                  src={SITE_CONFIG.assets.logo}
-                  alt="Logotipo Systema HETS Diego Ledesma"
-                  className="w-44 h-auto object-contain filter drop-shadow-[0_10px_24px_rgba(0,0,0,0.85)] hover:drop-shadow-[0_0_32px_rgba(217,119,54,0.36)] transition-all duration-500"
-                  width={176}
-                  height={176}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      SITE_CONFIG.assets.logoFallbackUrl;
-                  }}
-                />
+              {/* Columna Derecha: Botón Principal en Tierra Profunda (#110D0A) de alto contraste */}
+              <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end justify-center gap-4">
+                <a
+                  href={getClasePruebaWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-4 sm:py-5 text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-[#F5EFE6] hover:text-[#D4AF37] bg-[#110D0A] hover:bg-[#1B140F] border-2 border-[#110D0A] rounded-xs min-h-[56px] shadow-[0_14px_34px_rgba(17,13,10,0.45)] hover:shadow-[0_18px_40px_rgba(17,13,10,0.65)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group text-center leading-snug"
+                >
+                  <MessageSquare className="w-4 h-4 text-[#D97736] group-hover:text-[#D4AF37] fill-current shrink-0 transition-transform duration-300 group-hover:scale-110" />
+                  <span className="font-bold">{t("contact.btnTrial")}</span>
+                  <ArrowRight className="w-4 h-4 text-[#D97736] group-hover:text-[#D4AF37] shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
               </div>
             </div>
-          </SpotlightCard>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
+      </div>
+
+      {/* 2. BARRA DE REDES Y CANALES OFICIALES EN TIERRA SOMBRA (#1B140F) ANTES DEL FOOTER */}
+      <div className="bg-[#1B140F] border-t border-[#D97736]/30 py-5 sm:py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6">
+          <span className="text-xs font-heading uppercase tracking-wider text-[#D4AF37] font-bold">
+            {t("contact.officialChannels")}
+          </span>
+
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+            <a
+              href={SITE_CONFIG.redes.whatsappCanal}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary-gold text-xs text-[#F5EFE6] hover:text-[#D4AF37] flex items-center gap-2 py-2 px-3.5 rounded-xs bg-[#110D0A]"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-[#D97736] shrink-0" />
+              <span>{t("contact.waChannel")}</span>
+            </a>
+
+            <a
+              href={SITE_CONFIG.redes.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary-gold text-xs text-[#F5EFE6] hover:text-[#D4AF37] flex items-center gap-2 py-2 px-3.5 rounded-xs bg-[#110D0A]"
+            >
+              <Instagram className="w-3.5 h-3.5 text-[#D97736] shrink-0" />
+              <span>{t("contact.instagram")}</span>
+            </a>
+
+            <a
+              href={SITE_CONFIG.redes.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary-gold text-xs text-[#F5EFE6] hover:text-[#D4AF37] flex items-center gap-2 py-2 px-3.5 rounded-xs bg-[#110D0A]"
+            >
+              <Youtube className="w-3.5 h-3.5 text-[#D97736] shrink-0" />
+              <span>{t("contact.youtube")}</span>
+            </a>
+
+            <a
+              href={SITE_CONFIG.redes.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary-gold text-xs text-[#F5EFE6] hover:text-[#D4AF37] flex items-center gap-2 py-2 px-3.5 rounded-xs bg-[#110D0A]"
+            >
+              <Facebook className="w-3.5 h-3.5 text-[#D97736] shrink-0" />
+              <span>{t("contact.facebook")}</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -389,61 +389,24 @@ export const SITE_CONFIG = {
       url: "https://youtu.be/uGH78qNWkws?si=M7hPpFayjRqWMjf9&t=96",
     },
     {
-      id: "prensa-radio-1",
-      categoria: "radio" as const,
-      categorias: ["radio"] as Array<"radio" | "streaming" | "tv" | "escrita">,
-      categoriaLabel: "Radio",
-      categoriaLabelEn: "Radio",
-      medio: "Entrevistas Radiales · La Plata y Buenos Aires",
-      medioEn: "Radio Interviews · La Plata & Buenos Aires",
-      titulo: "El movimiento consciente y la autoprotección en la vida cotidiana",
-      tituloEn: "Conscious movement and self-protection in everyday life",
-      descripcion:
-        "Charla sobre cómo la respiración, la relajación y la percepción ayudan a gestionar el estrés, reducir tensiones y responder con naturalidad ante situaciones imprevistas.",
-      descripcionEn:
-        "Conversation on how breathing, relaxation, and perception help manage stress, release tension, and respond naturally to unexpected situations.",
-      formato: "Nota en Radio · Audio",
-      formatoEn: "Radio Feature · Audio",
-      // // CAMPO EDITABLE: Pegar aquí el link a otra nota de radio
-      url: "https://www.youtube.com/@systemahetsartemarcialruso",
-    },
-    {
-      id: "prensa-tv-1",
-      categoria: "tv" as const,
-      categorias: ["tv"] as Array<"radio" | "streaming" | "tv" | "escrita">,
-      categoriaLabel: "TV",
-      categoriaLabelEn: "TV",
-      medio: "Televisión y Coberturas Audiovisuales",
-      medioEn: "Television & Broadcast Coverage",
-      titulo: "Demostraciones en vivo y formación internacional de Systema HETS",
-      tituloEn: "Live demonstrations and international Systema HETS training",
-      descripcion:
-        "Cobertura televisiva sobre la trayectoria de 40 años del Prof. Diego Martín Ledesma, su formación en Moscú (Ryabko) y Toronto (Vasiliev) y las clases abiertas en Argentina.",
-      descripcionEn:
-        "Television feature on Prof. Diego Martín Ledesma's 40-year martial arts journey, training in Moscow (Ryabko) and Toronto (Vasiliev), and classes across Argentina.",
-      formato: "Nota en TV · Video",
-      formatoEn: "TV Feature · Video",
-      // // CAMPO EDITABLE: Pegar aquí el link a la nota de TV en YouTube o archivo
-      url: "https://www.youtube.com/@systemahetsartemarcialruso",
-    },
-    {
-      id: "prensa-escrita-1",
+      id: "prensa-escrita-perfil",
       categoria: "escrita" as const,
       categorias: ["escrita"] as Array<"radio" | "streaming" | "tv" | "escrita">,
       categoriaLabel: "Notas Escritas",
       categoriaLabelEn: "Written Press",
-      medio: "Prensa Gráfica y Portales Digitales",
-      medioEn: "Print & Digital Publications",
-      titulo: "Artículos sobre educación corporal, inclusión marcial y desarrollo humano",
-      tituloEn: "Articles on bodily education, martial inclusion, and human development",
+      medio: "Diario Perfil",
+      medioEn: "Perfil Newspaper",
+      titulo:
+        "Systema Hets: el arte marcial ruso que combina defensa personal y autoconocimiento",
+      tituloEn:
+        "Systema Hets: the Russian martial art that combines self-defense and self-knowledge",
       descripcion:
-        "Publicaciones y entrevistas escritas sobre el enfoque pedagógico de Systema HETS: aprender a resolver situaciones imprevistas sin depender de la fuerza física bruta.",
+        "Fundado por Diego Martín Ledesma, el espacio propone una enseñanza adaptada a cada persona, integrando movimiento consciente, desarrollo corporal y formación en artes marciales.",
       descripcionEn:
-        "Written interviews and articles exploring the pedagogical approach of Systema HETS: resolving unexpected situations without relying on brute physical strength.",
-      formato: "Prensa Escrita · Artículo",
-      formatoEn: "Written Press · Article",
-      // // CAMPO EDITABLE: Pegar aquí el link al diario, revista o nota digital
-      url: "https://www.instagram.com/systemahets",
+        "Founded by Diego Martín Ledesma, the school offers teaching adapted to each person, integrating conscious movement, bodily development, and martial arts training.",
+      formato: "Nota Periodística · Diario Perfil",
+      formatoEn: "Press Article · Diario Perfil",
+      url: "https://www.perfil.com/comercial/systema-hets-el-arte-marcial-ruso-que-combina-defensa-personal-y-autoconocimiento-aadXH0A34EZz",
     },
   ],
 };

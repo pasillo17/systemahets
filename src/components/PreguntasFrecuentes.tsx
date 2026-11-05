@@ -4,9 +4,9 @@ import { useLanguage } from "../context/LanguageContext";
 import { ScrollReveal } from "./ScrollReveal";
 
 /**
- * SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) EN ACORDEÓN:
- * Fondo secundario Gris Grafito (#1C1E24), bordes en Dorado suave (rgba(197, 160, 89, 0.25)),
- * títulos en Blanco Humo (#F4F4F6) y respuestas en Gris Plata (#A0A5B1).
+ * SECCIÓN DE PREGUNTAS FRECUENTES (FAQ):
+ * Rediseño arquitectónico con bloques numerados (01 a 05) en Naranja Terracota (#D97736)
+ * y bordes marcados al desplegar cada respuesta.
  */
 export function PreguntasFrecuentes() {
   const { lang } = useLanguage();
@@ -21,7 +21,8 @@ export function PreguntasFrecuentes() {
             "Just comfortable athletic clothes: a plain t-shirt and long sweatpants or joggers. You don't need a special uniform or protective gear to start.",
         },
         {
-          pregunta: "Do I need prior fitness conditioning or martial arts experience?",
+          pregunta:
+            "Do I need prior fitness conditioning or martial arts experience?",
           respuesta:
             "Not at all. Training adapts to your current condition from day one. Because we work with breathing, perception, bodily intelligence, and the intelligent use of energy, anyone can join safely at their own pace.",
         },
@@ -48,7 +49,8 @@ export function PreguntasFrecuentes() {
             "Solo ropa deportiva cómoda: una remera y un pantalón largo tipo jogging. No hace falta comprar uniforme ni protecciones para venir a probar.",
         },
         {
-          pregunta: "¿Hace falta tener estado físico previo o experiencia en artes marciales?",
+          pregunta:
+            "¿Hace falta tener estado físico previo o experiencia en artes marciales?",
           respuesta:
             "Para nada. Cada uno entrena a su propio ritmo desde el primer día. Como trabajamos a partir de la percepción, la inteligencia corporal y el aprovechamiento inteligente de la energía, podés sumarte tranquilamente aunque hace mucho no hagas actividad física.",
         },
@@ -76,57 +78,78 @@ export function PreguntasFrecuentes() {
   return (
     <section
       id="preguntas-frecuentes"
-      className="py-10 sm:py-16 bg-[#110D0A] text-[#F5EFE6] relative overflow-hidden"
+      className="py-12 sm:py-18 bg-[#110D0A] text-[#F5EFE6] relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-6 sm:mb-8 border-b border-[#D97736]/30 pb-3.5">
-            <h2 className="text-2xl sm:text-3xl font-heading font-bold uppercase tracking-tight text-[#F5EFE6] glow-text-subtle">
+          <div className="mb-7 sm:mb-9 border-b border-[#D97736]/30 pb-4 space-y-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold uppercase tracking-tight text-[#F5EFE6] glow-text-subtle">
               {isEn ? "Frequently Asked Questions" : "Preguntas frecuentes"}
             </h2>
+            <div
+              aria-hidden="true"
+              className="h-[3px] w-16 bg-gradient-to-r from-[#D97736] to-[#D4AF37]"
+            />
           </div>
         </ScrollReveal>
 
-        {/* Acordeón en Tierra Sombra (#1B140F) con bisel superior y líneas divisorias en Naranja/Dorado suave */}
         <ScrollReveal direction="up" delay={60} distance={20}>
-          <div className="card-static-gold rounded-sm divide-y divide-[#D97736]/25 overflow-hidden relative">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D97736]/55 to-transparent"
-            />
+          <div className="space-y-3">
             {faqs.map((item, idx) => {
               const isOpen = openIndex === idx;
+              const numLabel = `0${idx + 1}`;
               return (
                 <div
                   key={item.pregunta}
-                  className={`p-4 sm:p-5 transition-colors duration-300 ${
-                    isOpen ? "bg-[#110D0A]/55" : "hover:bg-[#110D0A]/35"
+                  className={`relative rounded-xs border transition-all duration-300 overflow-hidden ${
+                    isOpen
+                      ? "bg-[#1B140F] border-[#D97736] shadow-[0_10px_26px_rgba(0,0,0,0.75)]"
+                      : "bg-[#1B140F]/70 border-[#D97736]/30 hover:border-[#D4AF37]/60"
                   }`}
                 >
+                  {isOpen && (
+                    <div
+                      aria-hidden="true"
+                      className="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-[#D97736] to-[#D4AF37]"
+                    />
+                  )}
+
                   <button
                     type="button"
                     onClick={() => toggleItem(idx)}
                     aria-expanded={isOpen}
-                    className="w-full flex items-center justify-between gap-4 text-left cursor-pointer group"
+                    className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left cursor-pointer group"
                   >
-                    <span
-                      className={`text-sm sm:text-base font-heading font-bold uppercase tracking-wide transition-colors leading-snug ${
-                        isOpen
-                          ? "text-[#D4AF37]"
-                          : "text-[#F5EFE6] group-hover:text-[#D97736]"
-                      }`}
-                    >
-                      {item.pregunta}
-                    </span>
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <span
+                        className={`w-8 h-8 rounded-xs font-heading font-bold text-xs flex items-center justify-center shrink-0 transition-colors ${
+                          isOpen
+                            ? "bg-[#D97736] text-[#110D0A]"
+                            : "bg-[#110D0A] text-[#D97736] border border-[#D97736]/35 group-hover:border-[#D4AF37]"
+                        }`}
+                      >
+                        {numLabel}
+                      </span>
+                      <span
+                        className={`text-sm sm:text-base font-heading font-bold uppercase tracking-wide transition-colors leading-snug ${
+                          isOpen
+                            ? "text-[#D4AF37]"
+                            : "text-[#F5EFE6] group-hover:text-[#D97736]"
+                        }`}
+                      >
+                        {item.pregunta}
+                      </span>
+                    </div>
+
                     <ChevronDown
                       className={`w-5 h-5 text-[#D97736] shrink-0 transition-transform duration-300 ${
-                        isOpen ? "rotate-180 text-[#D4AF37] icon-gold-glow" : ""
+                        isOpen ? "rotate-180 text-[#D4AF37]" : ""
                       }`}
                     />
                   </button>
 
                   {isOpen && (
-                    <div className="pt-3 pr-6 text-xs sm:text-sm text-[#B8A99A] leading-relaxed font-sans animate-in fade-in duration-200">
+                    <div className="px-4 sm:px-5 pb-5 pl-14 sm:pl-16 text-xs sm:text-sm text-[#B8A99A] leading-relaxed font-sans animate-in fade-in duration-200">
                       {item.respuesta}
                     </div>
                   )}

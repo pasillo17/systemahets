@@ -10,9 +10,8 @@ interface DiegoLedesmaProps {
 
 /**
  * Sección Diego Ledesma:
- * En móvil (< 768px): apilado en una sola columna (flex-col) con la tarjeta de foto arriba
- * y el texto debajo ocupando el 100% del ancho disponible.
- * Un único párrafo introductorio conciso acompañado por la lista editorial "Trayectoria Formativa".
+ * Incorpora marco desplazado (offset frame) en Naranja Terracota (#D97736) y Dorado (#C5A059)
+ * con tipografía vertical monumental detrás del retrato oficial, inspirado en la referencia de Pinterest.
  */
 export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
   const [portraitLoaded, setPortraitLoaded] = useState(false);
@@ -76,6 +75,16 @@ export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
       id="diego-ledesma"
       className="py-14 sm:py-22 section-surface-secondary text-[#F5EFE6] relative overflow-hidden"
     >
+      {/* Bloque lateral decorativo con tipografía vertical monumental de fondo (estilo referencia Pinterest) */}
+      <div
+        aria-hidden="true"
+        className="hidden xl:flex absolute top-0 right-0 bottom-0 w-24 bg-gradient-to-b from-[#D97736]/18 via-[#D97736]/10 to-transparent border-l border-[#D97736]/25 items-center justify-center pointer-events-none select-none overflow-hidden"
+      >
+        <span className="font-heading font-black uppercase tracking-[0.28em] text-6xl text-[#D97736]/18 -rotate-90 whitespace-nowrap">
+          DIEGO LEDESMA
+        </span>
+      </div>
+
       {/* Halo ambiental sutil en Naranja Terracota y Dorado */}
       <div
         aria-hidden="true"
@@ -85,25 +94,41 @@ export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Grilla Editorial Principal */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-          {/* Columna Izquierda: Retrato Oficial y Párrafo Introductorio Conciso */}
+          {/* Columna Izquierda: Retrato Oficial con Marco Desplazado y Párrafo Introductorio */}
           <ScrollReveal
             direction="up"
             delay={80}
             distance={24}
             className="lg:col-span-7 space-y-5 sm:space-y-6"
           >
-            <h2
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading glow-text-subtle"
-              style={{ textWrap: "balance" }}
-            >
-              {t("diego.name")}
-            </h2>
+            <div className="space-y-2">
+              <h2
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading glow-text-subtle"
+                style={{ textWrap: "balance" }}
+              >
+                {t("diego.name")}
+              </h2>
+              <div
+                aria-hidden="true"
+                className="h-[3px] w-16 bg-gradient-to-r from-[#D97736] to-[#D4AF37]"
+              />
+            </div>
 
             {/* En móvil (< 768px): flex-col apilado al 100% del ancho. En tablet/desktop (md+): grilla 12 columnas */}
-            <div className="flex flex-col md:grid md:grid-cols-12 gap-5 md:gap-7 items-start">
-              {/* 1. Tarjeta del Retrato Oficial en Tierra Profunda (#110D0A) sobre sección Tierra Sombra (#1B140F) */}
-              <div className="w-full max-w-sm mx-auto md:max-w-none md:mx-0 md:col-span-5 relative group">
-                <div className="relative rounded-sm overflow-hidden card-on-secondary-gold">
+            <div className="flex flex-col md:grid md:grid-cols-12 gap-6 md:gap-7 items-start">
+              {/* 1. Tarjeta del Retrato Oficial con Marco Desplazado (Offset Frame) en Naranja Terracota */}
+              <div className="w-full max-w-sm mx-auto md:max-w-none md:mx-0 md:col-span-5 relative group pl-3 pb-3 sm:pl-4 sm:pb-4">
+                {/* Marco desplazado estilo Pinterest detrás del retrato */}
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 bottom-0 w-[90%] h-[90%] bg-gradient-to-tr from-[#D97736] via-[#C86428] to-[#C5A059] rounded-xs overflow-hidden pointer-events-none shadow-[0_12px_28px_rgba(217,119,54,0.3)]"
+                >
+                  <span className="absolute -bottom-1.5 left-2.5 font-heading font-black uppercase tracking-[0.22em] text-xl text-[#110D0A]/30 select-none whitespace-nowrap">
+                    SYSTEMA HETS
+                  </span>
+                </div>
+
+                <div className="relative z-10 rounded-sm overflow-hidden card-on-secondary-gold">
                   <div className="relative aspect-[3/4] overflow-hidden bg-[#110D0A]">
                     {!portraitLoaded && (
                       <div className="absolute inset-0 bg-[#110D0A] animate-pulse" />
@@ -137,7 +162,9 @@ export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
                       Diego M. Ledesma
                     </span>
                     <span className="text-[11px] text-[#D97736] block leading-snug mt-0.5">
-                      {lang === "en" ? "Director · Systema HETS" : "Director de Systema HETS"}
+                      {lang === "en"
+                        ? "Director · Systema HETS"
+                        : "Director de Systema HETS"}
                     </span>
                   </div>
                 </div>
@@ -145,7 +172,7 @@ export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
 
               {/* 2. Texto ocupando el 100% del ancho en móvil y 7 columnas en md+ */}
               <div className="w-full md:col-span-7 space-y-4">
-                <p className="text-sm sm:text-base text-[#F5EFE6] font-medium leading-relaxed pl-3.5 sm:pl-4 border-l border-[#D97736]/60">
+                <p className="text-sm sm:text-base text-[#F5EFE6] font-medium leading-relaxed pl-3.5 sm:pl-4 border-l-[3px] border-[#D97736]">
                   {t("diego.quote")}
                 </p>
 
@@ -170,7 +197,7 @@ export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
             </div>
           </ScrollReveal>
 
-          {/* Columna Derecha: Trayectoria Formativa como lista editorial limpia separada por border-bottom finos */}
+          {/* Columna Derecha: Trayectoria Formativa */}
           <ScrollReveal
             direction="up"
             delay={140}
@@ -178,10 +205,13 @@ export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
             className="lg:col-span-5 lg:pl-8 lg:border-l lg:border-[#D97736]/30 w-full"
           >
             <div className="space-y-4">
-              <div className="border-b border-[#D97736]/30 pb-3">
+              <div className="border-b border-[#D97736]/30 pb-3 flex items-center justify-between">
                 <h3 className="text-lg sm:text-xl font-heading font-bold uppercase tracking-wide text-[#F5EFE6]">
                   {t("diego.timelineHeader")}
                 </h3>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#D97736]">
+                  HETS
+                </span>
               </div>
 
               <div className="divide-y divide-[#D97736]/25">
@@ -206,4 +236,3 @@ export function DiegoLedesma({ onOpenPrensa }: DiegoLedesmaProps) {
     </section>
   );
 }
-

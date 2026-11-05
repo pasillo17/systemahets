@@ -71,7 +71,7 @@ export function Prensa({ onBackHome }: PrensaProps) {
     onBackHome();
   };
 
-  const categories: {
+  const allCategories: {
     id: PrensaCategory;
     label: string;
     icon?: typeof Radio;
@@ -82,6 +82,16 @@ export function Prensa({ onBackHome }: PrensaProps) {
     { id: "tv", label: t("prensa.filterTv"), icon: Tv },
     { id: "escrita", label: t("prensa.filterEscrita"), icon: Newspaper },
   ];
+
+  // Mostrar únicamente las categorías que tienen notas reales cargadas
+  const categories = allCategories.filter((cat) => {
+    if (cat.id === "todas") return true;
+    return SITE_CONFIG.prensa.some((item) =>
+      "categorias" in item && Array.isArray(item.categorias)
+        ? item.categorias.includes(cat.id as "radio" | "streaming" | "tv" | "escrita")
+        : item.categoria === cat.id
+    );
+  });
 
   const items = SITE_CONFIG.prensa.filter((item) => {
     if (selectedCategory === "todas") return true;
@@ -136,17 +146,27 @@ export function Prensa({ onBackHome }: PrensaProps) {
 
           {/* Encabezado Principal de la sección Prensa */}
           <ScrollReveal direction="up" delay={40} distance={20}>
-            <div className="space-y-3 mb-7 sm:mb-9">
+            <div className="relative space-y-3 mb-7 sm:mb-9">
+              <span
+                aria-hidden="true"
+                className="hidden lg:block absolute -top-4 right-0 font-heading font-black uppercase tracking-[0.22em] text-7xl text-[#D97736]/[0.06] select-none pointer-events-none whitespace-nowrap"
+              >
+                PRENSA HETS
+              </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-[#F5EFE6] font-heading leading-none glow-text-subtle">
                 {t("prensa.title")}
               </h1>
-              <p className="text-sm sm:text-base text-[#B8A99A] max-w-3xl leading-relaxed">
+              <div
+                aria-hidden="true"
+                className="h-[3px] w-20 bg-gradient-to-r from-[#D97736] via-[#D4AF37] to-[#C5A059]"
+              />
+              <p className="text-sm sm:text-base text-[#B8A99A] max-w-3xl leading-relaxed pt-1">
                 {t("prensa.subtitle")}
               </p>
             </div>
           </ScrollReveal>
 
-          {/* Barra de Filtros Interactivos por Categoría (Radio, Streaming, TV, Escritas) */}
+          {/* Barra de Filtros Interactivos por Categoría */}
           <ScrollReveal direction="up" delay={70} distance={20}>
             <div className="mb-8 pb-4 border-b border-[#D97736]/25 overflow-x-auto scrollbar-none">
               <div className="flex items-center gap-2.5 min-w-max">
@@ -179,8 +199,8 @@ export function Prensa({ onBackHome }: PrensaProps) {
             </div>
           </ScrollReveal>
 
-          {/* Grilla de Notas y Reproductores de Video */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          {/* Grilla de Notas Reales y Reproductores de Video */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
             {items.map((item) => {
               const Icon = getCategoryIcon(item.categoria);
               const catLabel =
@@ -199,14 +219,14 @@ export function Prensa({ onBackHome }: PrensaProps) {
               return (
                 <article
                   key={item.id}
-                  className="relative p-5 sm:p-7 rounded-sm bg-[#1B140F] border border-[#D97736]/35 hover:border-[#D4AF37]/70 transition-all duration-300 flex flex-col justify-between gap-5 shadow-xl group overflow-hidden"
+                  className={`relative p-5 sm:p-7 rounded-sm bg-[#1B140F] border border-[#D97736]/35 hover:border-[#D4AF37]/70 transition-all duration-300 flex flex-col justify-between gap-5 shadow-xl group overflow-hidden ${
+                    !hasYoutube ? "md:col-span-2" : ""
+                  }`}
                 >
-                  {hasYoutube && (
-                    <div
-                      aria-hidden="true"
-                      className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#D97736] via-[#D4AF37] to-[#C5A059]"
-                    />
-                  )}
+                  <div
+                    aria-hidden="true"
+                    className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#D97736] via-[#D4AF37] to-[#C5A059]"
+                  />
 
                   <div className="space-y-4">
                     {/* Metadatos editoriales limpios */}
@@ -221,41 +241,27 @@ export function Prensa({ onBackHome }: PrensaProps) {
                       <span className="text-[#B8A99A]">{formato}</span>
                     </div>
 
-                    <div
-                      className={
-                        hasYoutube
-                          ? "space-y-2 pl-3.5 sm:pl-4 border-l-[3px] border-[#D97736] py-0.5"
-                          : "space-y-1.5"
-                      }
-                    >
-                      <h2
-                        className={
-                          hasYoutube
-                            ? "text-xl sm:text-2xl lg:text-[26px] font-heading font-bold uppercase tracking-tight text-[#F5EFE6] group-hover:text-[#D4AF37] transition-colors leading-tight glow-text-subtle"
-                            : "text-lg sm:text-xl font-heading font-bold uppercase tracking-wide text-[#F5EFE6] group-hover:text-[#D4AF37] transition-colors leading-snug"
-                        }
-                      >
+                    <div className="space-y-2 pl-3.5 sm:pl-4 border-l-[3px] border-[#D97736] py-0.5">
+                      <h2 className="text-xl sm:text-2xl lg:text-[26px] font-heading font-bold uppercase tracking-tight text-[#F5EFE6] group-hover:text-[#D4AF37] transition-colors leading-tight glow-text-subtle">
                         {titulo}
                       </h2>
-                      <p
-                        className={
-                          hasYoutube
-                            ? "text-xs sm:text-sm font-heading uppercase tracking-wider text-[#D4AF37] font-bold"
-                            : "text-xs sm:text-sm text-[#C5A059] font-sans font-medium"
-                        }
-                      >
+                      <p className="text-xs sm:text-sm font-heading uppercase tracking-wider text-[#D4AF37] font-bold">
                         {medio}
                       </p>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-[#B8A99A] leading-relaxed font-normal">
+                    <p className="text-xs sm:text-base text-[#B8A99A] leading-relaxed font-normal max-w-4xl">
                       {descripcion}
                     </p>
 
-                    {/* Reproductor de YouTube integrado en la tarjeta */}
+                    {/* Reproductor de YouTube con marco desplazado en Naranja Terracota */}
                     {hasYoutube && "youtubeId" in item && item.youtubeId && (
-                      <div className="pt-2">
-                        <div className="relative w-full aspect-video rounded-sm overflow-hidden border border-[#D97736]/45 bg-[#0A0705] shadow-2xl">
+                      <div className="pt-2 pl-2 pb-2 sm:pl-3 sm:pb-3 relative">
+                        <div
+                          aria-hidden="true"
+                          className="absolute left-0 bottom-0 w-[85%] h-[85%] bg-gradient-to-tr from-[#D97736] to-[#C5A059] rounded-xs pointer-events-none"
+                        />
+                        <div className="relative z-10 w-full aspect-video rounded-xs overflow-hidden border border-[#D97736]/45 bg-[#0A0705] shadow-2xl">
                           <iframe
                             src={`https://www.youtube.com/embed/${item.youtubeId}?start=${startSec}&rel=0&fs=1`}
                             title={titulo}
